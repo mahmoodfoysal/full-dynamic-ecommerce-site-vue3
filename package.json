@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "axios": "^1.6.7",
     "bootstrap": "^5.3.2",
     "hooper": "^0.3.4",
+    "json-server": "^1.0.0-alpha.23",
     "swiper": "^11.0.5",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"

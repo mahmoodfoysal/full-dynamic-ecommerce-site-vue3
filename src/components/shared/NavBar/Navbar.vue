@@ -332,7 +332,6 @@ p {
     .dropdown-menu.show {
         display: flex !important;
     }
-
     .dropdown:hover .dropdown-menu {
         display: flex !important;
     }
@@ -352,18 +351,7 @@ p {
         z-index: 5;
     }
 
-    .second-navbar-style {
-        /* display: none; */
-    }
-
-
 }
-
-
-
-
-
-
 .fav-i-back {
     position: relative;
     top: -15px;
