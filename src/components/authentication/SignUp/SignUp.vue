@@ -1,19 +1,27 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
+import {handleRegistration} from '../../../../src/API/Authentication';
+import router from '../../../router/router';
 
-// all registration field ref are define here 
-const fullName = ref('');
-const phoneNumber = ref(null);
-const photoURL = ref('');
-const email = ref('');
-const password = ref('');
+const registerData = reactive({
+    fullName: '',
+    phoneNumber: '',
+    photoURL: '',
+    email: '',
+    password: ''
+})
 
-const handleSignUp = () => {
-    console.log("Fullname", fullName.value);
-    console.log("Phoneno", phoneNumber.value);
-    console.log("Photo URL", photoURL.value);
-    console.log("Email", email.value);
-    console.log("Password", password.value);
+const handleSignUp = async () => {
+    await handleRegistration(registerData);
+    const userInfo = localStorage.getItem('user-info')
+    if(userInfo) {
+        router.push({name: 'Home'})
+    }
+    registerData.fullName='';
+    registerData.phoneNumber='';
+    registerData.photoURL='';
+    registerData.email='';
+    registerData.password='';
 }
 </script>
 
@@ -28,35 +36,35 @@ const handleSignUp = () => {
             <p class="text-center">Register New Account</p>
             <label for="name">Full Name</label>
             <input
-            v-model="fullName" 
+            v-model.trim="registerData.fullName" 
             type="text" 
             name="" 
             id="name" 
             placeholder="Enter Your Full Name">
             <label for="phone">Phone No</label>
             <input 
-            v-model.number="phoneNumber"
+            v-model.trim="registerData.phoneNumber"
             type="number" 
             name="" 
             id="phone" 
             placeholder="Enter Phone NO">
             <label for="photo">Photo Url</label>
             <input 
-            v-model="photoURL"
+            v-model.trim="registerData.photoURL"
             type="url" 
             name="" 
             id="photo" 
             placeholder="Give Photo URL">
             <label for="Login">Email</label>
             <input 
-            v-model="email"
+            v-model.trim="registerData.email"
             type="email" 
             name="" 
             id="Login" 
             placeholder="Enter Your Email">
             <label for="password">Password</label>
             <input 
-            v-model="password"
+            v-model.trim="registerData.password"
             type="password" 
             name="" 
             id="password" 
