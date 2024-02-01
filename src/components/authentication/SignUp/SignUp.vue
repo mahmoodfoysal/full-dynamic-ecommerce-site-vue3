@@ -1,7 +1,10 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import {createRegistration} from '../../../../src/API/Authentication';
 import router from '../../../router/router';
+import { useStore } from '@/stores/TaskStore';
+
+const store = useStore();
 
 const registerData = reactive({
     fullName: '',
@@ -14,6 +17,7 @@ const registerData = reactive({
 const handleSignUp = async () => {
     await createRegistration(registerData);
     const userInfo = localStorage.getItem('user-info')
+    store.setUser(userInfo);
     if(userInfo) {
         router.push({name: 'Home'})
     }
@@ -23,6 +27,13 @@ const handleSignUp = async () => {
     registerData.email='';
     registerData.password='';
 }
+
+onMounted(() => {
+    let userInfo = localStorage.getItem('user-info');
+    if(userInfo) {
+        router.push({name: 'Home'})
+    }
+})
 </script>
 
 <template>
