@@ -1,9 +1,22 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import router from '../../../router/router'
 import { RouterLink } from 'vue-router';
+import { useStore } from '@/stores/TaskStore';
 
-
+const store = useStore();
 const showSidebar = ref(false);
+
+const user = ref(JSON.parse(window.localStorage.getItem('user-info')));
+console.log(user)
+
+const handleLogout = () => {
+    localStorage.clear();
+    store.setUser(null);
+    if (user.value) {
+        router.push({ name: 'Home' })
+    }
+}
 
 const toggleSidebar = () => {
     showSidebar.value = !showSidebar.value;
@@ -82,9 +95,20 @@ const toggleSidebar = () => {
                         </div>
 
                         <span class="material-icons me-3 icon-style">person</span>
-                        <span class="d-flex flex-column">
-                            <RouterLink :to="{name: 'Login'}"><small class="auth-text">Login</small></RouterLink>
-                            <RouterLink :to="{name: 'Registration'}"><small class="auth-text">Registration</small></RouterLink>
+
+                        <div>
+
+                        </div>
+
+
+                        <span v-if="store.user === null" class="d-flex flex-column">
+                            <RouterLink :to="{ name: 'Login' }"><small class="auth-text">Login</small></RouterLink>
+                            <RouterLink :to="{ name: 'Registration' }"><small class="auth-text">Registration</small>
+                            </RouterLink>
+                        </span>
+                        <span v-else class="d-flex flex-column">
+                            <small @click="handleLogout" class="auth-text">Logout</small>
+
                         </span>
                     </div>
                 </div>
@@ -332,6 +356,7 @@ p {
     .dropdown-menu.show {
         display: flex !important;
     }
+
     .dropdown:hover .dropdown-menu {
         display: flex !important;
     }
@@ -352,6 +377,7 @@ p {
     }
 
 }
+
 .fav-i-back {
     position: relative;
     top: -15px;

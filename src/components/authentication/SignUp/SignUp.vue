@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
-import {handleRegistration} from '../../../../src/API/Authentication';
+import {createRegistration} from '../../../../src/API/Authentication';
 import router from '../../../router/router';
 
 const registerData = reactive({
@@ -12,7 +12,7 @@ const registerData = reactive({
 })
 
 const handleSignUp = async () => {
-    await handleRegistration(registerData);
+    await createRegistration(registerData);
     const userInfo = localStorage.getItem('user-info')
     if(userInfo) {
         router.push({name: 'Home'})

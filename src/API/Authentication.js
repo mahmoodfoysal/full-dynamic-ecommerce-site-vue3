@@ -1,12 +1,15 @@
 import { ref } from 'vue';
 import axios from 'axios';
+import {useStore} from '@/stores/TaskStore.js';
+
+const store = useStore();
 
 const authenticatinData = ref([]);
 const error = ref([]);
 const url = 'http://localhost:3000/users';
 
 // event handler for registration 
-export const handleRegistration = async (registerData) => {
+export const createRegistration = async (registerData) => {
     authenticatinData.value = [];
     try {
         const config = {
@@ -28,7 +31,26 @@ export const handleRegistration = async (registerData) => {
     }
     catch (err) {
         error.value = err.message
-        console.log(err);
+        // console.log(err);
     }
 
+}
+
+// event handler for login 
+export const getLogin = async (loginData) => {
+    const url = `http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`
+    try {
+        const res = await axios(url);
+        const response = res.data[0];
+        if(res.status === 200 && res.data.length > 0) {
+            // store.setUser(JSON.stringify(response));
+            localStorage.setItem('user-info', JSON.stringify(res.data[0]));
+            // console.log(res);
+            alert("Successfull");
+            // console.log('pinia-store', store.user)
+        }
+    }
+    catch(err) {
+
+    }
 }

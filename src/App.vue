@@ -1,14 +1,18 @@
 <script setup>
 import NavBar from '../src/components/shared/NavBar/Navbar.vue';
+import { ref } from 'vue';
 import { RouterView } from 'vue-router';
+
 </script>
 
 <template>
 
 <!-- All home section are set here  -->
 <div class="home-section-style">
-  <NavBar></NavBar>
-  <RouterView></RouterView>
+  <NavBar
+  ></NavBar>
+  <RouterView
+  ></RouterView>
 </div>
 </template>
 

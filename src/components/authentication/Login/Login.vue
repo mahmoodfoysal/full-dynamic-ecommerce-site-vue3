@@ -1,4 +1,30 @@
 <script setup>
+import {reactive, onMounted} from 'vue';
+import {getLogin} from '../../../API/Authentication'
+import router from '../../../router/router';
+import {useStore} from '@/stores/TaskStore.js';
+const store = useStore();
+const loginData = reactive({
+    email: '',
+    password: ''
+})
+
+const handleLogin = async () => {
+    await getLogin(loginData);
+    const userInfo = localStorage.getItem('user-info')
+    store.setUser(userInfo)
+    if(userInfo) {
+        router.push({name: 'Home'})
+    }
+}
+
+onMounted(() => {
+    let userInfo = localStorage.getItem('user-info');
+    if(userInfo) {
+        router.push({name: 'Home'})
+    }
+})
+
 
 </script>
 
@@ -12,10 +38,26 @@
         <div class="form-control-style">
             <p class="text-center">Login Your Account</p>
             <label for="Login">Email</label>
-            <input type="email" name="" id="Login" placeholder="Enter Your Email">
+            <input
+            v-model.trim="loginData.email" 
+            type="email" 
+            name="" 
+            id="Login" 
+            placeholder="Enter Your Email">
+
             <label for="password">Password</label>
-            <input type="password" name="" id="password" placeholder="Enter Your Password">
-            <button type="button">Log In</button>
+            <input
+            v-model.trim="loginData.password" 
+            type="password" 
+            name="" 
+            id="password" 
+            placeholder="Enter Your Password">
+            <button
+            @click="handleLogin" 
+            type="button">
+            Log In
+            </button>
+
             <div class="forgot-pass-style">
                 <span class="material-icons">
                     lock
