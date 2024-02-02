@@ -241,7 +241,8 @@ p {
 
 .sidebar-style {
     width: 250px;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     top: 130px;
     left: 23px;
     background: #FFF;
@@ -251,6 +252,7 @@ p {
 .sidebar-style ul {
     position: relative;
     list-style-type: none;
+    height: 442px;
     padding: 0;
     margin: 0;
 }
@@ -267,7 +269,7 @@ p {
     padding-left: 10px;
     letter-spacing: 1px;
     font-weight: 400;
-    height: 40px;
+    height: 35px;
     transition: .5s ease;
 }
 
@@ -287,17 +289,21 @@ p {
     padding-left: 10px;
     /* letter-spacing: 1px; */
     font-weight: 400;
-    height: 40px;
+    height: 35px;
     transition: .5s ease;
 }
 
 .sidebar-style ul ul {
-    position: absolute;
+    /* position: absolute;
     left: 250px;
+    width: 200px; */
+    position: fixed;
+    left: 273px;
     width: 200px;
-    top: 5px;
+    top: 131px;
     background-color: #FFF;
     width: 265px;
+    height: 397px;
     display: none;
     /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); */
 
@@ -320,7 +326,7 @@ p {
 .sidebar-style ul .dropdown-2 ul {
     position: absolute;
     left: 265px;
-    top: 10px;
+    top: 3px;
 }
 
 .sidebar-style ul .dropdown-2:hover>ul {
@@ -330,7 +336,7 @@ p {
 .sidebar-style ul ul .dropdown-3 ul {
     position: absolute;
     left: 264px;
-    top: 15px;
+    top: 3px;
 }
 
 .sidebar-style ul ul .dropdown-3:hover ul {
