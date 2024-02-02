@@ -32,5 +32,130 @@
       "email": "mahmood@user.com",
       "password": "12345678"
     }
+  ],
+  "squreCartForHome": [
+    {
+      "id": "f1ef",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/2KZCWk2/view-illuminated-neon-gaming-keyboard-setup-controller.jpg"
+    },
+    {
+      "id": "2064",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/CVvzWGk/new-smartwatch-balancing-with-hand.jpg"
+    },
+    {
+      "id": "3e3d",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/Rgg84H2/couple-walking-hand-hand.jpg"
+    },
+    {
+      "id": "b9b7",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/ypGLGPR/cheerful-multiracial-group-people-jumping-together-street.jpg"
+    },
+    {
+      "id": "3930",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/tswwCwQ/young-men-laying-hands-shoulders-woman-smiling.jpg"
+    },
+    {
+      "id": "5a8a",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/5nc3fBm/dancing-team-studio.jpg"
+    },
+    {
+      "id": "3eda",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/NKCSRFz/young-woman-beautiful-dress-hat.jpg"
+    },
+    {
+      "id": "9d44",
+      "name": "cart",
+      "link": "",
+      "img": "https://i.ibb.co/t4kdhvR/fashion-arab-man-wear-black-jeans-jacket-sunglasses-posed-against-red-steel-wall-background-stylish.jpg"
+    }
+  ],
+  "categories": 
+  [
+    {
+      "parent_cat_id": 1,
+      "parent_cat_name": "Clothing and Fashion",
+      "sub_cat_info": 
+      [
+        {
+          "sub_cat_id": 1,
+          "sub_cat_name": "Men's Fashion",
+          "sub_sub_cat_info": 
+          [
+            {
+              "sub_sub_id": 1,
+              "sub_sub_cat_name": "Men's Top Wear",
+              "sub_sub_sub_cat_info": 
+              [
+                {
+                  "sub_sub_sub_cat_id": 1,
+                  "sub_sub_sub_cat_name": "panjabi"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sub_cat_id": 2,
+          "sub_cat_name": "Women's Fashion",
+          "sub_sub_cat_info": 
+          [
+            {
+              "sub_sub_id": 2,
+              "sub_sub_cat_name": "Women's Top Wear",
+              "sub_sub_sub_cat_info": 
+              [
+                {
+                  "sub_sub_sub_cat_id": 2,
+                  "sub_sub_sub_cat_name": "Women's Three Pics"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent_cat_id": 2,
+      "parent_cat_name": "Footwear",
+      "sub_cat_info": 
+      [
+        {
+          "sub_cat_id": 1,
+          "sub_cat_name": "Men",
+          "sub_sub_cat_info": 
+          [
+            {
+              "sub_sub_id": 1,
+              "sub_sub_cat_name": "Shoe"
+            }
+          ]
+        },
+        {
+          "sub_cat_id": 2,
+          "sub_cat_name": "Women",
+          "sub_sub_cat_info": 
+          [
+            {
+              "sub_sub_id": 2,
+              "sub_sub_cat_name": "Shoe"
+            }
+          ]
+        }
+      ]
+    }
   ]
 }

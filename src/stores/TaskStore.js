@@ -8,7 +8,7 @@ export const useStore = defineStore({
     actions: {
         setUser(userData) {
             this.user = userData;
-        }
+        },
     },
     getters: {
 

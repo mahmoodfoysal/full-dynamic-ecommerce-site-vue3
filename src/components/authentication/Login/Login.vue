@@ -94,6 +94,7 @@ onMounted(() => {
     margin-bottom: 15px;
     border: 1px solid #DDDDDD;
     border-radius: 5px;
+    padding-left: 5px;
 }
 
 .form-control-style input:focus {

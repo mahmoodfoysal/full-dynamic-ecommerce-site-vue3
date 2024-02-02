@@ -1,9 +1,5 @@
 import { ref } from 'vue';
 import axios from 'axios';
-import {useStore} from '@/stores/TaskStore.js';
-
-const store = useStore();
-
 const authenticatinData = ref([]);
 const error = ref([]);
 const url = 'http://localhost:3000/users';

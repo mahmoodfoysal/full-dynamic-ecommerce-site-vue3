@@ -17,7 +17,7 @@ import { RouterView } from 'vue-router';
 </template>
 
 <style scoped>
-.home-section-style{
+/* .home-section-style{
     min-width: 993px;
     margin: auto;
     height: calc(100vh - 0px);
@@ -32,7 +32,7 @@ import { RouterView } from 'vue-router';
     background: #FFF;
     overflow-y: scroll;
 }
-}
+} */
 
 
 </style>

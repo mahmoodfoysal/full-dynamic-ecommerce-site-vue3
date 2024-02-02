@@ -8,7 +8,6 @@ const store = useStore();
 const showSidebar = ref(false);
 
 const user = ref(JSON.parse(window.localStorage.getItem('user-info')));
-console.log(user)
 
 const handleLogout = () => {
     localStorage.clear();
@@ -119,8 +118,8 @@ const toggleSidebar = () => {
         <nav class="navbar bg-body-tertiary second-navbar-style">
             <div class="container-fluid">
                 <div class="d-flex ms-2 align-items-center">
-                    <span @mouseover="toggleSidebar" class="material-icons toggle-btn-style">menu</span>
-                    <h6 @mouseover="toggleSidebar" class="ms-2 navbar-text">Shop By Category</h6>
+                    <span @mouseenter="toggleSidebar" class="material-icons toggle-btn-style">menu</span>
+                    <h6 @mouseenter="toggleSidebar" class="ms-2 navbar-text">Shop By Category</h6>
                 </div>
                 <form class="d-flex search-field-style" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -186,15 +185,17 @@ p {
 }
 
 .navbar-text {
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1.5px;
 }
 
 .auth-text {
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
+    letter-spacing: 1.5px;
     cursor: pointer;
     text-decoration: none
 }
@@ -253,14 +254,15 @@ p {
 .sidebar-style ul li a {
     display: flex;
     align-items: center;
-    font-family: Roboto;
-    font-size: 1.15rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
     text-decoration: none;
     text-transform: capitalize;
     color: #000;
     padding-left: 10px;
-    /* width: 215px; */
-    height: 50px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    height: 40px;
     transition: .5s ease;
 }
 
@@ -269,14 +271,31 @@ p {
     /* color: white; */
 }
 
+.sidebar-style ul ul li a {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #000;
+    padding-left: 10px;
+    /* letter-spacing: 1px; */
+    font-weight: 400;
+    height: 40px;
+    transition: .5s ease;
+}
+
 .sidebar-style ul ul {
     position: absolute;
     left: 250px;
     width: 200px;
     top: 5px;
     background-color: #FFF;
+    width: 265px;
     display: none;
     /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); */
+
 }
 
 .sidebar-style ul span {
@@ -295,7 +314,7 @@ p {
 
 .sidebar-style ul .dropdown-2 ul {
     position: absolute;
-    left: 200px;
+    left: 265px;
     top: 10px;
 }
 
@@ -305,7 +324,7 @@ p {
 
 .sidebar-style ul ul .dropdown-3 ul {
     position: absolute;
-    left: 200px;
+    left: 264px;
     top: 15px;
 }
 

@@ -1,14 +1,11 @@
 <script setup>
-import HomeCarousel from '../../pages/HomeCarousel/HomeCarousel.vue';
-import router from '../../../router/router';
-// const userInfo = localStorage.getItem('user-info')
-// if(!userInfo) {
-//     router.push({name: 'Login'})
-// }
+import HomeCarousel from '../HomeCarousel/HomeCarousel.vue';
+import ImageCategoryRandom from '../ImageCategoryRandom/ImageCategoryRandom.vue'
 </script>
 
 <template>
 <HomeCarousel></HomeCarousel>
+<ImageCategoryRandom></ImageCategoryRandom>
 </template>
 
 <style scoped>
