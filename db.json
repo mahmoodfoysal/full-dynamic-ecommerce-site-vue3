@@ -83,44 +83,86 @@
       "img": "https://i.ibb.co/t4kdhvR/fashion-arab-man-wear-black-jeans-jacket-sunglasses-posed-against-red-steel-wall-background-stylish.jpg"
     }
   ],
-  "categories": 
-  [
+  "categories": [
     {
       "parent_cat_id": 1,
       "parent_cat_name": "Clothing and Fashion",
-      "sub_cat_info": 
-      [
+      "sub_cat_info": [
         {
-          "sub_cat_id": 1,
+          "sub_cat_id": 10,
           "sub_cat_name": "Men's Fashion",
-          "sub_sub_cat_info": 
-          [
+          "sub_sub_cat_info": [
             {
-              "sub_sub_id": 1,
+              "sub_sub_id": 100,
               "sub_sub_cat_name": "Men's Top Wear",
-              "sub_sub_sub_cat_info": 
-              [
+              "sub_sub_sub_cat_info": [
                 {
-                  "sub_sub_sub_cat_id": 1,
+                  "sub_sub_sub_cat_id": 1000,
                   "sub_sub_sub_cat_name": "panjabi"
+                },
+                {
+                  "sub_sub_sub_cat_id": 1001,
+                  "sub_sub_sub_cat_name": "Casual Shirt"
+                },
+                {
+                  "sub_sub_sub_cat_id": 1002,
+                  "sub_sub_sub_cat_name": "Formal Shirt"
+                },
+                {
+                  "sub_sub_sub_cat_id": 1003,
+                  "sub_sub_sub_cat_name": "Katwa & Fatua"
+                },
+                {
+                  "sub_sub_sub_cat_id": 1004,
+                  "sub_sub_sub_cat_name": "T-Shirt"
+                },
+                {
+                  "sub_sub_sub_cat_id": 1005,
+                  "sub_sub_sub_cat_name": "Polo"
+                },
+                {
+                  "sub_sub_sub_cat_id": 1006,
+                  "sub_sub_sub_cat_name": "Men's Coti"
                 }
               ]
             }
           ]
         },
         {
-          "sub_cat_id": 2,
+          "sub_cat_id": 20,
           "sub_cat_name": "Women's Fashion",
-          "sub_sub_cat_info": 
-          [
+          "sub_sub_cat_info": [
             {
-              "sub_sub_id": 2,
+              "sub_sub_id": 200,
               "sub_sub_cat_name": "Women's Top Wear",
-              "sub_sub_sub_cat_info": 
-              [
+              "sub_sub_sub_cat_info": [
                 {
-                  "sub_sub_sub_cat_id": 2,
-                  "sub_sub_sub_cat_name": "Women's Three Pics"
+                  "sub_sub_sub_cat_id": 2000,
+                  "sub_sub_sub_cat_name": "Single Ethnic"
+                },
+                {
+                  "sub_sub_sub_cat_id": 2001,
+                  "sub_sub_sub_cat_name": "Women Ethnic 3 Pics"
+                },
+                {
+                  "sub_sub_sub_cat_id": 2002,
+                  "sub_sub_sub_cat_name": "Fashion Tops"
+                },
+                {
+                  "sub_sub_sub_cat_id": 2003,
+                  "sub_sub_sub_cat_name": "Women's Tees and Tank"
+                },
+                {
+                  "sub_sub_sub_cat_id": 2004,
+                  "sub_sub_sub_cat_name": "Scarf"
+                },
+                {
+                  "sub_sub_sub_cat_id": 2005,
+                  "sub_sub_sub_cat_name": "Saree"
+                },
+                {
+                  "sub_sub_sub_cat_id": 2006,
+                  "sub_sub_sub_cat_name": "Maternity Wear"
                 }
               ]
             }
@@ -131,26 +173,23 @@
     {
       "parent_cat_id": 2,
       "parent_cat_name": "Footwear",
-      "sub_cat_info": 
-      [
+      "sub_cat_info": [
         {
-          "sub_cat_id": 1,
+          "sub_cat_id": 30,
           "sub_cat_name": "Men",
-          "sub_sub_cat_info": 
-          [
+          "sub_sub_cat_info": [
             {
-              "sub_sub_id": 1,
+              "sub_sub_id": 300,
               "sub_sub_cat_name": "Shoe"
             }
           ]
         },
         {
-          "sub_cat_id": 2,
+          "sub_cat_id": 40,
           "sub_cat_name": "Women",
-          "sub_sub_cat_info": 
-          [
+          "sub_sub_cat_info": [
             {
-              "sub_sub_id": 2,
+              "sub_sub_id": 400,
               "sub_sub_cat_name": "Shoe"
             }
           ]

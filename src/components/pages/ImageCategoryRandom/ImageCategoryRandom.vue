@@ -3,9 +3,9 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import getDataFromCentralApiFile from '/src/API/All_API.js';
 
-const {handlerGetCatImg, catImgData} = getDataFromCentralApiFile();
+const {GetCatImg, catImgData} = getDataFromCentralApiFile();
 
-onMounted(handlerGetCatImg)
+onMounted(GetCatImg)
 
 </script>
 

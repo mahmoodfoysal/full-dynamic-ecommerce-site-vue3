@@ -1,8 +1,13 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 import router from '../../../router/router'
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
+import getDataFromCentralApiFile from '../../../API/All_API.js';
+
+const {getCategories, categories} = getDataFromCentralApiFile();
+
+onMounted(getCategories);
 
 const store = useStore();
 const showSidebar = ref(false);
@@ -139,13 +144,13 @@ const toggleSidebar = () => {
     <div>
         <nav v-show="showSidebar" class="sidebar-style">
             <ul>
-                <li v-for="n in 10" class="dropdown"><a href="">Parent Component<span>&rsaquo;</span></a>
+                <li v-for="(parentCat, index) in categories" :key="index" class="dropdown"><a href="">{{ parentCat.parent_cat_name }}<span>&rsaquo;</span></a>
                     <ul>
-                        <li v-for="n in 5" class="dropdown-2"><a href="">Child-1 component <span>&rsaquo;</span></a>
+                        <li v-for="(subCat, index) in parentCat.sub_cat_info" :key="index" class="dropdown-2"><a href="">{{subCat.sub_cat_name}}<span>&rsaquo;</span></a>
                             <ul>
-                                <li v-for="n in 4" class="dropdown-3"><a href="">Child-2 Component <span>&rsaquo;</span></a>
+                                <li v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index" class="dropdown-3"><a href="">{{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span></a>
                                     <ul>
-                                        <li v-for="n in 3" class="dropdown-4"><a href="">Child-3 Component</a></li>
+                                        <li v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" :key="index" class="dropdown-4"><a href="">{{ subSubSubCat.sub_sub_sub_cat_name }}</a></li>
                                     </ul>
                                 </li>
                             </ul>

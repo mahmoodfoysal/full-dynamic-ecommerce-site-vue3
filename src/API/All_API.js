@@ -3,7 +3,10 @@ import {ref} from 'vue';
 
 export default function getDataFromCentralApiFile() {
     const catImgData = ref([]);
-    const handlerGetCatImg = async () => {
+    const categories = ref([]);
+
+
+    const GetCatImg = async () => {
         catImgData.value = []
         const url = 'http://localhost:3000/squreCartForHome';
         try {
@@ -26,7 +29,7 @@ export default function getDataFromCentralApiFile() {
             };
             const randomCatImages = getRandomItems(allCatImages, 4);
             catImgData.value = randomCatImages
-            console.log(randomCatImages);
+            // console.log(randomCatImages);
           } 
           
           catch (err) {
@@ -34,8 +37,24 @@ export default function getDataFromCentralApiFile() {
           }
           
     }
+
+    const getCategories = async () => {
+        categories.value = [];
+        const url = 'http://localhost:3000/categories';
+        try {
+            const res = await axios(url);
+            console.log(res.data);
+            categories.value = res.data;
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+
     return {
-        handlerGetCatImg,
-        catImgData
+        GetCatImg,
+        getCategories,
+        catImgData,
+        categories
     }
 }
