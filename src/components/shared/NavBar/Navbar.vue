@@ -132,7 +132,7 @@ const toggleSidebar = () => {
                             search
                         </span></button>
                 </form>
-                <a class="navbar-brand navbar-text" href="#">Shop Address</a>
+                <h6 class="navbar-text" href="#">Shop Address</h6>
             </div>
         </nav>
     </section>
@@ -194,6 +194,7 @@ p {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     letter-spacing: 1.5px;
+    cursor: pointer;
 }
 
 .auth-text {

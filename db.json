@@ -85,43 +85,43 @@
   ],
   "categories": [
     {
-      "parent_cat_id": 1,
+      "parent_cat_id": "1",
       "parent_cat_name": "Clothing and Fashion",
       "sub_cat_info": [
         {
-          "sub_cat_id": 10,
+          "sub_cat_id": "10",
           "sub_cat_name": "Men's Fashion",
           "sub_sub_cat_info": [
             {
-              "sub_sub_id": 100,
+              "sub_sub_id": "100",
               "sub_sub_cat_name": "Men's Top Wear",
               "sub_sub_sub_cat_info": [
                 {
-                  "sub_sub_sub_cat_id": 1000,
+                  "sub_sub_sub_cat_id": "1000",
                   "sub_sub_sub_cat_name": "panjabi"
                 },
                 {
-                  "sub_sub_sub_cat_id": 1001,
+                  "sub_sub_sub_cat_id": "1001",
                   "sub_sub_sub_cat_name": "Casual Shirt"
                 },
                 {
-                  "sub_sub_sub_cat_id": 1002,
+                  "sub_sub_sub_cat_id": "1002",
                   "sub_sub_sub_cat_name": "Formal Shirt"
                 },
                 {
-                  "sub_sub_sub_cat_id": 1003,
+                  "sub_sub_sub_cat_id": "1003",
                   "sub_sub_sub_cat_name": "Katwa & Fatua"
                 },
                 {
-                  "sub_sub_sub_cat_id": 1004,
+                  "sub_sub_sub_cat_id": "1004",
                   "sub_sub_sub_cat_name": "T-Shirt"
                 },
                 {
-                  "sub_sub_sub_cat_id": 1005,
+                  "sub_sub_sub_cat_id": "1005",
                   "sub_sub_sub_cat_name": "Polo"
                 },
                 {
-                  "sub_sub_sub_cat_id": 1006,
+                  "sub_sub_sub_cat_id": "1006",
                   "sub_sub_sub_cat_name": "Men's Coti"
                 }
               ]
@@ -129,39 +129,39 @@
           ]
         },
         {
-          "sub_cat_id": 20,
+          "sub_cat_id": "11",
           "sub_cat_name": "Women's Fashion",
           "sub_sub_cat_info": [
             {
-              "sub_sub_id": 200,
+              "sub_sub_id": "101",
               "sub_sub_cat_name": "Women's Top Wear",
               "sub_sub_sub_cat_info": [
                 {
-                  "sub_sub_sub_cat_id": 2000,
+                  "sub_sub_sub_cat_id": "1007",
                   "sub_sub_sub_cat_name": "Single Ethnic"
                 },
                 {
-                  "sub_sub_sub_cat_id": 2001,
+                  "sub_sub_sub_cat_id": "1008",
                   "sub_sub_sub_cat_name": "Women Ethnic 3 Pics"
                 },
                 {
-                  "sub_sub_sub_cat_id": 2002,
+                  "sub_sub_sub_cat_id": "1009",
                   "sub_sub_sub_cat_name": "Fashion Tops"
                 },
                 {
-                  "sub_sub_sub_cat_id": 2003,
+                  "sub_sub_sub_cat_id": "1010",
                   "sub_sub_sub_cat_name": "Women's Tees and Tank"
                 },
                 {
-                  "sub_sub_sub_cat_id": 2004,
+                  "sub_sub_sub_cat_id": "1012",
                   "sub_sub_sub_cat_name": "Scarf"
                 },
                 {
-                  "sub_sub_sub_cat_id": 2005,
+                  "sub_sub_sub_cat_id": "1013",
                   "sub_sub_sub_cat_name": "Saree"
                 },
                 {
-                  "sub_sub_sub_cat_id": 2006,
+                  "sub_sub_sub_cat_id": "1014",
                   "sub_sub_sub_cat_name": "Maternity Wear"
                 }
               ]
@@ -171,26 +171,289 @@
       ]
     },
     {
-      "parent_cat_id": 2,
+      "parent_cat_id": "2",
       "parent_cat_name": "Footwear",
       "sub_cat_info": [
         {
-          "sub_cat_id": 30,
+          "sub_cat_id": "12",
           "sub_cat_name": "Men",
           "sub_sub_cat_info": [
             {
-              "sub_sub_id": 300,
+              "sub_sub_id": "103",
               "sub_sub_cat_name": "Shoe"
+            },
+            {
+              "sub_sub_id": "104",
+              "sub_sub_cat_name": "Snacker"
+            },
+            {
+              "sub_sub_id": "105",
+              "sub_sub_cat_name": "Sandle"
+            },
+            {
+              "sub_sub_id": "106",
+              "sub_sub_cat_name": "Clog"
             }
           ]
         },
         {
-          "sub_cat_id": 40,
+          "sub_cat_id": "13",
           "sub_cat_name": "Women",
           "sub_sub_cat_info": [
             {
-              "sub_sub_id": 400,
+              "sub_sub_id": "107",
               "sub_sub_cat_name": "Shoe"
+            },
+            {
+              "sub_sub_id": "108",
+              "sub_sub_cat_name": "Sneaker"
+            },
+            {
+              "sub_sub_id": "109",
+              "sub_sub_cat_name": "Sandle"
+            },
+            {
+              "sub_sub_id": "110",
+              "sub_sub_cat_name": "Canvas"
+            },
+            {
+              "sub_sub_id": "111",
+              "sub_sub_cat_name": "Heels"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "parent_cat_id": "3",
+      "parent_cat_name": "Electronics",
+      "sub_cat_info": [
+        {
+          "sub_cat_id": "14",
+          "sub_cat_name": "Smartphone",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "112",
+              "sub_sub_cat_name": "One Plus"
+            },
+            {
+              "sub_sub_id": "113",
+              "sub_sub_cat_name": "Realme"
+            },
+            {
+              "sub_sub_id": "114",
+              "sub_sub_cat_name": "Samsung"
+            },
+            {
+              "sub_sub_id": "115",
+              "sub_sub_cat_name": "Iphone"
+            },
+            {
+              "sub_sub_id": "116",
+              "sub_sub_cat_name": "Vodaphone"
+            },
+            {
+              "sub_sub_id": "117",
+              "sub_sub_cat_name": "Xioami"
+            }
+
+          ]
+        },
+        {
+          "sub_cat_id": "15",
+          "sub_cat_name": "Camera's",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "118",
+              "sub_sub_cat_name": "Canon"
+            },
+            {
+              "sub_sub_id": "119",
+              "sub_sub_cat_name": "Nikon"
+            },
+            {
+              "sub_sub_id": "120",
+              "sub_sub_cat_name": "Sony"
+            },
+            {
+              "sub_sub_id": "121",
+              "sub_sub_cat_name": "Car Camera's"
+            },
+            {
+              "sub_sub_id": "122",
+              "sub_sub_cat_name": "Video Camera"
+            },
+            {
+              "sub_sub_id": "123",
+              "sub_sub_cat_name": "Action Camera"
+            }
+
+          ]
+        },
+        {
+          "sub_cat_id": "16",
+          "sub_cat_name": "Gaming Console",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "124",
+              "sub_sub_cat_name": "Play Station Console"
+            },
+            {
+              "sub_sub_id": "125",
+              "sub_sub_cat_name": "X-box Game Pad"
+            },
+            {
+              "sub_sub_id": "126",
+              "sub_sub_cat_name": "Play Station Games"
+            },
+            {
+              "sub_sub_id": "127",
+              "sub_sub_cat_name": "X-box Games"
+            },
+            {
+              "sub_sub_id": "128",
+              "sub_sub_cat_name": "Other Game Console"
+            }
+          ]
+        },
+        {
+          "sub_cat_id": "17",
+          "sub_cat_name": "Audio",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "129",
+              "sub_sub_cat_name": "Headphones"
+            },
+            {
+              "sub_sub_id": "130",
+              "sub_sub_cat_name": "Ear Buds"
+            },
+            {
+              "sub_sub_id": "131",
+              "sub_sub_cat_name": "Speakers"
+            }
+          ]
+        },
+        {
+          "sub_cat_id": "18",
+          "sub_cat_name": "Laptop",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "132",
+              "sub_sub_cat_name": "Lenovo"
+            },
+            {
+              "sub_sub_id": "133",
+              "sub_sub_cat_name": "HP"
+            },
+            {
+              "sub_sub_id": "134",
+              "sub_sub_cat_name": "Acer"
+            },
+            {
+              "sub_sub_id": "135",
+              "sub_sub_cat_name": "Dell"
+            },
+            {
+              "sub_sub_id": "136",
+              "sub_sub_cat_name": "Asus"
+            },
+            {
+              "sub_sub_id": "137",
+              "sub_sub_cat_name": "Apple"
+            }
+          ]
+        },
+        {
+          "sub_cat_id": "19",
+          "sub_cat_name": "Desktop",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "138",
+              "sub_sub_cat_name": "All in One"
+            },
+            {
+              "sub_sub_id": "139",
+              "sub_sub_cat_name": "Brand PC"
+            },
+            {
+              "sub_sub_id": "140",
+              "sub_sub_cat_name": "Customize PC"
+            },
+            {
+              "sub_sub_id": "141",
+              "sub_sub_cat_name": "Components"
+            }
+          ]
+        },
+        {
+          "sub_cat_id": "20",
+          "sub_cat_name": "Wearable",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "142",
+              "sub_sub_cat_name": "Smart Watch"
+            },
+            {
+              "sub_sub_id": "143",
+              "sub_sub_cat_name": "Health Band"
+            }
+          ]
+        },
+        {
+          "sub_cat_id": "21",
+          "sub_cat_name": "Smart TV",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "144",
+              "sub_sub_cat_name": "Sony"
+            },
+            {
+              "sub_sub_id": "145",
+              "sub_sub_cat_name": "Samsung"
+            },
+            {
+              "sub_sub_id": "146",
+              "sub_sub_cat_name": "Sharp"
+            },
+            {
+              "sub_sub_id": "147",
+              "sub_sub_cat_name": "Walton"
+            },
+            {
+              "sub_sub_id": "148",
+              "sub_sub_cat_name": "LG"
+            }
+          ]
+        },
+        {
+          "sub_cat_id": "22",
+          "sub_cat_name": "Monitor",
+          "sub_sub_cat_info": [
+            {
+              "sub_sub_id": "149",
+              "sub_sub_cat_name": "Asus"
+            },
+            {
+              "sub_sub_id": "150",
+              "sub_sub_cat_name": "HP"
+            },
+            {
+              "sub_sub_id": "151",
+              "sub_sub_cat_name": "Samsung"
+            },
+            {
+              "sub_sub_id": "152",
+              "sub_sub_cat_name": "Walton"
+            },
+            {
+              "sub_sub_id": "153",
+              "sub_sub_cat_name": "LG"
+            },
+            {
+              "sub_sub_id": "154",
+              "sub_sub_cat_name": "View Sonic"
             }
           ]
         }
