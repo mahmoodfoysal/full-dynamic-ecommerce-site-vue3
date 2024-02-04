@@ -1,18 +1,28 @@
 <script setup>
-import { onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import ProductCard from '../ProductCard/ProductCard.vue';
-import getDataFromCentralApiFile from '@/API/All_API';
+import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const routeId = Number(route.params.id);
-console.log(routeId);
+const routeParamsId = ref(Number(route.params.id));
+const filterProductByParentId = ref([]);
 
 const {getParentCatProducts, parentCatProduct} = getDataFromCentralApiFile();
 
-onMounted(getParentCatProducts);
+const filterProduct = () => {
+    filterProductByParentId.value = parentCatProduct.value.filter(product => product.parent_cat_id === routeParamsId.value);
+}
 
+watch(() => {
+    routeParamsId.value = Number(route.params.id);
+    filterProduct();
+});
 
+onMounted(async () => {
+    await getParentCatProducts();
+    filterProduct();
+});
 
 </script>
 
@@ -20,7 +30,7 @@ onMounted(getParentCatProducts);
     <section class="card-container">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div 
-            v-for="(item, index) in parentCatProduct" 
+            v-for="(item, index) in filterProductByParentId" 
             :key="index"
             class="col">
                 <ProductCard 
