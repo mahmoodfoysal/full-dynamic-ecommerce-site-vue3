@@ -9,9 +9,12 @@ const routeParamsId = ref(Number(route.params.id));
 const filterProducts = ref([]);
 
 const {getProducts, products} = getDataFromCentralApiFile();
+console.log(products)
 
 const filterProduct = () => {
-    filterProducts.value = products.value.filter(product => product.parent_cat_id === routeParamsId.value);
+    if (products.value.length > 0) {
+        filterProducts.value = products.value.filter(product => product.sub_sub_sub_cat_id === routeParamsId.value);
+  }
 }
 
 // if use separate api must use watchEffect otherwise you get warning
@@ -23,8 +26,10 @@ watchEffect(() => {
 onMounted(async () => {
     await getProducts();
     filterProduct();
-
 });
+
+
+
 
 </script>
 

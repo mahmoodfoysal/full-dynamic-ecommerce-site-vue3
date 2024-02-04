@@ -26,9 +26,6 @@ const toggleSidebar = () => {
     showSidebar.value = !showSidebar.value;
 };
 
-const handleCheckClick = () => {
-    console.log("Click")
-}
 </script>
 
 <template>
@@ -37,7 +34,9 @@ const handleCheckClick = () => {
     <section class="sticky-top">
         <nav class="navbar navbar-expand-lg bg-body-tertiary first-navbar-style">
             <div class="container-fluid">
-                <a class="navbar-brand navbar-text" href="#">E-Commerce</a>
+                <RouterLink :to="{name: 'Home'}">
+                    <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#">E-Commerce</a>
+                </RouterLink>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -162,21 +161,34 @@ const handleCheckClick = () => {
                     <ul>
                         <li 
                         v-for="(subCat, index) in parentCat.sub_cat_info" 
-                        :key="index" class="dropdown-2"><a href="">
+                        :key="index" class="dropdown-2">
+                        <RouterLink :to="{name: 'SubCategoryProducts', params: {id: subCat.sub_cat_id, slug: subCat.sub_cat_name}}">
+                            <a href="">
                             {{subCat.sub_cat_name}}<span>&rsaquo;</span>
                         </a>
+                        </RouterLink>
                             <ul>
                                 <li 
                                 v-for="(subSubCat, index) in subCat.sub_sub_cat_info" 
                                 :key="index" class="dropdown-3">
-                                <a href="">{{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span>
+                                <RouterLink 
+                                :to="{name: 'SubSubCategoryProducts', params: {id: subSubCat.sub_sub_cat_id, slug: subSubCat.sub_sub_cat_name}}">
+                                    <a href="">
+                                    {{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span>
                                 </a>
+                                </RouterLink>
                                     <ul>
                                         <li 
                                         v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" 
-                                        :key="index" class="dropdown-4"><a href="">
+                                        :key="index" class="dropdown-4">
+                                        <RouterLink
+                                        :to="{name: 'SubSubSubCategoryProducts', params: {id: subSubSubCat.sub_sub_sub_cat_id, slug: subSubSubCat.sub_sub_sub_cat_name}}"
+                                        >
+                                            <a href="">
                                             {{ subSubSubCat.sub_sub_sub_cat_name }}
-                                        </a></li>
+                                        </a>
+                                        </RouterLink>
+                                    </li>
                                     </ul>
                                 </li>
                             </ul>

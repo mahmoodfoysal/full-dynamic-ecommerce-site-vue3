@@ -4,7 +4,7 @@ import {ref} from 'vue';
 export default function getDataFromCentralApiFile() {
     const catImgData = ref([]);
     const categories = ref([]);
-    const parentCatProduct = ref([]);
+    const products = ref([]);
 
     // get card image for home page 
     const GetCatImg = async () => {
@@ -45,7 +45,7 @@ export default function getDataFromCentralApiFile() {
         const url = 'http://localhost:3000/categories';
         try {
             const res = await axios(url);
-            console.log(res.data);
+            // console.log(res.data);
             categories.value = res.data;
         }
         catch(err) {
@@ -54,12 +54,12 @@ export default function getDataFromCentralApiFile() {
     }
 
       // get parent category product 
-    const getParentCatProducts = async () => {
-      parentCatProduct.value = [];
+    const getProducts = async () => {
+      products.value = [];
       const url = 'http://localhost:3000/products';
       try {
         const res = await axios(url);
-        parentCatProduct.value = res.data;
+        products.value = res.data;
         // console.log(res.data);
       }
       catch(err) {
@@ -70,9 +70,9 @@ export default function getDataFromCentralApiFile() {
     return {
         GetCatImg,
         getCategories,
-        getParentCatProducts,
+        getProducts,
         catImgData,
         categories,
-        parentCatProduct,
+        products,
     }
 }
