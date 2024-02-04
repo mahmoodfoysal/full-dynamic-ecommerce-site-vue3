@@ -25,6 +25,10 @@ const handleLogout = () => {
 const toggleSidebar = () => {
     showSidebar.value = !showSidebar.value;
 };
+
+const handleCheckClick = () => {
+    console.log("Click")
+}
 </script>
 
 <template>
@@ -144,13 +148,35 @@ const toggleSidebar = () => {
     <div>
         <nav v-show="showSidebar" class="sidebar-style">
             <ul>
-                <li v-for="(parentCat, index) in categories" :key="index" class="dropdown"><a href="">{{ parentCat.parent_cat_name }}<span>&rsaquo;</span></a>
+                <li
+                
+                v-for="(parentCat, index) in categories" 
+                :key="index" 
+                class="dropdown">
+                <RouterLink 
+                :to="{name: 'ParentCategoryProducts', params: {id: parentCat.parent_cat_id, slug: parentCat.parent_cat_name}}">
+                    <a  href="">
+                    {{ parentCat.parent_cat_name }}<span>&rsaquo;</span>
+                </a>
+                </RouterLink>
                     <ul>
-                        <li v-for="(subCat, index) in parentCat.sub_cat_info" :key="index" class="dropdown-2"><a href="">{{subCat.sub_cat_name}}<span>&rsaquo;</span></a>
+                        <li 
+                        v-for="(subCat, index) in parentCat.sub_cat_info" 
+                        :key="index" class="dropdown-2"><a href="">
+                            {{subCat.sub_cat_name}}<span>&rsaquo;</span>
+                        </a>
                             <ul>
-                                <li v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index" class="dropdown-3"><a href="">{{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span></a>
+                                <li 
+                                v-for="(subSubCat, index) in subCat.sub_sub_cat_info" 
+                                :key="index" class="dropdown-3">
+                                <a href="">{{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span>
+                                </a>
                                     <ul>
-                                        <li v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" :key="index" class="dropdown-4"><a href="">{{ subSubSubCat.sub_sub_sub_cat_name }}</a></li>
+                                        <li 
+                                        v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" 
+                                        :key="index" class="dropdown-4"><a href="">
+                                            {{ subSubSubCat.sub_sub_sub_cat_name }}
+                                        </a></li>
                                     </ul>
                                 </li>
                             </ul>

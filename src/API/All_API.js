@@ -4,8 +4,9 @@ import {ref} from 'vue';
 export default function getDataFromCentralApiFile() {
     const catImgData = ref([]);
     const categories = ref([]);
+    const parentCatProduct = ref([]);
 
-
+    // get card image for home page 
     const GetCatImg = async () => {
         catImgData.value = []
         const url = 'http://localhost:3000/squreCartForHome';
@@ -38,6 +39,7 @@ export default function getDataFromCentralApiFile() {
           
     }
 
+    // get categories for navbar 
     const getCategories = async () => {
         categories.value = [];
         const url = 'http://localhost:3000/categories';
@@ -51,10 +53,26 @@ export default function getDataFromCentralApiFile() {
         }
     }
 
+      // get parent category product 
+    const getParentCatProducts = async () => {
+      parentCatProduct.value = [];
+      const url = 'http://localhost:3000/products';
+      try {
+        const res = await axios(url);
+        parentCatProduct.value = res.data;
+        // console.log(res.data);
+      }
+      catch(err) {
+        console.log(err);
+      }
+    }
+
     return {
         GetCatImg,
         getCategories,
+        getParentCatProducts,
         catImgData,
-        categories
+        categories,
+        parentCatProduct,
     }
 }

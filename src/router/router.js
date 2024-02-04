@@ -14,6 +14,11 @@ const routes = [
       path: '/registration',
       name: 'Registration',
       component: () => import('../components/authentication/SignUp/SignUp.vue')
+    },
+    {
+      path: '/products/:id/:slug',
+      name: 'ParentCategoryProducts',
+      component: () => import('../components/pages/ProductsByCategoryWise/ProductByParentCategory.vue')
     }
   ]
 
