@@ -1507,5 +1507,87 @@
       "quantity": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi."
     }
+  ],
+  "brand": [
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/9NxzW8d/mi-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/tMph0FQ/nike-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/pJJLqjN/puma-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/4d1k3Py/realme-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/C8TWRsB/samsung-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/pvVy6pd/sony-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/tmRX49h/adidas-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/jR6RCnW/apex-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/zVb1tBQ/apple-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/R3RqCCP/asus-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/2jxGpSs/dell-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/TMwPmf8/download-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/3ssYHX2/hp-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/Bw6rwN9/jbl-removebg-preview.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/ZXRzVSj/lenovo-removebg-preview-1.png"
+    },
+    {
+      "brand_name": "name",
+      "url": "",
+      "brand_img": "https://i.ibb.co/mRrwbq8/One-Plus-Logo-removebg-preview.png"
+    }
   ]
 }

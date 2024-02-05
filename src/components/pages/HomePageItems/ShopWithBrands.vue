@@ -3,15 +3,22 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles
 import 'swiper/css';
-
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { ref, onMounted } from 'vue';
+import getDataFromCentralApiFile from '/src/API/All_API.js';
 
+const { getBrands, brands } = getDataFromCentralApiFile();
 
 // import required modules
-import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
+import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
+// Mousewheel remove , if u want to add it please add import and modules
+const modules = [Navigation, Keyboard, Autoplay];
 
-const modules = [Navigation, Mousewheel, Keyboard, Autoplay];
+onMounted( async () => {
+    await getBrands();
+})
+
 
 </script>
     
@@ -33,13 +40,16 @@ const modules = [Navigation, Mousewheel, Keyboard, Autoplay];
         spaceBetween: 20,
     },
     '1024': {
-        slidesPerView: 5,
-        spaceBetween: 50,
+        slidesPerView: 7,
+        spaceBetween: 30,
     },
 }" :modules="modules" class="mySwiper">
-        <swiper-slide v-for="n in 20">
+        <swiper-slide 
+        v-for="(item, index) in brands"
+        :key="index"
+        >
             <div class="slider-card-style">
-                <img src="../../../assets/images/apple.jpg" alt="">
+                <img :src="item?.brand_img" alt="Brand">
             </div>
         </swiper-slide>
 
@@ -76,11 +86,15 @@ h1, h2, h3, h4, h5, h6, p {
 .slider-card-style {
   padding: 10px 10px;
   border-radius: 20px;
+  cursor: pointer;
 }
 .slider-card-style:hover {
   cursor:pointer;
-  z-index: 2
+  z-index: 2;
+  box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, .25);
+  transition: box-shadow .5s;
 }
+
 
 .swiper {
     width: 100%;

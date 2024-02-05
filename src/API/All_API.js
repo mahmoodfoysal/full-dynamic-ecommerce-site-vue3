@@ -5,6 +5,7 @@ export default function getDataFromCentralApiFile() {
     const catImgData = ref([]);
     const categories = ref([]);
     const products = ref([]);
+    const brands = ref([]);
 
     // get card image for home page 
     const GetCatImg = async () => {
@@ -67,12 +68,27 @@ export default function getDataFromCentralApiFile() {
       }
     }
 
+    // get brand item from api 
+    const getBrands = async () => {
+      brands.value = [];
+      const url = 'http://localhost:3000/brand';
+      try {
+        const res = await axios(url);
+        brands.value = res.data;
+      }
+      catch(err) {
+        console.log(err);
+      }
+    }
+
     return {
         GetCatImg,
         getCategories,
         getProducts,
+        getBrands,
         catImgData,
         categories,
         products,
+        brands
     }
 }
