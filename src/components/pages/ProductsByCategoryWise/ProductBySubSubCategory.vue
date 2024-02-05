@@ -28,8 +28,13 @@ onMounted(async () => {
 </script>
 
 <template>
+    <!-- card section are here  -->
     <section class="card-container">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="component-info-div">
+            <h6><span>{{ filterProducts.length }}</span> Products Found</h6>
+            <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 row-col-lg-4 row-col-sm-1 g-4">
             <div 
             v-for="(item, index) in filterProducts" 
             :key="index"
@@ -43,9 +48,20 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
 .card-container {
     max-width: 1300px;
     margin: auto;
     margin-top: 30px;
+}
+.component-info-div {
+    padding: 11px 10px;
+    box-shadow: -2px -6px 12px 20px #F5F5F5;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 </style>

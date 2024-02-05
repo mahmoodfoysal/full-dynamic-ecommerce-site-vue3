@@ -153,7 +153,7 @@ const toggleSidebar = () => {
                 :key="index" 
                 class="dropdown">
                 <RouterLink 
-                :to="{name: 'ParentCategoryProducts', params: {id: parentCat.parent_cat_id, slug: parentCat.parent_cat_name}}">
+                :to="{name: 'ParentCategoryProducts', params: {id: parentCat.parent_cat_id, slug: parentCat.parent_cat_name.replace(/\s+/g, '-')}}">
                     <a  href="">
                     {{ parentCat.parent_cat_name }}<span>&rsaquo;</span>
                 </a>
@@ -162,7 +162,7 @@ const toggleSidebar = () => {
                         <li 
                         v-for="(subCat, index) in parentCat.sub_cat_info" 
                         :key="index" class="dropdown-2">
-                        <RouterLink :to="{name: 'SubCategoryProducts', params: {id: subCat.sub_cat_id, slug: subCat.sub_cat_name}}">
+                        <RouterLink :to="{name: 'SubCategoryProducts', params: {id: subCat.sub_cat_id, slug: subCat.sub_cat_name.replace(/\s+/g, '-')}}">
                             <a href="">
                             {{subCat.sub_cat_name}}<span>&rsaquo;</span>
                         </a>
@@ -172,7 +172,7 @@ const toggleSidebar = () => {
                                 v-for="(subSubCat, index) in subCat.sub_sub_cat_info" 
                                 :key="index" class="dropdown-3">
                                 <RouterLink 
-                                :to="{name: 'SubSubCategoryProducts', params: {id: subSubCat.sub_sub_cat_id, slug: subSubCat.sub_sub_cat_name}}">
+                                :to="{name: 'SubSubCategoryProducts', params: {id: subSubCat.sub_sub_cat_id, slug: subSubCat.sub_sub_cat_name.replace(/\s+/g, '-')}}">
                                     <a href="">
                                     {{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span>
                                 </a>
@@ -182,7 +182,7 @@ const toggleSidebar = () => {
                                         v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" 
                                         :key="index" class="dropdown-4">
                                         <RouterLink
-                                        :to="{name: 'SubSubSubCategoryProducts', params: {id: subSubSubCat.sub_sub_sub_cat_id, slug: subSubSubCat.sub_sub_sub_cat_name}}"
+                                        :to="{name: 'SubSubSubCategoryProducts', params: {id: subSubSubCat.sub_sub_sub_cat_id, slug: subSubSubCat.sub_sub_sub_cat_name.replace(/\s+/g, '-')}}"
                                         >
                                             <a href="">
                                             {{ subSubSubCat.sub_sub_sub_cat_name }}
