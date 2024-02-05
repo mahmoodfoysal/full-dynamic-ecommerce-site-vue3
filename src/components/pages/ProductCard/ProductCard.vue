@@ -19,8 +19,7 @@ const { productItem } = toRefs(props);
         <h6 class="card-title">{{ productItem.pro_name }}</h6>
         <h6 class="card-title">$ {{ productItem.price }}</h6>
       </div>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.
-        This content is a little bit longer.</p>
+      <p class="card-text">{{ productItem.description.substr(0, 90) }}</p>
       <div class="card-btn-style">
         <button>Add to Cart</button>
       </div>
@@ -37,6 +36,10 @@ const { productItem } = toRefs(props);
 
 .card-style h6 {
   color: #1F5DA9;
+}
+
+.card-style p {
+  text-align: justify;
 }
 
 .card-style img {
@@ -65,4 +68,5 @@ const { productItem } = toRefs(props);
   background: #2D76C4;
   cursor: pointer;
 }
+
 </style>
