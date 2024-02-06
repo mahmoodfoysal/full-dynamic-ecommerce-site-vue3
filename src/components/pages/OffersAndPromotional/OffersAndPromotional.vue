@@ -20,9 +20,39 @@
 </template>
 
 <style scoped>
-.promotional-container {
+/* .promotional-container {
     width: 1300px;
     margin: auto;
     margin-top: 30px;
+} */
+
+@media (min-width: 1200px) {
+  .promotional-container {
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 30px;
 }
+}
+@media (max-width: 992px) {
+  .promotional-container {
+    max-width: 960px;
+    margin: auto;
+    margin-top: 30px;
+}
+}
+@media (max-width: 768px) {
+  .promotional-container {
+    max-width: 720px;
+    margin: auto;
+    margin-top: 30px;
+}
+}
+@media (max-width: 540px) {
+  .promotional-container {
+    max-width: 720px;
+    margin: auto;
+    margin-top: 30px;
+}
+}
+
 </style>

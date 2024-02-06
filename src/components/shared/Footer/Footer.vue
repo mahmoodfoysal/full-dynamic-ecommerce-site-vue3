@@ -20,11 +20,11 @@
 
             </div>
             <div class="footer-section-div">
-                <h4>Title Text</h4>
+                <h4>Company</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ea quisquam possimus adipisci voluptatum, quis exercitationem dolorum unde repellendus, error officiis veritatis</p>
             </div>
             <div class="footer-section-div">
-                <h4>Title Text</h4>
+                <h4>Social</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ea quisquam possimus adipisci voluptatum, quis exercitationem dolorum unde repellendus, error officiis veritatis</p>
             </div>
         </section>
@@ -39,7 +39,7 @@
 
 <style scoped>
 .footer {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     background-color: #EFEFE7;
 }
 .footer-section {
@@ -53,7 +53,7 @@
     margin-bottom: 12px;
     font-size: 20px;
     color: #73755D;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 2;
 }
 .footer-section-div p{
