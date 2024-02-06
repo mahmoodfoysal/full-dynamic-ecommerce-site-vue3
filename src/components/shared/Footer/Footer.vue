@@ -39,7 +39,7 @@
 
 <style scoped>
 .footer {
-    margin-top: 62px;
+    margin-top: 30px;
     background-color: #EFEFE7;
 }
 .footer-section {

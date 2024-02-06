@@ -17,7 +17,7 @@ const modules = [Navigation, Pagination, Keyboard];
     
 <template>
   <section class="home-product-horizontal-style">
-    <h2>Cloths and Footware</h2>
+    <h2>Electronics</h2>
     <swiper :mousewheel="true" :navigation="true" :keyboard="true" :slidesPerView="1" :spaceBetween="30" :pagination="{
       clickable: true,
     }" :breakpoints="{
