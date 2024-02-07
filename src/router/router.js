@@ -44,6 +44,11 @@ const routes = [
       path: '/cart',
       name: 'Cart',
       component: () => import('../components/pages/OrderSteps/ShoppingCart/ShoppingCart.vue')
+    },
+    {
+      path: '/check-out',
+      name: 'CheckOut',
+      component: () => import('../components/pages/OrderSteps/CheckOut/CheckOut.vue')
     }
 
   ]
@@ -52,6 +57,7 @@ const router =createRouter({
     
     history: createWebHistory(),
     routes, 
+    linkActiveClass: 'active-link'
   })
 
   export default router

@@ -1,11 +1,28 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
+import router from '@/router/router.js';
+
+
+onMounted(() => {
+    let userInfo = localStorage.getItem('user-info');
+    if(!userInfo) {
+        router.push({name: 'Login'})
+    }
+})
+
 const store = useStore();
 
 const cart = computed(() => {
     return Object(store.cartItem)
 })
+
+const cartItem = computed(() => {
+    return Object.values(store.cartItem);
+})
+
+
 
 // event handler for increase product 
 const handleIncrementQuantity = (id) => {
@@ -64,6 +81,26 @@ const updateDb = (cart) => {
     store.setCartItem(cart);
 }
 
+// calculate subtotal 
+let subTotal = computed(() => {
+   const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
+      return total + (item.price * item.quantity);
+   }, 0);
+   return totalQuantityWithPrice;
+});
+
+// calculate vat 
+const vatTotal = computed(() => {
+    return subTotal.value * 0.15;
+})
+
+let delivaryFee = computed(() => {
+    return 8;
+})
+
+let totalAmount = computed(() => {
+    return subTotal.value + vatTotal.value + delivaryFee.value;
+})
 </script>
 
 <template>
@@ -114,26 +151,30 @@ const updateDb = (cart) => {
             <tr>
                 <td style="text-align: right; width:25%"></td>
                 <td style="text-align: left; width:50%">Subtotal</td>
-                <td style="text-align: left; width:25%">$ </td>
+                <td style="text-align: left; width:25%">${{ subTotal }} </td>
             </tr>
             <tr>
                 <td style="text-align: left; width:25%"></td>
                 <td style="text-align: left; width:50%">(+) VAT</td>
-                <td style="text-align: left; width:25%">$ </td>
+                <td style="text-align: left; width:25%">${{ vatTotal.toFixed(2) }} </td>
             </tr>
             <tr>
                 <td style="text-align: left; width:25%"></td>
                 <td style="text-align: left; width:50%">Delivery Fee</td>
-                <td style="text-align: left; width:25%">$ </td>
+                <td style="text-align: left; width:25%">${{ delivaryFee }} </td>
             </tr>
             <tr>
                 <td style="text-align: left; width:25%"></td>
                 <td style="text-align: left; width:50%">Total Amount</td>
-                <td style="text-align: left; width:25%">$ </td>
+                <td style="text-align: left; width:25%">${{ totalAmount.toFixed(2) }} </td>
             </tr>
         </table>
         <div class="checkout-btn-div">
-            <button>Check Out</button>
+            <RouterLink
+            :to="{name: 'CheckOut'}"
+            >
+                <button>Check Out</button>
+            </RouterLink>
         </div>
     </section>
     </section>
@@ -216,5 +257,19 @@ p {
 .price-delete-style span:hover {
     cursor: pointer;
     color: rgb(204, 9, 9);
+}
+
+.checkout-btn-div button {
+    background: #1F5DA0;
+    padding: 10px 18px;
+    border: none;
+    color: #FFF;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+.checkout-btn-div button:hover {
+    cursor: pointer;
 }
 </style>

@@ -12,7 +12,7 @@ export const useStore = defineStore({
         },
         setCartItem(data) {
             this.cartItem = data;
-        }
+        },
     },
     getters: {
 
