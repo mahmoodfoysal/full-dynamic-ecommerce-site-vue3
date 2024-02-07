@@ -3,7 +3,6 @@ import HomeCarousel from '../HomePageItems/HomeCarousel.vue';
 import ImageCategoryRandom from '../HomePageItems/ImageCategoryRandom.vue';
 import ClothsAndFootware from '../HomePageItems/ClothsAndFootware.vue';
 import ShopWithBrands from '../HomePageItems/ShopWithBrands.vue';
-import Footer from '../../shared/Footer/Footer.vue';
 import FacilityAndPricing from '../FacilityAndPricing/FacilityAndPricing.vue';
 import OffersAndPromotional from '../OffersAndPromotional/OffersAndPromotional.vue';
 import DiscountPoster from '../HomePageItems/DiscountPoster.vue';
@@ -23,7 +22,6 @@ import ContactAndReachedDoor from '../HomePageItems/ContactAndReachedDoor.vue';
 <Electronics></Electronics>
 <FacilityAndPricing></FacilityAndPricing>
 <ContactAndReachedDoor></ContactAndReachedDoor>
-<Footer></Footer>
 </template>
 
 <style scoped>

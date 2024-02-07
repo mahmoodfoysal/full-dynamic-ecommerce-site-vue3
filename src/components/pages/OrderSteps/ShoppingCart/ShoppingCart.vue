@@ -67,11 +67,12 @@ const updateDb = (cart) => {
 </script>
 
 <template>
-    <div class="component-info-div">
-        <h6><span></span> Products Found</h6>
+    <section class="cart-container">
+        <div class="component-info-div">
+        <h6><span></span>Home > Cart</h6>
         <!-- <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p> -->
     </div>
-    <section class="cart-style fix-height">
+    <section class="cart-style cart-section-style">
         <div v-for="(item, index) in cart" :key="index" class="card mb-3" style="max-width: 540px; margin: auto;">
             <div class="row g-0">
                 <div class="col-md-3">
@@ -91,7 +92,6 @@ const updateDb = (cart) => {
                         <span @click="handleIncrementQuantity(item.pro_id)" class="material-icons me-2">
                             add
                         </span>
-
                     </div>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
@@ -107,6 +107,7 @@ const updateDb = (cart) => {
 
             </div>
         </div>
+        
     </section>
     <section class="calculation-section">
         <table class="mt-3" style="width:100%">
@@ -131,6 +132,10 @@ const updateDb = (cart) => {
                 <td style="text-align: left; width:25%">$ </td>
             </tr>
         </table>
+        <div class="checkout-btn-div">
+            <button>Check Out</button>
+        </div>
+    </section>
     </section>
 </template>
 
@@ -146,9 +151,19 @@ p {
     padding: 0;
 }
 
+.cart-container {
+    margin-bottom: 30px;
+}
+
 .calculation-section {
     border-top: 1px solid black;
     margin-top: 20px;
+}
+.checkout-btn-div {
+    width: 50%;
+    text-align: right;
+    margin: auto;
+    margin-top: 30px;
 }
 
 .component-info-div {
@@ -159,8 +174,10 @@ p {
     border-radius: 8px;
 }
 
-.fix-height {
+.cart-section-style {
     height: calc(100vh - 320px);
+    width: 40%;
+    margin: auto;
     overflow-y: scroll;
 }
 
