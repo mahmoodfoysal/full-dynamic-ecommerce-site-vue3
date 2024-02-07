@@ -1,11 +1,11 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import router from '../../../router/router'
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
 import getDataFromCentralApiFile from '../../../API/All_API.js';
 
-const {getCategories, categories} = getDataFromCentralApiFile();
+const { getCategories, categories } = getDataFromCentralApiFile();
 
 onMounted(getCategories);
 
@@ -15,7 +15,7 @@ const showSidebar = ref(false);
 const user = ref(JSON.parse(window.localStorage.getItem('user-info')));
 
 const handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem('user-info');
     store.setUser(null);
     if (user.value) {
         router.push({ name: 'Home' })
@@ -26,6 +26,11 @@ const toggleSidebar = () => {
     showSidebar.value = !showSidebar.value;
 };
 
+const cartCount = computed(() => {
+    return Object.values(store.cartItem).length || 0
+})
+
+
 </script>
 
 <template>
@@ -34,7 +39,7 @@ const toggleSidebar = () => {
     <section class="sticky-top">
         <nav class="navbar navbar-expand-lg bg-body-tertiary first-navbar-style">
             <div class="container-fluid">
-                <RouterLink :to="{name: 'Home'}">
+                <RouterLink :to="{ name: 'Home' }">
                     <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#">E-Commerce</a>
                 </RouterLink>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -96,9 +101,13 @@ const toggleSidebar = () => {
 
                         </div>
 
-                        <span class="material-icons me-3 icon-style">shopping_cart</span>
+                        <RouterLink
+                        :to="{name: 'Cart'}"
+                        >
+                            <span class="material-icons me-3 icon-style">shopping_cart</span>
+                        </RouterLink>
                         <div class="cart-i-back">
-                            <small>1</small>
+                            <small>{{ cartCount }}</small>
                         </div>
 
                         <span class="material-icons me-3 icon-style">person</span>
@@ -141,54 +150,43 @@ const toggleSidebar = () => {
     </section>
 
 
-
-
     <!-- nested sidebar  -->
     <div>
         <nav v-show="showSidebar" class="sidebar-style">
             <ul>
-                <li
-                
-                v-for="(parentCat, index) in categories" 
-                :key="index" 
-                class="dropdown">
-                <RouterLink 
-                :to="{name: 'ParentCategoryProducts', params: {id: parentCat.parent_cat_id, slug: parentCat.parent_cat_name.replace(/\s+/g, '-')}}">
-                    <a  href="">
-                    {{ parentCat.parent_cat_name }}<span>&rsaquo;</span>
-                </a>
-                </RouterLink>
-                    <ul>
-                        <li 
-                        v-for="(subCat, index) in parentCat.sub_cat_info" 
-                        :key="index" class="dropdown-2">
-                        <RouterLink :to="{name: 'SubCategoryProducts', params: {id: subCat.sub_cat_id, slug: subCat.sub_cat_name.replace(/\s+/g, '-')}}">
-                            <a href="">
-                            {{subCat.sub_cat_name}}<span>&rsaquo;</span>
+                <li v-for="(parentCat, index) in categories" :key="index" class="dropdown">
+                    <RouterLink
+                        :to="{ name: 'ParentCategoryProducts', params: { id: parentCat.parent_cat_id, slug: parentCat.parent_cat_name.replace(/\s+/g, '-') } }">
+                        <a href="">
+                            {{ parentCat.parent_cat_name }}<span>&rsaquo;</span>
                         </a>
-                        </RouterLink>
-                            <ul>
-                                <li 
-                                v-for="(subSubCat, index) in subCat.sub_sub_cat_info" 
-                                :key="index" class="dropdown-3">
-                                <RouterLink 
-                                :to="{name: 'SubSubCategoryProducts', params: {id: subSubCat.sub_sub_cat_id, slug: subSubCat.sub_sub_cat_name.replace(/\s+/g, '-')}}">
-                                    <a href="">
-                                    {{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span>
+                    </RouterLink>
+                    <ul>
+                        <li v-for="(subCat, index) in parentCat.sub_cat_info" :key="index" class="dropdown-2">
+                            <RouterLink
+                                :to="{ name: 'SubCategoryProducts', params: { id: subCat.sub_cat_id, slug: subCat.sub_cat_name.replace(/\s+/g, '-') } }">
+                                <a href="">
+                                    {{ subCat.sub_cat_name }}<span>&rsaquo;</span>
                                 </a>
-                                </RouterLink>
-                                    <ul>
-                                        <li 
-                                        v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" 
-                                        :key="index" class="dropdown-4">
-                                        <RouterLink
-                                        :to="{name: 'SubSubSubCategoryProducts', params: {id: subSubSubCat.sub_sub_sub_cat_id, slug: subSubSubCat.sub_sub_sub_cat_name.replace(/\s+/g, '-')}}"
-                                        >
-                                            <a href="">
-                                            {{ subSubSubCat.sub_sub_sub_cat_name }}
+                            </RouterLink>
+                            <ul>
+                                <li v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index" class="dropdown-3">
+                                    <RouterLink
+                                        :to="{ name: 'SubSubCategoryProducts', params: { id: subSubCat.sub_sub_cat_id, slug: subSubCat.sub_sub_cat_name.replace(/\s+/g, '-') } }">
+                                        <a href="">
+                                            {{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span>
                                         </a>
-                                        </RouterLink>
-                                    </li>
+                                    </RouterLink>
+                                    <ul>
+                                        <li v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" :key="index"
+                                            class="dropdown-4">
+                                            <RouterLink
+                                                :to="{ name: 'SubSubSubCategoryProducts', params: { id: subSubSubCat.sub_sub_sub_cat_id, slug: subSubSubCat.sub_sub_sub_cat_name.replace(/\s+/g, '-') } }">
+                                                <a href="">
+                                                    {{ subSubSubCat.sub_sub_sub_cat_name }}
+                                                </a>
+                                            </RouterLink>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -493,4 +491,5 @@ p {
     font-size: 11px;
     z-index: 2;
     font-weight: bold;
-}</style>
+}
+</style>

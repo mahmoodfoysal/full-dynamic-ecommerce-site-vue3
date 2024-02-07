@@ -1,5 +1,8 @@
 <script setup>
 import { toRefs, defineProps } from 'vue';
+import { useStore } from '@/stores/TaskStore.js';
+
+const store = useStore();
 
 const props = defineProps({
   productItem: {
@@ -9,6 +12,37 @@ const props = defineProps({
 });
 
 const { productItem } = toRefs(props);
+
+const handleAddToCart = (product) => {
+  const { pro_name, price, pro_image, pro_id } = product;
+  let item = {
+    pro_name,
+    price,
+    pro_image,
+    pro_id,
+  }
+
+  let shopping_cart = getDb() || {};
+
+  if (shopping_cart[item.pro_id]) {
+    shopping_cart[item.pro_id].quantity += 1;
+  } else {
+    item.quantity = 1;
+    shopping_cart[item.pro_id] = item;
+  }
+  updateDb(shopping_cart);
+}
+
+const getDb = () => {
+  const cartData = localStorage.getItem('shopping_cart');
+  return cartData ? JSON.parse(cartData) : null;
+}
+
+const updateDb = (cart) => {
+  localStorage.setItem('shopping_cart', JSON.stringify(cart));
+  store.setCartItem(cart);
+}
+
 </script>
 
 <template>
@@ -21,7 +55,7 @@ const { productItem } = toRefs(props);
       </div>
       <p class="card-text">{{ productItem.description.substr(0, 90) }}</p>
       <div class="card-btn-style">
-        <button>Add to Cart</button>
+        <button @click="handleAddToCart(productItem)">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -68,5 +102,4 @@ const { productItem } = toRefs(props);
   background: #2D76C4;
   cursor: pointer;
 }
-
 </style>
