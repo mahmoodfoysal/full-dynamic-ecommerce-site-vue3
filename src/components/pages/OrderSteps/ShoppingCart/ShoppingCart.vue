@@ -7,8 +7,8 @@ import router from '@/router/router.js';
 
 onMounted(() => {
     let userInfo = localStorage.getItem('user-info');
-    if(!userInfo) {
-        router.push({name: 'Login'})
+    if (!userInfo) {
+        router.push({ name: 'Login' })
     }
 })
 
@@ -59,10 +59,10 @@ const handleDecrementQuantity = (id) => {
 // event handler for remove item from cart 
 const handleRemoveItem = (id) => {
     let shopping_cart = getDb() || {};
-    
+
     if (shopping_cart[id]) {
         const text = "Are you sure Remove This"
-        if(confirm((text) == true)) {
+        if (confirm((text) == true)) {
             delete shopping_cart[id];
         }
     }
@@ -83,10 +83,10 @@ const updateDb = (cart) => {
 
 // calculate subtotal 
 let subTotal = computed(() => {
-   const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
-      return total + (item.price * item.quantity);
-   }, 0);
-   return totalQuantityWithPrice;
+    const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
+        return total + (item.price * item.quantity);
+    }, 0);
+    return totalQuantityWithPrice;
 });
 
 // calculate vat 
@@ -106,77 +106,73 @@ let totalAmount = computed(() => {
 <template>
     <section class="cart-container">
         <div class="component-info-div">
-        <h6><span></span>Home > Cart</h6>
-        <!-- <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p> -->
-    </div>
-    <section class="cart-style cart-section-style">
-        <div v-for="(item, index) in cart" :key="index" class="card mb-3" style="max-width: 540px; margin: auto;">
-            <div class="row g-0">
-                <div class="col-md-3">
-                    <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
-                </div>
-                <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <div class="">
-                        <h6>{{ item.pro_name }}</h6>
+            <h6><span></span>Home > Cart</h6>
+            <!-- <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p> -->
+        </div>
+        <section class="cart-style cart-section-style">
+            <div v-for="(item, index) in cart" :key="index" class="card mb-3" style="max-width: 540px; margin: auto;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
                     </div>
-                </div>
-                <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <div class="d-flex add-sub-style">
-                        <span @click="handleDecrementQuantity(item.pro_id)" class="material-icons me-2">
-                            remove
-                        </span>
-                        <h5 class="me-2">{{ item.quantity }}</h5>
-                        <span @click="handleIncrementQuantity(item.pro_id)" class="material-icons me-2">
-                            add
-                        </span>
+                    <div class="col-md-3 d-flex justify-content-center align-items-center">
+                        <div class="">
+                            <h6>{{ item.pro_name }}</h6>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <div class="d-flex price-delete-style">
-                        <h6>${{ item.price }}</h6>
-                        <span 
-                        @click="handleRemoveItem(item.pro_id)"
-                        class="material-icons ms-2">
-                            delete
-                        </span>
+                    <div class="col-md-3 d-flex justify-content-center align-items-center">
+                        <div class="d-flex add-sub-style">
+                            <span @click="handleDecrementQuantity(item.pro_id)" class="material-icons me-2">
+                                remove
+                            </span>
+                            <h5 class="me-2">{{ item.quantity }}</h5>
+                            <span @click="handleIncrementQuantity(item.pro_id)" class="material-icons me-2">
+                                add
+                            </span>
+                        </div>
                     </div>
-                </div>
+                    <div class="col-md-3 d-flex justify-content-center align-items-center">
+                        <div class="d-flex price-delete-style">
+                            <h6>${{ item.price }}</h6>
+                            <span @click="handleRemoveItem(item.pro_id)" class="material-icons ms-2">
+                                delete
+                            </span>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
-        
-    </section>
-    <section class="calculation-section">
-        <table class="mt-3" style="width:100%">
-            <tr>
-                <td style="text-align: right; width:25%"></td>
-                <td style="text-align: left; width:50%">Subtotal</td>
-                <td style="text-align: left; width:25%">${{ subTotal }} </td>
-            </tr>
-            <tr>
-                <td style="text-align: left; width:25%"></td>
-                <td style="text-align: left; width:50%">(+) VAT</td>
-                <td style="text-align: left; width:25%">${{ vatTotal.toFixed(2) }} </td>
-            </tr>
-            <tr>
-                <td style="text-align: left; width:25%"></td>
-                <td style="text-align: left; width:50%">Delivery Fee</td>
-                <td style="text-align: left; width:25%">${{ delivaryFee }} </td>
-            </tr>
-            <tr>
-                <td style="text-align: left; width:25%"></td>
-                <td style="text-align: left; width:50%">Total Amount</td>
-                <td style="text-align: left; width:25%">${{ totalAmount.toFixed(2) }} </td>
-            </tr>
-        </table>
-        <div class="checkout-btn-div">
-            <RouterLink
-            :to="{name: 'CheckOut'}"
-            >
-                <button>Check Out</button>
-            </RouterLink>
-        </div>
-    </section>
+
+        </section>
+        <section class="calculation-section">
+            <table class="mt-3" style="width:100%">
+                <tr>
+                    <td style="text-align: right; width:25%"></td>
+                    <td style="text-align: left; width:50%">Subtotal</td>
+                    <td style="text-align: left; width:25%">${{ subTotal }} </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left; width:25%"></td>
+                    <td style="text-align: left; width:50%">(+) VAT</td>
+                    <td style="text-align: left; width:25%">${{ vatTotal.toFixed(2) }} </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left; width:25%"></td>
+                    <td style="text-align: left; width:50%">Delivery Fee</td>
+                    <td style="text-align: left; width:25%">${{ delivaryFee }} </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left; width:25%"></td>
+                    <td style="text-align: left; width:50%">Total Amount</td>
+                    <td style="text-align: left; width:25%">${{ totalAmount.toFixed(2) }} </td>
+                </tr>
+            </table>
+            <div class="checkout-btn-div">
+                <RouterLink :to="{ name: 'CheckOut' }">
+                    <button>Check Out</button>
+                </RouterLink>
+            </div>
+        </section>
     </section>
 </template>
 
@@ -192,6 +188,49 @@ p {
     padding: 0;
 }
 
+/* .cart-section-style {
+    height: calc(100vh - 320px);
+    width: 40%;
+    margin: auto;
+    overflow-y: scroll;
+} */
+
+@media (min-width: 1200px) {
+    .cart-section-style {
+        height: calc(100vh - 320px);
+        width: 40%;
+        margin: auto;
+        overflow-y: scroll;
+    }
+}
+
+@media (max-width: 992px) {
+    .cart-section-style {
+        max-width: 960px;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-section-style {
+        max-width: 720px;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 540px) {
+    .cart-section-style {
+        max-width: 720px;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+}
+
 .cart-container {
     margin-bottom: 30px;
 }
@@ -200,6 +239,7 @@ p {
     border-top: 1px solid black;
     margin-top: 20px;
 }
+
 .checkout-btn-div {
     width: 50%;
     text-align: right;
@@ -215,12 +255,7 @@ p {
     border-radius: 8px;
 }
 
-.cart-section-style {
-    height: calc(100vh - 320px);
-    width: 40%;
-    margin: auto;
-    overflow-y: scroll;
-}
+
 
 ::-webkit-scrollbar {
     width: 8px;
@@ -251,9 +286,11 @@ p {
 .add-sub-style {
     cursor: pointer;
 }
+
 .price-delete-style {
     cursor: pointer;
 }
+
 .price-delete-style span:hover {
     cursor: pointer;
     color: rgb(204, 9, 9);
@@ -269,6 +306,7 @@ p {
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
 }
+
 .checkout-btn-div button:hover {
     cursor: pointer;
 }

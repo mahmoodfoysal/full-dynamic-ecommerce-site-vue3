@@ -4,7 +4,7 @@ import ImageCategoryRandom from '../HomePageItems/ImageCategoryRandom.vue';
 import ClothsAndFootware from '../HomePageItems/ClothsAndFootware.vue';
 import ShopWithBrands from '../HomePageItems/ShopWithBrands.vue';
 import FacilityAndPricing from '../FacilityAndPricing/FacilityAndPricing.vue';
-import OffersAndPromotional from '../OffersAndPromotional/OffersAndPromotional.vue';
+import OffersAndPromotional from '../HomePageItems/OffersAndPromotional.vue';
 import DiscountPoster from '../HomePageItems/DiscountPoster.vue';
 import LifeStyle from '../HomePageItems/LifeStyle.vue';
 import Electronics from '../HomePageItems/Electronics.vue';

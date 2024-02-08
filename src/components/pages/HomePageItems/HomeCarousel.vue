@@ -1,34 +1,96 @@
 <script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+// import required modules
+import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
+// Mousewheel its work for mouse wheel sliding 
+const modules = [Navigation, Pagination, Keyboard, Autoplay];
 </script>
 
 <template>
-  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../../../assets//images//slider1.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../../../assets//images//slider2.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../../../assets//images//slider3.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+  <section>
+    <swiper :mousewheel="true" :navigation="true" :keyboard="true" :slidesPerView="1" :spaceBetween="30" :pagination="{
+      clickable: true,
+    }" 
+    :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false,
+    }"
+    :breakpoints="{
+  '640'
+    : {
+    slidesPerView: 1,
+    // spaceBetween: 20,
+  },
+  '768': {
+    slidesPerView: 1,
+    // spaceBetween: 20,
+  },
+  '1024': {
+    slidesPerView: 1,
+    // spaceBetween: 50,
+  },
+}" :modules="modules" class="mySwiper">
+      <swiper-slide>
+        <img src="../../../assets//images//slider-1.jpg" class="d-block w-100" alt="...">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="../../../assets//images//slider-2.jpg" class="d-block w-100" alt="...">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="../../../assets//images//slider-3.jpg" class="d-block w-100" alt="...">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="../../../assets//images//slider-4.jpg" class="d-block w-100" alt="...">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="../../../assets//images//slider-5.jpg" class="d-block w-100" alt="...">
+      </swiper-slide>
+      <swiper-slide>
+        <img src="../../../assets//images//slider-6.jpg" class="d-block w-100" alt="...">
+      </swiper-slide>
+    </swiper>
+  </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+</style>
