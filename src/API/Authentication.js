@@ -1,5 +1,8 @@
 import { ref } from 'vue';
 import axios from 'axios';
+import { useStore } from '@/stores/TaskStore';
+
+const store = useStore();
 const authenticatinData = ref([]);
 const error = ref([]);
 const url = 'http://localhost:3000/users';
@@ -39,7 +42,7 @@ export const getLogin = async (loginData) => {
         const res = await axios(url);
         const response = res.data[0];
         if(res.status === 200 && res.data.length > 0) {
-            // store.setUser(JSON.stringify(response));
+            store.setUser(JSON.stringify(response));
             localStorage.setItem('user-info', JSON.stringify(res.data[0]));
             // console.log(res);
             alert("Successfull");

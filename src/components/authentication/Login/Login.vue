@@ -12,7 +12,7 @@ const loginData = reactive({
 const handleLogin = async () => {
     await getLogin(loginData);
     const userInfo = localStorage.getItem('user-info')
-    store.setUser(userInfo)
+    store.setUser(JSON.parse(userInfo))
     if(userInfo) {
         router.push({name: 'Home'})
     }

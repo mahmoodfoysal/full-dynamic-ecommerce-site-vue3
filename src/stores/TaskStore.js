@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useStore = defineStore({
     id: 'pinia-state',
     state: () => ({
-        user: JSON.parse(localStorage.getItem('user-info')) || null,
+        user: JSON.parse(window.localStorage.getItem('user-info')) || null,
         cartItem: JSON.parse(localStorage.getItem('shopping_cart')) || [],
     }),
     actions: {

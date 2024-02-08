@@ -45,7 +45,7 @@ const cartCount = computed(() => {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link navbar-text" aria-current="page" href="#">Home</a>
+                            <RouterLink :to="{name:'Home'}"><a class="nav-link navbar-text" aria-current="page" href="#">Home</a></RouterLink >
                         </li>
                         <li class="nav-item">
                             <a class="nav-link navbar-text" href="#">Products</a>
@@ -208,6 +208,7 @@ p {
     margin: 0;
     padding: 0;
 }
+
 
 .toogle-style {
     cursor: pointer;
@@ -489,5 +490,9 @@ p {
     font-size: 11px;
     z-index: 2;
     font-weight: bold;
+}
+.active-link {
+    color: #D9946D !important;
+    text-decoration: none;
 }
 </style>

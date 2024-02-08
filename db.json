@@ -1639,56 +1639,6 @@
     }
   ],
   "orders": [
-    {
-      "id": "c5e7",
-      "phoneNumber": 1234569,
-      "city": "",
-      "country": "Bangladesh",
-      "state": "",
-      "zip": null,
-      "address": "",
-      "cardNumber": null,
-      "cardName": "",
-      "expireDate": "",
-      "cvc": "",
-      "subTotal": 614,
-      "vatTotal": 92.1,
-      "delivaryFee": 8,
-      "totalAmount": 714.1
-    },
-    {
-      "id": "a29c",
-      "phoneNumber": null,
-      "city": "",
-      "country": "",
-      "state": "",
-      "zip": null,
-      "address": "",
-      "cardNumber": null,
-      "cardName": "",
-      "expireDate": "",
-      "cvc": "",
-      "subTotal": 172,
-      "vatTotal": 25.8,
-      "delivaryFee": 8,
-      "totalAmount": 205.8
-    },
-    {
-      "id": "ffb1",
-      "phoneNumber": 111122,
-      "city": "",
-      "country": "",
-      "state": "",
-      "zip": null,
-      "address": "",
-      "cardNumber": null,
-      "cardName": "",
-      "expireDate": "",
-      "cvc": "",
-      "subTotal": 86,
-      "vatTotal": 12.9,
-      "delivaryFee": 8,
-      "totalAmount": 106.9
-    }
+
   ]
 }

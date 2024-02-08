@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, reactive, watch } from 'vue';
+import { computed, onMounted, reactive } from 'vue';
 import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
 import getDataFromCentralApiFile from '@/API/All_API.js';
@@ -8,8 +8,8 @@ const { createOrders } = getDataFromCentralApiFile();
 const store = useStore();
 
 let customerInfo = reactive({
-    fullName: computed(() => store.user.fullName),
-    email: computed(() => store.user.email),
+    fullName: store.user.fullName,
+    email: store.user.email,
     phoneNumber: null,
     city: '',
     country: '',
@@ -43,7 +43,6 @@ const handleOrderSubmit = async () => {
     router.push({ name: 'Home' })
     store.setCartItem([]);
 }
-
 
 onMounted(() => {
     let userInfo = localStorage.getItem('user-info');
