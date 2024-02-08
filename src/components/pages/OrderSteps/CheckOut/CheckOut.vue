@@ -1,17 +1,15 @@
 <script setup>
-import { computed, onMounted, reactive } from 'vue';
-import { RouterLink } from 'vue-router';
-import { useStore } from '@/stores/TaskStore.js';
+import { computed, onMounted, reactive, watch } from 'vue';
+import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
 import getDataFromCentralApiFile from '@/API/All_API.js';
-
 const { createOrders } = getDataFromCentralApiFile();
 
 const store = useStore();
 
-const customerInfo = reactive({
-    fullName: store.user.fullName,
-    email: store.user.email,
+let customerInfo = reactive({
+    fullName: computed(() => store.user.fullName),
+    email: computed(() => store.user.email),
     phoneNumber: null,
     city: '',
     country: '',
@@ -51,7 +49,8 @@ onMounted(() => {
     let userInfo = localStorage.getItem('user-info');
     if (!userInfo) {
         router.push({ name: 'Login' })
-    }
+    };
+    
 })
 
 const cart = computed(() => {
@@ -141,6 +140,7 @@ let delivaryFee = computed(() => {
 let totalAmount = computed(() => {
     return subTotal.value + vatTotal.value + delivaryFee.value;
 })
+
 </script>
 
 <template>
@@ -151,12 +151,12 @@ let totalAmount = computed(() => {
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name</label>
-                        <input v-model.trim="store.user.fullName" type="text" class="form-control" id="inputEmail4"
+                        <input v-model="customerInfo.fullName" type="text" class="form-control" id="inputEmail4"
                             disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input v-model.trim="store.user.email" type="email" class="form-control" id="inputEmail4" disabled>
+                        <input v-model="customerInfo.email" type="email" class="form-control" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No</label>

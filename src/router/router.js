@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import CheckOut from '../components/pages/OrderSteps/CheckOut/CheckOut.vue';
 const routes = [
     { 
         path: '/',
@@ -48,7 +49,7 @@ const routes = [
     {
       path: '/check-out',
       name: 'CheckOut',
-      component: () => import('../components/pages/OrderSteps/CheckOut/CheckOut.vue')
+      component: () => CheckOut
     }
 
   ]

@@ -22,14 +22,9 @@ const handleLogout = () => {
     }
 }
 
-const toggleSidebar = () => {
-    showSidebar.value = !showSidebar.value;
-};
-
 const cartCount = computed(() => {
     return Object.values(store.cartItem).length || 0
 })
-
 
 </script>
 
@@ -134,9 +129,9 @@ const cartCount = computed(() => {
 
         <nav class="navbar bg-body-tertiary second-navbar-style">
             <div class="container-fluid">
-                <div class="d-flex ms-2 align-items-center">
-                    <span @mouseenter="toggleSidebar" class="material-icons toggle-btn-style">menu</span>
-                    <h6 @mouseenter="toggleSidebar" class="ms-2 navbar-text">Shop By Category</h6>
+                <div class="d-flex ms-2 align-items-center" @mouseover="showSidebar = true" @mouseout="showSidebar = false">
+                    <span class="material-icons toggle-btn-style">menu</span>
+                    <h6 class="ms-2 navbar-text">Shop By Category</h6>
                 </div>
                 <form class="d-flex search-field-style" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -152,7 +147,10 @@ const cartCount = computed(() => {
 
     <!-- nested sidebar  -->
     <div>
-        <nav v-show="showSidebar" class="sidebar-style">
+        <nav 
+        @mouseover="showSidebar = true"
+        @mouseout="showSidebar = false"
+        :class="{'d-none': !showSidebar, 'd-block': showSidebar}" class="sidebar-style">
             <ul>
                 <li v-for="(parentCat, index) in categories" :key="index" class="dropdown">
                     <RouterLink
