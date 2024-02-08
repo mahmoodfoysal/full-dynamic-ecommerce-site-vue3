@@ -462,8 +462,8 @@ p {
 .fav-i-back small {
     position: absolute;
     color: white;
-    left: 5px;
-    bottom: 2px;
+    left: 6px;
+    bottom: 1px;
     font-size: 11px;
     z-index: 2;
     font-weight: bold;
@@ -486,8 +486,8 @@ p {
 .cart-i-back small {
     position: absolute;
     color: white;
-    left: 5px;
-    bottom: 2px;
+    left: 6px;
+    bottom: 1px;
     font-size: 11px;
     z-index: 2;
     font-weight: bold;

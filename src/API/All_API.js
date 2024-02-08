@@ -6,6 +6,7 @@ export default function getDataFromCentralApiFile() {
     const categories = ref([]);
     const products = ref([]);
     const brands = ref([]);
+    const orders = ref([]);
 
     // get card image for home page 
     const GetCatImg = async () => {
@@ -37,8 +38,7 @@ export default function getDataFromCentralApiFile() {
           catch (err) {
             console.log(err);
           }
-          
-    }
+    };
 
     // get categories for navbar 
     const getCategories = async () => {
@@ -52,7 +52,7 @@ export default function getDataFromCentralApiFile() {
         catch(err) {
             console.log(err);
         }
-    }
+    };
 
       // get parent category product 
     const getProducts = async () => {
@@ -66,7 +66,7 @@ export default function getDataFromCentralApiFile() {
       catch(err) {
         console.log(err);
       }
-    }
+    };
 
     // get brand item from api 
     const getBrands = async () => {
@@ -79,6 +79,32 @@ export default function getDataFromCentralApiFile() {
       catch(err) {
         console.log(err);
       }
+    };
+
+    const createOrders = async (customerInfo) => {
+      const url = 'http://localhost:3000/orders';
+      orders.value = [];
+      try {
+        const config = {
+          method: 'POST',
+          url:url,
+          headers: {
+            'Content-type': 'application/json'
+        },
+        data: JSON.stringify(customerInfo)
+        }
+        const res = await axios(config);
+        orders.value = res.data;
+        if(res.status === 201) {
+          alert("Order Confirmed")
+          localStorage.removeItem('shopping_cart')
+        }
+        
+        return orders;
+      }
+      catch(err) {
+
+      }
     }
 
     return {
@@ -86,9 +112,11 @@ export default function getDataFromCentralApiFile() {
         getCategories,
         getProducts,
         getBrands,
+        createOrders,
         catImgData,
         categories,
         products,
-        brands
+        brands,
+        orders
     }
 }

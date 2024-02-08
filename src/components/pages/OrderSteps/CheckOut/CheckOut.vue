@@ -1,17 +1,59 @@
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, reactive } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
-
 import router from '@/router/router.js';
+import getDataFromCentralApiFile from '@/API/All_API.js';
+
+const { createOrders } = getDataFromCentralApiFile();
+
+const store = useStore();
+
+const customerInfo = reactive({
+    fullName: store.user.fullName,
+    email: store.user.email,
+    phoneNumber: null,
+    city: '',
+    country: '',
+    state: '',
+    zip: null,
+    address: '',
+    cardNumber: null,
+    cardName: '',
+    expireDate: '',
+    cvc: '',
+    subTotal: computed(() => {
+        const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
+            return total + (item.price * item.quantity);
+        }, 0);
+        return totalQuantityWithPrice;
+    }),
+    vatTotal: computed(() => {
+        return subTotal.value * 0.15;
+    }),
+    delivaryFee: computed(() => {
+        return 8;
+    }),
+    totalAmount: computed(() => {
+        return subTotal.value + vatTotal.value + delivaryFee.value;
+    }),
+
+});
+
+const handleOrderSubmit = async () => {
+    await createOrders(customerInfo)
+    router.push({ name: 'Home' })
+    store.setCartItem([]);
+}
+
 
 onMounted(() => {
     let userInfo = localStorage.getItem('user-info');
-    if(!userInfo) {
-        router.push({name: 'Login'})
+    if (!userInfo) {
+        router.push({ name: 'Login' })
     }
 })
-const store = useStore();
+
 const cart = computed(() => {
     return Object(store.cartItem)
 })
@@ -106,72 +148,82 @@ let totalAmount = computed(() => {
         <div class="row g-4">
             <div class="col-md-6">
                 <h3 class="contact-info-style">Contact Information</h3>
-                <form class="row g-3">
+                <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="inputEmail4">
+                        <input v-model.trim="store.user.fullName" type="text" class="form-control" id="inputEmail4"
+                            disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4">
+                        <input v-model.trim="store.user.email" type="email" class="form-control" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No</label>
-                        <input type="number" class="form-control" id="inputEmail4" placeholder="Enter Your Contact Number">
+                        <input v-model.trim="customerInfo.phoneNumber" type="number" class="form-control" id="inputEmail4"
+                            placeholder="Enter Your Contact Number" required>
                     </div>
+
+
+
+
+
+
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">City</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Enter Your City">
-                    </div>
-
-
-                    <div class="col-md-3">
-                        <label for="inputEmail4" class="form-label">Country</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Country Name">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="inputCity" class="form-label">City</label>
-                        <input type="text" class="form-control" id="inputCity" placeholder="City Name">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="inputState" class="form-label">State</label>
-                        <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
+                        <label for="inputState" class="form-label">Country</label>
+                        <select v-model.trim="customerInfo.country" id="inputState" class="form-select" required>
+                            <option selected>Select Country</option>
                             <option>Bangladesh</option>
                             <option>India</option>
                             <option>China</option>
                         </select>
                     </div>
-                    <div class="col-md-3">
+
+                    <div class="col-md-4">
+                        <label for="inputEmail4" class="form-label">City</label>
+                        <input v-model.trim="customerInfo.city" type="text" class="form-control" id="inputEmail4"
+                            placeholder="City Name" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputEmail4" class="form-label">state</label>
+                        <input v-model.trim="customerInfo.state" type="text" class="form-control" id="inputEmail4"
+                            placeholder="Enter State">
+                    </div>
+                    <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip</label>
-                        <input type="text" class="form-control" id="inputZip" placeholder="Zip Code">
+                        <input v-model.trim="customerInfo.zip" type="zip" class="form-control" id="inputZip"
+                            placeholder="Zip Code" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        <input v-model.trim="customerInfo.address" type="text" class="form-control" id="inputAddress"
+                            placeholder="1234 Main St" required>
                     </div>
                     <h4>Delivary Method</h4>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Number</label>
-                        <input type="number" class="form-control" id="inputEmail4" placeholder="111 1111 11111 1111">
+                        <input v-model.trim="customerInfo.cardNumber" type="number" class="form-control" id="inputEmail4"
+                            placeholder="111 1111 11111 1111" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Name</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Card Name">
+                        <input v-model.trim="customerInfo.cardName" type="text" class="form-control" id="inputEmail4"
+                            placeholder="Card Name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Expire Date</label>
-                        <input type="date" class="form-control" id="inputEmail4">
+                        <input v-model.trim="customerInfo.expireDate" type="date" class="form-control" id="inputEmail4" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">CVC</label>
-                        <input type="number" class="form-control" id="inputEmail4" placeholder="111">
+                        <input v-model.trim="customerInfo.cvc" type="number" class="form-control" id="inputEmail4"
+                            placeholder="111" required>
                     </div>
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                </form>
+                </div>
 
             </div>
             <div class="col-md-6">
