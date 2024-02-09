@@ -1,4 +1,17 @@
 <script setup>
+import getDataFromCentralApiFile from '/src/API/All_API.js';
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const routeParamsId = ref(Number(route.params.id));
+const filterProducts = ref([]);
+
+const {getSingleProduct, singleProduct} = getDataFromCentralApiFile();
+
+onMounted(async () => {
+    await getSingleProduct(routeParamsId.value);
+})
 
 </script>
 
@@ -6,26 +19,26 @@
     <section class="product-details-section">
         <div class="row g-4">
             <div class="col-md-4 product-image-div">
-                <img src="/src/assets/images/apple.jpg" class="img-fluid rounded-start" alt="product-img">
+                <img :src="singleProduct.pro_image" class="img-fluid rounded-start" alt="product-img">
             </div>
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
+                        <h5 class="card-title">{{ singleProduct.pro_name }}</h5>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
                             <span>Brand: name</span>
-                            <span>Rating: *****</span>
+                            <span>Rating: {{ singleProduct.rating }}</span>
                             <span class="material-icons">favorite</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <h6>$$$$$</h6>
-                            <span>Stock: 452</span>
-                            <span>Product ID: 52531</span>
+                            <h6>{{ singleProduct.price }}</h6>
+                            <span>Stock: {{ singleProduct.quantity }}</span>
+                            <span>Product ID: {{ singleProduct.pro_id }}</span>
 
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
                             <span>Sold By: </span>
-                            <span>Category: Men</span>
+                            <span>Category: </span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
                             <span>Size:</span>
@@ -52,8 +65,7 @@
                             </div>
 
                         </div>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text">{{ singleProduct.description }}</p>
                     </div>
                 </div>
             </div>

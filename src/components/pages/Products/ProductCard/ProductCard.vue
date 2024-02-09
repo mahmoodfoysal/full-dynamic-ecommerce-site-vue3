@@ -1,7 +1,7 @@
 <script setup>
 import { toRefs, defineProps } from 'vue';
 import { useStore } from '@/stores/TaskStore.js';
-
+import { RouterLink } from 'vue-router';
 const store = useStore();
 
 const props = defineProps({
@@ -47,7 +47,10 @@ const updateDb = (cart) => {
 
 <template>
   <div class="card card-style">
-    <img :src="productItem.pro_image" class="card-img-top" alt="Card Image">
+    <RouterLink class="no-underline-link"
+      :to="{ name: 'ProductDetail', params: { id: productItem.pro_id, slug: productItem.pro_name } }">
+      <img :src="productItem.pro_image" class="card-img-top" alt="Card Image">
+    </RouterLink>
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
         <h6 class="card-title">{{ productItem.pro_name }}</h6>
@@ -66,6 +69,10 @@ const updateDb = (cart) => {
   cursor: pointer;
   box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, .25);
   transition: box-shadow .5s;
+}
+
+.no-underline-link {
+  text-decoration: none;
 }
 
 .card-style h6 {

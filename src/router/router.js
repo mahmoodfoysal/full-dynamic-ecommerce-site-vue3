@@ -47,7 +47,7 @@ const routes = [
       component: () => import('../components/pages/OrderSteps/CheckOut/CheckOut.vue')
     },
     {
-      path: '/product-detail',
+      path: '/product-detail/:id/:slug',
       name: 'ProductDetail',
       component: () => import('@/components/pages/Products/ProductDetails/ProductDetails.vue')
     }

@@ -5,13 +5,10 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-
 <!-- All home section are set here  -->
 <div class="home-section-style">
-  <NavBar
-  ></NavBar>
-  <RouterView
-  ></RouterView>
+  <NavBar></NavBar>
+  <RouterView></RouterView>
   <Footer></Footer>
 </div>
 </template>

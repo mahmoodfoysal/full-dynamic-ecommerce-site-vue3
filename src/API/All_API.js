@@ -5,6 +5,7 @@ export default function getDataFromCentralApiFile() {
     const catImgData = ref([]);
     const categories = ref([]);
     const products = ref([]);
+    const singleProduct = ref({});
     const brands = ref([]);
     const orders = ref([]);
 
@@ -68,6 +69,20 @@ export default function getDataFromCentralApiFile() {
       }
     };
 
+    // get single data for product details
+    const getSingleProduct = async (id) => {
+      singleProduct.value = [];
+      const url = `http://localhost:3000/products?pro_id=${id}`;
+      try {
+        const res = await axios(url);
+        singleProduct.value = res.data[0]
+        console.log(res.data[0]);
+      }
+      catch(err) {
+
+      }
+    }
+
     // get brand item from api 
     const getBrands = async () => {
       brands.value = [];
@@ -113,10 +128,12 @@ export default function getDataFromCentralApiFile() {
         getProducts,
         getBrands,
         createOrders,
+        getSingleProduct,
         catImgData,
         categories,
         products,
         brands,
-        orders
+        orders,
+        singleProduct
     }
 }
