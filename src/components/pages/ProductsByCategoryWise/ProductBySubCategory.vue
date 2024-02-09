@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, watchEffect } from 'vue';
-import ProductCard from '../ProductCard/ProductCard.vue';
+import ProductCard from '../Products/ProductCard/ProductCard.vue';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useRoute } from 'vue-router';
 

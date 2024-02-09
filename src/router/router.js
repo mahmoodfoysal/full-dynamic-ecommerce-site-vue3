@@ -37,11 +37,6 @@ const routes = [
       component: () => import('../components/pages/ProductsByCategoryWise/ProductsBySubSubSubCategory.vue')
     },
     {
-      path: '/product-details',
-      name: 'ProductDetails',
-      component: () => import('../components/pages/ProductDetails/ProductDetails.vue')
-    },
-    {
       path: '/cart',
       name: 'Cart',
       component: () => import('../components/pages/OrderSteps/ShoppingCart/ShoppingCart.vue')
@@ -54,7 +49,7 @@ const routes = [
     {
       path: '/product-detail',
       name: 'ProductDetail',
-      component: () => import('@/components/pages/ProductDetails/ProductDetails.vue')
+      component: () => import('@/components/pages/Products/ProductDetails/ProductDetails.vue')
     }
 
   ]
