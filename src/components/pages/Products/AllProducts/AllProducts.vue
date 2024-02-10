@@ -7,14 +7,14 @@ const products = ref([]);
 
 onMounted(async () => {
     const url = 'http://localhost:3000/products';
-      try {
+    try {
         const res = await axios(url);
         products.value = res.data;
         // console.log(res.data);
-      }
-      catch(err) {
+    }
+    catch (err) {
         console.log(err);
-      }
+    }
 })
 
 // pagination code are here 
@@ -29,16 +29,16 @@ const page = ref(1);
 const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
 
 const paginatedProducts = computed(() => {
-  const startIndex = (page.value - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  return products.value.slice(startIndex, endIndex);
+    const startIndex = (page.value - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return products.value.slice(startIndex, endIndex);
 });
 
 // button control by clicking 
 const goToPage = (newPage) => {
-  if (newPage >= 1 && newPage <= totalPages.value) {
-    page.value = newPage;
-  }
+    if (newPage >= 1 && newPage <= totalPages.value) {
+        page.value = newPage;
+    }
 };
 
 </script>
@@ -49,40 +49,120 @@ const goToPage = (newPage) => {
             <h6><span>{{ products.length }}</span> Products Found</h6>
             <p>Products > Category > Products</p>
         </div>
-        <div class="row row-cols-1 row-cols-md-4 row-col-lg-4 row-col-sm-1 g-4">
-            <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
-                <ProductCard :productItem="item"></ProductCard>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Price
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <section class="price-section">
+                                    <label class="d-flex align-items-center mb-2" for="price-1">
+                                        <input type="checkbox" name="radio" id="price-1">
+                                        <p class="ms-2">$0 to $10 </p>
+                                    </label>
+                                    <label class="d-flex align-items-center mb-2" for="price-2">
+                                        <input type="checkbox" name="" id="price-2">
+                                        <p class="ms-2">$11 to $20 </p>
+                                    </label>
+                                    <label class="d-flex align-items-center mb-2" for="price-1">
+                                        <input type="checkbox" name="" id="price-1">
+                                        <p class="ms-2">$21 to $30 </p>
+                                    </label>
+                                    <label class="d-flex align-items-center mb-2" for="price-1">
+                                        <input type="checkbox" name="" id="price-1">
+                                        <p class="ms-2">$31 to $40 </p>
+                                    </label>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Accordion Item #2
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                                the collapse plugin adds the appropriate classes that we use to style each element. These
+                                classes control the overall appearance, as well as the showing and hiding via CSS
+                                transitions. You can modify any of this with custom CSS or overriding our default variables.
+                                It's also worth noting that just about any HTML can go within the
+                                <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Accordion Item #3
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                                collapse plugin adds the appropriate classes that we use to style each element. These
+                                classes control the overall appearance, as well as the showing and hiding via CSS
+                                transitions. You can modify any of this with custom CSS or overriding our default variables.
+                                It's also worth noting that just about any HTML can go within the
+                                <code>.accordion-body</code>, though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row row-cols-1 row-cols-md-4 row-col-lg-4 row-col-sm-1 g-4">
+                    <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
+                        <ProductCard :productItem="item"></ProductCard>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="pagination-style mt-3">
+            
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li 
                     @click="goToPage(page - 1)" :disabled="page === 1"
-                    class="page-item"><a class="page-link" href="#">Previous</a>
+                    class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
                     </li>
-
                     <li 
                     @click="goToPage(1)" :disabled="page === 1"
-                    class="page-item"><a class="page-link" href="#">1</a>
-                    </li>
-
+                    class="page-item"><a class="page-link" href="#">1</a></li>
                     <li 
                     @click="goToPage(2)" :disabled="page === 2"
-                    class="page-item"><a class="page-link" href="#">2</a>
-                    </li>
-
+                    class="page-item"><a class="page-link" href="#">2</a></li>
                     <li 
                     @click="goToPage(3)" :disabled="page === 3"
-                    class="page-item"><a class="page-link" href="#">3</a>
-                    </li>
-
+                    class="page-item"><a class="page-link" href="#">3</a></li>
                     <li 
                     @click="goToPage(page + 1)" :disabled="page === totalPages"
-                    class="page-item"><a class="page-link" href="#">Next</a>
+                    class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
+
+
+
+
+
         </div>
     </section>
     <!-- pagination div  -->
@@ -117,5 +197,60 @@ p {
 .pagination-style {
     display: flex;
     justify-content: center;
+}
+
+/* accrodion style  */
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: none !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: black !important;
+    background-color: none !important;
+    box-shadow: none !important;
+}
+
+.accordion-item {
+    background-color: #F8F9FA !important;
+    border: none !important
+}
+
+.accordion {
+    --bs-accordion-active-bg: #F8F9FA !important;
+
+}
+
+.accordion-button {
+    color: black !important;
+    border: 1px solid #e8eaeb !important;
+    box-shadow: none !important;
+    padding: 13px 9px !important;
+    background: #F8F9FA !important;
+}
+
+.accordion-button:hover {
+    color: black !important;
+    background-color: 1px solid black !important;
+    box-shadow: none !important;
+    --bs-accordion-active-bg: #E9ECEF !important;
+}
+
+.accordion-header {
+    margin-bottom: 12px !important;
+}
+
+.accordion-body {
+    margin-bottom: 12px;
+    padding-top: 0 !important;
+}
+
+.price-section div,
+input,
+p {
+    cursor: pointer;
 }
 </style>

@@ -45,10 +45,14 @@ const cartCount = computed(() => {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <RouterLink :to="{name:'Home'}"><a class="nav-link navbar-text" aria-current="page" href="#">Home</a></RouterLink >
+                            <RouterLink 
+                            class="active-link"
+                            :to="{name:'Home'}"><a class="nav-link navbar-text" aria-current="page" href="#">Home</a></RouterLink >
                         </li>
                         <li class="nav-item">
-                            <RouterLink :to="{name: 'Products'}"><a class="nav-link navbar-text" href="#">Products</a></RouterLink>
+                            <RouterLink 
+                            class="active-link"
+                            :to="{name: 'Products'}"><a class="nav-link navbar-text" href="#">Products</a></RouterLink>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle navbar-text" href="#" role="button" data-bs-toggle="dropdown"
@@ -277,9 +281,8 @@ p {
 
 .sidebar-style {
     width: 250px;
-    /* position: absolute; */
     position: fixed;
-    top: 130px;
+    top: 125px;
     left: 23px;
     background: #FFF;
     z-index: 1030;
@@ -336,7 +339,7 @@ p {
     position: fixed;
     left: 273px;
     width: 200px;
-    top: 131px;
+    top: 126px;
     background-color: #FFF;
     width: 265px;
     height: 397px;
