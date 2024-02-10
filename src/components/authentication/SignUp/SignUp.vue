@@ -4,8 +4,10 @@ import {createRegistration} from '../../../../src/API/Authentication';
 import router from '../../../router/router';
 import { useStore } from '@/stores/TaskStore';
 
+// call pinia store and set in the store variable for access the store 
 const store = useStore();
 
+// reactive registerData for v-model and sent to the database 
 const registerData = reactive({
     fullName: '',
     phoneNumber: '',
@@ -14,13 +16,19 @@ const registerData = reactive({
     password: ''
 })
 
+// event handler for registration 
 const handleSignUp = async () => {
+    // call the api and pass the parameter to the database file 
     await createRegistration(registerData);
+    // find the user in the localstorage
     const userInfo = localStorage.getItem('user-info')
-    store.setUser(userInfo);
+    // set the user info the pinia 
+    store.setUser(JSON.parse(userInfo));
+    // if user info tn the localStorage the redirect to the home page 
     if(userInfo) {
         router.push({name: 'Home'})
     }
+    // cleare the registration field 
     registerData.fullName='';
     registerData.phoneNumber='';
     registerData.photoURL='';
@@ -28,8 +36,11 @@ const handleSignUp = async () => {
     registerData.password='';
 }
 
+// call the api for handle login 
 onMounted(() => {
+    // get the localstorage data 
     let userInfo = localStorage.getItem('user-info');
+    // if local storage have user then redirect to the home page 
     if(userInfo) {
         router.push({name: 'Home'})
     }

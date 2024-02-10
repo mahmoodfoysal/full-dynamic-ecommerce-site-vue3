@@ -3,23 +3,33 @@ import {reactive, onMounted} from 'vue';
 import {getLogin} from '../../../API/Authentication'
 import router from '../../../router/router';
 import {useStore} from '@/stores/TaskStore.js';
+
+// call the pinia store and set in the store value 
 const store = useStore();
+
+// reactive loginData for v-model and sent to the database
 const loginData = reactive({
     email: '',
     password: ''
 })
 
+// event handler for login 
 const handleLogin = async () => {
     await getLogin(loginData);
+    // check the user in the localstorage 
     const userInfo = localStorage.getItem('user-info')
+    // if user in the localstorage then it set in the pinia state 
     store.setUser(JSON.parse(userInfo))
+    // if find the user then redirect to the home page 
     if(userInfo) {
         router.push({name: 'Home'})
     }
 }
 
+// call the localStorage data 
 onMounted(() => {
     let userInfo = localStorage.getItem('user-info');
+    // if user logged in then did not visit login component 
     if(userInfo) {
         router.push({name: 'Home'})
     }

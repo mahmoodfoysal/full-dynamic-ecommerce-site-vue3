@@ -1,13 +1,90 @@
 <script setup>
 import getDataFromCentralApiFile from '/src/API/All_API.js';
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router';
+import { useStore } from '/src/stores/TaskStore.js';
 
 const route = useRoute();
 const routeParamsId = ref(Number(route.params.id));
 const filterProducts = ref([]);
 
 const {getSingleProduct, singleProduct} = getDataFromCentralApiFile();
+
+// add to cart 
+
+const store = useStore();
+
+const cart = computed(() => {
+    return Object(store.cartItem)
+})
+
+const cartItem = computed(() => {
+    return Object.values(store.cartItem);
+})
+
+const handleIncrementQuantity = (id) => {
+    let shopping_cart = getDb() || {};
+    if (shopping_cart[id]) {
+        shopping_cart[id].quantity += 1;
+    }
+    else {
+        const item = {
+            quantity: 1,
+        };
+        shopping_cart[id] = item;
+    }
+    updateDb(shopping_cart);
+}
+
+// event handler for decrement products 
+const handleDecrementQuantity = (id) => {
+    let shopping_cart = getDb() || {};
+    if (shopping_cart[id]) {
+        if (shopping_cart[id].quantity > 1) {
+            shopping_cart[id].quantity -= 1;
+        }
+    }
+    else {
+        const item = {
+            quantity: 1,
+        };
+        shopping_cart[id] = item;
+    }
+    updateDb(shopping_cart);
+}
+
+
+// get data from the local storage
+const getDb = () => {
+    const cartData = localStorage.getItem('shopping_cart');
+    return cartData ? JSON.parse(cartData) : null;
+}
+
+// update lcoal storage 
+const updateDb = (cart) => {
+    localStorage.setItem('shopping_cart', JSON.stringify(cart));
+    store.setCartItem(cart);
+}
+
+let subTotal = computed(() => {
+    const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
+        return total + (item.price * item.quantity);
+    }, 0);
+    return totalQuantityWithPrice;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 onMounted(async () => {
     await getSingleProduct(routeParamsId.value);
@@ -51,11 +128,15 @@ onMounted(async () => {
                             </div>
                             <div class="col-md-3 d-flex justify-content-center align-items-center">
                                 <div class="d-flex align-items-center add-sub-style">
-                                    <span class="material-icons me-2">
+                                    <span 
+                                    @handleDecrementQuantity(cart.pro_id)
+                                    class="material-icons me-2">
                                         remove
                                     </span>
-                                    <h5 class="me-2 mb-0">5</h5>
-                                    <span class="material-icons me-2">
+                                    <h5 class="me-2 mb-0">{{ cart.quantity }}</h5>
+                                    <span 
+                                    @handleIncrementQuantity(cart.pro_id)
+                                    class="material-icons me-2">
                                         add
                                     </span>
                                 </div>

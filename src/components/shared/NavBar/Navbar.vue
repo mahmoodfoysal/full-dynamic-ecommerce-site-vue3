@@ -48,7 +48,7 @@ const cartCount = computed(() => {
                             <RouterLink :to="{name:'Home'}"><a class="nav-link navbar-text" aria-current="page" href="#">Home</a></RouterLink >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-text" href="#">Products</a>
+                            <RouterLink :to="{name: 'Products'}"><a class="nav-link navbar-text" href="#">Products</a></RouterLink>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle navbar-text" href="#" role="button" data-bs-toggle="dropdown"

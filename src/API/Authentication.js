@@ -7,7 +7,7 @@ const authenticatinData = ref([]);
 const error = ref([]);
 const url = 'http://localhost:3000/users';
 
-// event handler for registration 
+// event handler for registration its a post method
 export const createRegistration = async (registerData) => {
     authenticatinData.value = [];
     try {
@@ -35,7 +35,7 @@ export const createRegistration = async (registerData) => {
 
 }
 
-// event handler for login 
+// event handler for login if user have in the database then login
 export const getLogin = async (loginData) => {
     const url = `http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`
     try {

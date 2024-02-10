@@ -2,6 +2,7 @@ import axios from "axios";
 import {ref} from 'vue';
 
 export default function getDataFromCentralApiFile() {
+  // declare all ref for data store and reactive 
     const catImgData = ref([]);
     const categories = ref([]);
     const products = ref([]);
@@ -9,7 +10,7 @@ export default function getDataFromCentralApiFile() {
     const brands = ref([]);
     const orders = ref([]);
 
-    // get card image for home page 
+    // get api for card category image for home page 
     const GetCatImg = async () => {
         catImgData.value = []
         const url = 'http://localhost:3000/squreCartForHome';
@@ -41,7 +42,7 @@ export default function getDataFromCentralApiFile() {
           }
     };
 
-    // get categories for navbar 
+    // get all categories for navbar dropdown
     const getCategories = async () => {
         categories.value = [];
         const url = 'http://localhost:3000/categories';
@@ -55,7 +56,7 @@ export default function getDataFromCentralApiFile() {
         }
     };
 
-      // get parent category product 
+    // get api for all products fetching 
     const getProducts = async () => {
       products.value = [];
       const url = 'http://localhost:3000/products';
@@ -69,7 +70,7 @@ export default function getDataFromCentralApiFile() {
       }
     };
 
-    // get single data for product details
+    // get a single data for product details
     const getSingleProduct = async (id) => {
       singleProduct.value = [];
       const url = `http://localhost:3000/products?pro_id=${id}`;
@@ -83,7 +84,7 @@ export default function getDataFromCentralApiFile() {
       }
     }
 
-    // get brand item from api 
+    // get api for home page brand sliding 
     const getBrands = async () => {
       brands.value = [];
       const url = 'http://localhost:3000/brand';
@@ -96,6 +97,7 @@ export default function getDataFromCentralApiFile() {
       }
     };
 
+    // this api for create order. when client place his order then store the data in the database 
     const createOrders = async (customerInfo) => {
       const url = 'http://localhost:3000/orders';
       orders.value = [];
@@ -122,6 +124,7 @@ export default function getDataFromCentralApiFile() {
       }
     }
 
+    // return the all event handler and refs where store the response data 
     return {
         GetCatImg,
         getCategories,
