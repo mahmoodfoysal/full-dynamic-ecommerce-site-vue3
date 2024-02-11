@@ -18,6 +18,16 @@ onMounted(() => {
 // call pinia store 
 const store = useStore();
 
+// call computed for finding real time cart data 
+const cart = computed(() => {
+    return Object(store.cartItem)
+})
+
+// call computed cart item for calculation 
+const cartItem = computed(() => {
+    return Object.values(store.cartItem);
+})
+
 // reactive for after input data store to the database
 let customerInfo = reactive({
     fullName: store.user.fullName,
@@ -47,7 +57,7 @@ let customerInfo = reactive({
     totalAmount: computed(() => {
         return subTotal.value + vatTotal.value + delivaryFee.value;
     }),
-
+    orderItems: cart
 });
 
 // event handler for submit order 
@@ -57,15 +67,7 @@ const handleOrderSubmit = async () => {
     store.setCartItem([]);
 };
 
-// call computed for finding real time cart data 
-const cart = computed(() => {
-    return Object(store.cartItem)
-})
 
-// call computed cart item for calculation 
-const cartItem = computed(() => {
-    return Object.values(store.cartItem);
-})
 
 // get data from the local storage
 const getDb = () => {

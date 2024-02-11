@@ -42,7 +42,7 @@ const routes = [
       component: () => import('../components/pages/ProductsByCategoryWise/ProductsBySubSubSubCategory.vue')
     },
     {
-      path: '/category-products/:id/:slug',
+      path: '/categorys/:id/:slug',
       name: 'CategoryProducts',
       component: () => import('../components/pages/ProductsByCategoryWise/Category.vue')
     },
