@@ -18,51 +18,39 @@ onMounted(async () => {
     }
 })
 
-// pagination code are here 
+// declare price range 
+const priceRanges = [
+    { label: '$0 to $10', min: 0, max: 10 },
+    { label: '$11 to $20', min: 11, max: 20 },
+    { label: '$21 to $30', min: 21, max: 30 },
+    { label: '$31 to $40', min: 31, max: 40 },
+];
 
-// finding how much product in the array and division by 8
-const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
+
 
 const selectedPrice = ref(null);
-
-// decalare a variable for how much product show at a time 
-const itemsPerPage = 8;
 
 // reactivation page variable 
 const page = ref(1);
 
+// decalare a variable for how much product show at a time 
+const itemsPerPage = 8;
+
+// finding how much product in the array and division by 8
+const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
+
 const paginatedProducts = computed(() => {
     let filtered = products.value;
-
     // Apply price filter
     if (selectedPrice.value !== null) {
-        if (selectedPrice.value == 10) {
-            filtered = filtered.filter((product) => product.price > 0 && product.price <= 10);
-        }
-        else if (selectedPrice.value == 20) {
-            filtered = filtered.filter((product) => product.price > 11 && product.price <= 20);
-        }
-        else if (selectedPrice.value == 30) {
-            filtered = filtered.filter((product) => product.price > 20 && product.price <= 30);
-        }
-        if (selectedPrice.value == 40) {
-            filtered = filtered.filter((product) => product.price > 30 && product.price <= 40);
-        }
+        filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
     }
 
     // Apply pagination
+    const startIndex = (page.value - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filtered.slice(startIndex, endIndex);
 
-    // if selectedPrice is not null then all value show wheere are mathced 
-    if (selectedPrice.value !== null) {
-        return filtered
-    }
-    // otherwise all products show with pagination 
-    else {
-        const startIndex = (page.value - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        return filtered.slice(startIndex, endIndex);
-    }
- 
 });
 
 // button control by clicking 
@@ -94,11 +82,19 @@ const goToPage = (newPage) => {
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <section class="price-section">
-                                    <label class="d-flex align-items-center mb-2" for="price-1">
-                                        <input v-model="selectedPrice" type="radio" name="radio" value=10 id="price-1">
-                                        <p class="ms-2">$0 to $10 </p>
+                                    <label 
+                                        v-for="(range, index) in priceRanges" 
+                                        :key="index"
+                                        class="d-flex align-items-center mb-2">
+                                        <input 
+                                        v-model="selectedPrice" 
+                                        type="radio" 
+                                        name="priceRanges" 
+                                        :value="range"
+                                        id="'price-' + index">
+                                        <p class="ms-2">{{ range.label }}</p>
                                     </label>
-                                    <label class="d-flex align-items-center mb-2" for="price-2">
+                                    <!-- <label class="d-flex align-items-center mb-2" for="price-2">
                                         <input v-model="selectedPrice" type="radio" name="radio" value=20 id="price-2">
                                         <p class="ms-2">$11 to $20 </p>
                                     </label>
@@ -109,7 +105,7 @@ const goToPage = (newPage) => {
                                     <label class="d-flex align-items-center mb-2" for="price-4">
                                         <input v-model="selectedPrice" type="radio" name="radio" value=40 id="price-4">
                                         <p class="ms-2">$31 to $40 </p>
-                                    </label>
+                                    </label> -->
                                 </section>
                             </div>
                         </div>
