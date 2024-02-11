@@ -1,26 +1,25 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import ProductCard from '../ProductCard/ProductCard.vue';
-import axios from 'axios';
+import { ref, onMounted, watchEffect, computed } from 'vue';
+import ProductCard from '../Products/ProductCard/ProductCard.vue';
+import getDataFromCentralApiFile from '@/API/All_API.js';
+import { useRoute } from 'vue-router';
 
-// reactive products data which find from the api 
-const products = ref([]);
+// call a variable which name route and initial using vue router 
+const route = useRoute();
 
-// call api for get product data 
-onMounted(async () => {
-    const url = 'http://localhost:3000/products';
-    try {
-        const res = await axios(url);
-        products.value = res.data;
-        // console.log(res.data);
-    }
-    catch (err) {
-        console.log(err);
-    }
-})
+// find the id from url 
+const routeParamsId = ref(Number(route.params.id));
 
-// declare price range for filter by product price
+const routeSlugName = ref(route.params.slug);
+
+console.log(routeSlugName.value);
+
+// reactive a variable for store filter data 
+const filterProducts = ref([]);
+
+
 const priceRanges = [
+    { label: 'No Filter', min: 0, max: 1000},
     { label: '$0 to $10', min: 0, max: 10 },
     { label: '$11 to $20', min: 11, max: 20 },
     { label: '$21 to $30', min: 21, max: 30 },
@@ -31,9 +30,17 @@ const priceRanges = [
     { label: '$301 to $400', min: 301, max: 400 },
 ];
 
-// reactive price filter value
 const selectedPrice = ref(null);
 
+// filter products which id match 
+const filterProduct = () => {
+    filterProducts.value = products.value.filter(product =>
+        product.parent_cat_id === routeParamsId.value ||
+        product.sub_cat_id === routeParamsId.value ||
+        product.sub_sub_cat_id === routeParamsId.value ||
+        product.sub_sub_sub_cat_id === routeParamsId.value
+    );
+}
 // reactivation page for pagination 
 const page = ref(1);
 
@@ -41,12 +48,11 @@ const page = ref(1);
 const itemsPerPage = 8;
 
 // finding how much product in the array and division by 8
-const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
+const totalPages = computed(() => Math.ceil(filterProducts.value.length / itemsPerPage));
 
-// paginate the products array 
 const paginatedProducts = computed(() => {
-    let filtered = products.value;
-    // Apply price filter
+    let filtered = filterProducts.value;
+    // // Apply price filter
     if (selectedPrice.value !== null) {
         filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
     }
@@ -55,6 +61,21 @@ const paginatedProducts = computed(() => {
     const endIndex = startIndex + itemsPerPage;
     return filtered.slice(startIndex, endIndex);
 
+});
+
+// destructure get api handler for using 
+const { getProducts, products } = getDataFromCentralApiFile();
+
+// if use separate api must use watchEffect otherwise you get warning
+watchEffect(() => {
+    routeParamsId.value = Number(route.params.id);
+    routeSlugName.value = route.params.slug;
+    filterProduct();
+});
+// call the api 
+onMounted(async () => {
+    await getProducts();
+    filterProduct();
 });
 
 // handler for pagination button
@@ -67,10 +88,11 @@ const goToPage = (newPage) => {
 </script>
 
 <template>
+    <!-- card section are here  -->
     <section class="card-container">
         <div class="component-info-div">
-            <h6><span>{{ products.length }}</span> Products Found</h6>
-            <p>Products > Category > Products</p>
+            <h6><span>{{ filterProducts.length }}</span> Products Found</h6>
+            <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p>
         </div>
         <div class="row g-4">
             <div class="col-md-3">
@@ -85,16 +107,10 @@ const goToPage = (newPage) => {
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <section class="price-section">
-                                        <label 
-                                        v-for="(range, index) in priceRanges" 
-                                        :key="index"
+                                    <label v-for="(range, index) in priceRanges" :key="index"
                                         class="d-flex align-items-center mb-2">
-                                        <input 
-                                        v-model="selectedPrice" 
-                                        type="radio" 
-                                        name="priceRanges" 
-                                        :value="range"
-                                        id="'price-' + index">
+                                        <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range"
+                                            id="'price-' + index">
                                         <p class="ms-2">{{ range.label }}</p>
                                     </label>
                                 </section>
@@ -110,12 +126,7 @@ const goToPage = (newPage) => {
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until
-                                the collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                
                             </div>
                         </div>
                     </div>
@@ -128,12 +139,7 @@ const goToPage = (newPage) => {
                         </h2>
                         <div id="collapseThree" class="accordion-collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                
                             </div>
                         </div>
                     </div>
@@ -147,7 +153,6 @@ const goToPage = (newPage) => {
                 </div>
             </div>
         </div>
-
         <div class="pagination-style mt-3">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -170,8 +175,8 @@ const goToPage = (newPage) => {
                 </ul>
             </nav>
         </div>
+
     </section>
-    <!-- pagination div  -->
 </template>
 
 <style scoped>
