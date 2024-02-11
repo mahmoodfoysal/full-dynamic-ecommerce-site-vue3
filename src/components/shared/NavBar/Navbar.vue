@@ -5,16 +5,26 @@ import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
 import getDataFromCentralApiFile from '../../../API/All_API.js';
 
+// destructure get categpory api for mount 
 const { getCategories, categories } = getDataFromCentralApiFile();
 
-onMounted(getCategories);
+// mount the category items 
+onMounted(async () => {
+    await getCategories()
+});
 
+// declare a variable for using pinia store 
 const store = useStore();
+
+// declare a reactive variable for toggle category bar 
 const showSidebar = ref(false);
 
+// declare a variable user where store the localStorage data 
 const user = ref(JSON.parse(window.localStorage.getItem('user-info')));
 
+// event handler for log out and kill the session 
 const handleLogout = () => {
+    // remove item from the localStorage 
     localStorage.removeItem('user-info');
     store.setUser(null);
     if (user.value) {
@@ -22,6 +32,7 @@ const handleLogout = () => {
     }
 }
 
+// call a computed property for show cart how many cart items added 
 const cartCount = computed(() => {
     return Object.values(store.cartItem).length || 0
 })

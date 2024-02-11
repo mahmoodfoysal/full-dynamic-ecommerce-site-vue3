@@ -3,6 +3,7 @@
 </script>
 
 <template>
+    <!-- contact page section  -->
     <section class="contact-page">
         <div class="client-text">
             <span class="material-icons">

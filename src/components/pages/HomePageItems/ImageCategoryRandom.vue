@@ -4,7 +4,9 @@ import getDataFromCentralApiFile from '/src/API/All_API.js';
 
 const {GetCatImg, catImgData} = getDataFromCentralApiFile();
 
-onMounted(GetCatImg)
+onMounted(async () => {
+    await GetCatImg();
+})
 
 </script>
 

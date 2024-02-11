@@ -1,14 +1,8 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/css';
-
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
-
-// import required modules
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 // Mousewheel its work for mouse wheel sliding 
 const modules = [Navigation, Pagination, Keyboard];
@@ -20,7 +14,8 @@ const modules = [Navigation, Pagination, Keyboard];
     <h2>Electronics</h2>
     <swiper :mousewheel="true" :navigation="true" :keyboard="true" :slidesPerView="1" :spaceBetween="30" :pagination="{
       clickable: true,
-    }" :breakpoints="{
+    }" 
+    :breakpoints="{
   '640': {
     slidesPerView: 1,
     spaceBetween: 20,

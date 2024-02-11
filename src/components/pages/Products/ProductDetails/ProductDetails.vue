@@ -4,20 +4,24 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router';
 import { useStore } from '/src/stores/TaskStore.js';
 
+// define route for useing route 
 const route = useRoute();
-const routeParamsId = ref(Number(route.params.id));
-const filterProducts = ref([]);
 
+// set the id from the url 
+const routeParamsId = ref(Number(route.params.id));
+
+// destructure the data from the central api file 
 const {getSingleProduct, singleProduct} = getDataFromCentralApiFile();
 
-// add to cart 
-
+// call pinia store and set in the variable store for using pinia store
 const store = useStore();
 
+// call cart from pinia store 
 const cart = computed(() => {
     return Object(store.cartItem)
 })
 
+// call cart item from pinia store 
 const cartItem = computed(() => {
     return Object.values(store.cartItem);
 })

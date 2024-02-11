@@ -2,8 +2,11 @@
 import { toRefs, defineProps } from 'vue';
 import { useStore } from '@/stores/TaskStore.js';
 import { RouterLink } from 'vue-router';
+
+// call store from pinia store and set a varible which name store for access pinia store 
 const store = useStore();
 
+// define props which data comes from the parent file 
 const props = defineProps({
   productItem: {
     type: Object,
@@ -11,33 +14,43 @@ const props = defineProps({
   }
 });
 
+// reactive the props data 
 const { productItem } = toRefs(props);
 
+// event handler for product add to the cart 
 const handleAddToCart = (product) => {
+  // destructure products data for set to the cart 
   const { pro_name, price, pro_image, pro_id } = product;
+  // declare a object for store in the localStorage 
   let item = {
     pro_name,
     price,
     pro_image,
     pro_id,
   }
-
+  // check shopping cart data have or empty 
   let shopping_cart = getDb() || {};
 
+  // if product have the localStorage then his quantity incease by one 
   if (shopping_cart[item.pro_id]) {
     shopping_cart[item.pro_id].quantity += 1;
-  } else {
+  } 
+  // otherwise new item add in the storage and his quantity is 1 
+  else {
     item.quantity = 1;
     shopping_cart[item.pro_id] = item;
   }
+  // update the database who store data to the localStorage 
   updateDb(shopping_cart);
 }
 
+// get data from localStorage 
 const getDb = () => {
   const cartData = localStorage.getItem('shopping_cart');
   return cartData ? JSON.parse(cartData) : null;
 }
 
+// update data to the localStorage 
 const updateDb = (cart) => {
   localStorage.setItem('shopping_cart', JSON.stringify(cart));
   store.setCartItem(cart);

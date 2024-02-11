@@ -4,26 +4,32 @@ import ProductCard from '../Products/ProductCard/ProductCard.vue';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useRoute } from 'vue-router';
 
+// call a variable which name route and initial using vue router 
 const route = useRoute();
-const routeParamsId = ref(Number(route.params.id));
+
+// find the id from url 
+const routeParamsId = ref(Number(route.params.id));''
+
+// reactive a variable for store filter data 
 const filterProducts = ref([]);
 
-const {getProducts, products} = getDataFromCentralApiFile();
-
+// filter products which id match 
 const filterProduct = () => {
     filterProducts.value = products.value.filter(product => product.parent_cat_id === routeParamsId.value);
 }
+
+// destructure get api handler for using 
+const {getProducts, products} = getDataFromCentralApiFile();
 
 // if use separate api must use watchEffect otherwise you get warning
 watchEffect(() => {
     routeParamsId.value = Number(route.params.id);
     filterProduct();
 });
-
+// call the api 
 onMounted(async () => {
     await getProducts();
     filterProduct();
-
 });
 
 </script>

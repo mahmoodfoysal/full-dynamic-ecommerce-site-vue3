@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
 import router from '@/router/router.js';
 
-
+// call api 
 onMounted(() => {
     let userInfo = localStorage.getItem('user-info');
     if (!userInfo) {
@@ -12,17 +12,30 @@ onMounted(() => {
     }
 })
 
+// call pinia store and set a variable store 
 const store = useStore();
 
+// call computed for real time data from the pinia store 
 const cart = computed(() => {
     return Object(store.cartItem)
 })
 
+// call cart item for real time data from the pinia store 
 const cartItem = computed(() => {
     return Object.values(store.cartItem);
 })
 
+// get data from the local storage
+const getDb = () => {
+    const cartData = localStorage.getItem('shopping_cart');
+    return cartData ? JSON.parse(cartData) : null;
+}
 
+// update lcoal storage
+const updateDb = (cart) => {
+    localStorage.setItem('shopping_cart', JSON.stringify(cart));
+    store.setCartItem(cart);
+}
 
 // event handler for increase product 
 const handleIncrementQuantity = (id) => {
@@ -69,18 +82,6 @@ const handleRemoveItem = (id) => {
     updateDb(shopping_cart);
 }
 
-// get data from the local storage
-const getDb = () => {
-    const cartData = localStorage.getItem('shopping_cart');
-    return cartData ? JSON.parse(cartData) : null;
-}
-
-// update lcoal storage 
-const updateDb = (cart) => {
-    localStorage.setItem('shopping_cart', JSON.stringify(cart));
-    store.setCartItem(cart);
-}
-
 // calculate subtotal 
 let subTotal = computed(() => {
     const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
@@ -94,10 +95,12 @@ const vatTotal = computed(() => {
     return subTotal.value * 0.15;
 })
 
+// calculate delivary fee 
 let delivaryFee = computed(() => {
     return 8;
 })
 
+// calculate total amount 
 let totalAmount = computed(() => {
     return subTotal.value + vatTotal.value + delivaryFee.value;
 })

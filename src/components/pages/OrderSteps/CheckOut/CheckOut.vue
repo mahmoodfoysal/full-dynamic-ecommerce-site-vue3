@@ -3,10 +3,22 @@ import { computed, onMounted, reactive } from 'vue';
 import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
 import getDataFromCentralApiFile from '@/API/All_API.js';
+
+// destructure event handler from central api 
 const { createOrders } = getDataFromCentralApiFile();
 
+// call the api 
+onMounted(() => {
+    let userInfo = localStorage.getItem('user-info');
+    if (!userInfo) {
+        router.push({ name: 'Login' })
+    };
+});
+
+// call pinia store 
 const store = useStore();
 
+// reactive for after input data store to the database
 let customerInfo = reactive({
     fullName: store.user.fullName,
     email: store.user.email,
@@ -38,31 +50,36 @@ let customerInfo = reactive({
 
 });
 
+// event handler for submit order 
 const handleOrderSubmit = async () => {
     await createOrders(customerInfo)
     router.push({ name: 'Home' })
     store.setCartItem([]);
-}
+};
 
-onMounted(() => {
-    let userInfo = localStorage.getItem('user-info');
-    if (!userInfo) {
-        router.push({ name: 'Login' })
-    };
-    
-})
-
+// call computed for finding real time cart data 
 const cart = computed(() => {
     return Object(store.cartItem)
 })
 
+// call computed cart item for calculation 
 const cartItem = computed(() => {
     return Object.values(store.cartItem);
 })
 
+// get data from the local storage
+const getDb = () => {
+    const cartData = localStorage.getItem('shopping_cart');
+    return cartData ? JSON.parse(cartData) : null;
+}
 
+// update lcoal storage 
+const updateDb = (cart) => {
+    localStorage.setItem('shopping_cart', JSON.stringify(cart));
+    store.setCartItem(cart);
+}
 
-// event handler for increase product 
+// event handler for increase product quantity
 const handleIncrementQuantity = (id) => {
     let shopping_cart = getDb() || {};
     if (shopping_cart[id]) {
@@ -107,17 +124,7 @@ const handleRemoveItem = (id) => {
     updateDb(shopping_cart);
 }
 
-// get data from the local storage
-const getDb = () => {
-    const cartData = localStorage.getItem('shopping_cart');
-    return cartData ? JSON.parse(cartData) : null;
-}
-
-// update lcoal storage 
-const updateDb = (cart) => {
-    localStorage.setItem('shopping_cart', JSON.stringify(cart));
-    store.setCartItem(cart);
-}
+// *******************************calculation section****************************
 
 // calculate subtotal 
 let subTotal = computed(() => {
@@ -132,10 +139,12 @@ const vatTotal = computed(() => {
     return subTotal.value * 0.15;
 })
 
+// calculate delivary fee 
 let delivaryFee = computed(() => {
     return 8;
 })
 
+// calculate total amount 
 let totalAmount = computed(() => {
     return subTotal.value + vatTotal.value + delivaryFee.value;
 })

@@ -3,9 +3,10 @@ import { ref, onMounted, computed } from 'vue';
 import ProductCard from '../ProductCard/ProductCard.vue';
 import axios from 'axios';
 
+// reactive products data which find from the api 
 const products = ref([]);
 
-
+// call api for get product data 
 onMounted(async () => {
     const url = 'http://localhost:3000/products';
     try {
@@ -18,34 +19,37 @@ onMounted(async () => {
     }
 })
 
-// declare price range 
+// declare price range for filter by product price
 const priceRanges = [
     { label: '$0 to $10', min: 0, max: 10 },
     { label: '$11 to $20', min: 11, max: 20 },
     { label: '$21 to $30', min: 21, max: 30 },
     { label: '$31 to $40', min: 31, max: 40 },
+    { label: '$41 to $100', min: 41, max: 100 },
+    { label: '$101 to $200', min: 101, max: 200 },
+    { label: '$201 to $300', min: 201, max: 300 },
+    { label: '$301 to $400', min: 301, max: 400 },
 ];
 
-
-
+// reactive price filter value
 const selectedPrice = ref(null);
 
-// reactivation page variable 
+// reactivation page for pagination 
 const page = ref(1);
 
-// decalare a variable for how much product show at a time 
+// decalare a variable for how much product show at single page
 const itemsPerPage = 8;
 
 // finding how much product in the array and division by 8
 const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
 
+// paginate the products array 
 const paginatedProducts = computed(() => {
     let filtered = products.value;
     // Apply price filter
     if (selectedPrice.value !== null) {
         filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
     }
-
     // Apply pagination
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -53,13 +57,12 @@ const paginatedProducts = computed(() => {
 
 });
 
-// button control by clicking 
+// handler for pagination button
 const goToPage = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages.value) {
         page.value = newPage;
     }
 };
-
 
 </script>
 
@@ -82,7 +85,7 @@ const goToPage = (newPage) => {
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <section class="price-section">
-                                    <label 
+                                        <label 
                                         v-for="(range, index) in priceRanges" 
                                         :key="index"
                                         class="d-flex align-items-center mb-2">
@@ -94,18 +97,6 @@ const goToPage = (newPage) => {
                                         id="'price-' + index">
                                         <p class="ms-2">{{ range.label }}</p>
                                     </label>
-                                    <!-- <label class="d-flex align-items-center mb-2" for="price-2">
-                                        <input v-model="selectedPrice" type="radio" name="radio" value=20 id="price-2">
-                                        <p class="ms-2">$11 to $20 </p>
-                                    </label>
-                                    <label class="d-flex align-items-center mb-2" for="price-3">
-                                        <input v-model="selectedPrice" type="radio" name="radio" value=30 id="price-3">
-                                        <p class="ms-2">$21 to $30 </p>
-                                    </label>
-                                    <label class="d-flex align-items-center mb-2" for="price-4">
-                                        <input v-model="selectedPrice" type="radio" name="radio" value=40 id="price-4">
-                                        <p class="ms-2">$31 to $40 </p>
-                                    </label> -->
                                 </section>
                             </div>
                         </div>
@@ -233,6 +224,8 @@ p {
     color: black !important;
     background-color: none !important;
     box-shadow: none !important;
+    font-weight: 500 !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 .accordion-item {

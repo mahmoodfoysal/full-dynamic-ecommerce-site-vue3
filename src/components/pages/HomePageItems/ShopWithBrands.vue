@@ -1,24 +1,22 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { ref, onMounted } from 'vue';
+import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
+import { onMounted } from 'vue';
 import getDataFromCentralApiFile from '/src/API/All_API.js';
 
-const { getBrands, brands } = getDataFromCentralApiFile();
-
-// import required modules
-import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
 // Mousewheel remove , if u want to add it please add import and modules
 const modules = [Navigation, Keyboard, Autoplay];
 
+// destructure function from central api 
+const { getBrands, brands } = getDataFromCentralApiFile();
+
+// call the api 
 onMounted( async () => {
     await getBrands();
 })
-
 
 </script>
     
@@ -28,22 +26,25 @@ onMounted( async () => {
         <swiper :mousewheel="true" :navigation="true" :keyboard="true" :slidesPerView="1" :spaceBetween="30" :autoplay="{
         delay: 2500,
         disableOnInteraction: false,
-    }" :pagination="{
-    clickable: true,
-}" :breakpoints="{
-    '640': {
+        }" 
+        :pagination="{
+        clickable: true,
+        }" 
+        :breakpoints="{
+        '640': {
         slidesPerView: 1,
         spaceBetween: 20,
-    },
-    '768': {
+        },
+        '768': {
         slidesPerView: 3,
         spaceBetween: 20,
-    },
-    '1024': {
+        },
+        '1024': {
         slidesPerView: 7,
         spaceBetween: 30,
     },
-}" :modules="modules" class="mySwiper">
+}" 
+:modules="modules" class="mySwiper">
         <swiper-slide 
         v-for="(item, index) in brands"
         :key="index"
@@ -52,8 +53,6 @@ onMounted( async () => {
                 <img :src="item?.brand_img" alt="Brand">
             </div>
         </swiper-slide>
-
-
     </swiper>
     </section>
 </template>

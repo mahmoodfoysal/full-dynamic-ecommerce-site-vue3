@@ -1,14 +1,8 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/css';
-
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
-
-// import required modules
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 // Mousewheel its work for mouse wheel sliding 
 const modules = [Navigation, Pagination, Keyboard];
