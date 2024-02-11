@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const products = ref([]);
 
+
 onMounted(async () => {
     const url = 'http://localhost:3000/products';
     try {
@@ -19,19 +20,49 @@ onMounted(async () => {
 
 // pagination code are here 
 
+// finding how much product in the array and division by 8
+const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
+
+const selectedPrice = ref(null);
+
 // decalare a variable for how much product show at a time 
 const itemsPerPage = 8;
 
 // reactivation page variable 
 const page = ref(1);
 
-// finding how much product in the array and division by 8
-const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
-
 const paginatedProducts = computed(() => {
-    const startIndex = (page.value - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return products.value.slice(startIndex, endIndex);
+    let filtered = products.value;
+
+    // Apply price filter
+    if (selectedPrice.value !== null) {
+        if (selectedPrice.value == 10) {
+            filtered = filtered.filter((product) => product.price > 0 && product.price <= 10);
+        }
+        else if (selectedPrice.value == 20) {
+            filtered = filtered.filter((product) => product.price > 11 && product.price <= 20);
+        }
+        else if (selectedPrice.value == 30) {
+            filtered = filtered.filter((product) => product.price > 20 && product.price <= 30);
+        }
+        if (selectedPrice.value == 40) {
+            filtered = filtered.filter((product) => product.price > 30 && product.price <= 40);
+        }
+    }
+
+    // Apply pagination
+
+    // if selectedPrice is not null then all value show wheere are mathced 
+    if (selectedPrice.value !== null) {
+        return filtered
+    }
+    // otherwise all products show with pagination 
+    else {
+        const startIndex = (page.value - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return filtered.slice(startIndex, endIndex);
+    }
+ 
 });
 
 // button control by clicking 
@@ -40,6 +71,7 @@ const goToPage = (newPage) => {
         page.value = newPage;
     }
 };
+
 
 </script>
 
@@ -63,19 +95,19 @@ const goToPage = (newPage) => {
                             <div class="accordion-body">
                                 <section class="price-section">
                                     <label class="d-flex align-items-center mb-2" for="price-1">
-                                        <input type="checkbox" name="radio" id="price-1">
+                                        <input v-model="selectedPrice" type="radio" name="radio" value=10 id="price-1">
                                         <p class="ms-2">$0 to $10 </p>
                                     </label>
                                     <label class="d-flex align-items-center mb-2" for="price-2">
-                                        <input type="checkbox" name="" id="price-2">
+                                        <input v-model="selectedPrice" type="radio" name="radio" value=20 id="price-2">
                                         <p class="ms-2">$11 to $20 </p>
                                     </label>
-                                    <label class="d-flex align-items-center mb-2" for="price-1">
-                                        <input type="checkbox" name="" id="price-1">
+                                    <label class="d-flex align-items-center mb-2" for="price-3">
+                                        <input v-model="selectedPrice" type="radio" name="radio" value=30 id="price-3">
                                         <p class="ms-2">$21 to $30 </p>
                                     </label>
-                                    <label class="d-flex align-items-center mb-2" for="price-1">
-                                        <input type="checkbox" name="" id="price-1">
+                                    <label class="d-flex align-items-center mb-2" for="price-4">
+                                        <input v-model="selectedPrice" type="radio" name="radio" value=40 id="price-4">
                                         <p class="ms-2">$31 to $40 </p>
                                     </label>
                                 </section>
@@ -130,28 +162,21 @@ const goToPage = (newPage) => {
         </div>
 
         <div class="pagination-style mt-3">
-            
+
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li 
-                    @click="goToPage(page - 1)" :disabled="page === 1"
-                    class="page-item">
+                    <li @click="goToPage(page - 1)" :disabled="page === 1" class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li 
-                    @click="goToPage(1)" :disabled="page === 1"
-                    class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li 
-                    @click="goToPage(2)" :disabled="page === 2"
-                    class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li 
-                    @click="goToPage(3)" :disabled="page === 3"
-                    class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li 
-                    @click="goToPage(page + 1)" :disabled="page === totalPages"
-                    class="page-item">
+                    <li @click="goToPage(1)" :disabled="page === 1" class="page-item"><a class="page-link" href="#">1</a>
+                    </li>
+                    <li @click="goToPage(2)" :disabled="page === 2" class="page-item"><a class="page-link" href="#">2</a>
+                    </li>
+                    <li @click="goToPage(3)" :disabled="page === 3" class="page-item"><a class="page-link" href="#">3</a>
+                    </li>
+                    <li @click="goToPage(page + 1)" :disabled="page === totalPages" class="page-item">
                         <a class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>

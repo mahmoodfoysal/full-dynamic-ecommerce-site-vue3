@@ -2,6 +2,14 @@
 import NavBar from '../src/components/shared/NavBar/Navbar.vue';
 import Footer from '../src/components/shared/Footer/Footer.vue';
 import { RouterView } from 'vue-router';
+
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
+
 </script>
 
 <template>
@@ -9,6 +17,12 @@ import { RouterView } from 'vue-router';
 <div class="home-section-style">
   <NavBar></NavBar>
   <RouterView></RouterView>
+  <button 
+    @click="scrollToTop"
+    class="top-scroll-btn"
+    ><span class="material-icons">
+            expand_less
+        </span></button>
   <Footer></Footer>
 </div>
 </template>
@@ -30,6 +44,25 @@ import { RouterView } from 'vue-router';
     overflow-y: scroll;
 }
 } */
+
+
+.top-scroll-btn {
+    position: fixed;
+    bottom: 45px;
+    left: 19px;
+    border-radius: 20px;
+    font-size: 26px;
+    width: 48px;
+    z-index: 1000;
+    background: #FFF;
+    color: #1F5DA0;
+    border: 2px solid #1F5DA0;
+}
+.top-scroll-btn:hover {
+    background: #1F5DA0;
+    border: 2px solid #FFF;
+    color: #FFF;
+}
 
 
 </style>
