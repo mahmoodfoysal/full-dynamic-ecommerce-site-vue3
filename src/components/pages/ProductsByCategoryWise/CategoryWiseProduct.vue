@@ -15,7 +15,7 @@ const filterProducts = ref([]);
 
 // declare price range for radio button 
 const priceRanges = [
-    { label: 'No Filter', min: 0, max: 1000},
+    { label: 'No Filter', min: 0, max: 100000},
     { label: '$0 to $10', min: 0, max: 10 },
     { label: '$11 to $20', min: 11, max: 20 },
     { label: '$21 to $30', min: 21, max: 30 },
@@ -40,6 +40,22 @@ const filterProduct = () => {
 }
 // reactivation page for pagination 
 const page = ref(1);
+
+// decclare brand name 
+const brandName = [
+    { id: 'bata', label: 'Bata', value: 'bata' },
+    { id: 'apex', label: 'Apex', value: 'apex' },
+    { id: 'nike', label: 'Nike', value: 'nike' },
+    { id: 'adidas', label: 'Adidas', value: 'adidas' },
+    { id: 'easy', label: 'Easy', value: 'easy' },
+    { id: 'one-plus', label: 'One Plus', value: 'one plus' },
+    { id: 'realme', label: 'Realme', value: 'realme' },
+    { id: 'hp', label: 'HP', value: 'hp' },
+    { id: 'lenovo', label: 'Lenovo', value: 'lenovo' },
+];
+
+// decalre reactive value for set brand value 
+const selectedBrand = ref(null)
 
 // decalare a variable for how much product show at single page
 const itemsPerPage = 8;
@@ -96,10 +112,32 @@ const goToPage = (newPage) => {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Price
+                                Brand
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <section class="price-section">
+                                    <label 
+                                    v-for="(brand, index) in brandName" 
+                                    :key="index"
+                                    class="d-flex align-items-center mb-2">
+                                    <input type="checkbox" name="priceRanges"
+                                    id="'brand-' + index">
+                                    <p class="ms-2">{{ brand.label }}</p>
+                                    </label>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Price
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <section class="price-section">
                                     <label v-for="(range, index) in priceRanges" :key="index"
@@ -112,20 +150,10 @@ const goToPage = (newPage) => {
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Accordion Item #2
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
+
+                    <!-- accrodion items  -->
+
+                    <!-- <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -137,7 +165,8 @@ const goToPage = (newPage) => {
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
                 </div>
             </div>
             <div class="col-md-9">

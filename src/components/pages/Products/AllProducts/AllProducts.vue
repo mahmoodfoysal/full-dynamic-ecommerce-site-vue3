@@ -21,6 +21,7 @@ onMounted(async () => {
 
 // declare price range for filter by product price
 const priceRanges = [
+    { label: 'No Filter', min: 0, max: 100000},
     { label: '$0 to $10', min: 0, max: 10 },
     { label: '$11 to $20', min: 11, max: 20 },
     { label: '$21 to $30', min: 21, max: 30 },
@@ -33,6 +34,20 @@ const priceRanges = [
 
 // reactive price filter value
 const selectedPrice = ref(null);
+
+// decclare brand name 
+const brandName = [
+    { id: 'bata', label: 'Bata', value: 'bata' },
+    { id: 'apex', label: 'Apex', value: 'apex' },
+    { id: 'nike', label: 'Nike', value: 'nike' },
+    { id: 'adidas', label: 'Adidas', value: 'adidas' },
+    { id: 'easy', label: 'Easy', value: 'easy' },
+    { id: 'one-plus', label: 'One Plus', value: 'one plus' },
+    { id: 'realme', label: 'Realme', value: 'realme' },
+];
+
+// decalre reactive value for set brand value 
+const selectedBrand = ref(null);
 
 // reactivation page for pagination 
 const page = ref(1);
@@ -79,23 +94,19 @@ const goToPage = (newPage) => {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Price
+                                Brands
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <section class="price-section">
-                                        <label
-                                        v-for="(range, index) in priceRanges" 
-                                        :key="index"
-                                        class="d-flex align-items-center mb-2">
-                                        <input 
-                                        v-model="selectedPrice" 
-                                        type="radio" 
-                                        name="priceRanges" 
-                                        :value="range"
-                                        id="'price-' + index">
-                                        <p class="ms-2">{{ range.label }}</p>
+                                    <label 
+                                    v-for="(brand, index) in brandName" 
+                                    :key="index"
+                                    class="d-flex align-items-center mb-2">
+                                    <input type="checkbox" name="priceRanges"
+                                    id="'brand-' + index">
+                                    <p class="ms-2">{{ brand.label }}</p>
                                     </label>
                                 </section>
                             </div>
@@ -105,21 +116,26 @@ const goToPage = (newPage) => {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Accordion Item #2
+                                Price
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until
-                                the collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                <section class="price-section">
+                                    <label v-for="(range, index) in priceRanges" :key="index"
+                                        class="d-flex align-items-center mb-2">
+                                        <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range"
+                                            id="'price-' + index">
+                                        <p class="ms-2">{{ range.label }}</p>
+                                    </label>
+                                </section>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
+
+                    <!-- accrodion 3  -->
+
+                    <!-- <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -128,15 +144,10 @@ const goToPage = (newPage) => {
                         </h2>
                         <div id="collapseThree" class="accordion-collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-md-9">
@@ -260,5 +271,9 @@ p {
 input,
 p {
     cursor: pointer;
+}
+.price-section {
+    height: 230px !important;
+    overflow-y: scroll;
 }
 </style>
