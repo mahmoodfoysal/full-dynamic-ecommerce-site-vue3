@@ -22,29 +22,9 @@ const routes = [
       component: () => import('../components/authentication/SignUp/SignUp.vue')
     },
     {
-      path: '/parent-category/:id/:slug',
-      name: 'ParentCategoryProducts',
-      component: () => import('../components/pages/ProductsByCategoryWise/ProductByParentCategory.vue')
-    },
-    {
-      path: '/sub-category/:id/:slug',
-      name: 'SubCategoryProducts',
-      component: () => import('../components/pages/ProductsByCategoryWise/ProductBySubCategory.vue'),
-    },
-    {
-      path: '/sub-sub-category/:id/:slug',
-      name: 'SubSubCategoryProducts',
-      component: () => import('../components/pages/ProductsByCategoryWise/ProductBySubSubCategory.vue'),
-    },
-    {
-      path: '/sub-sub-sub-category/:id/:slug',
-      name: 'SubSubSubCategoryProducts',
-      component: () => import('../components/pages/ProductsByCategoryWise/ProductsBySubSubSubCategory.vue')
-    },
-    {
       path: '/categorys/:id/:slug',
       name: 'CategoryProducts',
-      component: () => import('../components/pages/ProductsByCategoryWise/Category.vue')
+      component: () => import('../components/pages/ProductsByCategoryWise/CategoryWiseProduct.vue')
     },
     {
       path: '/cart',

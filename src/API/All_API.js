@@ -13,7 +13,7 @@ export default function getDataFromCentralApiFile() {
     // get api for card category image for home page 
     const GetCatImg = async () => {
         catImgData.value = []
-        const url = 'http://localhost:3000/squreCartForHome';
+        const url = 'http://localhost:3000/squreCardForHome';
         try {
             const res = await axios(url);
             const allCatImages = res.data;

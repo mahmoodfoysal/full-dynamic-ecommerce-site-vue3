@@ -10,14 +10,10 @@ const route = useRoute();
 // find the id from url 
 const routeParamsId = ref(Number(route.params.id));
 
-const routeSlugName = ref(route.params.slug);
-
-console.log(routeSlugName.value);
-
 // reactive a variable for store filter data 
 const filterProducts = ref([]);
 
-
+// declare price range for radio button 
 const priceRanges = [
     { label: 'No Filter', min: 0, max: 1000},
     { label: '$0 to $10', min: 0, max: 10 },
@@ -30,6 +26,7 @@ const priceRanges = [
     { label: '$301 to $400', min: 301, max: 400 },
 ];
 
+// declare reactive variable for radio button v-model 
 const selectedPrice = ref(null);
 
 // filter products which id match 
@@ -60,7 +57,6 @@ const paginatedProducts = computed(() => {
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return filtered.slice(startIndex, endIndex);
-
 });
 
 // destructure get api handler for using 
@@ -69,7 +65,6 @@ const { getProducts, products } = getDataFromCentralApiFile();
 // if use separate api must use watchEffect otherwise you get warning
 watchEffect(() => {
     routeParamsId.value = Number(route.params.id);
-    routeSlugName.value = route.params.slug;
     filterProduct();
 });
 // call the api 

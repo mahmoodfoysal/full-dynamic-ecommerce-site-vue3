@@ -85,7 +85,7 @@ const goToPage = (newPage) => {
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <section class="price-section">
-                                        <label 
+                                        <label
                                         v-for="(range, index) in priceRanges" 
                                         :key="index"
                                         class="d-flex align-items-center mb-2">
