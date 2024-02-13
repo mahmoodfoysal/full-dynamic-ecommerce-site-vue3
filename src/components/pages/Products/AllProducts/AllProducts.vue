@@ -34,6 +34,8 @@ const priceRanges = [
 // reactive price filter value
 const selectedPrice = ref(null);
 
+const rangePrice = ref({ min: 1, max: 500 });
+
 // decclare brand name 
 const brandName = [
     { id: 'bata', label: 'Bata', value: 'Bata', name:'Bata' },
@@ -47,11 +49,6 @@ const brandName = [
 
 // decalre reactive value for set brand value 
 const selectedBrand = ref([]);
-console.log(selectedBrand)
-
-// const checkedBrandNames = computed(() => {
-//   return selectedBrand.value.map(brandName => brandName.name);
-// });
 
 // reactivation page for pagination 
 const page = ref(1);
@@ -62,22 +59,27 @@ const itemsPerPage = 8;
 // finding how much product in the array and division by 8
 const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
 
-// paginate the products array 
+// pagination and filter all value 
 const paginatedProducts = computed(() => {
-    let filtered = products.value;
-    // Apply price filter
-    if (selectedPrice.value !== null) {
-        filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
-    }
-    else  {
-        if (selectedBrand.value.length > 0) {
-      filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
-    }
-    }
-    // Apply pagination
-    const startIndex = (page.value - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return filtered.slice(startIndex, endIndex);
+  let filtered = products.value;
+
+  // Apply price filter
+  if (selectedPrice.value !== null && (selectedPrice.value.min < selectedPrice.value.max)) {
+    filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
+    // apply sliding filter 
+  } else if (rangePrice.value.min < rangePrice.value.max) {
+    filtered = filtered.filter((product) => product.price > rangePrice.value.min && product.price <= rangePrice.value.max);
+  }
+
+  // Apply brand filter
+  if (selectedBrand.value.length > 0) {
+    filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
+  }
+
+  // Apply pagination
+  const startIndex = (page.value - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  return filtered.slice(startIndex, endIndex);
 });
 
 // handler for pagination button
@@ -141,7 +143,7 @@ const goToPage = (newPage) => {
                                         <p class="ms-2">{{ range.label }}</p>
                                     </label>
                                     <label for="rangeInput">Select a value:
-                                        <input type="range" v-model="selectedPrice" :min=0 :max=100 />
+                                        <input type="range" v-model="rangePrice.min" :min="1" :max="500" />
                                     </label>
                                 </section>
                             </div>
