@@ -18,6 +18,20 @@ onMounted(async () => {
     }
 })
 
+// decclare brand name 
+const brandName = [
+    { id: 'bata', label: 'Bata', value: 'Bata', name:'Bata' },
+    { id: 'apex', label: 'Apex', value: 'Apex', name:'Apex' },
+    { id: 'nike', label: 'Nike', value: 'Nike', name: 'Nike' },
+    { id: 'adidas', label: 'Adidas', value: 'Adidas', name: 'Adidas'},
+    { id: 'easy', label: 'Easy', value: 'Easy', name: 'Easy' },
+    { id: 'one-plus', label: 'One Plus', value: 'One plus', name:'onePlus' },
+    { id: 'realme', label: 'Realme', value: 'realme', value: 'Realme' },
+];
+
+// decalre reactive value for set brand value 
+const selectedBrand = ref([]);
+
 // declare price range for filter by product price
 const priceRanges = [
     { label: 'No Filter', min: 0, max: 100000 },
@@ -34,21 +48,8 @@ const priceRanges = [
 // reactive price filter value
 const selectedPrice = ref(null);
 
+// sliding price
 const rangePrice = ref({ min: 1, max: 500 });
-
-// decclare brand name 
-const brandName = [
-    { id: 'bata', label: 'Bata', value: 'Bata', name:'Bata' },
-    { id: 'apex', label: 'Apex', value: 'Apex', name:'Apex' },
-    { id: 'nike', label: 'Nike', value: 'Nike', name: 'Nike' },
-    { id: 'adidas', label: 'Adidas', value: 'Adidas', name: 'Adidas'},
-    { id: 'easy', label: 'Easy', value: 'Easy', name: 'Easy' },
-    { id: 'one-plus', label: 'One Plus', value: 'One plus', name:'onePlus' },
-    { id: 'realme', label: 'Realme', value: 'realme', value: 'Realme' },
-];
-
-// decalre reactive value for set brand value 
-const selectedBrand = ref([]);
 
 // reactivation page for pagination 
 const page = ref(1);
@@ -66,8 +67,9 @@ const paginatedProducts = computed(() => {
   // Apply price filter
   if (selectedPrice.value !== null && (selectedPrice.value.min < selectedPrice.value.max)) {
     filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
-    // apply sliding filter 
-  } else if (rangePrice.value.min < rangePrice.value.max) {
+  } 
+  // apply sliding filter 
+  else if (rangePrice.value.min < rangePrice.value.max) {
     filtered = filtered.filter((product) => product.price > rangePrice.value.min && product.price <= rangePrice.value.max);
   }
 
