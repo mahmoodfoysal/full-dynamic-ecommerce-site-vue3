@@ -12,7 +12,6 @@ onMounted(async () => {
     try {
         const res = await axios(url);
         products.value = res.data;
-        // console.log(res.data);
     }
     catch (err) {
         console.log(err);
@@ -21,7 +20,7 @@ onMounted(async () => {
 
 // declare price range for filter by product price
 const priceRanges = [
-    { label: 'No Filter', min: 0, max: 100000},
+    { label: 'No Filter', min: 0, max: 100000 },
     { label: '$0 to $10', min: 0, max: 10 },
     { label: '$11 to $20', min: 11, max: 20 },
     { label: '$21 to $30', min: 21, max: 30 },
@@ -37,17 +36,22 @@ const selectedPrice = ref(null);
 
 // decclare brand name 
 const brandName = [
-    { id: 'bata', label: 'Bata', value: 'bata' },
-    { id: 'apex', label: 'Apex', value: 'apex' },
-    { id: 'nike', label: 'Nike', value: 'nike' },
-    { id: 'adidas', label: 'Adidas', value: 'adidas' },
-    { id: 'easy', label: 'Easy', value: 'easy' },
-    { id: 'one-plus', label: 'One Plus', value: 'one plus' },
-    { id: 'realme', label: 'Realme', value: 'realme' },
+    { id: 'bata', label: 'Bata', value: 'Bata', name:'Bata' },
+    { id: 'apex', label: 'Apex', value: 'Apex', name:'Apex' },
+    { id: 'nike', label: 'Nike', value: 'Nike', name: 'Nike' },
+    { id: 'adidas', label: 'Adidas', value: 'Adidas', name: 'Adidas'},
+    { id: 'easy', label: 'Easy', value: 'Easy', name: 'Easy' },
+    { id: 'one-plus', label: 'One Plus', value: 'One plus', name:'onePlus' },
+    { id: 'realme', label: 'Realme', value: 'realme', value: 'Realme' },
 ];
 
 // decalre reactive value for set brand value 
-const selectedBrand = ref(null);
+const selectedBrand = ref([]);
+console.log(selectedBrand)
+
+// const checkedBrandNames = computed(() => {
+//   return selectedBrand.value.map(brandName => brandName.name);
+// });
 
 // reactivation page for pagination 
 const page = ref(1);
@@ -65,11 +69,15 @@ const paginatedProducts = computed(() => {
     if (selectedPrice.value !== null) {
         filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
     }
+    else  {
+        if (selectedBrand.value.length > 0) {
+      filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
+    }
+    }
     // Apply pagination
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return filtered.slice(startIndex, endIndex);
-
 });
 
 // handler for pagination button
@@ -94,19 +102,22 @@ const goToPage = (newPage) => {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Brands
+                                Brands {{ selectedBrand }}
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <section class="price-section">
-                                    <label 
-                                    v-for="(brand, index) in brandName" 
-                                    :key="index"
-                                    class="d-flex align-items-center mb-2">
-                                    <input type="checkbox" name="priceRanges"
-                                    id="'brand-' + index">
-                                    <p class="ms-2">{{ brand.label }}</p>
+                                    <label :for="brand.id" v-for="(brand, index) in brandName" :key="index"
+                                        class="d-flex align-items-center mb-2">
+                                        <input 
+                                        v-model="selectedBrand"  
+                                        type="checkbox" 
+                                        :id="brand.id"
+                                        :value="brand.name"
+                                        :name="brand.name" 
+                                        >
+                                        <p class="ms-2">{{ brand.label }}</p>
                                     </label>
                                 </section>
                             </div>
@@ -125,8 +136,12 @@ const goToPage = (newPage) => {
                                     <label v-for="(range, index) in priceRanges" :key="index"
                                         class="d-flex align-items-center mb-2">
                                         <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range"
-                                            id="'price-' + index">
+                                            id="'price-' + index"
+                                            >
                                         <p class="ms-2">{{ range.label }}</p>
+                                    </label>
+                                    <label for="rangeInput">Select a value:
+                                        <input type="range" v-model="selectedPrice" :min=0 :max=100 />
                                     </label>
                                 </section>
                             </div>
@@ -272,6 +287,7 @@ input,
 p {
     cursor: pointer;
 }
+
 .price-section {
     height: 230px !important;
     overflow-y: scroll;
