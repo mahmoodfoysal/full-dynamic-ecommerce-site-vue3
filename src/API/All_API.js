@@ -77,7 +77,6 @@ export default function getDataFromCentralApiFile() {
       try {
         const res = await axios(url);
         singleProduct.value = res.data[0]
-        console.log(res.data[0]);
       }
       catch(err) {
 

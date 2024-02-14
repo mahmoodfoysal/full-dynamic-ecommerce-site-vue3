@@ -53,6 +53,7 @@ onMounted(() => {
             type="email" 
             name="" 
             id="Login" 
+            required
             placeholder="Enter Your Email">
 
             <label for="password">Password</label>
@@ -61,6 +62,7 @@ onMounted(() => {
             type="password" 
             name="" 
             id="password" 
+            required
             placeholder="Enter Your Password">
             <button
             @click="handleLogin" 

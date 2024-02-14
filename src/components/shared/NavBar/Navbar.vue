@@ -120,7 +120,7 @@ const cartCount = computed(() => {
                             <small>{{ cartCount }}</small>
                         </div>
 
-                        <span class="material-icons me-3 icon-style">person</span>
+                        <img v-if="store.user !== null" :src="store.user.photoURL" alt="Avatar" class="avatar">
 
                         <div>
 
@@ -224,6 +224,14 @@ p {
     padding: 0;
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
 
 .toogle-style {
     cursor: pointer;
@@ -264,7 +272,7 @@ p {
 
 .icon-style {
     color: #FFFFFF;
-    font-size: 39px;
+    font-size: 37px;
     cursor: pointer;
 }
 
@@ -294,7 +302,7 @@ p {
 .sidebar-style {
     width: 250px;
     position: fixed;
-    top: 125px;
+    top: 110px;
     left: 23px;
     background: #FFF;
     z-index: 1030;
@@ -351,7 +359,7 @@ p {
     position: fixed;
     left: 273px;
     width: 200px;
-    top: 126px;
+    top: 112px;
     background-color: #FFF;
     width: 265px;
     height: 397px;
