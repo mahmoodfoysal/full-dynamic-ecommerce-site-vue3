@@ -45,7 +45,7 @@ const cartCount = computed(() => {
     <section class="sticky-top">
         <nav class="navbar navbar-expand-lg bg-body-tertiary first-navbar-style">
             <div class="container-fluid">
-                <RouterLink :to="{ name: 'Home' }">
+                <RouterLink :to="{ name: 'Home' }" class="active-link">
                     <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#">E-Commerce</a>
                 </RouterLink>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -128,8 +128,8 @@ const cartCount = computed(() => {
 
 
                         <span v-if="store.user === null" class="d-flex flex-column">
-                            <RouterLink :to="{ name: 'Login' }"><small class="auth-text">Login</small></RouterLink>
-                            <RouterLink :to="{ name: 'Registration' }"><small class="auth-text">Registration</small>
+                            <RouterLink :to="{ name: 'Login' }" class="active-link"><small class="auth-text">Login</small></RouterLink>
+                            <RouterLink :to="{ name: 'Registration' }" class="active-link"><small class="auth-text">Registration</small>
                             </RouterLink>
                         </span>
                         <span v-else class="d-flex flex-column">
@@ -231,7 +231,7 @@ p {
 
 .first-navbar-style {
     background-color: #1F5DA0 !important;
-    height: 87px !important;
+    height: 72px !important;
 }
 
 .second-navbar-style {
@@ -273,13 +273,13 @@ p {
 }
 
 .search-field-style button {
-    width: 59px;
-    height: 35px;
+    width: 55px;
+    height: 33px;
     background: #929292;
     border: none;
     position: absolute;
-    right: 9px;
-    top: 2px;
+    right: 10px;
+    top: 1px;
 }
 
 .search-field-style button span {
@@ -288,6 +288,7 @@ p {
 
 .search-field-style input {
     width: 480px;
+    height: 100%;
 }
 
 .sidebar-style {
@@ -406,7 +407,6 @@ p {
     justify-content: space-between;
 }
 
-
 .dropdown-menu {
     border: none;
     border-radius: 0;
@@ -475,8 +475,8 @@ p {
 .fav-i-back small {
     position: absolute;
     color: white;
-    left: 6px;
-    bottom: 1px;
+    left: 7px;
+    bottom: 2px;
     font-size: 11px;
     z-index: 2;
     font-weight: bold;
@@ -499,8 +499,8 @@ p {
 .cart-i-back small {
     position: absolute;
     color: white;
-    left: 6px;
-    bottom: 1px;
+    left: 7px;
+    bottom: 2px;
     font-size: 11px;
     z-index: 2;
     font-weight: bold;

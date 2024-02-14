@@ -18,20 +18,6 @@ onMounted(async () => {
     }
 })
 
-// decclare brand name 
-const brandName = [
-    { id: 'bata', label: 'Bata', value: 'Bata', name:'Bata' },
-    { id: 'apex', label: 'Apex', value: 'Apex', name:'Apex' },
-    { id: 'nike', label: 'Nike', value: 'Nike', name: 'Nike' },
-    { id: 'adidas', label: 'Adidas', value: 'Adidas', name: 'Adidas'},
-    { id: 'easy', label: 'Easy', value: 'Easy', name: 'Easy' },
-    { id: 'one-plus', label: 'One Plus', value: 'One plus', name:'onePlus' },
-    { id: 'realme', label: 'Realme', value: 'realme', value: 'Realme' },
-];
-
-// decalre reactive value for set brand value 
-const selectedBrand = ref([]);
-
 // declare price range for filter by product price
 const priceRanges = [
     { label: 'No Filter', min: 0, max: 100000 },
@@ -50,6 +36,20 @@ const selectedPrice = ref(null);
 
 // sliding price
 const rangePrice = ref({ min: 1, max: 500 });
+
+// decclare brand name 
+const brandName = [
+    { id: 'bata', label: 'Bata', value: 'Bata', name:'Bata' },
+    { id: 'apex', label: 'Apex', value: 'Apex', name:'Apex' },
+    { id: 'nike', label: 'Nike', value: 'Nike', name: 'Nike' },
+    { id: 'adidas', label: 'Adidas', value: 'Adidas', name: 'Adidas'},
+    { id: 'easy', label: 'Easy', value: 'Easy', name: 'Easy' },
+    { id: 'one-plus', label: 'One Plus', value: 'One plus', name:'onePlus' },
+    { id: 'realme', label: 'Realme', value: 'realme', value: 'Realme' },
+];
+
+// decalre reactive value for set brand value 
+const selectedBrand = ref([]);
 
 // reactivation page for pagination 
 const page = ref(1);
@@ -106,11 +106,36 @@ const goToPage = (newPage) => {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Brands {{ selectedBrand }}
+                                Price
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
+                                <section class="price-section">
+                                    <label for="rangeInput">Select Range:
+                                        <input type="range" v-model="rangePrice.min" :min="1" :max="500" />
+                                    </label>
+                                    <label v-for="(range, index) in priceRanges" :key="index"
+                                        class="d-flex align-items-center mb-2">
+                                        <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range"
+                                            id="'price-' + index"
+                                            >
+                                        <p class="ms-2">{{ range.label }}</p>
+                                    </label>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Brand
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
                                 <section class="price-section">
                                     <label :for="brand.id" v-for="(brand, index) in brandName" :key="index"
                                         class="d-flex align-items-center mb-2">
@@ -122,30 +147,6 @@ const goToPage = (newPage) => {
                                         :name="brand.name" 
                                         >
                                         <p class="ms-2">{{ brand.label }}</p>
-                                    </label>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Price
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <section class="price-section">
-                                    <label v-for="(range, index) in priceRanges" :key="index"
-                                        class="d-flex align-items-center mb-2">
-                                        <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range"
-                                            id="'price-' + index"
-                                            >
-                                        <p class="ms-2">{{ range.label }}</p>
-                                    </label>
-                                    <label for="rangeInput">Select a value:
-                                        <input type="range" v-model="rangePrice.min" :min="1" :max="500" />
                                     </label>
                                 </section>
                             </div>
