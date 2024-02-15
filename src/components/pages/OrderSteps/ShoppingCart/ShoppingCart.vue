@@ -4,13 +4,6 @@ import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
 import router from '@/router/router.js';
 
-// call api 
-onMounted(() => {
-    let userInfo = localStorage.getItem('user-info');
-    if (!userInfo) {
-        router.push({ name: 'Login' })
-    }
-})
 
 // call pinia store and set a variable store 
 const store = useStore();

@@ -7,14 +7,6 @@ import getDataFromCentralApiFile from '@/API/All_API.js';
 // destructure event handler from central api 
 const { createOrders } = getDataFromCentralApiFile();
 
-// call the api 
-onMounted(() => {
-    let userInfo = localStorage.getItem('user-info');
-    if (!userInfo) {
-        router.push({ name: 'Login' })
-    };
-});
-
 // call pinia store 
 const store = useStore();
 
@@ -30,7 +22,7 @@ const cartItem = computed(() => {
 
 // reactive for after input data store to the database
 let customerInfo = reactive({
-    fullName: store.user.fullName,
+    fullName: store.user.displayName,
     email: store.user.email,
     phoneNumber: null,
     city: '',

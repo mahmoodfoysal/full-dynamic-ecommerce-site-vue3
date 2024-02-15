@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue';
 import router from '../../../router/router';
 import { useStore } from '@/stores/TaskStore';
 import initilizationAuthentication from '@/firebase/firebase.init.js';
@@ -12,7 +12,7 @@ const googleProvider = new GoogleAuthProvider();
 // call pinia store and set in the store variable for access the store 
 const store = useStore();
 
-const userInfo = ref(null);
+const getError = ref(null);
 const fullName = ref('');
 const phoneNo = ref(null);
 const photoURL = ref('')
@@ -31,14 +31,38 @@ const handleSignUp = () => {
                 photoURL: photoURL.value,
                 phoneNumber: phoneNo.value,
             })
+            sessionStorage.setItem('user', JSON.stringify(user));
             console.log(user);
         })
         .catch((error) => {
-            const errorCode = error.code;
             const errorMessage = error.message;
+
+            getError.value = errorMessage;
+            console.log(errorMessage)
         });
 
 }
+
+// google login with popup 
+const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            store.setUser(user);
+            sessionStorage.setItem('user', JSON.stringify(user));
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+};
 
 watchEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -53,27 +77,6 @@ watchEffect(() => {
         }
     });
 });
-
-// google login with popup 
-const handleGoogleLogin = () => {
-    const auth = getAuth();
-    signInWithPopup(auth, googleProvider)
-        .then((result) => {
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            const user = result.user;
-            store.setUser(user);
-        }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-        });
-}
 
 </script>
 
@@ -96,6 +99,9 @@ const handleGoogleLogin = () => {
             <input v-model.trim="email" type="email" name="" id="Login" placeholder="Enter Your Email">
             <label for="password">Password</label>
             <input v-model.trim="password" type="password" name="" id="password" placeholder="Enter Your Password">
+            <div v-if="getError !== null" class="alert alert-danger" role="alert">
+                {{ getError }}
+            </div>
             <button @click="handleSignUp" type="button" class="register-btn">
                 Sign Up
             </button>

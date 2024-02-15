@@ -1,8 +1,7 @@
 <script setup>
-import { ref, onMounted, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue';
 import router from '../../../router/router';
 import { useStore } from '@/stores/TaskStore.js';
-
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import initilizationAuthentication from '@/firebase/firebase.init';
 
@@ -13,6 +12,7 @@ const googleProvider = new GoogleAuthProvider();
 // call the pinia store and set in the store value 
 const store = useStore();
 
+const getError = ref(null);
 const email = ref('');
 const password = ref('');
 
@@ -23,13 +23,14 @@ const handleLogin = () => {
             const user = userCredential.user;
             store.setUser(user)
             if (user) {
+                sessionStorage.setItem('user', JSON.stringify(user));
                 router.push({ name: 'Home' });
             }
             console.log(user)
         })
         .catch((error) => {
-            const errorCode = error.code;
             const errorMessage = error.message;
+            getError.value = errorMessage;
         });
 };
 
@@ -41,15 +42,10 @@ const handleGoogleLogin = () => {
             const token = credential.accessToken;
             const user = result.user;
             store.setUser(user);
+            sessionStorage.setItem('user', JSON.stringify(user));
         }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
             const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
+            getError.value = errorMessage
         });
 }
 
@@ -64,7 +60,6 @@ watchEffect(() => {
         }
     });
 });
-
 
 </script>
 
@@ -82,6 +77,9 @@ watchEffect(() => {
 
             <label for="password">Password</label>
             <input v-model.trim="password" type="password" name="" id="password" required placeholder="Enter Your Password">
+            <div v-if="getError !== null" class="alert alert-danger" role="alert">
+                {{ getError }}
+            </div>
             <button @click="handleLogin" type="button" class="singin-btn">
                 Log In
             </button>
