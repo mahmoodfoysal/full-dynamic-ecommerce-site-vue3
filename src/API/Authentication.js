@@ -37,7 +37,7 @@ export const createRegistration = async (registerData) => {
 
 // event handler for login if user have in the database then login
 export const getLogin = async (loginData) => {
-    const url = `http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`
+    const url = `http://localhost:3000/users?email=${loginData.email}&&password=${loginData.password}`
     try {
         const res = await axios(url);
         const response = res.data[0];

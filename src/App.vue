@@ -2,13 +2,28 @@
 import NavBar from '../src/components/shared/NavBar/Navbar.vue';
 import Footer from '../src/components/shared/Footer/Footer.vue';
 import { RouterView } from 'vue-router';
-
+import {onMounted} from 'vue';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useStore } from './stores/TaskStore';
+const store = useStore();
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
 };
+
+
+onMounted(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user.uid;
+            store.setUser(user);
+        } else {
+        }
+    });
+});
 
 </script>
 

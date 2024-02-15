@@ -4,6 +4,10 @@ import router from '../../../router/router'
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
 import getDataFromCentralApiFile from '../../../API/All_API.js';
+import initilizationAuthentication from '@/firebase/firebase.init';
+import { getAuth, signOut } from "firebase/auth";
+
+initilizationAuthentication();
 
 // destructure get categpory api for mount 
 const { getCategories, categories } = getDataFromCentralApiFile();
@@ -24,12 +28,12 @@ const user = ref(JSON.parse(window.localStorage.getItem('user-info')));
 
 // event handler for log out and kill the session 
 const handleLogout = () => {
-    // remove item from the localStorage 
-    localStorage.removeItem('user-info');
-    store.setUser(null);
-    if (user.value) {
-        router.push({ name: 'Home' })
-    }
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        store.setUser(null);
+    }).catch((error) => {
+
+    });
 }
 
 // call a computed property for show cart how many cart items added 
@@ -56,14 +60,12 @@ const cartCount = computed(() => {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <RouterLink 
-                            class="active-link"
-                            :to="{name:'Home'}"><a class="nav-link navbar-text" aria-current="page" href="#">Home</a></RouterLink >
+                            <RouterLink class="active-link" :to="{ name: 'Home' }"><a class="nav-link navbar-text"
+                                    aria-current="page" href="#">Home</a></RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink 
-                            class="active-link"
-                            :to="{name: 'Products'}"><a class="nav-link navbar-text" href="#">Products</a></RouterLink>
+                            <RouterLink class="active-link" :to="{ name: 'Products' }"><a class="nav-link navbar-text"
+                                    href="#">Products</a></RouterLink>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle navbar-text" href="#" role="button" data-bs-toggle="dropdown"
@@ -111,9 +113,7 @@ const cartCount = computed(() => {
 
                         </div>
 
-                        <RouterLink
-                        :to="{name: 'Cart'}"
-                        >
+                        <RouterLink :to="{ name: 'Cart' }">
                             <span class="material-icons me-3 icon-style">shopping_cart</span>
                         </RouterLink>
                         <div class="cart-i-back">
@@ -128,8 +128,10 @@ const cartCount = computed(() => {
 
 
                         <span v-if="store.user === null" class="d-flex flex-column">
-                            <RouterLink :to="{ name: 'Login' }" class="active-link"><small class="auth-text">Login</small></RouterLink>
-                            <RouterLink :to="{ name: 'Registration' }" class="active-link"><small class="auth-text">Registration</small>
+                            <RouterLink :to="{ name: 'Login' }" class="active-link"><small class="auth-text">Login</small>
+                            </RouterLink>
+                            <RouterLink :to="{ name: 'Registration' }" class="active-link"><small
+                                    class="auth-text">Registration</small>
                             </RouterLink>
                         </span>
                         <span v-else class="d-flex flex-column">
@@ -162,10 +164,8 @@ const cartCount = computed(() => {
 
     <!-- nested sidebar  -->
     <div>
-        <nav 
-        @mouseover="showSidebar = true"
-        @mouseout="showSidebar = false"
-        :class="{'d-none': !showSidebar, 'd-block': showSidebar}" class="sidebar-style">
+        <nav @mouseover="showSidebar = true" @mouseout="showSidebar = false"
+            :class="{ 'd-none': !showSidebar, 'd-block': showSidebar }" class="sidebar-style">
             <ul>
                 <li v-for="(parentCat, index) in categories" :key="index" class="dropdown">
                     <RouterLink
@@ -225,11 +225,11 @@ p {
 }
 
 .avatar {
-  vertical-align: middle;
-  width: 41px;
-  height: 41px;
-  border-radius: 50%;
-  margin-right: 16px;
+    vertical-align: middle;
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    margin-right: 16px;
 }
 
 
@@ -513,6 +513,7 @@ p {
     z-index: 2;
     font-weight: bold;
 }
+
 .active-link {
     color: #D9946D !important;
     text-decoration: none;

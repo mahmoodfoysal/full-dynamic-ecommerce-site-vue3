@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { getAuth } from 'firebase/auth';
 
 const routes = [
     { 
       path: '/',
       name: 'Home', 
       component: () => import('../components/pages/Home/Home.vue'),
+      // meta: { requiresAuth: true },
+      
     },
     {
       path: '/products',
@@ -14,7 +17,7 @@ const routes = [
     {
       path: '/login',
       name: 'Login',
-      component: () => import('../components/authentication/Login/Login.vue')
+      component: () => import('../components/authentication/Login/Login.vue'),
     },
     {
       path: '/registration',
@@ -29,26 +32,39 @@ const routes = [
     {
       path: '/cart',
       name: 'Cart',
-      component: () => import('../components/pages/OrderSteps/ShoppingCart/ShoppingCart.vue')
+      component: () => import('../components/pages/OrderSteps/ShoppingCart/ShoppingCart.vue'),
     },
     {
       path: '/check-out',
       name: 'CheckOut',
-      component: () => import('../components/pages/OrderSteps/CheckOut/CheckOut.vue')
+      component: () => import('../components/pages/OrderSteps/CheckOut/CheckOut.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/product-detail/:id/:slug',
       name: 'ProductDetail',
       component: () => import('@/components/pages/Products/ProductDetails/ProductDetails.vue')
     }
-
   ]
 
 const router =createRouter({
-    
     history: createWebHistory(),
     routes, 
     linkActiveClass: 'active-link'
   })
+
+  router.beforeEach((to, from, next) => {
+    const auth = getAuth();
+    if (to.meta.requiresAuth) {
+      if (auth.currentUser) {
+        next();
+      } 
+      else {
+        next('/login');
+      }
+    } else {
+      next();
+    }
+  });
 
   export default router
