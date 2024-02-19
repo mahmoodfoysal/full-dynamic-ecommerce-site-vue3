@@ -3,6 +3,8 @@ import { ref, onMounted, watchEffect, computed } from 'vue';
 import ProductCard from '../Products/ProductCard/ProductCard.vue';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useRoute } from 'vue-router';
+import PriceFilter from '../Filters/PriceFilter.vue';
+import BrandFilter from '../Filters/BrandFilter.vue';
 
 // call a variable which name route and initial using vue router 
 const route = useRoute();
@@ -13,38 +15,28 @@ const routeParamsId = ref(Number(route.params.id));
 // reactive a variable for store filter data 
 const filterProducts = ref([]);
 
-// declare price range for radio button 
-const priceRanges = [
-    { label: 'No Filter', min: 0, max: 100000 },
-    { label: '$0 to $10', min: 0, max: 10 },
-    { label: '$11 to $20', min: 11, max: 20 },
-    { label: '$21 to $30', min: 21, max: 30 },
-    { label: '$31 to $40', min: 31, max: 40 },
-    { label: '$41 to $100', min: 41, max: 100 },
-    { label: '$101 to $200', min: 101, max: 200 },
-    { label: '$201 to $300', min: 201, max: 300 },
-    { label: '$301 to $400', min: 301, max: 400 },
-];
+// reactive price filter value
+const selectedPrice = ref(null);
+
+// event handler for change price 
+const handlePriceSelection = (value) => {
+    selectedPrice.value = value;
+};
 
 // sliding price
 const rangePrice = ref({ min: 1, max: 500 });
 
-// declare reactive variable for radio button v-model 
-const selectedPrice = ref(null);
+const handleSlidePrice = (value) => {
+    rangePrice.value = value;
+}
 
-// decclare brand name 
-const brandName = [
-    { id: 'bata', label: 'Bata', value: 'Bata', name: 'Bata' },
-    { id: 'apex', label: 'Apex', value: 'Apex', name: 'Apex' },
-    { id: 'nike', label: 'Nike', value: 'Nike', name: 'Nike' },
-    { id: 'adidas', label: 'Adidas', value: 'Adidas', name: 'Adidas' },
-    { id: 'easy', label: 'Easy', value: 'Easy', name: 'Easy' },
-    { id: 'one-plus', label: 'One Plus', value: 'One plus', name: 'onePlus' },
-    { id: 'realme', label: 'Realme', value: 'realme', value: 'Realme' },
-];
 
 // decalre reactive value for set brand value 
 const selectedBrand = ref([]);
+
+const handleBrandSelect = (value) => {
+    selectedBrand.value = value;
+}
 
 // filter products which id match 
 const filterProduct = () => {
@@ -129,17 +121,10 @@ const goToPage = (newPage) => {
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <section class="price-section">
-                                    <label for="rangeInput">Select Range:
-                                        <input type="range" v-model="rangePrice.min" :min="1" :max="500" />
-                                    </label>
-                                    <label v-for="(range, index) in priceRanges" :key="index"
-                                        class="d-flex align-items-center mb-2">
-                                        <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range"
-                                            id="'price-' + index">
-                                        <p class="ms-2">{{ range.label }}</p>
-                                    </label>
-                                </section>
+                                <PriceFilter
+                                @price-selected="handlePriceSelection"
+                                @slide-price="handleSlidePrice"
+                                ></PriceFilter>
                             </div>
                         </div>
                     </div>
@@ -152,14 +137,9 @@ const goToPage = (newPage) => {
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <section class="price-section">
-                                    <label :for="brand.id" v-for="(brand, index) in brandName" :key="index"
-                                        class="d-flex align-items-center mb-2">
-                                        <input v-model="selectedBrand" type="checkbox" :id="brand.id" :value="brand.name"
-                                            :name="brand.name">
-                                        <p class="ms-2">{{ brand.label }}</p>
-                                    </label>
-                                </section>
+                                <BrandFilter
+                                @brand-select="handleBrandSelect"
+                                ></BrandFilter>
                             </div>
                         </div>
                     </div>
