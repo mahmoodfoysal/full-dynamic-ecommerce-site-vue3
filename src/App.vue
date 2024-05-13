@@ -34,10 +34,10 @@ onMounted(() => {
   <RouterView></RouterView>
   <button 
     @click="scrollToTop"
-    class="top-scroll-btn"
-    ><span class="material-icons">
-            expand_less
-        </span></button>
+    class="top-scroll-btn">
+    <span class="material-icons">
+        expand_less
+    </span></button>
   <Footer></Footer>
 </div>
 </template>

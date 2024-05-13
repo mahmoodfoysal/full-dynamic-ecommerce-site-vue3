@@ -13,7 +13,7 @@ export default function getDataFromCentralApiFile() {
     // get api for card category image for home page 
     const GetCatImg = async () => {
         catImgData.value = []
-        const url = 'http://localhost:3000/squreCardForHome';
+        const url = 'http://localhost:5000/squreCardForHome';
         try {
             const res = await axios(url);
             const allCatImages = res.data;
@@ -45,7 +45,7 @@ export default function getDataFromCentralApiFile() {
     // get all categories for navbar dropdown
     const getCategories = async () => {
         categories.value = [];
-        const url = 'http://localhost:3000/categories';
+        const url = 'http://localhost:5000/categories';
         try {
             const res = await axios(url);
             // console.log(res.data);
@@ -59,7 +59,7 @@ export default function getDataFromCentralApiFile() {
     // get api for all products fetching 
     const getProducts = async () => {
       products.value = [];
-      const url = 'http://localhost:3000/products';
+      const url = 'http://localhost:5000/products';
       try {
         const res = await axios(url);
         products.value = res.data;
@@ -73,7 +73,7 @@ export default function getDataFromCentralApiFile() {
     // get a single data for product details
     const getSingleProduct = async (id) => {
       singleProduct.value = [];
-      const url = `http://localhost:3000/products?pro_id=${id}`;
+      const url = `http://localhost:5000/products?pro_id=${id}`;
       try {
         const res = await axios(url);
         singleProduct.value = res.data[0]
@@ -86,7 +86,7 @@ export default function getDataFromCentralApiFile() {
     // get api for home page brand sliding 
     const getBrands = async () => {
       brands.value = [];
-      const url = 'http://localhost:3000/brand';
+      const url = 'http://localhost:5000/brands';
       try {
         const res = await axios(url);
         brands.value = res.data;
@@ -98,7 +98,7 @@ export default function getDataFromCentralApiFile() {
 
     // this api for create order. when client place his order then store the data in the database 
     const createOrders = async (customerInfo) => {
-      const url = 'http://localhost:3000/orders';
+      const url = 'http://localhost:5000/orders';
       orders.value = [];
       try {
         const config = {
@@ -111,7 +111,7 @@ export default function getDataFromCentralApiFile() {
         }
         const res = await axios(config);
         orders.value = res.data;
-        if(res.status === 201) {
+        if(res.status === 200) {
           alert("Order Confirmed")
           localStorage.removeItem('shopping_cart')
         }
