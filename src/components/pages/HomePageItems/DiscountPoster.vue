@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<section class="discount-poster-style">
+<section class="container discount-poster-style">
     <div class="row row-cols-1 row-cols-md-1 g-4">
   <div class="col">
     <div class="card">
@@ -21,7 +21,7 @@
     cursor:pointer;
 } */
 
-@media (min-width: 1200px) {
+@media (max-width: 1440px) {
   .discount-poster-style {
     max-width: 1300px;
     margin: auto;
@@ -41,7 +41,7 @@
 }
 @media (max-width: 540px) {
   .discount-poster-style {
-    max-width: 720px;
+    max-width: 100%;
     margin: auto;
 }
 }

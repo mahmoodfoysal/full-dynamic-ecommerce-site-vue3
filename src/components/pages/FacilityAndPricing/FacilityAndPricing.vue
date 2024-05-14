@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <section class="Facility-container">
+    <section class="container facility-container">
         <div class="row row-cols-1 row-cols-md-4 row-cols-sm-1 row-cols-lg-4 g-4">
             <div class="col">
                 <div class="card">
@@ -37,32 +37,47 @@
     margin-top: 30px;
 } */
 
-@media (min-width: 1200px) {
-  .Facility-container {
-    max-width: 1300px;
-    margin: auto;
-    margin-top: 30px;
+@media only screen and (max-width: 2560px) {
+    .facility-container {
+        max-width: 2200px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
 }
+@media only screen and (max-width: 1920px) {
+    .facility-container {
+        max-width: 1800px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
 }
-@media (max-width: 992px) {
-  .Facility-container {
-    max-width: 960px;
-    margin: auto;
-    margin-top: 30px;
+@media only screen and (max-width: 1440px) {
+    .facility-container {
+        max-width: 1300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
 }
+@media only screen and (max-width: 1024px) {
+    .facility-container {
+        max-width: 950px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
 }
-@media (max-width: 768px) {
-  .Facility-container {
-    max-width: 720px;
-    margin: auto;
-    margin-top: 30px;
+@media only screen and (max-width: 768px) {
+    .facility-container {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
 }
+@media only screen and (max-width: 540px) {
+    .facility-container {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
 }
-@media (max-width: 540px) {
-  .Facility-container {
-    max-width: 720px;
-    margin: auto;
-    margin-top: 30px;
-}
-}
+
 </style>

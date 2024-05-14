@@ -103,8 +103,34 @@ const goToPage = (newPage) => {
 </script>
 
 <template>
+            <section v-if="products.length === 0" class="d-flex justify-content-center mb-5 mt-5" role="status">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </section>
     <!-- card section are here  -->
-    <section class="card-container">
+    <section class="container card-container">
         <div class="component-info-div">
             <h6><span>{{ filterProducts.length }}</span> Products Found</h6>
             <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p>
@@ -119,12 +145,11 @@ const goToPage = (newPage) => {
                                 Brand
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <PriceFilter
-                                @price-selected="handlePriceSelection"
-                                @slide-price="handleSlidePrice"
-                                ></PriceFilter>
+                                <PriceFilter @price-selected="handlePriceSelection" @slide-price="handleSlidePrice">
+                                </PriceFilter>
                             </div>
                         </div>
                     </div>
@@ -137,9 +162,7 @@ const goToPage = (newPage) => {
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <BrandFilter
-                                @brand-select="handleBrandSelect"
-                                ></BrandFilter>
+                                <BrandFilter @brand-select="handleBrandSelect"></BrandFilter>
                             </div>
                         </div>
                     </div>
@@ -163,7 +186,7 @@ const goToPage = (newPage) => {
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="row row-cols-1 row-cols-md-4 row-col-lg-4 row-col-sm-1 g-4">
+                <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4">
                     <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
                         <ProductCard :productItem="item"></ProductCard>
                     </div>
@@ -178,11 +201,14 @@ const goToPage = (newPage) => {
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li @click="goToPage(1)" :disabled="page === 1" class="page-item"><a class="page-link" href="#">1</a>
+                    <li @click="goToPage(1)" :disabled="page === 1" class="page-item"><a class="page-link"
+                            href="#">1</a>
                     </li>
-                    <li @click="goToPage(2)" :disabled="page === 2" class="page-item"><a class="page-link" href="#">2</a>
+                    <li @click="goToPage(2)" :disabled="page === 2" class="page-item"><a class="page-link"
+                            href="#">2</a>
                     </li>
-                    <li @click="goToPage(3)" :disabled="page === 3" class="page-item"><a class="page-link" href="#">3</a>
+                    <li @click="goToPage(3)" :disabled="page === 3" class="page-item"><a class="page-link"
+                            href="#">3</a>
                     </li>
                     <li @click="goToPage(page + 1)" :disabled="page === totalPages" class="page-item">
                         <a class="page-link" href="#" aria-label="Next">
@@ -206,12 +232,6 @@ h6,
 p {
     margin: 0;
     padding: 0;
-}
-
-.card-container {
-    max-width: 1300px;
-    margin: auto;
-    margin-top: 30px;
 }
 
 .component-info-div {
@@ -282,5 +302,49 @@ p {
 input,
 p {
     cursor: pointer;
+}
+
+@media only screen and (max-width: 2560px) {
+    .card-container {
+        max-width: 2300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 1920px) {
+    .card-container {
+        max-width: 1800px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .card-container {
+        width: 1300px;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .card-container {
+        width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .card-container {
+        width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 540px) {
+    .card-container {
+        width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
 }
 </style>

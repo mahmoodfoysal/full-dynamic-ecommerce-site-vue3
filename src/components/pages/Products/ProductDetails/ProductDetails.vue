@@ -103,7 +103,7 @@ const updateDb = (cart) => {
 </script>
 
 <template>
-    <section class="product-details-section">
+    <section class="container product-details-section">
         <div class="row g-4">
             <div class="col-md-4 product-image-div">
                 <img :src="singleProduct.pro_image" class="img-fluid rounded-start" alt="product-img">
@@ -239,42 +239,6 @@ p {
     padding: 0 15px;
 }
 
-@media (min-width: 1200px) {
-    .product-details-section {
-        max-width: 1300px;
-        margin: auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 992px) {
-    .product-details-section {
-        max-width: 960px;
-        margin: auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .product-details-section {
-        max-width: 720px;
-        margin: auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 540px) {
-    .product-details-section {
-        max-width: 720px;
-        margin: auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-}
-
 .add-sub-style span {
     cursor: pointer;
     font-size: 31px;
@@ -298,4 +262,48 @@ p {
 .checkout-btn-div button:hover {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 2560px) {
+    .product-details-section {
+        max-width: 2300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 1920px) {
+    .product-details-section {
+        max-width: 1800px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .product-details-section {
+        max-width: 1300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .product-details-section {
+        max-width: 950px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .product-details-section {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width: 540px) {
+    .product-details-section {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
 </style>

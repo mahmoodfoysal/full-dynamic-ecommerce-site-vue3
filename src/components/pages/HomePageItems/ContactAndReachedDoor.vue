@@ -174,4 +174,23 @@ h6 p {
 .input-button-group-style button:first-child {
     margin-right: 5px;
 }
+
+@media only screen and (max-width: 540px) {
+    .modal-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        color: var(--bs-modal-color);
+        pointer-events: auto;
+        background-color: var(--bs-modal-bg);
+        background-clip: padding-box;
+        border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+        border-radius: var(--bs-modal-border-radius);
+        outline: 0;
+        height: 440px !important;
+        width: 100% !important;
+        margin: auto;
+        background: #1F5DA0 !important;
+    }
+}
 </style>
