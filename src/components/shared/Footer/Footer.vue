@@ -94,6 +94,8 @@
     font-size: 12px;
 }
 
+
+
 @media(max-width: 768px) {
     .container {
         width: 100%;

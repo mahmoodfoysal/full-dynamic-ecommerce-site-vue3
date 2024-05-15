@@ -64,8 +64,8 @@ watchEffect(() => {
 </script>
 
 <template>
-    <section class="login-section-style">
-        <div class="d-flex justify-content-center mb-3 ">
+    <section class="login-section-style container">
+        <div class="d-flex justify-content-center mb-3 component-nav-style">
             <h4 class="me-5">Login</h4>
             <h4>Registration</h4>
         </div>
@@ -76,14 +76,15 @@ watchEffect(() => {
             <input v-model.trim="email" type="email" name="" id="Login" required placeholder="Enter Your Email">
 
             <label for="password">Password</label>
-            <input v-model.trim="password" type="password" name="" id="password" required placeholder="Enter Your Password">
+            <input v-model.trim="password" type="password" name="" id="password" required
+                placeholder="Enter Your Password">
             <div v-if="getError !== null" class="alert alert-danger" role="alert">
                 {{ getError }}
             </div>
             <button @click="handleLogin" type="button" class="singin-btn">
                 Log In
             </button>
-            <h6 class="text-center">Or</h6>
+            <h6 class="text-center or-text-style">Or</h6>
             <div class="text-center">
                 <!-- google signin start -->
                 <button @click="handleGoogleLogin" class="gsi-material-button">
@@ -142,6 +143,21 @@ watchEffect(() => {
     z-index: 22;
 }
 
+.form-control-style p,
+label {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.component-nav-style h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
 .form-control-style input {
     width: 100%;
     height: 42px;
@@ -149,6 +165,9 @@ watchEffect(() => {
     border: 1px solid #DDDDDD;
     border-radius: 5px;
     padding-left: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .form-control-style input:focus {
@@ -156,16 +175,22 @@ watchEffect(() => {
     outline: none;
 }
 
+.or-text-style {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
 .singin-btn {
     height: 42px;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 5px;
-    /* background: #2D76C4; */
     background: #1F5DA0;
     color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+    font-style: normal;
 }
 
 .singin-btn:hover {
@@ -178,6 +203,14 @@ watchEffect(() => {
     display: flex;
     justify-content: center;
 }
+
+.forgot-pass-style p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    cursor: pointer;
+}
+
 
 /* google sign in start css code  */
 .gsi-material-button {
@@ -236,11 +269,12 @@ watchEffect(() => {
 .gsi-material-button .gsi-material-button-contents {
     -webkit-flex-grow: 1;
     flex-grow: 1;
-    font-family: 'Roboto', arial, sans-serif;
-    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: top;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .gsi-material-button .gsi-material-button-state {
@@ -284,7 +318,68 @@ watchEffect(() => {
     opacity: 8%;
 }
 
+@media only screen and (max-width: 2560px) {
+    .login-section-style {
+        max-width: 2300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
 
+@media only screen and (max-width: 1920px) {
+    .login-section-style {
+        max-width: 1800px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .login-section-style {
+        max-width: 1300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .login-section-style {
+        max-width: 950px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .login-section-style {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 540px) {
+    .login-section-style {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .form-control-style {
+        box-sizing: border-box;
+        background: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 42px 28px;
+        margin: auto;
+        border-radius: 10px;
+        z-index: 22;
+    }
+}
 
 /* google sign in end css code  */
 </style>

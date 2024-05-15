@@ -162,7 +162,10 @@ const goToPage = (newPage) => {
             </div>
             <div class="col-md-9">
                 <div class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4">
-                    <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
+                    <div v-if="paginatedProducts.length === 0">
+                        <h4>No Product Found</h4>
+                    </div>
+                    <div v-else v-for="(item, index) in paginatedProducts" :key="index" class="col">
                         <ProductCard :productItem="item"></ProductCard>
                     </div>
                 </div>
@@ -218,6 +221,9 @@ p {
     box-sizing: border-box;
     margin-bottom: 10px;
     border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .pagination-style {

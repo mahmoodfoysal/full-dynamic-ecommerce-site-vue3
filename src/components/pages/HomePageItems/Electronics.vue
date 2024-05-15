@@ -67,7 +67,8 @@ h1, h2, h3, h4, h5, h6, p {
   text-align: center;
   color: #FFF;
   font-family: 'Poppins', sans-serif;
-  font-weight: Bold;
+  font-weight: 600;
+  font-style: normal;
   font-size: 35px;
 }
 .home-product-horizontal-style h2:hover {

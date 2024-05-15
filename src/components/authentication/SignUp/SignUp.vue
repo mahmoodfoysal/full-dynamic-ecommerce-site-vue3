@@ -81,8 +81,8 @@ watchEffect(() => {
 </script>
 
 <template>
-    <section class="login-section-style">
-        <div class="d-flex justify-content-center mb-3 pt-3">
+    <section class="login-section-style container">
+        <div class="d-flex justify-content-center mb-3 pt-3 component-nav-style">
             <h4 class="me-5">Login</h4>
             <h4>Registration</h4>
         </div>
@@ -105,7 +105,7 @@ watchEffect(() => {
             <button @click="handleSignUp" type="button" class="register-btn">
                 Sign Up
             </button>
-            <h6 class="text-center">Or</h6>
+            <h6 class="text-center or-text-style">Or</h6>
             <div class="text-center">
                 <!-- google signin start -->
                 <button @click="handleGoogleLogin" class="gsi-material-button">
@@ -130,7 +130,6 @@ watchEffect(() => {
                             </svg>
                         </div>
                         <span class="gsi-material-button-contents">Continue with Google</span>
-                        <span style="display: none;">Continue with Google</span>
                     </div>
                 </button>
                 <!-- google signin end -->
@@ -166,11 +165,35 @@ watchEffect(() => {
     border: 1px solid #DDDDDD;
     border-radius: 5px;
     padding-left: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.form-control-style p,
+label {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.component-nav-style h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 .form-control-style input:focus {
     border: 2px solid #1F5DA0 !important;
     outline: none;
+}
+
+.or-text-style {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .register-btn {
@@ -180,8 +203,9 @@ watchEffect(() => {
     border-radius: 5px;
     background: #1F5DA0;
     color: #FFFFFF;
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .register-btn:hover {
@@ -247,11 +271,12 @@ watchEffect(() => {
 .gsi-material-button .gsi-material-button-contents {
     -webkit-flex-grow: 1;
     flex-grow: 1;
-    font-family: 'Roboto', arial, sans-serif;
-    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: top;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .gsi-material-button .gsi-material-button-state {
@@ -296,4 +321,67 @@ watchEffect(() => {
 }
 
 /* google sign in end css code  */
+
+@media only screen and (max-width: 2560px) {
+    .login-section-style {
+        max-width: 2300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1920px) {
+    .login-section-style {
+        max-width: 1800px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .login-section-style {
+        max-width: 1300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .login-section-style {
+        max-width: 950px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .login-section-style {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 540px) {
+    .login-section-style {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .form-control-style {
+        box-sizing: border-box;
+        background: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 42px 28px;
+        margin: auto;
+        border-radius: 10px;
+        z-index: 22;
+    }
+}
 </style>

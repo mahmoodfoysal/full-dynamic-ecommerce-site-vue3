@@ -77,8 +77,10 @@ h6 p {
 .client-text h4 {
     color: #FFF;
     font-size: 28px;
-    font-weight: 500;
     font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+
 }
 
 .client-text button {
@@ -88,7 +90,8 @@ h6 p {
     background: #1F5DA0;
     color: #FFF;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
+    font-style: normal;
     border-radius: 30px;
     margin-top: 20px;
 }
@@ -97,7 +100,8 @@ h6 p {
     background: #FFF;
     color: #1F5DA0;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
+    font-style: normal;
     cursor: pointer;
 }
 
@@ -124,16 +128,19 @@ h6 p {
     margin-right: auto;
     margin-left: auto;
 }
+
 .modal-header {
     border-bottom: 0px !important;
 }
+
 .modal-header button {
     color: #FFF !important;
 }
 
-.btn-close  {
+.btn-close {
     color: #FFF !important;
 }
+
 .input-group-style input {
     display: block;
     width: 100%;
@@ -144,7 +151,11 @@ h6 p {
     padding-left: 10px;
     border-radius: 2px;
     height: 35px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
 .input-group-style textarea {
     width: 100%;
     margin-bottom: 10px;
@@ -153,26 +164,42 @@ h6 p {
     border: none;
     padding-left: 10px;
     border-radius: 2px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
 .input-button-group-style {
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
+
 .input-button-group-style button {
     padding: 4px 16px;
     border: 3px solid #FFF;
     background: #1F5DA0;
     border-radius: 10px;
     color: #FFF;
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
+    font-style: normal;
 }
+
 .input-button-group-style button:hover {
     background: #FFF;
     color: #1F5DA0;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
+
 .input-button-group-style button:first-child {
     margin-right: 5px;
+}
+
+.modal-header .btn-close {
+    color: #FFFFFF !important;
 }
 
 @media only screen and (max-width: 540px) {

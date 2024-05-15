@@ -54,8 +54,8 @@ const cartCount = computed(() => {
                     <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#">E-Commerce</a>
                 </RouterLink>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -69,8 +69,8 @@ const cartCount = computed(() => {
                                     href="#">Products</a></RouterLink>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle navbar-text" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle navbar-text" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Dropdown
                             </a>
                             <div class="dropdown-menu">
@@ -129,7 +129,8 @@ const cartCount = computed(() => {
 
 
                         <span v-if="store.user === null" class="d-flex flex-column">
-                            <RouterLink :to="{ name: 'Login' }" class="active-link"><small class="auth-text">Login</small>
+                            <RouterLink :to="{ name: 'Login' }" class="active-link"><small
+                                    class="auth-text">Login</small>
                             </RouterLink>
                             <RouterLink :to="{ name: 'Registration' }" class="active-link"><small
                                     class="auth-text">Registration</small>
@@ -147,7 +148,8 @@ const cartCount = computed(() => {
 
         <nav class="navbar bg-body-tertiary second-navbar-style">
             <div class="container-fluid">
-                <div class="d-flex ms-2 align-items-center" @mouseover="showSidebar = true" @mouseout="showSidebar = false">
+                <div class="d-flex ms-2 align-items-center" @mouseover="showSidebar = true"
+                    @mouseout="showSidebar = false">
                     <span class="material-icons toggle-btn-style">menu</span>
                     <h6 class="ms-2 navbar-text">Shop By Category</h6>
                 </div>
@@ -184,7 +186,8 @@ const cartCount = computed(() => {
                                 </a>
                             </RouterLink>
                             <ul>
-                                <li v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index" class="dropdown-3">
+                                <li v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index"
+                                    class="dropdown-3">
                                     <RouterLink
                                         :to="{ name: 'CategoryProducts', params: { id: subSubCat.sub_sub_cat_id, slug: subSubCat.sub_sub_cat_name.replace(/\s+/g, '-') } }">
                                         <a href="">
@@ -233,6 +236,25 @@ p {
     margin-right: 16px;
 }
 
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
 
 .toogle-style {
     cursor: pointer;
@@ -288,7 +310,7 @@ p {
     border: none;
     position: absolute;
     right: 10px;
-    top: 1px;
+    top: 3px;
 }
 
 .search-field-style button span {
@@ -347,7 +369,6 @@ p {
     text-transform: capitalize;
     color: #000;
     padding-left: 10px;
-    /* letter-spacing: 1px; */
     font-weight: 400;
     height: 35px;
     transition: .5s ease;

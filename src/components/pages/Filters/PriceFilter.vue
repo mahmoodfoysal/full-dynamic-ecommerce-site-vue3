@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import { ref } from 'vue';
 
 // declare price range for filter by product price
 const priceRanges = [
@@ -40,7 +40,8 @@ const handleSlidePriceChange = () => {
             <input type="range" v-model="rangePrice.min" :min="1" :max="500" @input="handleSlidePriceChange" />
         </label>
         <label v-for="(range, index) in priceRanges" :key="index" class="d-flex align-items-center mb-2">
-            <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range" :id="'price-' + index" @change="handlePriceChange">
+            <input v-model="selectedPrice" type="radio" name="priceRanges" :value="range" :id="'price-' + index"
+                @change="handlePriceChange">
             <p class="ms-2">{{ range.label }}</p>
         </label>
     </section>
@@ -69,4 +70,11 @@ p {
     overflow-y: scroll;
 }
 
+.price-section label,
+p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
 </style>

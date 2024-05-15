@@ -1,5 +1,5 @@
 <script setup>
-import {ref, defineEmits} from 'vue'
+import { ref, defineEmits } from 'vue'
 // decclare brand name 
 const brandName = [
     { id: 'bata', label: 'Bata', value: 'Bata', name: 'Bata' },
@@ -25,7 +25,8 @@ const handleBrandChange = () => {
 <template>
     <section class="price-section">
         <label :for="brand.id" v-for="(brand, index) in brandName" :key="index" class="d-flex align-items-center mb-2">
-            <input v-model="selectedBrand" type="checkbox" :id="brand.id" :value="brand.name" :name="brand.name" @change="handleBrandChange">
+            <input v-model="selectedBrand" type="checkbox" :id="brand.id" :value="brand.name" :name="brand.name"
+                @change="handleBrandChange">
             <p class="ms-2">{{ brand.label }}</p>
         </label>
     </section>
@@ -53,4 +54,11 @@ p {
 .price-section {
     height: 230px !important;
     overflow-y: scroll;
-}</style>
+}
+
+.price-section p, input {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+</style>
