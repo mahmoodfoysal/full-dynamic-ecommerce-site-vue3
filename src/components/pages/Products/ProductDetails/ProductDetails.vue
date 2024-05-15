@@ -10,12 +10,15 @@ const route = useRoute();
 // set the id from the url 
 const routeParamsId = ref(Number(route.params.id));
 
+
 // destructure the data from the central api file 
-const {getSingleProduct, singleProduct} = getDataFromCentralApiFile();
+const {getProducts, products} = getDataFromCentralApiFile();
 
 onMounted(async () => {
-    await getSingleProduct(routeParamsId.value);
+    await getProducts();
 })
+
+
 
 // call pinia store and set in the variable store for using pinia store
 const store = useStore();
@@ -100,31 +103,71 @@ const updateDb = (cart) => {
   store.setCartItem(cart);
 }
 
+const itemQuantity = computed(() => {
+    const item = store.cartItem;
+    if (item && item[routeParamsId.value]) {
+        return item[routeParamsId.value].quantity; // Access quantity of the specific item
+    }
+    return 0;
+})
+
+const filteredProducts = computed(() => {
+    return products.value.filter(product => product?.pro_id === routeParamsId.value);
+});
+
+console.log(filteredProducts)
+
 </script>
 
 <template>
+    <section v-if="singleProduct.length === 0" class="d-flex justify-content-center" role="status">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </section>
     <section class="container product-details-section">
         <div class="row g-4">
             <div class="col-md-4 product-image-div">
-                <img :src="singleProduct.pro_image" class="img-fluid rounded-start" alt="product-img">
+                <img :src="filteredProducts[0]?.pro_image" class="img-fluid rounded-start" alt="product-img">
             </div>
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ singleProduct.pro_name }}</h5>
+                        <h5 class="card-title">{{ filteredProducts[0]?.pro_name }}</h5>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <span>Brand: name</span>
-                            <span>Rating: {{ singleProduct.rating }}</span>
+                            <span>Brand: {{ filteredProducts[0]?.brand }}</span>
+                            <span>Rating: {{ filteredProducts[0]?.rating }}</span>
                             <span class="material-icons">favorite</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <h6>{{ singleProduct.price }}</h6>
-                            <span>Stock: {{ singleProduct.quantity }}</span>
-                            <span>Product ID: {{ singleProduct.pro_id }}</span>
+                            <h6>$ {{ filteredProducts[0]?.price }}</h6>
+                            <span>Stock: {{ filteredProducts[0]?.quantity }}</span>
+                            <span>Product ID: {{ filteredProducts[0]?.pro_id }}</span>
 
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <span>Sold By: </span>
+                            <span>Sold By: {{ filteredProducts[0]?.brand }}</span>
                             <span>Category: </span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
@@ -135,19 +178,19 @@ const updateDb = (cart) => {
 
                             <div class="checkout-btn-div">
                                 <button
-                                @click="handleAddToCart(singleProduct)"
+                                @click="handleAddToCart(filteredProducts[0])"
                                 >Add To Cart</button>
                             </div>
                             <div class="col-md-3 d-flex justify-content-center align-items-center">
                                 <div class="d-flex align-items-center add-sub-style">
                                     <span 
-                                    @click="handleDecrementQuantity(singleProduct.pro_id)"
+                                    @click="handleDecrementQuantity(filteredProducts[0]?.pro_id)"
                                     class="material-icons me-2">
                                         remove
                                     </span>
-                                    <h5 class="me-2 mb-0">{{ singleProduct.quantity }}</h5>
+                                    <h5 class="me-2 mb-0">{{ itemQuantity }}</h5>
                                     <span 
-                                    @click="handleIncrementQuantity(singleProduct.pro_id)"
+                                    @click="handleIncrementQuantity(filteredProducts[0]?.pro_id)"
                                     class="material-icons me-2">
                                         add
                                     </span>
@@ -158,7 +201,7 @@ const updateDb = (cart) => {
                             </div>
 
                         </div>
-                        <p class="card-text">{{ singleProduct.description }}</p>
+                        <p class="card-text">{{ filteredProducts[0]?.description }}</p>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,24 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { onMounted, computed } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
-// Mousewheel its work for mouse wheel sliding 
+import getDataFromCentralApiFile from '@/API/All_API.js';
 
+const { getProducts, products } = getDataFromCentralApiFile();
+// Mousewheel its work for mouse wheel sliding 
 // import required modules
 const modules = [Navigation, Pagination, Keyboard];
+
+onMounted(async () => {
+  await getProducts();
+})
+
+const filterProducts = computed(() => {
+  return products.value.filter(product => product?.parent_cat_id === 1)
+})
 
 </script>
 
@@ -30,11 +41,11 @@ const modules = [Navigation, Pagination, Keyboard];
     spaceBetween: 50,
   },
 }" :modules="modules" class="mySwiper">
-      <swiper-slide v-for="n in 10">
+      <swiper-slide v-for="(product, index) in filterProducts">
         <div class="slider-card-style">
-          <img src="../../../assets/images/apple.jpg" alt="">
+          <img :src="product?.pro_image" alt="">
           <div>
-            <h5><del>$1200</del> Save <span>$800</span></h5>
+            <h5><del>$45</del> Save <span>${{ product?.price }}</span></h5>
             <p>Description</p>
             <span class="material-icons">
               shopping_cart
@@ -108,6 +119,11 @@ h1, h2, h3, h4, h5, h6, p {
 .slider-card-style {
   padding: 10px 10px;
   border-radius: 20px;
+}
+.slider-card-style img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 .slider-card-style:hover {
   cursor:pointer;

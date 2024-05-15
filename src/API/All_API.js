@@ -70,19 +70,6 @@ export default function getDataFromCentralApiFile() {
       }
     };
 
-    // get a single data for product details
-    const getSingleProduct = async (id) => {
-      singleProduct.value = [];
-      const url = `http://localhost:5000/products?pro_id=${id}`;
-      try {
-        const res = await axios(url);
-        singleProduct.value = res.data[0]
-      }
-      catch(err) {
-
-      }
-    }
-
     // get api for home page brand sliding 
     const getBrands = async () => {
       brands.value = [];
@@ -130,12 +117,10 @@ export default function getDataFromCentralApiFile() {
         getProducts,
         getBrands,
         createOrders,
-        getSingleProduct,
         catImgData,
         categories,
         products,
         brands,
         orders,
-        singleProduct
     }
 }

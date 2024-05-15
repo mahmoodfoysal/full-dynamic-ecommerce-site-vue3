@@ -5,6 +5,7 @@ import { RouterView } from 'vue-router';
 import {onMounted} from 'vue';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useStore } from './stores/TaskStore';
+import MobileMenu from '../src/components/shared/MobileMenu/MobileMenu.vue';
 const store = useStore();
 const scrollToTop = () => {
     window.scrollTo({
@@ -39,6 +40,7 @@ onMounted(() => {
         expand_less
     </span></button>
   <Footer></Footer>
+ <MobileMenu></MobileMenu>
 </div>
 </template>
 
