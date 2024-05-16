@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import router from '../../../router/router'
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter  } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
 import getDataFromCentralApiFile from '../../../API/All_API.js';
 import initilizationAuthentication from '@/firebase/firebase.init';
@@ -42,6 +42,10 @@ const cartCount = computed(() => {
     return Object.values(store.cartItem).length || 0
 })
 
+const logoLink = () => {
+    router.push('/')
+}
+
 </script>
 
 <template>
@@ -50,10 +54,19 @@ const cartCount = computed(() => {
     <section class="sticky-top">
         <nav class="navbar navbar-expand-lg bg-body-tertiary first-navbar-style">
             <div class="container-fluid">
-                <RouterLink :to="{ name: 'Home' }" class="active-link">
-                    <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#">E-Commerce</a>
-                </RouterLink>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+ 
+                    <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#" @click="logoLink">Kitkat</a>
+                <div>
+                    <RouterLink :to="{ name: 'Cart' }">
+                        <span class="material-icons me-3 mobile-shopping-cart">shopping_cart</span>
+                    </RouterLink>
+                    <div class="cart-i-back mobile-i">
+                        <small>{{ cartCount }}</small>
+                    </div>
+                    
+                </div>
+                <span class="material-icons mobile-cart-menu-style">menu</span>
+                <button class="navbar-toggler toggle-hamburg-btn" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -61,11 +74,11 @@ const cartCount = computed(() => {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <RouterLink class="active-link" :to="{ name: 'Home' }"><a class="nav-link navbar-text"
+                            <RouterLink :to="{ name: 'Home' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     aria-current="page" href="#">Home</a></RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink class="active-link" :to="{ name: 'Products' }"><a class="nav-link navbar-text"
+                            <RouterLink :to="{ name: 'Products' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     href="#">Products</a></RouterLink>
                         </li>
                         <li class="nav-item dropdown">
@@ -123,16 +136,11 @@ const cartCount = computed(() => {
 
                         <img v-if="store.user !== null" :src="store.user.photoURL" alt="Avatar" class="avatar">
 
-                        <div>
-
-                        </div>
-
-
                         <span v-if="store.user === null" class="d-flex flex-column">
-                            <RouterLink :to="{ name: 'Login' }" class="active-link"><small
+                            <RouterLink :to="{ name: 'Login' }" class="link-decor-style"><small
                                     class="auth-text">Login</small>
                             </RouterLink>
-                            <RouterLink :to="{ name: 'Registration' }" class="active-link"><small
+                            <RouterLink :to="{ name: 'Registration' }" class="link-decor-style"><small
                                     class="auth-text">Registration</small>
                             </RouterLink>
                         </span>
@@ -461,33 +469,6 @@ p {
 
 }
 
-/* media for mega menu  */
-@media screen and (min-width: 993px) {
-    .dropdown-menu.show {
-        display: flex !important;
-    }
-
-    .dropdown:hover .dropdown-menu {
-        display: flex !important;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .dropdown-menu.show {
-        max-height: 60vh;
-        overflow-y: scroll;
-    }
-
-    .search-field-style input {
-        width: 100%;
-    }
-
-    .first-navbar-style {
-        z-index: 5;
-    }
-
-}
-
 .fav-i-back {
     position: relative;
     top: -15px;
@@ -538,6 +519,191 @@ p {
 
 .active-link {
     color: #D9946D !important;
+    opacity: .9;
+}
+
+.link-decor-style {
     text-decoration: none;
+}
+
+/* media for mega menu  */
+@media screen and (min-width: 993px) {
+    .dropdown-menu.show {
+        display: flex !important;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: flex !important;
+    }
+
+    .mobile-cart-menu-style {
+        display: none;
+    }
+
+    .mobile-shopping-cart {
+        display: none;
+    }
+    .mobile-i {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .dropdown-menu.show {
+        max-height: 60vh;
+        overflow-y: scroll;
+    }
+
+    .search-field-style input {
+        width: 100%;
+    }
+
+    .first-navbar-style {
+        z-index: 5;
+    }
+
+    .mobile-cart-menu-style {
+        display: none;
+    }
+
+    .mobile-shopping-cart {
+        display: none;
+    }
+    .mobile-i {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dropdown-menu.show {
+        max-height: 60vh;
+        overflow-y: scroll;
+    }
+
+    .search-field-style input {
+        width: 100%;
+    }
+
+    .first-navbar-style {
+        z-index: 5;
+    }
+
+    .toggle-hamburg-btn {
+        display: none;
+    }
+
+    .mobile-cart-menu-style {
+        display: block;
+        position: absolute;
+        right: 10px;
+        color: #FFFFFF;
+        border: 0;
+        cursor: pointer;
+        font-size: 26px;
+    }
+
+    .mobile-shopping-cart {
+        color: #FFFFFF;
+        font-size: 26px;
+        padding-right: 12px;
+        display: block;
+    }
+
+    .second-navbar-style {
+        display: none;
+    }
+    .cart-i-back {
+        position: absolute;
+        top: 11px;
+        left: auto;
+        bottom: auto;
+        right: 37px;
+        border-radius: 17px;
+        background: #D71110;
+        padding: 2px;
+        height: 20px;
+        margin: auto;
+        width: 21px;
+    }
+
+    .cart-i-back small {
+        position: absolute;
+        color: white;
+        left: 7px;
+        bottom: 2px;
+        font-size: 11px;
+        z-index: 2;
+        font-weight: bold;
+    }
+    .mobile-i {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .dropdown-menu.show {
+        max-height: 60vh;
+        overflow-y: scroll;
+    }
+
+    .search-field-style input {
+        width: 100%;
+    }
+
+    .first-navbar-style {
+        z-index: 5;
+    }
+
+    .toggle-hamburg-btn {
+        display: none;
+    }
+
+    .mobile-cart-menu-style {
+        display: block;
+        position: absolute;
+        right: 10px;
+        color: #FFFFFF;
+        border: 0;
+        cursor: pointer;
+        font-size: 26px;
+    }
+
+    .mobile-shopping-cart {
+        color: #FFFFFF;
+        font-size: 26px;
+        padding-right: 12px;
+        display: block;
+    }
+
+    .second-navbar-style {
+        display: none;
+    }
+
+    .cart-i-back {
+        position: absolute;
+        top: 11px;
+        left: auto;
+        bottom: auto;
+        right: 37px;
+        border-radius: 17px;
+        background: #D71110;
+        padding: 2px;
+        height: 20px;
+        margin: auto;
+        width: 21px;
+    }
+
+    .cart-i-back small {
+        position: absolute;
+        color: white;
+        left: 7px;
+        bottom: 2px;
+        font-size: 11px;
+        z-index: 2;
+        font-weight: bold;
+    }
+    .mobile-i {
+        display: block;
+    }
 }
 </style>
