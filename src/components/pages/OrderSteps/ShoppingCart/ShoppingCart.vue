@@ -277,6 +277,8 @@ p {
 
 .cart-img-style {
     height: 100px;
+    width: 100%;
+    object-fit: contain;
 }
 
 .add-sub-style {
