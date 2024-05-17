@@ -81,7 +81,9 @@ const logoLink = () => {
                             <RouterLink :to="{ name: 'Products' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     href="#">Products</a></RouterLink>
                         </li>
-                        <li class="nav-item dropdown">
+
+                        <!-- comment for future work  -->
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle navbar-text" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Dropdown
@@ -116,7 +118,7 @@ const logoLink = () => {
                                     <li><a class="dropdown-item" href="">Drop menu 4</a></li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- cart and wislist  -->
                     <div class="me-2 d-flex align-items-center">

@@ -1,13 +1,17 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import { onMounted, ref } from 'vue';
 import getDataFromCentralApiFile from '@/API/All_API.js';
+import { useStore } from '@/stores/TaskStore.js';
+import { getAuth, signOut } from 'firebase/auth';
+
+const store = useStore();
 
 const { getCategories, categories } = getDataFromCentralApiFile();
 
 onMounted(async () => {
     await getCategories();
-})
+});
 
 const showSidebar = ref(false);
 const toggleDropdown = (parentCat) => {
@@ -16,10 +20,24 @@ const toggleDropdown = (parentCat) => {
 
 const subToggleDropdown = (subCat) => {
     subCat.isActive = !subCat.isActive;
-}
+};
 
 const subSubToggleDropdown = (subSubCat) => {
     subSubCat.isActive = !subSubCat.isActive;
+};
+
+const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        store.setUser(null);
+        sessionStorage.removeItem('user');
+    }).catch((error) => {
+
+    });
+};
+
+const loginHandler = () => {
+    router.push('/login');
 }
 
 </script>
@@ -35,9 +53,11 @@ const subSubToggleDropdown = (subSubCat) => {
             <RouterLink :to="{ name: 'Products' }" class="link-style">
                 <h6>Products</h6>
             </RouterLink>
-            <RouterLink :to="{ name: 'Login' }" class="link-style">
+            <RouterLink v-if="store.user === null" :to="{ name: 'Login' }" class="link-style">
                 <h6>Login</h6>
             </RouterLink>
+            <h6 v-else data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                Profile</h6>
         </div>
     </section>
     <!-- mobile drawer section  -->
@@ -52,17 +72,13 @@ const subSubToggleDropdown = (subSubCat) => {
                 <div class="mobile-category-style">
                     <nav class="sidebar-style">
                         <ul>
-                            <li 
-                            v-for="(parentCat, index) in categories" 
-                            :key="index" class="dropdown">
+                            <li v-for="(parentCat, index) in categories" :key="index" class="dropdown">
                                 <RouterLink
                                     :to="{ name: 'CategoryProducts', params: { id: parentCat.parent_cat_id, slug: parentCat.parent_cat_name.replace(/\s+/g, '-') } }">
                                     <a href="">
                                         {{ parentCat.parent_cat_name }}
-                                        <span class=""
-                                            @click="toggleDropdown(parentCat)" 
-                                            @mouseover="showSidebar = true"
-                                            @mouseout="showSidebar = false"
+                                        <span class="" @click="toggleDropdown(parentCat)"
+                                            @mouseover="showSidebar = true" @mouseout="showSidebar = false"
                                             :class="{ 'active': parentCat.isActive }">&rsaquo;</span>
                                     </a>
                                 </RouterLink>
@@ -75,26 +91,25 @@ const subSubToggleDropdown = (subSubCat) => {
                                             :to="{ name: 'CategoryProducts', params: { id: subCat.sub_cat_id, slug: subCat.sub_cat_name.replace(/\s+/g, '-') } }">
                                             <a href="">
                                                 {{ subCat.sub_cat_name }}<span class=""
-                                                @click="subToggleDropdown(subCat)" 
-                                            @mouseover="showSidebar = true"
-                                            @mouseout="showSidebar = false"
-                                            :class="{ 'active': subCat.isActive }"
-                                                >&rsaquo;</span>
+                                                    @click="subToggleDropdown(subCat)" @mouseover="showSidebar = true"
+                                                    @mouseout="showSidebar = false"
+                                                    :class="{ 'active': subCat.isActive }">&rsaquo;</span>
                                             </a>
                                         </RouterLink>
                                         <ul v-show="subCat.isActive">
                                             <li @mouseover="showSidebar = true" @mouseout="showSidebar = false"
-                                        :class="{ 'd-none': !showSidebar, 'd-block': showSidebar }" v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index"
+                                                :class="{ 'd-none': !showSidebar, 'd-block': showSidebar }"
+                                                v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index"
                                                 class="dropdown-3 ms-2">
                                                 <RouterLink
                                                     :to="{ name: 'CategoryProducts', params: { id: subSubCat.sub_sub_cat_id, slug: subSubCat.sub_sub_cat_name.replace(/\s+/g, '-') } }">
                                                     <a href="">
                                                         {{ subSubCat.sub_sub_cat_name }} <span
-                                                        @click="subSubToggleDropdown(subSubCat)" 
-                                            @mouseover="showSidebar = true"
-                                            @mouseout="showSidebar = false"
-                                            :class="{ 'active': subSubCat.isActive }"
-                                                        class="">&rsaquo;</span>
+                                                            @click="subSubToggleDropdown(subSubCat)"
+                                                            @mouseover="showSidebar = true"
+                                                            @mouseout="showSidebar = false"
+                                                            :class="{ 'active': subSubCat.isActive }"
+                                                            class="">&rsaquo;</span>
                                                     </a>
                                                 </RouterLink>
                                                 <ul v-show="subSubCat.isActive">
@@ -120,6 +135,30 @@ const subSubToggleDropdown = (subSubCat) => {
             </div>
         </div>
     </section>
+    <section class="mobile-drawer">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <section>
+                    <div class="d-flex justify-content-center">
+                        <img v-if="store.user !== null" :src="store.user.photoURL" alt="Avatar" class="avatar">
+                    </div>
+                    <div class="d-flex justify-content-center flex-column align-items-center mt-3 profile-details">
+                        <h6 v-if="store.user !== null">Name: <span>{{ store.user.displayName }}</span></h6>
+                        <p v-if="store.user !== null">Email: <span>{{ store.user.email }}</span></p>
+                        <p v-if="store.user !== null">Phone no: <span>{{ store.user.phoneNo }}</span></p>
+                    </div>
+                    <div class="d-flex justify-content-center flex-column align-items-center mt-3 logout-btn-style">
+                        <button v-if="store.user === null" @click="loginHandler">Please Login</button>
+                        <button v-else @click="handleLogout">Log out</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
 </template>
 
 <style scoped>
@@ -130,6 +169,7 @@ h4,
 h5,
 h6,
 label,
+p,
 ul {
     margin: 0;
     padding: 0;
@@ -154,6 +194,57 @@ ul {
     text-decoration: none;
 }
 
+.avatar {
+    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.profile-details {
+    line-height: 20px;
+}
+
+.profile-details h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.profile-details h6 span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+}
+
+.profile-details p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 11px;
+}
+.profile-details p span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 11px;
+}
+
+.logout-btn-style button {
+    padding: 8px 20px;
+    border: white;
+    background-color: red;
+    color: #FFFFFF;
+    border-radius: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
 /* category menu for clickable  */
 .sidebar-style ul li {
     font-family: "Poppins", sans-serif;
@@ -166,6 +257,7 @@ ul {
 .sidebar-style ul li a {
     text-decoration: none;
 }
+
 .sidebar-style {
     /* width: 250px;
     position: fixed;
@@ -280,6 +372,7 @@ ul {
     .mobile-drawer {
         display: block;
     }
+
     .active-link {
         opacity: .8;
     }
@@ -300,6 +393,7 @@ ul {
     .mobile-drawer {
         display: block;
     }
+
     .active-link {
         opacity: .8;
     }
