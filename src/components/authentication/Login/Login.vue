@@ -1,6 +1,7 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 import { ref, watchEffect } from 'vue';
-import router from '../../../router/router';
+import router from '../../../router/router.js';
 import { useStore } from '@/stores/TaskStore.js';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import initilizationAuthentication from '@/firebase/firebase.init';
@@ -66,8 +67,10 @@ watchEffect(() => {
 <template>
     <section class="login-section-style container">
         <div class="d-flex justify-content-center mb-3 component-nav-style">
-            <h4 class="me-5">Login</h4>
-            <h4>Registration</h4>
+            <h4 class="me-5 text-primary">Login</h4>
+            <RouterLink :to="{name: 'Registration'}" style="text-decoration: none; color: black;">
+                <h4>Registration</h4>
+            </RouterLink>
         </div>
         <!-- login form section  -->
         <div class="form-control-style">
@@ -119,7 +122,9 @@ watchEffect(() => {
                     lock
                 </span>
                 <p>Forgot Password</p>
+                
             </div>
+            <p>Are you not register? please <RouterLink :to="{name: 'Registration'}" style="text-decoration: none;">Register</RouterLink></p>
         </div>
     </section>
 </template>

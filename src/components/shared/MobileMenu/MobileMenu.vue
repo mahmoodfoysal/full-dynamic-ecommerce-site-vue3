@@ -363,6 +363,7 @@ ul {
 @media only screen and (max-width: 768px) {
     .mobile-menu-style {
         width: 100% !important;
+        max-width: 768px;
         margin: auto;
         display: block;
         position: sticky;

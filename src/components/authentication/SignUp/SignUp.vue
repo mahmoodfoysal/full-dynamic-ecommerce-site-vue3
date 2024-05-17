@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 import { ref, watchEffect } from 'vue';
 import router from '../../../router/router';
 import { useStore } from '@/stores/TaskStore';
@@ -83,8 +84,10 @@ watchEffect(() => {
 <template>
     <section class="login-section-style container">
         <div class="d-flex justify-content-center mb-3 pt-3 component-nav-style">
-            <h4 class="me-5">Login</h4>
-            <h4>Registration</h4>
+            <h4 class="me-5 text-primary">Registration</h4>
+            <RouterLink :to="{name: 'Login'}" style="text-decoration: none; color: black;">
+                <h4>Login</h4>
+            </RouterLink>
         </div>
         <!-- login form section  -->
         <div class="form-control-style">
@@ -134,7 +137,7 @@ watchEffect(() => {
                 </button>
                 <!-- google signin end -->
             </div>
-
+            <p class="mt-3">Already Registered? please <RouterLink :to="{name: 'Login'}" style="text-decoration: none;">Login</RouterLink></p>
         </div>
     </section>
 </template>
