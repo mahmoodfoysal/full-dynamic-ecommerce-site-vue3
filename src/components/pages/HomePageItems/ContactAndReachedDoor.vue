@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import emailjs from 'emailjs-com';
 
-const fullName = ref('');
+const name = ref('');
 const subject = ref('');
 const email = ref('');
 const phone = ref('');
@@ -12,7 +12,7 @@ const sendEmail = (e) => {
     e.preventDefault();
 
     const templateParams = {
-        fullName: fullName.value,
+        name: name.value,
         email: email.value,
         subject: subject.value,
         phone: phone.value,
@@ -25,7 +25,7 @@ const sendEmail = (e) => {
         .then((result) => {
             console.log('Email sent successfully:', result.text);
             // Optionally reset form fields after successful submission
-            fullName.value = '';
+            name.value = '';
             subject.value = '';
             email.value = '';
             phone.value = '';
@@ -71,7 +71,7 @@ const messageSent = () => {
                     <div class="modal-body">
                         <section class="input-group-style">
                             <form @submit.prevent="sendEmail">
-                                <input v-model="fullName" type="text" name="fullName" placeholder="Client Name">
+                                <input v-model="name" type="text" name="name" placeholder="Client Name">
                                 <input v-model="email" type="email" name="email" placeholder="Email Address">
                                 <input v-model="subject" type="text" name="subject" placeholder="Subject">
                                 <input v-model="phone" type="number" name="phone" placeholder="Phone Number">
