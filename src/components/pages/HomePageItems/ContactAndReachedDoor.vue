@@ -1,6 +1,50 @@
 <script setup>
+import { ref } from 'vue';
+import emailjs from 'emailjs-com';
 
+const fullName = ref('');
+const subject = ref('');
+const email = ref('');
+const phone = ref('');
+const message = ref('');
+
+const sendEmail = (e) => {
+    e.preventDefault();
+
+    const templateParams = {
+        fullName: fullName.value,
+        email: email.value,
+        subject: subject.value,
+        phone: phone.value,
+        message: message.value
+    };
+
+    console.log('Template Params:', templateParams); // Log form data for debugging
+
+    emailjs.sendForm('service_8velmx9', 'template_a0wk1gc', e.target, 'Fxn081CAW6lcRjYKl')
+        .then((result) => {
+            console.log('Email sent successfully:', result.text);
+            // Optionally reset form fields after successful submission
+            fullName.value = '';
+            subject.value = '';
+            email.value = '';
+            phone.value = '';
+            message.value = '';
+            // Call any function to indicate that the message has been sent
+            messageSent();
+        })
+        .catch((error) => {
+            console.error('Error sending email:', error.text);
+        });
+};
+
+// Define the function to be called after the message is sent
+const messageSent = () => {
+    alert("Success")
+};
 </script>
+
+
 
 <template>
     <!-- contact page section  -->
@@ -26,16 +70,17 @@
                     </div>
                     <div class="modal-body">
                         <section class="input-group-style">
-                            <input type="text" name="" value="" placeholder="Client Name">
-                            <input type="text" name="" value="" placeholder="Business Name">
-                            <input type="Email" name="" value="" placeholder="Email Address">
-                            <input type="number" name="" value="" placeholder="Phone Number">
-                            <input type="text" name="" value="" placeholder="Business Address">
-                            <textarea rows="3" cols="20" placeholder="Message"></textarea>
-                            <div class="input-button-group-style">
-                                <button type="button">Submit</button>
-                                <button type="button">Cancel</button>
-                            </div>
+                            <form @submit.prevent="sendEmail">
+                                <input v-model="fullName" type="text" name="fullName" placeholder="Client Name">
+                                <input v-model="email" type="email" name="email" placeholder="Email Address">
+                                <input v-model="subject" type="text" name="subject" placeholder="Subject">
+                                <input v-model="phone" type="number" name="phone" placeholder="Phone Number">
+                                <textarea v-model="message" rows="3" cols="20" name="message" placeholder="Message"></textarea>
+                                <div class="input-button-group-style">
+                                    <button type="submit">Submit</button>
+                                    <button type="button" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                </div>
+                            </form>
                         </section>
                     </div>
                 </div>

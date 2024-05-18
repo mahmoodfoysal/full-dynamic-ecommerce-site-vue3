@@ -44,6 +44,11 @@ const routes = [
       path: '/product-detail/:id/:slug',
       name: 'ProductDetail',
       component: () => import('@/components/pages/Products/ProductDetails/ProductDetails.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../components/pages/NotFound/NotFound.vue')
     }
   ]
 
