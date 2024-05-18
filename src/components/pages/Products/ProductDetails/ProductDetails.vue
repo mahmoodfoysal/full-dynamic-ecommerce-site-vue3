@@ -13,13 +13,13 @@ const routeParamsId = ref(Number(route.params.id));
 
 
 // destructure the data from the central api file 
-const {getProducts, getReviews, products, reviews} = getDataFromCentralApiFile();
+const {getProducts, getReviews, products, reviewData} = getDataFromCentralApiFile();
 
 onMounted(async () => {
     await getProducts();
     await getReviews();
+    await filterReview();
 })
-
 
 
 // call pinia store and set in the variable store for using pinia store
@@ -68,10 +68,7 @@ const handleIncrementQuantity = (id) => {
         shopping_cart[id].quantity += 1;
     }
     else {
-        const item = {
-            quantity: 1,
-        };
-        shopping_cart[id] = item;
+        alert('Please Add To Cart');
     }
     updateDb(shopping_cart);
 }
@@ -117,7 +114,13 @@ const filteredProducts = computed(() => {
     return products.value.filter(product => product?.pro_id === routeParamsId.value);
 });
 
-console.log(filteredProducts)
+
+
+// review visulize function 
+const filterReviewData = ref([]);
+const filterReview = () => {
+    filterReviewData.value = reviewData.value.filter(review => review.productID === routeParamsId.value);
+}
 
 </script>
 
@@ -164,7 +167,7 @@ console.log(filteredProducts)
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
                             <h6>$ {{ filteredProducts[0]?.price }}</h6>
-                            <span>Stock: {{ filteredProducts[0]?.quantity }}</span>
+                            <span>Stock: {{ filteredProducts[0]?.stock }}</span>
                             <span>Product ID: {{ filteredProducts[0]?.pro_id }}</span>
 
                         </div>
@@ -255,10 +258,10 @@ console.log(filteredProducts)
 
                 <!-- reviews div  -->
 
-                <h4 class="text-center mt-3 mb-3 text-success review-text">Reviews</h4>
+                <h4 class="text-center mt-3 mb-3 text-success review-text">Reviews({{ filterReviewData.length }})</h4>
         <div class="col-lg-12">
             <!-- filter style down  -->
-            <div > 
+            <div :class="{ 'project-review': filterReviewData.length > 2 }"> 
                 <div v-for="(review, index) in filterReviewData" :key="index" class="d-flex">
                     <img :src="review?.photo" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;"
                         alt="">
@@ -269,7 +272,7 @@ console.log(filteredProducts)
                             <div class="d-flex mb-3">
                                 <template v-for="i in 5">
                                     <i
-                                        :class="{ 'fa': true, 'fa-star': true, 'text-gray': i > review?.rating, 'text-yellow': i <= review?.rating }"></i>
+                                        :class="{ 'fa': true, 'fa-star': true, 'text-gray': i > review?.currentRating, 'text-yellow': i <= review?.currentRating }"></i>
                                 </template>
                             </div>
                         </div>

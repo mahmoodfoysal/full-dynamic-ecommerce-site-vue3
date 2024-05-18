@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, defineProps, toRef } from 'vue';
+import { ref, defineProps, toRef } from 'vue';
 import { useStore } from '@/stores/TaskStore.js';
 
 import getDataFromCentralApiFile from '@/API/All_API.js';
@@ -15,15 +15,16 @@ const productID = toRef(props, 'productID');
 console.log("jadhbadnakndna", productID.value)
 
 
-const { postReview, reviews} = getDataFromCentralApiFile();
+const { postReview } = getDataFromCentralApiFile();
 
 // all ref are declare here 
 const store = useStore();
 const currentRating = ref(0);
-const fullName = ref(store.user.displayName);
-const email = ref(store.user.email);
+const fullName = ref(store.user ? store.user.displayName: '');
+const email = ref(store.user ? store.user.email: '');
+const photo = ref(store.user ? store.user.photoURL: '');
 const comment = ref(null);
-const date = ref(new Date());
+const date = ref(Date());
 
 const rate = (rating) => {
     currentRating.value = rating;
@@ -33,12 +34,20 @@ const handleSubmitReview = async () => {
     const review = {
         fullName: fullName.value,
         email: email.value,
+        photo: photo.value,
         comment: comment.value,
         currentRating: currentRating.value,
         productID: productID.value,
         date: date.value
     };
-    await postReview(review);
+    if(!fullName.value, !email.value, !comment.value, !currentRating.value) {
+        alert("Please Fill All Required Field");
+        return;
+    }
+    const text = "Are Sure Want To Review This Item???";
+    if(confirm(text) == true) {
+        await postReview(review);
+    }
     fullName.value = '';
     email.value = '';
     comment.value = '';
@@ -80,9 +89,12 @@ const handleSubmitReview = async () => {
                     }" @click="rate(index)"></i>
                         </div>
                     </div>
-                    <button @click="handleSubmitReview" type="button"
-                        class="btn-style">
-                        Post Review</button>
+                    <button 
+                    @click="handleSubmitReview" 
+                    type="button"
+                    class="btn-style">
+                    Post Review
+                    </button>
                 </div>
             </div>
         </div>

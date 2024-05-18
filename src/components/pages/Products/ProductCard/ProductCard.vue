@@ -61,7 +61,7 @@ const updateDb = (cart) => {
 <template>
   <div class="card card-style">
     <RouterLink class="no-underline-link"
-      :to="{ name: 'ProductDetail', params: { id: productItem.pro_id, slug: productItem.pro_name } }">
+      :to="{ name: 'ProductDetail', params: { id: productItem.pro_id, slug: productItem.pro_name.replace(/\s+/g, '-') } }">
       <img :src="productItem.pro_image" class="card-img-top" alt="Card Image">
     </RouterLink>
     <div class="card-body">

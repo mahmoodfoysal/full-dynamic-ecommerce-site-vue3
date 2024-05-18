@@ -471,7 +471,7 @@
       "pro_name": "Cotton Panjabi",
       "price": 20,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "cece"
@@ -486,7 +486,7 @@
       "pro_name": "Cotton Panjabi",
       "price": 23,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f860"
@@ -501,7 +501,7 @@
       "pro_name": "Cotton Panjabi",
       "price": 18,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f53d"
@@ -516,7 +516,7 @@
       "pro_name": "Cotton Panjabi",
       "price": 25,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "5cf0"
@@ -531,7 +531,8 @@
       "pro_name": "Casual Shirt",
       "price": 19,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "ce52"
     },
@@ -545,7 +546,8 @@
       "pro_name": "Casual Shirt",
       "price": 21,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "d08d"
     },
@@ -559,7 +561,8 @@
       "pro_name": "Casual Shirt",
       "price": 23,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "61c2"
     },
@@ -573,7 +576,8 @@
       "pro_name": "Formal Shirt",
       "price": 22,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "1e41"
     },
@@ -587,7 +591,8 @@
       "pro_name": "Formal Shirt",
       "price": 22,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "8521"
     },
@@ -601,7 +606,8 @@
       "pro_name": "Formal Shirt",
       "price": 22,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "4093"
     },
@@ -615,7 +621,8 @@
       "pro_name": "Katua & Fatua",
       "price": 17,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Arong",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "8ec8"
     },
@@ -629,7 +636,8 @@
       "pro_name": "Katua & Fatua",
       "price": 17,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Arong",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "b57b"
     },
@@ -643,7 +651,8 @@
       "pro_name": "Katua & Fatua",
       "price": 10,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Arong",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "11fb"
     },
@@ -657,7 +666,8 @@
       "pro_name": "T-Shirt",
       "price": 11,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "261e"
     },
@@ -671,7 +681,8 @@
       "pro_name": "T-Shirt",
       "price": 12,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f195"
     },
@@ -685,7 +696,8 @@
       "pro_name": "T-Shirt",
       "price": 14,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "d046"
     },
@@ -699,7 +711,8 @@
       "pro_name": "Polo Shirt",
       "price": 15,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "766f"
     },
@@ -713,7 +726,8 @@
       "pro_name": "Polo Shirt",
       "price": 14,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "c1d1"
     },
@@ -727,7 +741,8 @@
       "pro_name": "Polo Shirt",
       "price": 17,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "536a"
     },
@@ -741,7 +756,8 @@
       "pro_name": "Men's Coti",
       "price": 21,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Rich Man",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "0a14"
     },
@@ -755,7 +771,8 @@
       "pro_name": "Men's Coti",
       "price": 22,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Rich Man",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "c987"
     },
@@ -769,7 +786,8 @@
       "pro_name": "Men's Coti",
       "price": 23,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Rich Man",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "108a"
     },
@@ -783,7 +801,7 @@
       "pro_name": "Single Ethnic",
       "price": 21,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "3357"
     },
@@ -797,7 +815,7 @@
       "pro_name": "Single Ethnic",
       "price": 22,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "2dc1"
     },
@@ -811,7 +829,7 @@
       "pro_name": "Single Ethnic",
       "price": 20,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "d931"
     },
@@ -825,7 +843,7 @@
       "pro_name": "Women Ethnic 3 Pics",
       "price": 22,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "1323"
     },
@@ -839,7 +857,7 @@
       "pro_name": "Women Ethnic 3 Pics",
       "price": 22,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "bdb0"
     },
@@ -853,7 +871,7 @@
       "pro_name": "Women Ethnic 3 Pics",
       "price": 22,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "4695"
     },
@@ -867,7 +885,7 @@
       "pro_name": "Fashion Tops",
       "price": 15,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "e2ea"
     },
@@ -881,7 +899,7 @@
       "pro_name": "Fashion Tops",
       "price": 15,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "8e35"
     },
@@ -895,7 +913,7 @@
       "pro_name": "Fashion Tops",
       "price": 16,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "c87d"
     },
@@ -909,7 +927,7 @@
       "pro_name": "Women's Tees and Tank",
       "price": 16,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "0352"
     },
@@ -923,7 +941,7 @@
       "pro_name": "Women's Tees and Tank",
       "price": 16,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "afd1"
     },
@@ -937,7 +955,7 @@
       "pro_name": "Women's Tees and Tank",
       "price": 19,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "d774"
     },
@@ -951,7 +969,7 @@
       "pro_name": "Scarf",
       "price": 9,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "c572"
     },
@@ -965,7 +983,7 @@
       "pro_name": "Scarf",
       "price": 8,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "bad8"
     },
@@ -979,7 +997,7 @@
       "pro_name": "Scarf",
       "price": 8,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "391c"
     },
@@ -993,7 +1011,7 @@
       "pro_name": "Saree",
       "price": 28,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "7806"
     },
@@ -1007,7 +1025,7 @@
       "pro_name": "Saree",
       "price": 30,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "3cb6"
     },
@@ -1021,7 +1039,7 @@
       "pro_name": "Saree",
       "price": 32,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "2785"
     },
@@ -1035,7 +1053,7 @@
       "pro_name": "Maternity Wear",
       "price": 15,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "e2f4"
     },
@@ -1049,7 +1067,7 @@
       "pro_name": "Maternity Wear",
       "price": 16,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "3a40"
     },
@@ -1063,7 +1081,7 @@
       "pro_name": "Maternity Wear",
       "price": 17,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "17e3"
     },
@@ -1077,7 +1095,7 @@
       "pro_name": "Mens Shoe",
       "price": 35,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
       "brand":"Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f8a9"
@@ -1092,7 +1110,7 @@
       "pro_name": "Mens Shoe",
       "price": 33,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "brand":"Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "4556"
@@ -1107,7 +1125,7 @@
       "pro_name": "Mens Shoe",
       "price": 38,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
       "brand":"Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "381e"
@@ -1122,7 +1140,8 @@
       "pro_name": "Snackers",
       "price": 30,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Adidas",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "8568"
     },
@@ -1136,7 +1155,8 @@
       "pro_name": "Snackers",
       "price": 31,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Adidas",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f378"
     },
@@ -1150,7 +1170,8 @@
       "pro_name": "Snackers",
       "price": 29,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Adidas",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "5cc6"
     },
@@ -1164,7 +1185,8 @@
       "pro_name": "Sandle",
       "price": 28,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Nike",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "380a"
     },
@@ -1178,7 +1200,8 @@
       "pro_name": "Sandle",
       "price": 21,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Nike",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "555e"
     },
@@ -1192,7 +1215,8 @@
       "pro_name": "Sandle",
       "price": 30,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Nike",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "226d"
     },
@@ -1206,7 +1230,8 @@
       "pro_name": "Clog",
       "price": 14,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Nike",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "eb4c"
     },
@@ -1220,7 +1245,8 @@
       "pro_name": "Clog",
       "price": 12,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Nike",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "3169"
     },
@@ -1234,7 +1260,8 @@
       "pro_name": "Clog",
       "price": 13,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Nike",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "2d12"
     },
@@ -1248,7 +1275,8 @@
       "pro_name": "Women's Shoe",
       "price": 28,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Puma",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "25b2"
     },
@@ -1262,7 +1290,8 @@
       "pro_name": "Women's Shoe",
       "price": 28,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Puma",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "5390"
     },
@@ -1276,7 +1305,8 @@
       "pro_name": "Women's Shoe",
       "price": 30,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Puma",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f90c"
     },
@@ -1290,7 +1320,8 @@
       "pro_name": "Sneaker",
       "price": 33,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Adidas",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "9c2f"
     },
@@ -1304,7 +1335,8 @@
       "pro_name": "Sneaker",
       "price": 37,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Adidas",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "6ebf"
     },
@@ -1318,7 +1350,8 @@
       "pro_name": "Sneaker",
       "price": 31,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Adidas",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "1fe6"
     },
@@ -1332,7 +1365,8 @@
       "pro_name": "Sandle",
       "price": 18,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Apex",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "30f1"
     },
@@ -1346,7 +1380,8 @@
       "pro_name": "Sandle",
       "price": 18,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Apex",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "828f"
     },
@@ -1360,7 +1395,8 @@
       "pro_name": "Sandle",
       "price": 20,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Apex",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f068"
     },
@@ -1374,7 +1410,8 @@
       "pro_name": "Canvas",
       "price": 21,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Apex",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "5259"
     },
@@ -1388,7 +1425,8 @@
       "pro_name": "Canvas",
       "price": 21,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Apex",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "2e90"
     },
@@ -1402,7 +1440,8 @@
       "pro_name": "Canvas",
       "price": 21,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Apex",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "2056"
     },
@@ -1416,7 +1455,8 @@
       "pro_name": "Heels",
       "price": 25,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "8c47"
     },
@@ -1430,7 +1470,8 @@
       "pro_name": "Heels",
       "price": 22,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f9e6"
     },
@@ -1444,7 +1485,8 @@
       "pro_name": "Heels",
       "price": 24,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "5534"
     },
@@ -1458,7 +1500,8 @@
       "pro_name": "One Plus 11r",
       "price": 500,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "One Plus",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "4db0"
     },
@@ -1472,7 +1515,8 @@
       "pro_name": "One Plus 10rt",
       "price": 550,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "One Plus",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "5aa7"
     },
@@ -1486,7 +1530,8 @@
       "pro_name": "One Plus 9rt",
       "price": 450,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "One Plus",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "8959"
     },
@@ -1500,7 +1545,8 @@
       "pro_name": "Realme 9 pro plus",
       "price": 370,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Realme",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "617b"
     },
@@ -1514,7 +1560,8 @@
       "pro_name": "Realme 10 pro plus",
       "price": 320,
       "rating": 4,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Realme",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "8873"
     },
@@ -1528,7 +1575,8 @@
       "pro_name": "Realme 9 pro",
       "price": 290,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Realme",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "942b"
     },
@@ -1542,7 +1590,8 @@
       "pro_name": "Realme 9 pro",
       "price": 290,
       "rating": 5,
-      "quantity": 100,
+      "stock": 100,
+      "brand": "Realme",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
       "id": "f056"
     }
@@ -1708,7 +1757,7 @@
           "price": 20,
           "pro_image": "https://static.aadi.com.bd/__sized__/products/203544/11894-203544-panjabi-black-kabuliwalaa-730991-0-thumbnail-500x500-70.jpeg",
           "pro_id": 10000,
-          "quantity": 3
+          "stock": 3
         }
       }
     },
@@ -1736,28 +1785,28 @@
           "price": 21,
           "pro_image": "https://images.othoba.com/images/thumbs/0476674_mens-full-sleeve-cotton-casual-shirt.jpeg",
           "pro_id": 10005,
-          "quantity": 3
+          "stock": 3
         },
         "10006": {
           "pro_name": "Casual Shirt",
           "price": 23,
           "pro_image": "https://www.toptenmartltd.com/wp-content/uploads/2023/03/main.jpg",
           "pro_id": 10006,
-          "quantity": 1
+          "stock": 1
         },
         "10061": {
           "pro_name": "Sandle",
           "price": 18,
           "pro_image": "https://www.merkis.com.bd/wp-content/uploads/2023/10/1227-01.jpg",
           "pro_id": 10061,
-          "quantity": 1
+          "stock": 1
         },
         "10062": {
           "pro_name": "Sandle",
           "price": 18,
           "pro_image": "https://www.merkis.com.bd/wp-content/uploads/2023/09/847-01.jpg",
           "pro_id": 10062,
-          "quantity": 2
+          "stock": 2
         }
       }
     }

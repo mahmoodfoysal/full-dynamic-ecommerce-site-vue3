@@ -9,7 +9,7 @@ export default function getDataFromCentralApiFile() {
     const singleProduct = ref({});
     const brands = ref([]);
     const orders = ref([]);
-    const reviews = ref([]);
+    const reviewData = ref([]);
 
     // get api for card category image for home page 
     const GetCatImg = async () => {
@@ -85,11 +85,11 @@ export default function getDataFromCentralApiFile() {
     };
 
     const getReviews = async () => {
-      brands.value = [];
-      const url = 'http://localhost:5000/reviews';
+      reviewData.value = [];
+      const url = 'https://kitkat-ecommerce-server.onrender.com/reviews';
       try {
         const res = await axios(url);
-        brnads.value = res.data;
+        reviewData.value = res.data;
       }
       catch(err) {
         console.log(err);
@@ -124,8 +124,8 @@ export default function getDataFromCentralApiFile() {
     };
 
     const postReview = async (review) => {
-      const url = 'http://localhost:5000/reviews';
-      reviews.value = [];
+      const url = 'https://kitkat-ecommerce-server.onrender.com/reviews';
+      reviewData.value = [];
       try {
         const config = {
           method: 'POST',
@@ -136,11 +136,11 @@ export default function getDataFromCentralApiFile() {
           data: JSON.stringify(review)
         }
         const res = await axios(config);
-        reviews.value = res.data;
+        reviewData.value = res.data;
         if(res.status === 200) {
           alert("Review Successfull");
         }
-        return reviews;
+        return reviewData;
       }
       catch(err) {
 
@@ -161,6 +161,6 @@ export default function getDataFromCentralApiFile() {
         products,
         brands,
         orders,
-        reviews,
+        reviewData,
     }
 }
