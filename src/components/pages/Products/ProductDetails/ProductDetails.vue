@@ -1,5 +1,6 @@
 <script setup>
 import getDataFromCentralApiFile from '/src/API/All_API.js';
+import Reviews from '@/components/pages/Reviews/Reviews.vue'
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router';
 import { useStore } from '/src/stores/TaskStore.js';
@@ -12,10 +13,11 @@ const routeParamsId = ref(Number(route.params.id));
 
 
 // destructure the data from the central api file 
-const {getProducts, products} = getDataFromCentralApiFile();
+const {getProducts, getReviews, products, reviews} = getDataFromCentralApiFile();
 
 onMounted(async () => {
     await getProducts();
+    await getReviews();
 })
 
 
@@ -120,7 +122,7 @@ console.log(filteredProducts)
 </script>
 
 <template>
-    <section v-if="singleProduct.length === 0" class="d-flex justify-content-center" role="status">
+    <section v-if="products.length === 0" class="d-flex justify-content-center" role="status">
         <div class="spinner-grow text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
@@ -250,6 +252,33 @@ console.log(filteredProducts)
                 </section>
             </div>
         </div>
+
+                <!-- reviews div  -->
+
+                <h4 class="text-center mt-3 mb-3 text-success review-text">Reviews</h4>
+        <div class="col-lg-12">
+            <!-- filter style down  -->
+            <div > 
+                <div v-for="(review, index) in filterReviewData" :key="index" class="d-flex">
+                    <img :src="review?.photo" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;"
+                        alt="">
+                    <div>
+                        <p class="mb-2 review-comment-style" style="font-size: 14px;">{{ review?.reviewDate }}</p>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="review-fullname-style">{{ review?.fullName }}</h5>
+                            <div class="d-flex mb-3">
+                                <template v-for="i in 5">
+                                    <i
+                                        :class="{ 'fa': true, 'fa-star': true, 'text-gray': i > review?.rating, 'text-yellow': i <= review?.rating }"></i>
+                                </template>
+                            </div>
+                        </div>
+                        <p class="review-comment-style">{{ review?.comment }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <Reviews :productID="routeParamsId"></Reviews>
     </section>
 </template>
 
@@ -304,6 +333,97 @@ p {
 
 .checkout-btn-div button:hover {
     cursor: pointer;
+}
+
+/* review style write here  */
+
+.rating-style { 
+    cursor: pointer;
+}
+
+.rating-style i:hover {
+    cursor: pointer;
+    color: #FFB524;
+}
+
+.star {
+    color: gold;
+}
+
+.star-o {
+    color: gray;
+}
+
+.text-yellow {
+    color: #FFB524;
+}
+
+.text-gray {
+    color: gray !important;
+}
+
+.project-review {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.component-text-style {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px
+}
+
+.project-link-text {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.link-group a {
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+}
+
+.tech-features-div-style h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.tech-features-div-style ul li {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    color: gray
+}
+
+.review-text {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.review-fullname-style {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 15px;
+}
+
+.review-comment-style {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    color: gray;
 }
 
 @media only screen and (max-width: 2560px) {
