@@ -12,7 +12,6 @@ const props = defineProps({
 });
 
 const productID = toRef(props, 'productID');
-console.log("jadhbadnakndna", productID.value)
 
 
 const { postReview } = getDataFromCentralApiFile();
