@@ -142,7 +142,7 @@ const goToPage = (newPage) => {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Brand
+                                Price
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show"
@@ -157,7 +157,7 @@ const goToPage = (newPage) => {
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Price
+                                Brand
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">

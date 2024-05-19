@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, defineEmits, watch } from 'vue';
 import router from '../../../router/router'
 import { RouterLink, useRouter  } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
@@ -44,7 +44,24 @@ const cartCount = computed(() => {
 
 const logoLink = () => {
     router.push('/')
+};
+
+// all search code write here 
+
+const searchData = ref("")
+
+const emit = defineEmits(['search-products']);
+
+emit('search-products', searchData.value.toLocaleLowerCase());
+
+const search = (event) => {
+    emit('search-products', searchData.value.toLocaleLowerCase());
 }
+
+watch(searchData, (newValue) => {
+  // When the searchQuery changes, emit the 'search-products' event with the lowercase value
+  emit('search-products', newValue.toLowerCase());
+});
 
 </script>
 
@@ -163,11 +180,20 @@ const logoLink = () => {
                     <span class="material-icons toggle-btn-style">menu</span>
                     <h6 class="ms-2 navbar-text">Shop By Category</h6>
                 </div>
-                <form class="d-flex search-field-style" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn" type="submit"><span class="material-icons">
+                <form @submit.prevent="search" class="d-flex search-field-style" role="search">
+                    <input 
+                    v-model="searchData"
+                    class="form-control me-2" 
+                    type="search" 
+                    placeholder="Search" 
+                    aria-label="Search">
+                    <button 
+                    class="btn" 
+                    type="submit">
+                    <span class="material-icons">
                             search
-                        </span></button>
+                        </span>
+                    </button>
                 </form>
                 <h6 class="navbar-text" href="#">Shop Address</h6>
             </div>
@@ -556,9 +582,12 @@ p {
         overflow-y: scroll;
     }
 
+    
+
     .search-field-style input {
-        width: 100%;
-    }
+    width: 480px;
+    height: 100%;
+}
 
     .first-navbar-style {
         z-index: 5;

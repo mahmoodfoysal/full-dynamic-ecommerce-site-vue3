@@ -7,6 +7,9 @@ import 'swiper/css/navigation';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import { RouterLink } from 'vue-router';
+import { useStore } from '@/stores/TaskStore.js';
+
+const store = useStore();
 
 const { getProducts, products } = getDataFromCentralApiFile();
 // Mousewheel its work for mouse wheel sliding 
@@ -20,6 +23,45 @@ onMounted(async () => {
 const filterProducts = computed(() => {
   return products.value.filter(product => product?.parent_cat_id === 1);
 })
+
+
+// cart code write here 
+const handleAddToCart = (product) => {
+  // destructure products data for set to the cart 
+  const { pro_name, price, pro_image, pro_id } = product;
+  // declare a object for store in the localStorage 
+  let item = {
+    pro_name,
+    price,
+    pro_image,
+    pro_id,
+  }
+  // check shopping cart data have or empty 
+  let shopping_cart = getDb() || {};
+
+  // if product have the localStorage then his quantity incease by one 
+  if (shopping_cart[item.pro_id]) {
+    shopping_cart[item.pro_id].quantity += 1;
+  }
+  // otherwise new item add in the storage and his quantity is 1 
+  else {
+    item.quantity = 1;
+    shopping_cart[item.pro_id] = item;
+  }
+  // update the database who store data to the localStorage 
+  updateDb(shopping_cart);
+}
+// get data from localStorage 
+const getDb = () => {
+  const cartData = localStorage.getItem('shopping_cart');
+  return cartData ? JSON.parse(cartData) : null;
+}
+
+// update data to the localStorage 
+const updateDb = (cart) => {
+  localStorage.setItem('shopping_cart', JSON.stringify(cart));
+  store.setCartItem(cart);
+}
 
 </script>
 
@@ -48,11 +90,11 @@ const filterProducts = computed(() => {
             :to="{ name: 'ProductDetail', params: { id: product.pro_id, slug: product.pro_name.replace(/\s+/g, '-') } }">
             <img :src="product?.pro_image" alt="">
           </RouterLink>
-          
+
           <div>
             <h5><del>$45</del> Save <span>${{ product?.price }}</span></h5>
             <p>Description</p>
-            <span class="material-icons">
+            <span @click="handleAddToCart(product)" class="material-icons">
               shopping_cart
             </span>
           </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, toRefs } from 'vue';
 import ProductCard from '../ProductCard/ProductCard.vue';
 import axios from 'axios';
 import PriceFilter from '../../Filters/PriceFilter.vue';
@@ -7,6 +7,15 @@ import BrandFilter from '../../Filters/BrandFilter.vue';
 import getDataFromCentralApiFile from '@/API/All_API.js'
 
 const { getProducts, products } = getDataFromCentralApiFile()
+
+const props = defineProps({
+    searchData: {
+        type: String,
+        default: ''
+    }
+})
+
+const { searchData } = toRefs(props);
 
 // call api for get product data 
 onMounted(async () => {
@@ -62,6 +71,11 @@ const paginatedProducts = computed(() => {
     // Apply brand filter
     if (selectedBrand.value.length > 0) {
         filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
+    }
+
+    if(searchData.value.length > 0) {
+        const searchKeyword = searchData.value.toLowerCase();
+        filtered = filtered.filter(product => product.pro_name.toLowerCase().includes(searchKeyword));
     }
 
     // Apply pagination
