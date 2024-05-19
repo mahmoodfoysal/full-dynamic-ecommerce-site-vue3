@@ -18,6 +18,7 @@ const cartItem = computed(() => {
     return Object.values(store.cartItem);
 })
 
+
 // get data from the local storage
 const getDb = () => {
     const cartData = localStorage.getItem('shopping_cart');
@@ -100,47 +101,48 @@ let totalAmount = computed(() => {
 </script>
 
 <template>
-    <section class="cart-container">
+    <section class="cart-container container">
         <div class="component-info-div">
             <h6><span></span>Home > Cart</h6>
             <!-- <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p> -->
         </div>
-        <section class="cart-style cart-section-style">
-            <div v-for="(item, index) in cart" :key="index" class="card mb-3" style="max-width: 540px; margin: auto;">
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
-                    </div>
-                    <div class="col-md-3 d-flex justify-content-center align-items-center">
-                        <div class="">
-                            <h6>{{ item.pro_name }}</h6>
+            <section class="cart-section-style">
+                <div v-for="(item, index) in cart" :key="index" class="card mb-3"
+                    style="max-width: 540px; margin: auto;">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
                         </div>
-                    </div>
-                    <div class="col-md-3 d-flex justify-content-center align-items-center">
-                        <div class="d-flex add-sub-style">
-                            <span @click="handleDecrementQuantity(item.pro_id)" class="material-icons me-2">
-                                remove
-                            </span>
-                            <h5 class="me-2">{{ item.quantity }}</h5>
-                            <span @click="handleIncrementQuantity(item.pro_id)" class="material-icons me-2">
-                                add
-                            </span>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <div class="">
+                                <h6>{{ item.pro_name }}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 d-flex justify-content-center align-items-center">
-                        <div class="d-flex price-delete-style">
-                            <h6>${{ item.price }}</h6>
-                            <span @click="handleRemoveItem(item.pro_id)" class="material-icons ms-2">
-                                delete
-                            </span>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <div class="d-flex add-sub-style">
+                                <span @click="handleDecrementQuantity(item.pro_id)" class="material-icons me-2">
+                                    remove
+                                </span>
+                                <h5 class="me-2">{{ item.quantity }}</h5>
+                                <span @click="handleIncrementQuantity(item.pro_id)" class="material-icons me-2">
+                                    add
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <div class="d-flex price-delete-style">
+                                <h6>${{ item.price }}</h6>
+                                <span @click="handleRemoveItem(item.pro_id)" class="material-icons ms-2">
+                                    delete
+                                </span>
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
 
-        </section>
-        <section class="calculation-section">
+            </section>
+        <section v-if="cartItem.length > 0" class="calculation-section">
             <table class="mt-3" style="width:100%">
                 <tr>
                     <td style="text-align: right; width:25%"></td>
@@ -169,6 +171,9 @@ let totalAmount = computed(() => {
                 </RouterLink>
             </div>
         </section>
+        <div v-else class="text-center mb-4">
+            <h3>Cart Item Empty!!!</h3>
+        </div>
     </section>
 </template>
 
@@ -190,42 +195,6 @@ p {
     margin: auto;
     overflow-y: scroll;
 } */
-
-@media (min-width: 1200px) {
-    .cart-section-style {
-        height: calc(100vh - 320px);
-        width: 40%;
-        margin: auto;
-        overflow-y: scroll;
-    }
-}
-
-@media (max-width: 992px) {
-    .cart-section-style {
-        max-width: 960px;
-        margin: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .cart-section-style {
-        max-width: 720px;
-        margin: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 540px) {
-    .cart-section-style {
-        max-width: 720px;
-        margin: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-}
 
 .cart-container {
     margin-bottom: 30px;
@@ -249,30 +218,6 @@ p {
     box-sizing: border-box;
     margin-bottom: 10px;
     border-radius: 8px;
-}
-
-
-
-::-webkit-scrollbar {
-    width: 8px;
-    border-radius: 20px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
 }
 
 .cart-img-style {
@@ -307,5 +252,122 @@ p {
 
 .checkout-btn-div button:hover {
     cursor: pointer;
+}
+
+
+@media (max-width: 2560px) {
+    .cart-container {
+        max-width: 2300px !important;
+        margin: auto;
+    }
+
+    .cart-section-style {
+        width: 100%;
+        height: calc(100vh - 320px);
+        margin: auto;
+        overflow-y: scroll;
+    }
+
+    .calculation-section {
+        border-top: 1px solid black;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 1920px) {
+    .cart-container {
+        max-width: 1800px;
+        margin: auto;
+    }
+
+    .cart-section-style {
+        width: 100%;
+        height: calc(100vh - 320px);
+        margin: auto;
+        overflow-y: scroll;
+    }
+
+    .calculation-section {
+        border-top: 1px solid black;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .cart-container {
+        max-width: 1300px !important;
+        margin: auto;
+    }
+
+    .cart-section-style {
+        width: 100%;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .cart-container {
+        max-width: 900px !important;
+        margin: auto;
+    }
+
+    .cart-section-style {
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cart-container {
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .cart-section-style {
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .checkout-btn-div {
+        width: 50%;
+        text-align: center;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .cart-container {
+        width: 100% !important;
+        margin: auto;
+    }
+
+    .cart-section-style {
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .checkout-btn-div {
+        width: 50%;
+        text-align: center;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .calculation-section {
+        border-top: 1px solid black;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
 }
 </style>

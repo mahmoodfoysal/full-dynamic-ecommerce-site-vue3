@@ -4,7 +4,7 @@ import { onMounted, computed } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Navigation, Pagination, Keyboard } from 'swiper/modules';
+import { Navigation, Keyboard } from 'swiper/modules';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
@@ -14,7 +14,7 @@ const store = useStore();
 const { getProducts, products } = getDataFromCentralApiFile();
 // Mousewheel its work for mouse wheel sliding 
 // import required modules
-const modules = [Navigation, Pagination, Keyboard];
+const modules = [Navigation, Keyboard];
 
 onMounted(async () => {
   await getProducts();
@@ -68,9 +68,7 @@ const updateDb = (cart) => {
 <template>
   <section class="home-product-horizontal-style">
     <h2>Cloths and Footware</h2>
-    <swiper :mousewheel="true" :navigation="true" :keyboard="true" :slidesPerView="1" :spaceBetween="30" :pagination="{
-      clickable: true,
-    }" :breakpoints="{
+    <swiper :mousewheel="true" :navigation="true" :keyboard="true" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
       '640': {
         slidesPerView: 1,
         spaceBetween: 20,

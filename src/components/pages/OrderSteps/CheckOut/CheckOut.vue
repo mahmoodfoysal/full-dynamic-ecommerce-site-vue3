@@ -61,63 +61,6 @@ const handleOrderSubmit = async () => {
 
 
 
-// get data from the local storage
-const getDb = () => {
-    const cartData = localStorage.getItem('shopping_cart');
-    return cartData ? JSON.parse(cartData) : null;
-}
-
-// update lcoal storage 
-const updateDb = (cart) => {
-    localStorage.setItem('shopping_cart', JSON.stringify(cart));
-    store.setCartItem(cart);
-}
-
-// event handler for increase product quantity
-const handleIncrementQuantity = (id) => {
-    let shopping_cart = getDb() || {};
-    if (shopping_cart[id]) {
-        shopping_cart[id].quantity += 1;
-    }
-    else {
-        const item = {
-            quantity: 1,
-        };
-        shopping_cart[id] = item;
-    }
-    updateDb(shopping_cart);
-}
-
-// event handler for decrement products 
-const handleDecrementQuantity = (id) => {
-    let shopping_cart = getDb() || {};
-    if (shopping_cart[id]) {
-        if (shopping_cart[id].quantity > 1) {
-            shopping_cart[id].quantity -= 1;
-        }
-    }
-    else {
-        const item = {
-            quantity: 1,
-        };
-        shopping_cart[id] = item;
-    }
-    updateDb(shopping_cart);
-}
-
-// event handler for remove item from cart 
-const handleRemoveItem = (id) => {
-    let shopping_cart = getDb() || {};
-
-    if (shopping_cart[id]) {
-        const text = "Are you sure Remove This"
-        if (confirm((text) == true)) {
-            delete shopping_cart[id];
-        }
-    }
-    updateDb(shopping_cart);
-}
-
 // *******************************calculation section****************************
 
 // calculate subtotal 
@@ -146,7 +89,7 @@ let totalAmount = computed(() => {
 </script>
 
 <template>
-    <section class="check-out-container-style">
+    <section class="check-out-container-style container">
         <div class="row g-4">
             <div class="col-md-6">
                 <h3 class="contact-info-style">Contact Information</h3>
@@ -223,7 +166,7 @@ let totalAmount = computed(() => {
                     </div>
 
                     <div class="col-12">
-                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary">Submit</button>
+                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary big-screen-submit-btn">Submit</button>
                     </div>
                 </div>
 
@@ -234,31 +177,17 @@ let totalAmount = computed(() => {
                         <div v-for="(item, index) in cart" :key="index" class="card mb-3"
                             style="max-width: 540px; margin: auto;">
                             <div class="row g-0">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
                                 </div>
-                                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
                                     <div class="">
                                         <h6>{{ item.pro_name }}</h6>
                                     </div>
                                 </div>
-                                <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                    <div class="d-flex add-sub-style">
-                                        <span @click="handleDecrementQuantity(item.pro_id)" class="material-icons me-2">
-                                            remove
-                                        </span>
-                                        <h5 class="me-2">{{ item.quantity }}</h5>
-                                        <span @click="handleIncrementQuantity(item.pro_id)" class="material-icons me-2">
-                                            add
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
                                         <h6>${{ item.price }}</h6>
-                                        <span @click="handleRemoveItem(item.pro_id)" class="material-icons ms-2">
-                                            delete
-                                        </span>
                                     </div>
                                 </div>
 
@@ -289,6 +218,9 @@ let totalAmount = computed(() => {
                                 <td style="text-align: left; width:25%">${{ totalAmount.toFixed(2) }} </td>
                             </tr>
                         </table>
+                        <div class="text-center mobile-screen-submit-btn mt-3">
+                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                     </section>
                 </section>
             </div>
@@ -297,42 +229,6 @@ let totalAmount = computed(() => {
 </template>
 
 <style scoped>
-@media (min-width: 1200px) {
-    .check-out-container-style {
-        max-width: 1300px;
-        margin: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 992px) {
-    .check-out-container-style {
-        max-width: 960px;
-        margin: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    .check-out-container-style {
-        max-width: 720px;
-        margin: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 540px) {
-    .check-out-container-style {
-        max-width: 720px;
-        margin: auto;
-        margin-bottom: 30px;
-        margin-top: 30px;
-    }
-}
-
 h1,
 h2,
 h3,
@@ -379,27 +275,6 @@ p {
     overflow-y: scroll;
 }
 
-::-webkit-scrollbar {
-    width: 8px;
-    border-radius: 20px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
 
 .cart-img-style {
     height: 100px;
@@ -432,4 +307,97 @@ p {
 .checkout-btn-div button:hover {
     cursor: pointer;
 }
+
+
+
+@media only screen and (max-width: 2560px) {
+    .check-out-container-style {
+        max-width: 2300px !important;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .big-screen-submit-btn {
+        display: block;
+    }
+    .mobile-screen-submit-btn {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1920px) {
+    .check-out-container-style {
+        max-width: 1800px !important;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .big-screen-submit-btn {
+        display: block;
+    }
+    .mobile-screen-submit-btn {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .check-out-container-style {
+        max-width: 1300px !important;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .big-screen-submit-btn {
+        display: block;
+    }
+    .mobile-screen-submit-btn {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .check-out-container-style {
+        max-width: 900px;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .big-screen-submit-btn {
+        display: block;
+    }
+    .mobile-screen-submit-btn {
+        display: none;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .check-out-container-style {
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .big-screen-submit-btn {
+        display: block;
+    }
+    .mobile-screen-submit-btn {
+        display: none;
+    }
+}
+@media only screen and (max-width: 540px) {
+    .check-out-container-style {
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+    .big-screen-submit-btn {
+        display: none;
+    }
+    .mobile-screen-submit-btn {
+        display: block;
+    }
+}
+
+
+
+
+
+
 </style>

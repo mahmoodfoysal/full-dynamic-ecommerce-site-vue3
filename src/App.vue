@@ -164,7 +164,7 @@ const handleMobileSearch = () => {
     .search-field-style {
         position: fixed;
         top: 16px;
-        z-index: 2000;
+        z-index: 1021;
         display: block;
     }
 
@@ -198,7 +198,7 @@ const handleMobileSearch = () => {
     .search-field-style {
         position: fixed;
         top: 20px;
-        z-index: 2000;
+        z-index: 1021;
         display: block;
         margin-left: 8px;
     }
