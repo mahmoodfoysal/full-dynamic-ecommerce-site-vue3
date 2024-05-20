@@ -73,6 +73,7 @@ const cardNumber = ref(null);
 const cardName = ref('');
 const expireDate = ref('');
 const cvc = ref('');
+const orderDate = ref(Date());
 
 // event handler for submit order 
 const handleOrderSubmit = async (product) => {
@@ -102,7 +103,8 @@ const handleOrderSubmit = async (product) => {
         delivaryFee: delivaryFee.value,
         totalAmount: totalAmount.value,
         orderList,
-        orderStatus: "P"
+        orderStatus: "P",
+        orderDate: orderDate.value
     })
     router.push({ name: 'Home' })
 };
@@ -214,7 +216,7 @@ const handleOrderSubmit = async (product) => {
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
-                                        <h6>${{ filterProducts[0]?.price }}</h6>
+                                        <h6>$ {{ filterProducts[0]?.price }}</h6>
                                     </div>
                                 </div>
 

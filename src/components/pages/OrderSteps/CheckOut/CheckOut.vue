@@ -33,6 +33,7 @@ const cardNumber = ref(null);
 const cardName = ref('');
 const expireDate = ref('');
 const cvc = ref('');
+const orderDate = ref(Date());
 
 // event handler for submit order 
 const handleOrderSubmit = async () => {
@@ -59,6 +60,7 @@ const handleOrderSubmit = async () => {
         totalAmount: totalAmount.value,
         orderList: cartItem.value,
         orderStatus: "P",
+        orderDate: orderDate.value
     })
     router.push({ name: 'Home' })
     store.setCartItem([]);
@@ -182,17 +184,24 @@ let totalAmount = computed(() => {
                         <div v-for="(item, index) in cart" :key="index" class="card mb-3"
                             style="max-width: 540px; margin: auto;">
                             <div class="row g-0">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
                                 </div>
-                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="">
                                         <h6>{{ item.pro_name }}</h6>
                                     </div>
                                 </div>
-                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
-                                        <h6>${{ item.price }}</h6>
+                                        <h6><span class="material-icons scale-quantity">
+scale
+</span> {{ item.quantity }}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="d-flex price-delete-style">
+                                        <h6>$ {{ item.price }}</h6>
                                     </div>
                                 </div>
 
@@ -311,6 +320,10 @@ p {
 
 .checkout-btn-div button:hover {
     cursor: pointer;
+}
+
+.scale-quantity {
+    font-size: 13px;
 }
 
 
