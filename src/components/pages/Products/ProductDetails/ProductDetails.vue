@@ -2,7 +2,7 @@
 import getDataFromCentralApiFile from '/src/API/All_API.js';
 import Reviews from '@/components/pages/Reviews/Reviews.vue'
 import { ref, onMounted, computed } from 'vue'
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { useStore } from '/src/stores/TaskStore.js';
 
 // define route for useing route 
@@ -202,7 +202,9 @@ const filterReview = () => {
                                 </div>
                             </div>
                             <div class="checkout-btn-div">
-                                <button>Buy Now</button>
+                                <RouterLink :to="{name: 'BuyProduct', params: {id: filteredProducts[0]?.pro_id}}">
+                                    <button>Buy Now</button>
+                                </RouterLink>
                             </div>
 
                         </div>

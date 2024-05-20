@@ -46,6 +46,11 @@ const routes = [
       component: () => import('@/components/pages/Products/ProductDetails/ProductDetails.vue')
     },
     {
+      path: '/buy-product/:id',
+      name: 'BuyProduct',
+      component: () => import('/src/components/pages/OrderSteps/BuyProduct/BuyProduct.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: () => import('../components/pages/NotFound/NotFound.vue')

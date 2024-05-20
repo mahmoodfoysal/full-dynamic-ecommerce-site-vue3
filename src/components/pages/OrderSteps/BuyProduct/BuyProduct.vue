@@ -1,14 +1,29 @@
 <script setup>
-import { computed, reactive } from 'vue';
-import { useStore } from '@/stores/TaskStore';
-import router from '@/router/router.js';
+import { useStore } from '@/stores/TaskStore.js';
+import { ref, onMounted, computed, reactive } from 'vue';
+import { useRoute } from 'vue-router';
 import getDataFromCentralApiFile from '@/API/All_API.js';
+import router from '@/router/router.js';
 
-// destructure event handler from central api 
-const { createOrders } = getDataFromCentralApiFile();
+const { createOrders, getProducts, products } = getDataFromCentralApiFile();
 
-// call pinia store 
+onMounted(async () => {
+    await getProducts();
+})
+
+const route = useRoute();
+
+const routeParamsId = ref(Number(route.params.id));
+
 const store = useStore();
+
+// product filter by params id 
+const filterProducts = computed(() => {
+    return products.value.filter(product => product.pro_id === routeParamsId.value);
+});
+
+console.log(filterProducts)
+
 
 // call computed for finding real time cart data 
 const cart = computed(() => {
@@ -20,54 +35,27 @@ const cartItem = computed(() => {
     return Object.values(store.cartItem);
 })
 
-// reactive for after input data store to the database
-let customerInfo = reactive({
-    fullName: store.user.displayName,
-    email: store.user.email,
-    phoneNumber: null,
-    city: '',
-    country: '',
-    state: '',
-    zip: null,
-    address: '',
-    cardNumber: null,
-    cardName: '',
-    expireDate: '',
-    cvc: '',
-    subTotal: computed(() => {
-        const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
-            return total + (item.price * item.quantity);
-        }, 0);
-        return totalQuantityWithPrice;
-    }),
-    vatTotal: computed(() => {
-        return subTotal.value * 0.15;
-    }),
-    delivaryFee: computed(() => {
-        return 8;
-    }),
-    totalAmount: computed(() => {
-        return subTotal.value + vatTotal.value + delivaryFee.value;
-    }),
-    orderItems: cart
-});
 
-// event handler for submit order 
-const handleOrderSubmit = async () => {
-    await createOrders(customerInfo)
-    router.push({ name: 'Home' })
-    store.setCartItem([]);
+const quantity = ref(1);
+// event handler for increase product 
+const handleIncrementQuantity = (id) => {
+    quantity.value += 1;
 };
+
+// event handler for decrement products 
+const handleDecrementQuantity = (id) => {
+    if (quantity.value > 1) {
+        quantity.value -= 1;
+    }
+}
 
 
 
 // *******************************calculation section****************************
 
 // calculate subtotal 
-let subTotal = computed(() => {
-    const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
-        return total + (item.price * item.quantity);
-    }, 0);
+const subTotal = computed(() => {
+    const totalQuantityWithPrice = Number(filterProducts.value[0]?.price) * quantity.value;
     return totalQuantityWithPrice;
 });
 
@@ -86,6 +74,77 @@ let totalAmount = computed(() => {
     return subTotal.value + vatTotal.value + delivaryFee.value;
 })
 
+
+// reactive for after input data store to the database
+const fullName = ref(store.user ? store.user.displayName : '');
+const email = ref(store.user ? store.user.email : '');
+const phoneNumber = ref(null);
+const city = ref('');
+const country = ref('');
+const state = ref('');
+const zip = ref(null);
+const address = ref('');
+const cardNumber = ref(null);
+const cardName = ref('');
+const expireDate = ref('');
+const cvc = ref('');
+
+// event handler for submit order 
+const handleOrderSubmit = async (pro_id) => {
+    // const orderItem = {
+    //     fullName: fullName.value,
+    //     email: email.value,
+    //     phoneNumber: phoneNumber.value,
+    //     city: city.value,
+    //     country: country.value,
+    //     state: state.value,
+    //     zip: zip.value,
+    //     address: address.value,
+    //     cardNumber: cardNumber.value,
+    //     cardName: cardName.value,
+    //     expireDate: expireDate.value,
+    //     cvc: cvc.value,
+    //     subTotal: computed(() => {
+    //         const totalQuantityWithPrice = Number(filterProducts.value[0]?.price) * productQuantity.value;
+    //         return totalQuantityWithPrice;
+    //     }),
+    //     vatTotal: computed(() => {
+    //         return subTotal.value * 0.15;
+    //     }),
+    //     delivaryFee: computed(() => {
+    //         return 8;
+    //     }),
+    //     totalAmount: computed(() => {
+    //         return subTotal.value + vatTotal.value + delivaryFee.value;
+    //     }),
+    // }
+     const order =
+            {
+                pro_id,
+                orderStatus: "P",
+                quantity: quantity.value,
+            }
+    await createOrders({
+        fullName: fullName.value,
+        email: email.value,
+        phoneNumber: phoneNumber.value,
+        city: city.value,
+        country: country.value,
+        state: state.value,
+        zip: zip.value,
+        address: address.value,
+        cardNumber: cardNumber.value,
+        cardName: cardName.value,
+        expireDate: expireDate.value,
+        cvc: cvc.value,
+        subTotal: subTotal.value,
+        vatTotal: vatTotal.value,
+        delivaryFee: delivaryFee.value,
+        totalAmount: totalAmount.value,
+        order
+})
+    router.push({ name: 'Home' })
+};
 </script>
 
 <template>
@@ -96,27 +155,21 @@ let totalAmount = computed(() => {
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name</label>
-                        <input v-model="customerInfo.fullName" type="text" class="form-control" id="inputEmail4"
+                        <input v-model="fullName" type="text" class="form-control" id="inputEmail4"
                             disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input v-model="customerInfo.email" type="email" class="form-control" id="inputEmail4" disabled>
+                        <input v-model="email" type="email" class="form-control" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No</label>
-                        <input v-model.trim="customerInfo.phoneNumber" type="number" class="form-control" id="inputEmail4"
-                            placeholder="Enter Your Contact Number" required>
+                        <input v-model.trim="phoneNumber" type="number" class="form-control"
+                            id="inputEmail4" placeholder="Enter Your Contact Number" required>
                     </div>
-
-
-
-
-
-
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Country</label>
-                        <select v-model.trim="customerInfo.country" id="inputState" class="form-select" required>
+                        <select v-model.trim="country" id="inputState" class="form-select" required>
                             <option selected>Select Country</option>
                             <option>Bangladesh</option>
                             <option>India</option>
@@ -126,47 +179,49 @@ let totalAmount = computed(() => {
 
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">City</label>
-                        <input v-model.trim="customerInfo.city" type="text" class="form-control" id="inputEmail4"
+                        <input v-model.trim="city" type="text" class="form-control" id="inputEmail4"
                             placeholder="City Name" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">state</label>
-                        <input v-model.trim="customerInfo.state" type="text" class="form-control" id="inputEmail4"
+                        <input v-model.trim="state" type="text" class="form-control" id="inputEmail4"
                             placeholder="Enter State">
                     </div>
                     <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip</label>
-                        <input v-model.trim="customerInfo.zip" type="zip" class="form-control" id="inputZip"
+                        <input v-model.trim="zip" type="zip" class="form-control" id="inputZip"
                             placeholder="Zip Code" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Address</label>
-                        <input v-model.trim="customerInfo.address" type="text" class="form-control" id="inputAddress"
+                        <input v-model.trim="address" type="text" class="form-control" id="inputAddress"
                             placeholder="1234 Main St" required>
                     </div>
                     <h4>Delivary Method</h4>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Number</label>
-                        <input v-model.trim="customerInfo.cardNumber" type="number" class="form-control" id="inputEmail4"
-                            placeholder="111 1111 11111 1111" required>
+                        <input v-model.trim="cardNumber" type="number" class="form-control"
+                            id="inputEmail4" placeholder="111 1111 11111 1111" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Name</label>
-                        <input v-model.trim="customerInfo.cardName" type="text" class="form-control" id="inputEmail4"
+                        <input v-model.trim="cardName" type="text" class="form-control" id="inputEmail4"
                             placeholder="Card Name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Expire Date</label>
-                        <input v-model.trim="customerInfo.expireDate" type="date" class="form-control" id="inputEmail4" required>
+                        <input v-model.trim="expireDate" type="date" class="form-control" id="inputEmail4"
+                            required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">CVC</label>
-                        <input v-model.trim="customerInfo.cvc" type="number" class="form-control" id="inputEmail4"
+                        <input v-model.trim="cvc" type="number" class="form-control" id="inputEmail4"
                             placeholder="111" required>
                     </div>
 
                     <div class="col-12">
-                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary big-screen-submit-btn">Submit</button>
+                        <button @click="handleOrderSubmit(filterProducts[0]?.pro_id)" type="submit"
+                            class="btn btn-primary big-screen-submit-btn">Submit</button>
                     </div>
                 </div>
 
@@ -174,20 +229,33 @@ let totalAmount = computed(() => {
             <div class="col-md-6">
                 <section>
                     <section class="cart-style cart-section-style">
-                        <div v-for="(item, index) in cart" :key="index" class="card mb-3"
-                            style="max-width: 540px; margin: auto;">
+                        <div class="card mb-3" style="max-width: 540px; margin: auto;">
                             <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
+                                <div class="col-md-3">
+                                    <img :src="filterProducts[0]?.pro_image"
+                                        class="img-fluid rounded-start cart-img-style" alt="...">
                                 </div>
-                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="">
-                                        <h6>{{ item.pro_name }}</h6>
+                                        <h6>{{ filterProducts[0]?.pro_name }}</h6>
                                     </div>
                                 </div>
-                                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
-                                        <h6>${{ item.price }}</h6>
+                                        <div class="d-flex add-sub-style">
+                                            <span @click="handleDecrementQuantity()" class="material-icons me-2">
+                                                remove
+                                            </span>
+                                            <h5 class="me-2">{{ quantity }}</h5>
+                                            <span @click="handleIncrementQuantity()" class="material-icons me-2">
+                                                add
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="d-flex price-delete-style">
+                                        <h6>${{ filterProducts[0]?.price }}</h6>
                                     </div>
                                 </div>
 
@@ -219,8 +287,8 @@ let totalAmount = computed(() => {
                             </tr>
                         </table>
                         <div class="text-center mobile-screen-submit-btn mt-3">
-                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                            <button @click="handleOrderSubmit(filterProducts[0]?.pro_id)" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </section>
                 </section>
             </div>
@@ -269,10 +337,8 @@ p {
 }
 
 .cart-section-style {
-    height: calc(100vh - 320px);
     width: 100%;
     margin: auto;
-    overflow-y: scroll;
 }
 
 
@@ -317,13 +383,16 @@ p {
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 1920px) {
     .check-out-container-style {
         max-width: 1800px !important;
@@ -331,13 +400,16 @@ p {
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 1440px) {
     .check-out-container-style {
         max-width: 1300px !important;
@@ -345,13 +417,16 @@ p {
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 1024px) {
     .check-out-container-style {
         max-width: 900px;
@@ -359,13 +434,16 @@ p {
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 768px) {
     .check-out-container-style {
         max-width: 100%;
@@ -373,13 +451,16 @@ p {
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 540px) {
     .check-out-container-style {
         max-width: 100%;
@@ -387,17 +468,13 @@ p {
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: none;
     }
+
     .mobile-screen-submit-btn {
         display: block;
     }
 }
-
-
-
-
-
-
 </style>
