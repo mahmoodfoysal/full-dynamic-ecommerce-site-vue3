@@ -48,7 +48,8 @@ const routes = [
     {
       path: '/buy-product/:id',
       name: 'BuyProduct',
-      component: () => import('/src/components/pages/OrderSteps/BuyProduct/BuyProduct.vue')
+      component: () => import('/src/components/pages/OrderSteps/BuyProduct/BuyProduct.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/:pathMatch(.*)*',

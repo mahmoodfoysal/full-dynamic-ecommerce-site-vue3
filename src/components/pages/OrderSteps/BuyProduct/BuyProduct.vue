@@ -22,19 +22,6 @@ const filterProducts = computed(() => {
     return products.value.filter(product => product.pro_id === routeParamsId.value);
 });
 
-console.log(filterProducts)
-
-
-// call computed for finding real time cart data 
-const cart = computed(() => {
-    return Object(store.cartItem)
-})
-
-// call computed cart item for calculation 
-const cartItem = computed(() => {
-    return Object.values(store.cartItem);
-})
-
 
 const quantity = ref(1);
 // event handler for increase product 
@@ -48,8 +35,6 @@ const handleDecrementQuantity = (id) => {
         quantity.value -= 1;
     }
 }
-
-
 
 // *******************************calculation section****************************
 
@@ -90,40 +75,15 @@ const expireDate = ref('');
 const cvc = ref('');
 
 // event handler for submit order 
-const handleOrderSubmit = async (pro_id) => {
-    // const orderItem = {
-    //     fullName: fullName.value,
-    //     email: email.value,
-    //     phoneNumber: phoneNumber.value,
-    //     city: city.value,
-    //     country: country.value,
-    //     state: state.value,
-    //     zip: zip.value,
-    //     address: address.value,
-    //     cardNumber: cardNumber.value,
-    //     cardName: cardName.value,
-    //     expireDate: expireDate.value,
-    //     cvc: cvc.value,
-    //     subTotal: computed(() => {
-    //         const totalQuantityWithPrice = Number(filterProducts.value[0]?.price) * productQuantity.value;
-    //         return totalQuantityWithPrice;
-    //     }),
-    //     vatTotal: computed(() => {
-    //         return subTotal.value * 0.15;
-    //     }),
-    //     delivaryFee: computed(() => {
-    //         return 8;
-    //     }),
-    //     totalAmount: computed(() => {
-    //         return subTotal.value + vatTotal.value + delivaryFee.value;
-    //     }),
-    // }
-     const order =
-            {
-                pro_id,
-                orderStatus: "P",
-                quantity: quantity.value,
-            }
+const handleOrderSubmit = async (product) => {
+    const orderList =[    {
+        pro_id: product.pro_id,
+        pro_name: product.pro_name,
+        price: product.price,
+        pro_image: product.pro_image,
+        quantity: quantity.value,
+    }]
+
     await createOrders({
         fullName: fullName.value,
         email: email.value,
@@ -141,8 +101,9 @@ const handleOrderSubmit = async (pro_id) => {
         vatTotal: vatTotal.value,
         delivaryFee: delivaryFee.value,
         totalAmount: totalAmount.value,
-        order
-})
+        orderList,
+        orderStatus: "P"
+    })
     router.push({ name: 'Home' })
 };
 </script>
@@ -155,8 +116,7 @@ const handleOrderSubmit = async (pro_id) => {
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name</label>
-                        <input v-model="fullName" type="text" class="form-control" id="inputEmail4"
-                            disabled>
+                        <input v-model="fullName" type="text" class="form-control" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email</label>
@@ -164,8 +124,8 @@ const handleOrderSubmit = async (pro_id) => {
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No</label>
-                        <input v-model.trim="phoneNumber" type="number" class="form-control"
-                            id="inputEmail4" placeholder="Enter Your Contact Number" required>
+                        <input v-model.trim="phoneNumber" type="number" class="form-control" id="inputEmail4"
+                            placeholder="Enter Your Contact Number" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Country</label>
@@ -189,8 +149,8 @@ const handleOrderSubmit = async (pro_id) => {
                     </div>
                     <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip</label>
-                        <input v-model.trim="zip" type="zip" class="form-control" id="inputZip"
-                            placeholder="Zip Code" required>
+                        <input v-model.trim="zip" type="zip" class="form-control" id="inputZip" placeholder="Zip Code"
+                            required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Address</label>
@@ -200,8 +160,8 @@ const handleOrderSubmit = async (pro_id) => {
                     <h4>Delivary Method</h4>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Number</label>
-                        <input v-model.trim="cardNumber" type="number" class="form-control"
-                            id="inputEmail4" placeholder="111 1111 11111 1111" required>
+                        <input v-model.trim="cardNumber" type="number" class="form-control" id="inputEmail4"
+                            placeholder="111 1111 11111 1111" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Name</label>
@@ -210,17 +170,16 @@ const handleOrderSubmit = async (pro_id) => {
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Expire Date</label>
-                        <input v-model.trim="expireDate" type="date" class="form-control" id="inputEmail4"
-                            required>
+                        <input v-model.trim="expireDate" type="date" class="form-control" id="inputEmail4" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">CVC</label>
-                        <input v-model.trim="cvc" type="number" class="form-control" id="inputEmail4"
-                            placeholder="111" required>
+                        <input v-model.trim="cvc" type="number" class="form-control" id="inputEmail4" placeholder="111"
+                            required>
                     </div>
 
                     <div class="col-12">
-                        <button @click="handleOrderSubmit(filterProducts[0]?.pro_id)" type="submit"
+                        <button @click="handleOrderSubmit(filterProducts[0])" type="submit"
                             class="btn btn-primary big-screen-submit-btn">Submit</button>
                     </div>
                 </div>
@@ -287,7 +246,8 @@ const handleOrderSubmit = async (pro_id) => {
                             </tr>
                         </table>
                         <div class="text-center mobile-screen-submit-btn mt-3">
-                            <button @click="handleOrderSubmit(filterProducts[0]?.pro_id)" type="submit" class="btn btn-primary">Submit</button>
+                            <button @click="handleOrderSubmit(filterProducts[0])" type="submit"
+                                class="btn btn-primary">Submit</button>
                         </div>
                     </section>
                 </section>

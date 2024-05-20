@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
 import getDataFromCentralApiFile from '@/API/All_API.js';
@@ -21,40 +21,45 @@ const cartItem = computed(() => {
 })
 
 // reactive for after input data store to the database
-let customerInfo = reactive({
-    fullName: store.user.displayName,
-    email: store.user.email,
-    phoneNumber: null,
-    city: '',
-    country: '',
-    state: '',
-    zip: null,
-    address: '',
-    cardNumber: null,
-    cardName: '',
-    expireDate: '',
-    cvc: '',
-    subTotal: computed(() => {
-        const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
-            return total + (item.price * item.quantity);
-        }, 0);
-        return totalQuantityWithPrice;
-    }),
-    vatTotal: computed(() => {
-        return subTotal.value * 0.15;
-    }),
-    delivaryFee: computed(() => {
-        return 8;
-    }),
-    totalAmount: computed(() => {
-        return subTotal.value + vatTotal.value + delivaryFee.value;
-    }),
-    orderItems: cart
-});
+const fullName = ref(store.user ? store.user.displayName : '');
+const email = ref(store.user ? store.user.email : '');
+const phoneNumber = ref(null);
+const city = ref('');
+const country = ref('');
+const state = ref('');
+const zip = ref(null);
+const address = ref('');
+const cardNumber = ref(null);
+const cardName = ref('');
+const expireDate = ref('');
+const cvc = ref('');
 
 // event handler for submit order 
 const handleOrderSubmit = async () => {
-    await createOrders(customerInfo)
+    const orderList = {
+        cartItem,
+        orderStatus: "P",
+    }
+    await createOrders({
+        fullName: fullName.value,
+        email: email.value,
+        phoneNumber: phoneNumber.value,
+        city: city.value,
+        country: country.value,
+        state: state.value,
+        zip: zip.value,
+        address: address.value,
+        cardNumber: cardNumber.value,
+        cardName: cardName.value,
+        expireDate: expireDate.value,
+        cvc: cvc.value,
+        subTotal: subTotal.value,
+        vatTotal: vatTotal.value,
+        delivaryFee: delivaryFee.value,
+        totalAmount: totalAmount.value,
+        orderList: cartItem.value,
+        orderStatus: "P",
+    })
     router.push({ name: 'Home' })
     store.setCartItem([]);
 };
@@ -96,16 +101,16 @@ let totalAmount = computed(() => {
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name</label>
-                        <input v-model="customerInfo.fullName" type="text" class="form-control" id="inputEmail4"
+                        <input v-model="fullName" type="text" class="form-control" id="inputEmail4"
                             disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input v-model="customerInfo.email" type="email" class="form-control" id="inputEmail4" disabled>
+                        <input v-model="email" type="email" class="form-control" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No</label>
-                        <input v-model.trim="customerInfo.phoneNumber" type="number" class="form-control" id="inputEmail4"
+                        <input v-model.trim="phoneNumber" type="number" class="form-control" id="inputEmail4"
                             placeholder="Enter Your Contact Number" required>
                     </div>
 
@@ -116,7 +121,7 @@ let totalAmount = computed(() => {
 
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Country</label>
-                        <select v-model.trim="customerInfo.country" id="inputState" class="form-select" required>
+                        <select v-model.trim="country" id="inputState" class="form-select" required>
                             <option selected>Select Country</option>
                             <option>Bangladesh</option>
                             <option>India</option>
@@ -126,42 +131,42 @@ let totalAmount = computed(() => {
 
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">City</label>
-                        <input v-model.trim="customerInfo.city" type="text" class="form-control" id="inputEmail4"
+                        <input v-model.trim="city" type="text" class="form-control" id="inputEmail4"
                             placeholder="City Name" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">state</label>
-                        <input v-model.trim="customerInfo.state" type="text" class="form-control" id="inputEmail4"
+                        <input v-model.trim="state" type="text" class="form-control" id="inputEmail4"
                             placeholder="Enter State">
                     </div>
                     <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip</label>
-                        <input v-model.trim="customerInfo.zip" type="zip" class="form-control" id="inputZip"
+                        <input v-model.trim="zip" type="zip" class="form-control" id="inputZip"
                             placeholder="Zip Code" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Address</label>
-                        <input v-model.trim="customerInfo.address" type="text" class="form-control" id="inputAddress"
+                        <input v-model.trim="address" type="text" class="form-control" id="inputAddress"
                             placeholder="1234 Main St" required>
                     </div>
                     <h4>Delivary Method</h4>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Number</label>
-                        <input v-model.trim="customerInfo.cardNumber" type="number" class="form-control" id="inputEmail4"
+                        <input v-model.trim="cardNumber" type="number" class="form-control" id="inputEmail4"
                             placeholder="111 1111 11111 1111" required>
                     </div>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Name</label>
-                        <input v-model.trim="customerInfo.cardName" type="text" class="form-control" id="inputEmail4"
+                        <input v-model.trim="cardName" type="text" class="form-control" id="inputEmail4"
                             placeholder="Card Name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Expire Date</label>
-                        <input v-model.trim="customerInfo.expireDate" type="date" class="form-control" id="inputEmail4" required>
+                        <input v-model.trim="expireDate" type="date" class="form-control" id="inputEmail4" required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">CVC</label>
-                        <input v-model.trim="customerInfo.cvc" type="number" class="form-control" id="inputEmail4"
+                        <input v-model.trim="cvc" type="number" class="form-control" id="inputEmail4"
                             placeholder="111" required>
                     </div>
 
