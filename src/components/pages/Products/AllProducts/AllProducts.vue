@@ -78,6 +78,7 @@ const paginatedProducts = computed(() => {
         filtered = filtered.filter(product => product.pro_name.toLowerCase().includes(searchKeyword));
     }
 
+
     // Apply pagination
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -94,7 +95,7 @@ const goToPage = (newPage) => {
 </script>
 
 <template>
-    <section v-if="products.length === 0" class="d-flex justify-content-center" role="status">
+    <section v-if="products.length === 0" class="d-flex justify-content-center mt-5 mb-5" role="status">
         <div class="spinner-grow text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
@@ -175,11 +176,11 @@ const goToPage = (newPage) => {
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4">
-                    <div v-if="paginatedProducts.length === 0">
-                        <h4>No Product Found</h4>
+                <div v-if="paginatedProducts.length === 0" class="text-center mt-5 mb-5">
+                        <h1>No Product Found</h1>
                     </div>
-                    <div v-else v-for="(item, index) in paginatedProducts" :key="index" class="col">
+                <div v-else class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4">
+                    <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
                         <ProductCard :productItem="item"></ProductCard>
                     </div>
                 </div>

@@ -1,10 +1,19 @@
 <script setup>
-import { ref, onMounted, watchEffect, computed } from 'vue';
+import { ref, toRefs, onMounted, watchEffect, computed } from 'vue';
 import ProductCard from '../Products/ProductCard/ProductCard.vue';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useRoute } from 'vue-router';
 import PriceFilter from '../Filters/PriceFilter.vue';
 import BrandFilter from '../Filters/BrandFilter.vue';
+
+const props = defineProps({
+    searchData: {
+        type: String,
+        default: ''
+    }
+});
+
+const { searchData } = toRefs(props)
 
 // call a variable which name route and initial using vue router 
 const route = useRoute();
@@ -22,6 +31,7 @@ const selectedPrice = ref(null);
 const handlePriceSelection = (value) => {
     selectedPrice.value = value;
 };
+
 
 // sliding price
 const rangePrice = ref({ min: 1, max: 500 });
@@ -71,6 +81,11 @@ const paginatedProducts = computed(() => {
     // apply for brand filter 
     if (selectedBrand.value.length > 0) {
         filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
+    }
+
+    if(searchData.value.length > 0) {
+        const searchValue = searchData.value.toLowerCase();
+        filtered = filtered.filter(product => product.pro_name.toLowerCase().includes(searchValue))
     }
 
     // Apply pagination
@@ -186,7 +201,11 @@ const goToPage = (newPage) => {
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4">
+                <div v-if="paginatedProducts.length === 0" class="text-center mt-5 mb-5">
+                    <h1>No Product Found</h1>
+                </div>
+
+                <div v-else class="row row-cols-1 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4">
                     <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
                         <ProductCard :productItem="item"></ProductCard>
                     </div>

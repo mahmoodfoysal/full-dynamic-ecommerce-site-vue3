@@ -52,7 +52,7 @@ const searchData = ref("")
 
 const emit = defineEmits(['search-products']);
 
-emit('search-products', searchData.value.toLocaleLowerCase());
+// emit('search-products', searchData.value.toLocaleLowerCase());
 
 const search = (event) => {
     emit('search-products', searchData.value.toLocaleLowerCase());
