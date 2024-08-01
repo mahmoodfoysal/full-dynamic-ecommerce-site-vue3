@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed, defineEmits, watch } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import router from '../../../router/router'
 import { RouterLink, useRouter  } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';

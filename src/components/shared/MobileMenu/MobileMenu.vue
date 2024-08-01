@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, useRouter } from 'vue-router';
+import { RouterLink } from 'vue-router';
 import { onMounted, ref } from 'vue';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useStore } from '@/stores/TaskStore.js';
@@ -29,8 +29,8 @@ const subSubToggleDropdown = (subSubCat) => {
 const handleLogout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
+        sessionStorage.removeItem('kitkat-user');
         store.setUser(null);
-        sessionStorage.removeItem('user');
     }).catch((error) => {
 
     });

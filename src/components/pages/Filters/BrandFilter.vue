@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue'
 // decclare brand name 
 const brandName = [
     { id: 'bata', label: 'Bata', value: 'Bata', name: 'Bata' },

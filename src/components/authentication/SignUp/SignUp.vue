@@ -19,10 +19,15 @@ const phoneNo = ref(null);
 const photoURL = ref('')
 const email = ref('');
 const password = ref('');
+const isValidation = ref(false);
 
 // event handler for registration 
 const handleSignUp = () => {
-    // const auth = getAuth();
+    if(!fullName.value || !email.value || !password.value) {
+        isValidation.value = true;
+        alert("Fill up all required field!!");
+        return;
+    }
     createUserWithEmailAndPassword(auth, email.value, password.value)
         .then((userCredential) => {
             const user = userCredential.user;
@@ -33,11 +38,10 @@ const handleSignUp = () => {
                 phoneNumber: phoneNo.value,
             })
             sessionStorage.setItem('user', JSON.stringify(user));
-            console.log(user);
+            isValidation.value = false;
         })
         .catch((error) => {
             const errorMessage = error.message;
-
             getError.value = errorMessage;
             console.log(errorMessage)
         });
@@ -92,16 +96,39 @@ watchEffect(() => {
         <!-- login form section  -->
         <div class="form-control-style">
             <p class="text-center">Register New Account</p>
-            <label for="name">Full Name</label>
-            <input v-model.trim="fullName" type="text" name="" id="name" placeholder="Enter Your Full Name">
+            <label for="name">Full Name *</label>
+            <input 
+            v-model.trim="fullName" 
+            type="text" 
+            :class="{'is-validate': isValidation && !fullName}"
+            id="name" 
+            placeholder="Enter Your Full Name">
             <label for="phone">Phone No</label>
-            <input v-model.number="phoneNo" type="number" name="" id="phone" placeholder="Enter Phone NO">
+            <input 
+            v-model.number="phoneNo" 
+            type="number"  
+            id="phone" 
+            placeholder="Enter Phone NO">
             <label for="photo">Photo Url</label>
-            <input v-model.trim="photoURL" type="url" name="" id="photo" placeholder="Give Photo URL">
-            <label for="Login">Email</label>
-            <input v-model.trim="email" type="email" name="" id="Login" placeholder="Enter Your Email">
-            <label for="password">Password</label>
-            <input v-model.trim="password" type="password" name="" id="password" placeholder="Enter Your Password">
+            <input 
+            v-model.trim="photoURL" 
+            type="url"  
+            id="photo" 
+            placeholder="Give Photo URL">
+            <label for="Login">Email *</label>
+            <input 
+            v-model.trim="email" 
+            type="email" 
+            :class="{'is-validate': isValidation && !email}" 
+            id="Login" 
+            placeholder="Enter Your Email">
+            <label for="password">Password *</label>
+            <input 
+            v-model.trim="password" 
+            type="password" 
+            :class="{'is-validate': isValidation && !password}" 
+            id="password" 
+            placeholder="Enter Your Password">
             <div v-if="getError !== null" class="alert alert-danger" role="alert">
                 {{ getError }}
             </div>
@@ -321,6 +348,10 @@ label {
 .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
     background-color: #303030;
     opacity: 8%;
+}
+
+.is-validate {
+    border: 1px solid red !important;
 }
 
 /* google sign in end css code  */

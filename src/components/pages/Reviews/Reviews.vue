@@ -19,11 +19,12 @@ const { postReview } = getDataFromCentralApiFile();
 // all ref are declare here 
 const store = useStore();
 const currentRating = ref(0);
-const fullName = ref(store.user ? store.user.displayName: '');
-const email = ref(store.user ? store.user.email: '');
-const photo = ref(store.user ? store.user.photoURL: '');
+const fullName = ref(store.user ? store.user.displayName : '');
+const email = ref(store.user ? store.user.email : '');
+const photo = ref(store.user ? store.user.photoURL : '');
 const comment = ref(null);
 const date = ref(Date());
+const isValidation = ref(false);
 
 const rate = (rating) => {
     currentRating.value = rating;
@@ -39,18 +40,25 @@ const handleSubmitReview = async () => {
         productID: productID.value,
         date: date.value
     };
-    if(!fullName.value, !email.value, !comment.value, !currentRating.value) {
-        alert("Please Fill All Required Field");
+    if (!fullName.value, !email.value) {
+        isValidation.value = true;
+        alert("Please login first");
         return;
     }
-    const text = "Are Sure Want To Review This Item???";
-    if(confirm(text) == true) {
-        await postReview(review);
+    else if (!comment.value, !currentRating.value) {
+        isValidation.value = true;
+        alert("Please fill all required field");
+        return;
     }
-    fullName.value = '';
-    email.value = '';
-    comment.value = '';
-    currentRating.value = 0
+    else {
+        const text = "Are sure want to review?";
+        if (confirm(text) == true) {
+        await postReview(review);
+        isValidation.value = false;
+        comment.value = '';
+        currentRating.value = 0
+    }
+    }
 }
 
 </script>
@@ -61,38 +69,39 @@ const handleSubmitReview = async () => {
         <div class="row g-4">
             <div class="col-lg-6">
                 <div class="border-bottom rounded input-field-style">
-                    <input v-model="fullName" type="text" class="form-control border-0 me-4"
-                        placeholder="Enter Your Full Name *" required>
+                    <input v-model="fullName" type="text" :class="{ 'is-validate': isValidation && !fullName }"
+                        class="form-control border-0 me-4" placeholder="Enter Your Full Name *" disabled required>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="border-bottom rounded input-field-style">
-                    <input v-model="email" type="email" class="form-control border-0" placeholder="Enter Your Email *"
+                    <input v-model="email" type="email" class="form-control border-0"
+                        :class="{ 'is-validate': isValidation && !email }" placeholder="Enter Your Email *" disabled
                         required>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="border-bottom rounded my-4 input-field-style">
-                    <textarea v-model="comment" name="" id="" class="form-control border-0" cols="30" rows="8"
-                        placeholder="Please Enter Your Valuable Comment *" spellcheck="false"></textarea>
+                    <textarea v-model="comment" class="form-control border-0"
+                        :class="{ 'is-validate': isValidation && !comment }" cols="30" rows="8"
+                        placeholder="Please Enter Your Valuable Comment *" spellcheck="false">
+                    </textarea>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="d-flex justify-content-between py-3 mb-5">
                     <div class="d-flex align-items-center">
-                        <p class="mb-0 me-3">Please rate:</p>
+                        <p class="mb-0 me-3" :class="{ 'rating-check': isValidation && !currentRating }">Please rate: *
+                        </p>
                         <div class="d-flex align-items-center rating-style" style="font-size: 12px;">
                             <i v-for="index in 5" :key="index" class="fa fa-star" :class="{
-                        'star': index <= currentRating,
-                        'star-o': index > currentRating
-                    }" @click="rate(index)"></i>
+                                'star': index <= currentRating,
+                                'star-o': index > currentRating
+                            }" @click="rate(index)"></i>
                         </div>
                     </div>
-                    <button 
-                    @click="handleSubmitReview" 
-                    type="button"
-                    class="btn-style">
-                    Post Review
+                    <button @click="handleSubmitReview" type="button" class="btn-style">
+                        Post Review
                     </button>
                 </div>
             </div>
@@ -134,7 +143,8 @@ const handleSubmitReview = async () => {
     font-size: 20px;
 }
 
-.input-field-style input, textarea {
+.input-field-style input,
+textarea {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -153,9 +163,10 @@ const handleSubmitReview = async () => {
     font-size: 15px;
     transition: 1000ms;
 }
+
 .btn-style:hover {
     border: 1px solid #1F5DA0;
-    
+
     background-color: #1F5DA0;
     border-radius: 30px;
     color: #FFFFFF;
@@ -164,5 +175,13 @@ const handleSubmitReview = async () => {
     font-style: normal;
     font-size: 15px;
     transition: 1000ms;
+}
+
+.rating-check {
+    color: red !important;
+}
+
+.is-validate {
+    border: 1px solid red !important;
 }
 </style>

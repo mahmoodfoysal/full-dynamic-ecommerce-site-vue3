@@ -16,9 +16,15 @@ const store = useStore();
 const getError = ref(null);
 const email = ref('');
 const password = ref('');
+const isValidation = ref(false);
 
 // event handler for login 
 const handleLogin = () => {
+    if(!email.value || !password.value) {
+        isValidation.value = true;
+        alert("Fill up all required field!!");
+        return;
+    }
     signInWithEmailAndPassword(auth, email.value, password.value)
         .then((userCredential) => {
             const user = userCredential.user;
@@ -26,6 +32,7 @@ const handleLogin = () => {
             if (user) {
                 sessionStorage.setItem('user', JSON.stringify(user));
                 router.push({ name: 'Home' });
+                isValidation.value = false;
             }
             console.log(user)
         })
@@ -76,11 +83,23 @@ watchEffect(() => {
         <div class="form-control-style">
             <p class="text-center">Login Your Account</p>
             <label for="Login">Email</label>
-            <input v-model.trim="email" type="email" name="" id="Login" required placeholder="Enter Your Email">
+            <input 
+            v-model.trim="email" 
+            type="email" 
+            :class="{'is-validate': isValidation && !email}"
+            id="Login" 
+            required 
+            placeholder="Enter Your Email"
+            >
 
             <label for="password">Password</label>
-            <input v-model.trim="password" type="password" name="" id="password" required
-                placeholder="Enter Your Password">
+            <input 
+            v-model.trim="password" 
+            type="password" 
+            :class="{'is-validate': isValidation && !password}" 
+            id="password" 
+            required
+            placeholder="Enter Your Password">
             <div v-if="getError !== null" class="alert alert-danger" role="alert">
                 {{ getError }}
             </div>
@@ -321,6 +340,10 @@ label {
 .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
     background-color: #303030;
     opacity: 8%;
+}
+
+.is-validate {
+    border: 1px solid red !important;
 }
 
 @media only screen and (max-width: 2560px) {

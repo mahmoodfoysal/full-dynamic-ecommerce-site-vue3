@@ -1,9 +1,7 @@
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
-import router from '@/router/router.js';
-
 
 // call pinia store and set a variable store 
 const store = useStore();
@@ -68,8 +66,8 @@ const handleRemoveItem = (id) => {
     let shopping_cart = getDb() || {};
 
     if (shopping_cart[id]) {
-        const text = "Are you sure Remove This"
-        if (confirm((text) == true)) {
+        const text = "Are you sure ?"
+        if (confirm(text) == true) {
             delete shopping_cart[id];
         }
     }

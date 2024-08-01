@@ -68,7 +68,7 @@ const handleIncrementQuantity = (id) => {
         shopping_cart[id].quantity += 1;
     }
     else {
-        alert('Please Add To Cart');
+        alert('Please Click Add To Cart Button');
     }
     updateDb(shopping_cart);
 }
