@@ -31,7 +31,7 @@ const handleLogout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
         store.setUser(null);
-        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('kitkat-user');
     }).catch((error) => {
 
     });
