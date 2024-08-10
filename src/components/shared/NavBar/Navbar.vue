@@ -30,8 +30,8 @@ const user = ref(JSON.parse(window.localStorage.getItem('user-info')));
 const handleLogout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
-        store.setUser(null);
         sessionStorage.removeItem('kitkat-user');
+        store.setUser(null);
     }).catch((error) => {
 
     });

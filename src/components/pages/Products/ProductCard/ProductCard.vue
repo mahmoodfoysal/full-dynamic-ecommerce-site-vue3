@@ -1,5 +1,5 @@
 <script setup>
-import { toRefs, defineProps } from 'vue';
+import { toRefs } from 'vue';
 import { useStore } from '@/stores/TaskStore.js';
 import { RouterLink } from 'vue-router';
 
