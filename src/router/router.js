@@ -52,6 +52,33 @@ const routes = [
       meta: { requiresAuth: true },
     },
     {
+      path: '/dashboard/home',
+      name: 'DashboardHome',
+      component: () => import('/src/components/dashboard/index.vue'),
+      redirect: '/dashboard/home/dashboard',
+      // meta: { requiresAuth: true },
+      children: [
+        {
+          path: 'dashboard',
+          name: 'DashboardHomeDefault',
+          component: () => import('/src/components/dashboard/Features/DashboardHome/DashboardHome.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'admin',
+          name: 'Admin',
+          component: () => import('/src/components/dashboard/Features/Admin/Admin.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'category',
+          name: 'Category',
+          component: () => import('/src/components/dashboard/Features/Category/Category.vue'),
+          // meta: { requiresAuth: true },
+        }
+      ]
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: () => import('../components/pages/NotFound/NotFound.vue')

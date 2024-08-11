@@ -1,4 +1,5 @@
 <script setup>
+import {getAdmin} from '../../../components/dashboard/api/dashboard-api.js'
 import { ref, onMounted, computed, watch } from 'vue';
 import router from '../../../router/router'
 import { RouterLink, useRouter  } from 'vue-router';
@@ -12,10 +13,26 @@ initilizationAuthentication();
 // destructure get categpory api for mount 
 const { getCategories, categories } = getDataFromCentralApiFile();
 
+const adminList = ref([]);
+
 // mount the category items 
 onMounted(async () => {
+    await handleGetAdmin();
     await getCategories()
 });
+
+const handleGetAdmin = async () => {
+    try {
+        const result = await getAdmin();
+        adminList.value = result?.data;
+    }
+    catch(error) {
+        console.log(error);
+    }
+};
+
+const findEmail = adminList.value.find((item) => item.email == store.user.email);
+console.log(findEmail)
 
 // declare a variable for using pinia store 
 const store = useStore();
@@ -97,6 +114,10 @@ watch(searchData, (newValue) => {
                         <li class="nav-item">
                             <RouterLink :to="{ name: 'Products' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     href="#">Products</a></RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink :to="{ name: 'DashboardHome' }" class="link-decor-style"><a class="nav-link navbar-text"
+                                    href="#">Dashboard</a></RouterLink>
                         </li>
 
                         <!-- comment for future work  -->
