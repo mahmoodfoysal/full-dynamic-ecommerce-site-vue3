@@ -110,12 +110,12 @@ const handleDeleteAdmin = async (id) => {
 
 <template>
     <div class="row g-4">
-        <div class="col-md-5 mb-3">
+        <div class="col-md-6 mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input v-model="email" type="email" class="form-control" :class="{ isValidate: isValidation && !email }"
                 id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-        <div class="col-md-5 mb-3">
+        <div class="col-md-6 mb-3">
             <label for="exampleInputPassword1" class="form-label">Role</label>
             <select v-model="role" class="form-select form-select-md mb-3"
                 :class="{ isValidate: isValidation && !role }" aria-label=".form-select-lg example">

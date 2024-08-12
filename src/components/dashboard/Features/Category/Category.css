@@ -11,7 +11,24 @@
 }
 
 .category-div {
-    width: 950px !important;
+    width: 1100px !important;
+}
+
+.category-btn-group-style {
+    border-bottom: 1.5px solid #1A4F88;
+}
+
+.category-btn-style {
+    background: #1F5DA0;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.isValidate {
+    border: 1px solid red !important;
 }
 
 

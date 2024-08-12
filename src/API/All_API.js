@@ -184,3 +184,8 @@ export const deleteAdmin = async (id) => {
   const url = `http://localhost:5000/admin/${id}`;
   return await axios.delete(url);
 }
+
+export const postCategory = async (data) => {
+  const url = 'http://localhost:5000/categories';
+  return await axios.post(url, data);
+};
