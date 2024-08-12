@@ -1,5 +1,5 @@
 <script setup>
-import {getAdmin} from '../../../components/dashboard/api/dashboard-api.js'
+import {getAdmin} from '../../../API/All_API.js'
 import { ref, onMounted, computed, watch } from 'vue';
 import router from '../../../router/router'
 import { RouterLink, useRouter  } from 'vue-router';
@@ -25,6 +25,7 @@ const handleGetAdmin = async () => {
     try {
         const result = await getAdmin();
         adminList.value = result?.data;
+        console.log(result.data)
     }
     catch(error) {
         console.log(error);

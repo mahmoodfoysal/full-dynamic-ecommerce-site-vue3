@@ -164,3 +164,23 @@ export default function getDataFromCentralApiFile() {
         reviewData,
     }
 }
+
+// here write the dashboard some api 
+
+// post admin for and role 
+export const postRole = async (data) => {
+  const url = 'http://localhost:5000/admin';
+  return await axios.post(url, data);
+};
+
+// get admin list 
+export const getAdmin = async (data) => {
+  const url = 'http://localhost:5000/admin';
+  return await axios.get(url);
+};
+
+// delete admin 
+export const deleteAdmin = async (id) => {
+  const url = `http://localhost:5000/admin/${id}`;
+  return await axios.delete(url);
+}
