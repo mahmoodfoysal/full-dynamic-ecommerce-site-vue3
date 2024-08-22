@@ -26,6 +26,7 @@ onMounted(() => {
 });
 
 const handlePostCategory = async (isCategoryType) => {
+    let data;
     try {
         if(isCategoryType == 101) {
             if (!parentCategory.value.parent_cat_id || !parentCategory.value.parent_cat_name) {
@@ -33,22 +34,13 @@ const handlePostCategory = async (isCategoryType) => {
             alert("Please fill up all the required field");
             return;
         }
-        const data = {
+
+        data = {
             parent_cat_id: parseInt(parentCategory.value.parent_cat_id),
             parent_cat_name: parentCategory.value.parent_cat_name,
             sub_cat_info: [],
         }
-        const text = 'Are you want to sure?';
-        if (confirm(text) == true) {
-            const result = await postCategory(data);
-            if (result.data.insertedId || result.data.modifiedCount == 1) {
-                alert(result.data.insertedId ? 'Category added successfull' : 'Update Category successful');
-                isValidation.value = false;
-                parentCategory.value.parent_cat_id = null;
-                parentCategory.value.parent_cat_name = null;
-                toggleCategoryTypeField.value = 0;
-            }
-        }
+        
         }
         if(isCategoryType == 102) {
             if (!subCategory.value.sub_cat_id || !subCategory.value.sub_cat_name) {
@@ -62,20 +54,25 @@ const handlePostCategory = async (isCategoryType) => {
         sub_sub_cat_info: [] 
     };
         const category = categories.value.find(cat => cat.parent_cat_id == subCategory.value.parent_cat.parent_cat_id);
-        let data;
+        
         if (category) {
             category.sub_cat_info.push(newSubCategory);
+
             data = {
             _id: category._id,
             sub_cat_info: category.sub_cat_info
         };
         }
+
         else {
             data = {
             _id: subCategory.value.parent_cat._id,
             sub_cat_info: [newSubCategory]
         }
         }
+
+        }
+        // database sent files 
         const text = 'Are you want to sure?';
         if (confirm(text) == true) {
             const result = await postCategory(data);
@@ -86,7 +83,6 @@ const handlePostCategory = async (isCategoryType) => {
                 parentCategory.value.parent_cat_name = null;
                 toggleCategoryTypeField.value = 0;
             }
-        }
         }
     }
     catch (error) {
