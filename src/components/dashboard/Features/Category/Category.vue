@@ -28,48 +28,48 @@ onMounted(() => {
 const handlePostCategory = async (isCategoryType) => {
     let data;
     try {
-        if(isCategoryType == 101) {
+        if (isCategoryType == 101) {
             if (!parentCategory.value.parent_cat_id || !parentCategory.value.parent_cat_name) {
-            isValidation.value = true;
-            alert("Please fill up all the required field");
-            return;
-        }
+                isValidation.value = true;
+                alert("Please fill up all the required field");
+                return;
+            }
 
-        data = {
-            parent_cat_id: parseInt(parentCategory.value.parent_cat_id),
-            parent_cat_name: parentCategory.value.parent_cat_name,
-            sub_cat_info: [],
+            data = {
+                parent_cat_id: parseInt(parentCategory.value.parent_cat_id),
+                parent_cat_name: parentCategory.value.parent_cat_name,
+                sub_cat_info: [],
+            }
+
         }
-        
-        }
-        if(isCategoryType == 102) {
+        if (isCategoryType == 102) {
             if (!subCategory.value.sub_cat_id || !subCategory.value.sub_cat_name) {
-            isValidation.value = true;
-            alert("Please fill up all the required field");
-            return;
-        }
-        const newSubCategory = {
-        sub_cat_id: Number(subCategory.value.sub_cat_id),
-        sub_cat_name: subCategory.value.sub_cat_name,
-        sub_sub_cat_info: [] 
-    };
-        const category = categories.value.find(cat => cat.parent_cat_id == subCategory.value.parent_cat.parent_cat_id);
-        
-        if (category) {
-            category.sub_cat_info.push(newSubCategory);
+                isValidation.value = true;
+                alert("Please fill up all the required field");
+                return;
+            }
+            const newSubCategory = {
+                sub_cat_id: Number(subCategory.value.sub_cat_id),
+                sub_cat_name: subCategory.value.sub_cat_name,
+                sub_sub_cat_info: []
+            };
+            const category = categories.value.find(cat => cat.parent_cat_id == subCategory.value.parent_cat.parent_cat_id);
 
-            data = {
-            _id: category._id,
-            sub_cat_info: category.sub_cat_info
-        };
-        }
+            if (category) {
+                category.sub_cat_info.push(newSubCategory);
 
-        else {
-            data = {
-            _id: subCategory.value.parent_cat._id,
-            sub_cat_info: [newSubCategory]
-        }
-        }
+                data = {
+                    _id: category._id,
+                    sub_cat_info: category.sub_cat_info
+                };
+            }
+
+            else {
+                data = {
+                    _id: subCategory.value.parent_cat._id,
+                    sub_cat_info: [newSubCategory]
+                }
+            }
 
         }
         // database sent files 
@@ -131,7 +131,7 @@ const handleCancel = () => {
                     <div @click="handleToggleCategory(2)" class="col-md-2 category-btn-style">
                         Sub Category
                     </div>
-                    <div class="col-md-2 category-btn-style">
+                    <div @click="handleToggleCategory(3)" class="col-md-2 category-btn-style">
                         Sub Sub Category
                     </div>
                     <div class="col-md-2 category-btn-style">
@@ -146,14 +146,7 @@ const handleCancel = () => {
                 <section v-if="toggleCategoryTypeField == 1" class="parent-item">
                     <h5 class="text-center mt-3 mb-3">Add parent category</h5>
                     <div class="row g-4">
-                        <div class="col-md-6 mb-1">
-                            <label for="exampleInputEmail1" class="form-label">
-                                Category name *
-                            </label>
-                            <input v-model="parentCategory.parent_cat_name" type="text" class="form-control"
-                                :class="{ isValidate: isValidation && !parentCategory.parent_cat_name }"
-                                id="exampleInputEmail1" placeholder="Category name">
-                        </div>
+
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
                                 ID *
@@ -162,6 +155,16 @@ const handleCancel = () => {
                                 :class="{ isValidate: isValidation && !parentCategory.parent_cat_id }"
                                 id="exampleInputEmail1" placeholder="Category id">
                         </div>
+
+                        <div class="col-md-6 mb-1">
+                            <label for="exampleInputEmail1" class="form-label">
+                                Category name *
+                            </label>
+                            <input v-model="parentCategory.parent_cat_name" type="text" class="form-control"
+                                :class="{ isValidate: isValidation && !parentCategory.parent_cat_name }"
+                                id="exampleInputEmail1" placeholder="Category name">
+                        </div>
+
                         <div>
                             <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
                                 Cancel
@@ -188,14 +191,7 @@ const handleCancel = () => {
                                 </option>
                             </select>
                         </div>
-                        <div class="col-md-6 mb-1">
-                            <label for="exampleInputEmail1" class="form-label">
-                                Category name *
-                            </label>
-                            <input v-model="subCategory.sub_cat_name" type="text" class="form-control"
-                                :class="{ isValidate: isValidation && !subCategory.cat_name }" id="exampleInputEmail1"
-                                placeholder="Category name">
-                        </div>
+
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
                                 ID *
@@ -204,11 +200,88 @@ const handleCancel = () => {
                                 :class="{ isValidate: isValidation && !subCategory.cat_id }" id="exampleInputEmail1"
                                 placeholder="Category id">
                         </div>
+
+                        <div class="col-md-6 mb-1">
+                            <label for="exampleInputEmail1" class="form-label">
+                                Category name *
+                            </label>
+                            <input v-model="subCategory.sub_cat_name" type="text" class="form-control"
+                                :class="{ isValidate: isValidation && !subCategory.cat_name }" id="exampleInputEmail1"
+                                placeholder="Category name">
+                        </div>
+
                         <div>
                             <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
                                 Cancel
                             </button>
                             <button @click="handlePostCategory(102)" type="button" class="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- sub sub category field  -->
+                <section v-if="toggleCategoryTypeField == 3" class="parent-item">
+                    <h5 class="text-center mt-3 mb-3">Add sub sub category</h5>
+                    <div class="row g-4">
+                        <div class="col-md-6 mb-1">
+                            <label for="exampleInputPassword1" class="form-label">
+                                Parent category name *
+                            </label>
+                            <select v-model="subCategory.parent_cat"
+                                :class="{ isValidate: isValidation && !subCategory.parent_cat }"
+                                class="form-select form-select-md mb-1" placeholder="Please Select Category">
+                                <option v-for="(item, index) in categories" :key="index" :value="item">
+                                    {{ item?.parent_cat_name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-1">
+                            <label for="exampleInputPassword1" class="form-label">
+                                Sub Category *
+                            </label>
+                            <select v-model="subCategory.parent_cat"
+                                :class="{ isValidate: isValidation && !subCategory.parent_cat }"
+                                class="form-select form-select-md mb-1" placeholder="Please Select Category">
+
+                                <option disabled value="">Please Select Category</option>
+
+                                <optgroup v-for="(item, index) in categories" :key="index"
+                                    :label="item.parent_cat_name">
+                                    <option v-for="(subItem, subIndex) in item.sub_cat_info" :key="subIndex"
+                                        :value="subItem.sub_cat_name">
+                                        {{ subItem.sub_cat_name }}
+                                    </option>
+                                </optgroup>
+
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-1">
+                            <label for="exampleInputPassword1" class="form-label">
+                                ID *
+                            </label>
+                            <input v-model="subCategory.sub_cat_id" type="number" class="form-control"
+                                :class="{ isValidate: isValidation && !subCategory.cat_id }" id="exampleInputEmail1"
+                                placeholder="Category id">
+                        </div>
+
+                        <div class="col-md-6 mb-1">
+                            <label for="exampleInputEmail1" class="form-label">
+                                Category name *
+                            </label>
+                            <input v-model="subCategory.sub_cat_name" type="text" class="form-control"
+                                :class="{ isValidate: isValidation && !subCategory.cat_name }" id="exampleInputEmail1"
+                                placeholder="Category name">
+                        </div>
+
+                        <div>
+                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                                Cancel
+                            </button>
+                            <button @click="handlePostCategory(103)" type="button" class="btn btn-primary">
                                 Submit
                             </button>
                         </div>
