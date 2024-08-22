@@ -20,6 +20,7 @@ const subCategory = ref({
 });
 
 const toggleCategoryTypeField = ref(0);
+const subCategories = ref([])
 
 onMounted(() => {
     getCategories();
@@ -95,6 +96,10 @@ const handleToggleCategory = (categoryType) => {
 }
 const handleCancel = () => {
     toggleCategoryTypeField.value = 0;
+}
+
+const changeParentCategory = () => {
+    subCategories.value = subCategory.value.parent_cat.sub_cat_info
 }
 </script>
 
@@ -187,7 +192,7 @@ const handleCancel = () => {
                                 :class="{ isValidate: isValidation && !subCategory.parent_cat }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
                                 <option v-for="(item, index) in categories" :key="index" :value="item">
-                                    {{ item?.parent_cat_name }}
+                                   {{ item?.parent_cat_id }} - {{ item?.parent_cat_name }}
                                 </option>
                             </select>
                         </div>
@@ -229,11 +234,13 @@ const handleCancel = () => {
                             <label for="exampleInputPassword1" class="form-label">
                                 Parent category name *
                             </label>
-                            <select v-model="subCategory.parent_cat"
+                            <select 
+                            v-model="subCategory.parent_cat"
+                            @change="changeParentCategory"
                                 :class="{ isValidate: isValidation && !subCategory.parent_cat }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
                                 <option v-for="(item, index) in categories" :key="index" :value="item">
-                                    {{ item?.parent_cat_name }}
+                                    {{ item?.parent_cat_id }} - {{ item?.parent_cat_name }}
                                 </option>
                             </select>
                         </div>
@@ -242,7 +249,7 @@ const handleCancel = () => {
                             <label for="exampleInputPassword1" class="form-label">
                                 Sub Category *
                             </label>
-                            <select v-model="subCategory.parent_cat"
+                            <!-- <select v-model="subCategory.parent_cat"
                                 :class="{ isValidate: isValidation && !subCategory.parent_cat }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
 
@@ -256,6 +263,13 @@ const handleCancel = () => {
                                     </option>
                                 </optgroup>
 
+                            </select> -->
+
+                            <select 
+                                class="form-select form-select-md mb-1" placeholder="Please Select Category">
+                                <option v-for="(item, index) in subCategories" :key="index" :value="item">
+                                  {{ item?.sub_cat_id }} - {{ item?.sub_cat_name }}
+                                </option>
                             </select>
                         </div>
 
