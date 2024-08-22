@@ -32,6 +32,19 @@ onMounted(() => {
     getCategories();
 });
 
+const handleResetInputValue = () => {
+    parentCategory.value.parent_cat = null;
+    parentCategory.value.parent_cat_name = null;
+    parentCategory.value.parent_cat_id = null;
+    subCategory.value.parent_cat = null;
+    subCategory.value.sub_cat_id = null;
+    subCategory.value.sub_cat_name = null;
+    subSubCategory.value.parent_cat = null;
+    subSubCategory.value.sub_cat_id = null;
+    subSubCategory.value.sub_sub_cat_id = null;
+    subSubCategory.value.sub_sub_cat_name = null;
+}
+
 const handlePostCategory = async (isCategoryType) => {
     let data;
     try {
@@ -84,9 +97,34 @@ const handlePostCategory = async (isCategoryType) => {
         }
 
         // sub sub category code 
-        if(isCategoryType == 103) {
-            alert("hello")
-        } 
+        if (isCategoryType == 103) {
+            if (!subSubCategory.value.sub_sub_cat_id || !subSubCategory.value.sub_sub_cat_name || !subSubCategory.value.sub_sub_cat_id || !subSubCategory.value.sub_sub_cat_id) {
+                isValidation.value = true;
+                alert("Please fill up all the required field");
+                return;
+            }
+            const newSubSubCat = {
+                sub_sub_cat_id: Number(subSubCategory.value.sub_sub_cat_id),
+                sub_sub_cat_name: subSubCategory.value.sub_sub_cat_name,
+                sub_sub_sub_cat_info: []
+            }
+            const parentCategory = categories.value.find(parentCat => parentCat.parent_cat_id == subSubCategory.value.parent_cat.parent_cat_id);
+
+            if (parentCategory) {
+                const subCategory = parentCategory.sub_cat_info.find(subCat => subCat.sub_cat_id === subSubCategory.value.sub_cat_id.sub_cat_id);
+                if (subCategory) {
+                    subCategory.sub_sub_cat_info.push(newSubSubCat);
+                    data = {
+                        _id: parentCategory._id,
+                        sub_cat_info: parentCategory.sub_cat_info
+                    };
+                }
+                else {
+                    alert("Sub-category not found. Please check your input.");
+                    return;
+                }
+            }
+        }
 
         // database sent files 
         const text = 'Are you want to sure?';
@@ -95,9 +133,8 @@ const handlePostCategory = async (isCategoryType) => {
             if (result.data.insertedId || result.data.modifiedCount == 1) {
                 alert(result.data.insertedId ? 'Category added successfull' : 'Update Category successful');
                 isValidation.value = false;
-                parentCategory.value.parent_cat_id = null;
-                parentCategory.value.parent_cat_name = null;
                 toggleCategoryTypeField.value = 0;
+                handleResetInputValue()
             }
         }
     }
@@ -207,7 +244,7 @@ const changeParentCategory = () => {
                                 :class="{ isValidate: isValidation && !subCategory.parent_cat }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
                                 <option v-for="(item, index) in categories" :key="index" :value="item">
-                                   {{ item?.parent_cat_id }} - {{ item?.parent_cat_name }}
+                                    {{ item?.parent_cat_id }} - {{ item?.parent_cat_name }}
                                 </option>
                             </select>
                         </div>
@@ -249,10 +286,8 @@ const changeParentCategory = () => {
                             <label for="exampleInputPassword1" class="form-label">
                                 Parent category name *
                             </label>
-                            <select 
-                            v-model="subSubCategory.parent_cat"
-                            @change="changeParentCategory"
-                                
+                            <select v-model="subSubCategory.parent_cat" @change="changeParentCategory"
+                                :class="{ isValidate: isValidation && !subSubCategory.parent_cat }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
                                 <option v-for="(item, index) in categories" :key="index" :value="item">
                                     {{ item?.parent_cat_id }} - {{ item?.parent_cat_name }}
@@ -280,11 +315,11 @@ const changeParentCategory = () => {
 
                             </select> -->
 
-                            <select 
-                                v-model="subSubCategory.sub_cat_id"
+                            <select v-model="subSubCategory.sub_cat_id"
+                                :class="{ isValidate: isValidation && !subSubCategory.sub_cat_id }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
                                 <option v-for="(item, index) in subCategories" :key="index" :value="item">
-                                  {{ item?.sub_cat_id }} - {{ item?.sub_cat_name }}
+                                    {{ item?.sub_cat_id }} - {{ item?.sub_cat_name }}
                                 </option>
                             </select>
                         </div>
@@ -293,18 +328,18 @@ const changeParentCategory = () => {
                             <label for="exampleInputPassword1" class="form-label">
                                 ID *
                             </label>
-                            <input v-model="subSubCategory.sub_sub_cat_id" type="number" class="form-control"
-                                id="exampleInputEmail1"
-                                placeholder="Category id">
+                            <input v-model="subSubCategory.sub_sub_cat_id"
+                                :class="{ isValidate: isValidation && !subSubCategory.sub_sub_cat_id }" type="number"
+                                class="form-control" id="exampleInputEmail1" placeholder="Category id">
                         </div>
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
                                 Category name *
                             </label>
-                            <input v-model="subSubCategory.sub_sub_cat_name" type="text" class="form-control"
-                                id="exampleInputEmail1"
-                                placeholder="Category name">
+                            <input v-model="subSubCategory.sub_sub_cat_name"
+                                :class="{ isValidate: isValidation && !subSubCategory.sub_sub_cat_id }" type="text"
+                                class="form-control" id="exampleInputEmail1" placeholder="Category name">
                         </div>
 
                         <div>
