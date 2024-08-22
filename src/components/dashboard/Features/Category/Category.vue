@@ -87,7 +87,6 @@ const handlePostCategory = async (isCategoryType) => {
                 parent_cat_name: parentCategory.value.parent_cat_name,
                 sub_cat_info: [],
             }
-
         }
 
         // sub category code 
@@ -97,11 +96,13 @@ const handlePostCategory = async (isCategoryType) => {
                 alert("Please fill up all the required field");
                 return;
             }
+
             const newSubCategory = {
                 sub_cat_id: Number(subCategory.value.sub_cat_id),
                 sub_cat_name: subCategory.value.sub_cat_name,
                 sub_sub_cat_info: []
             };
+
             const category = categories.value.find(cat => cat.parent_cat_id == subCategory.value.parent_cat.parent_cat_id);
 
             if (category) {
@@ -175,15 +176,15 @@ const handlePostCategory = async (isCategoryType) => {
 
                 if (subCategory) {
                     const subSubCategory = subCategory.sub_sub_cat_info.find(
-                    subSubCat => subSubCat.sub_sub_cat_id === subSubSubCategory.value.sub_sub_cat_id.sub_sub_cat_id
-                );
-                if(subSubCategory) {
-                    subSubCategory.sub_sub_sub_cat_info.push(newSubSubSubItems);
-                    data = {
-                        _id: parentCategory._id,
-                        sub_cat_info: parentCategory.sub_cat_info
+                        subSubCat => subSubCat.sub_sub_cat_id === subSubSubCategory.value.sub_sub_cat_id.sub_sub_cat_id
+                    );
+                    if (subSubCategory) {
+                        subSubCategory.sub_sub_sub_cat_info.push(newSubSubSubItems);
+                        data = {
+                            _id: parentCategory._id,
+                            sub_cat_info: parentCategory.sub_cat_info
+                        }
                     }
-                }
                 }
             }
         }
@@ -196,7 +197,9 @@ const handlePostCategory = async (isCategoryType) => {
                 alert(result.data.insertedId ? 'Category added successfull' : 'Update Category successful');
                 isValidation.value = false;
                 toggleCategoryTypeField.value = 0;
-                handleResetInputValue()
+                handleResetInputValue();
+                subCategories.value = []
+                subSubCategories.value = [];
             }
         }
     }
@@ -427,9 +430,7 @@ const handlePostCategory = async (isCategoryType) => {
                                 Sub Category *
                             </label>
 
-                            <select 
-                                v-model="subSubCategory.sub_cat_id"
-                                @change="changeSubSubCategory"
+                            <select v-model="subSubCategory.sub_cat_id" @change="changeSubSubCategory"
                                 :class="{ isValidate: isValidation && !subSubCategory.sub_cat_id }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
                                 <option v-for="(item, index) in subCategories" :key="index" :value="item">
