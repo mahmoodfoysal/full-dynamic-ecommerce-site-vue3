@@ -19,19 +19,18 @@ const subCategory = ref({
     sub_cat_name: null
 });
 
-const parentCatToggle = ref(false);
-const subCatToggle = ref(false);
+const toggleCategoryTypeField = ref(0);
 
 onMounted(() => {
     getCategories();
 });
 
-const handlePostParentCategory = async () => {
+const handlePostCategory = async (isCategoryType) => {
     try {
-        if (!parentCategory.value.parent_cat_id || !parentCategory.value.parent_cat_name) {
+        if(isCategoryType == 101) {
+            if (!parentCategory.value.parent_cat_id || !parentCategory.value.parent_cat_name) {
             isValidation.value = true;
             alert("Please fill up all the required field");
-
             return;
         }
         const data = {
@@ -47,30 +46,21 @@ const handlePostParentCategory = async () => {
                 isValidation.value = false;
                 parentCategory.value.parent_cat_id = null;
                 parentCategory.value.parent_cat_name = null;
+                toggleCategoryTypeField.value = 0;
             }
         }
-
-
-    }
-    catch (error) {
-        console.log(error);
-    }
-};
-
-const handlePostSubCategory = async () => {
-    try {
-        if (!subCategory.value.sub_cat_id || !subCategory.value.sub_cat_name) {
+        }
+        if(isCategoryType == 102) {
+            if (!subCategory.value.sub_cat_id || !subCategory.value.sub_cat_name) {
             isValidation.value = true;
             alert("Please fill up all the required field");
             return;
         }
-
         const newSubCategory = {
         sub_cat_id: Number(subCategory.value.sub_cat_id),
         sub_cat_name: subCategory.value.sub_cat_name,
         sub_sub_cat_info: [] 
     };
-
         const category = categories.value.find(cat => cat.parent_cat_id == subCategory.value.parent_cat.parent_cat_id);
         let data;
         if (category) {
@@ -94,27 +84,21 @@ const handlePostSubCategory = async () => {
                 isValidation.value = false;
                 parentCategory.value.parent_cat_id = null;
                 parentCategory.value.parent_cat_name = null;
+                toggleCategoryTypeField.value = 0;
             }
+        }
         }
     }
     catch (error) {
         console.log(error);
     }
-}
+};
 
-const handleParentCategory = () => {
-    parentCatToggle.value = true;
-    subCatToggle.value = false;
+const handleToggleCategory = (categoryType) => {
+    toggleCategoryTypeField.value = categoryType
 }
-
-const handleSubCategory = () => {
-    subCatToggle.value = true;
-    parentCatToggle.value = false;
-}
-
 const handleCancel = () => {
-    parentCatToggle.value = false;
-    subCatToggle.value = false;
+    toggleCategoryTypeField.value = 0;
 }
 </script>
 
@@ -145,10 +129,10 @@ const handleCancel = () => {
                     <div class="col-md-2">
 
                     </div>
-                    <div class="col-md-2 category-btn-style" @click="handleParentCategory">
+                    <div class="col-md-2 category-btn-style" @click="handleToggleCategory(1)">
                         Parent Category
                     </div>
-                    <div @click="handleSubCategory" class="col-md-2 category-btn-style">
+                    <div @click="handleToggleCategory(2)" class="col-md-2 category-btn-style">
                         Sub Category
                     </div>
                     <div class="col-md-2 category-btn-style">
@@ -163,7 +147,7 @@ const handleCancel = () => {
                 </div>
 
                 <!-- modal input field  -->
-                <section v-if="parentCatToggle" class="parent-item">
+                <section v-if="toggleCategoryTypeField == 1" class="parent-item">
                     <h5 class="text-center mt-3 mb-3">Add parent category</h5>
                     <div class="row g-4">
                         <div class="col-md-6 mb-1">
@@ -186,14 +170,14 @@ const handleCancel = () => {
                             <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
                                 Cancel
                             </button>
-                            <button @click="handlePostParentCategory" type="button" class="btn btn-primary">
+                            <button @click="handlePostCategory(101)" type="button" class="btn btn-primary">
                                 Submit
                             </button>
                         </div>
                     </div>
                 </section>
                 <!-- sub category field  -->
-                <section v-if="subCatToggle" class="parent-item">
+                <section v-if="toggleCategoryTypeField == 2" class="parent-item">
                     <h5 class="text-center mt-3 mb-3">Add sub category</h5>
                     <div class="row g-4">
                         <div class="col-md-6 mb-1">
@@ -228,7 +212,7 @@ const handleCancel = () => {
                             <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
                                 Cancel
                             </button>
-                            <button @click="handlePostSubCategory" type="button" class="btn btn-primary">
+                            <button @click="handlePostCategory(102)" type="button" class="btn btn-primary">
                                 Submit
                             </button>
                         </div>
