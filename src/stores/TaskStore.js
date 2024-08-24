@@ -6,7 +6,8 @@ export const useStore = defineStore({
         // user: JSON.parse(window.localStorage.getItem('user-info')) || null,
         user: JSON.parse(sessionStorage.getItem('kitkat-user')) || null,
         cartItem: JSON.parse(localStorage.getItem('shopping_cart')) || [],
-        buySingleItem: []
+        buySingleItem: [],
+        isAdmin: false
     }),
     actions: {
         setUser(userData) {
@@ -17,6 +18,9 @@ export const useStore = defineStore({
         },
         setBuySingleProduct(data) {
             this.buySingleItem = data;
+        },
+        setAdmin(data) {
+            this.isAdmin = data
         }
     },
     getters: {

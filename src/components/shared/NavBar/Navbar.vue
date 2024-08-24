@@ -1,6 +1,5 @@
 <script setup>
-import {getAdmin} from '../../../API/All_API.js'
-import { ref, onMounted, computed, watch } from 'vue';
+import { ref, onMounted, computed, watch, toRefs } from 'vue';
 import router from '../../../router/router'
 import { RouterLink, useRouter  } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
@@ -10,30 +9,33 @@ import { getAuth, signOut } from "firebase/auth";
 
 initilizationAuthentication();
 
+const props = defineProps({
+    adminInfo: {
+        type: Number,
+        default: null
+    }
+});
+
+const { adminInfo } = toRefs(props);
+
+const isAdmin = ref(false);
+
+
+
+watch(adminInfo, () => {
+    if(adminInfo.value == 1) {
+    isAdmin.value = true;
+    console.log("isAdmin", isAdmin)
+}
+})
+
 // destructure get categpory api for mount 
 const { getCategories, categories } = getDataFromCentralApiFile();
 
-const adminList = ref([]);
-
 // mount the category items 
 onMounted(async () => {
-    await handleGetAdmin();
     await getCategories()
 });
-
-const handleGetAdmin = async () => {
-    try {
-        const result = await getAdmin();
-        adminList.value = result?.data;
-        console.log(result.data)
-    }
-    catch(error) {
-        console.log(error);
-    }
-};
-
-const findEmail = adminList.value.find((item) => item.email == store.user.email);
-console.log(findEmail)
 
 // declare a variable for using pinia store 
 const store = useStore();
@@ -50,6 +52,7 @@ const handleLogout = () => {
     signOut(auth).then(() => {
         sessionStorage.removeItem('kitkat-user');
         store.setUser(null);
+        isAdmin.value = false;
     }).catch((error) => {
 
     });
@@ -116,7 +119,10 @@ watch(searchData, (newValue) => {
                             <RouterLink :to="{ name: 'Products' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     href="#">Products</a></RouterLink>
                         </li>
-                        <li class="nav-item">
+                        <li 
+                        class="nav-item admin"
+                        :class="{'is-admin': isAdmin}"
+                        >
                             <RouterLink :to="{ name: 'DashboardHome' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     href="#">Dashboard</a></RouterLink>
                         </li>
@@ -574,6 +580,14 @@ p {
 
 .link-decor-style {
     text-decoration: none;
+}
+
+.is-admin {
+    display: block !important;
+}
+
+.admin {
+    display: none;
 }
 
 /* media for mega menu  */
