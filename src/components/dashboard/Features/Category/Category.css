@@ -31,6 +31,23 @@
     border: 1px solid red !important;
 }
 
+.item-style .edit {
+    color: #1F5DA0;
+    cursor: pointer;
+    font-size: 22px;
+}
+.item-style .delete {
+    color: #D71110;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.column-style {
+    max-height: calc(100vh - 400px);
+    overflow-y: scroll;
+}
+
+
 
 /* media query write here s */
 

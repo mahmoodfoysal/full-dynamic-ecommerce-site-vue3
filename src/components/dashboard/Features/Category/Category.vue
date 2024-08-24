@@ -61,6 +61,7 @@ const handleToggleCategory = (categoryType) => {
 const handleCancel = () => {
     toggleCategoryTypeField.value = 0;
     handleResetInputValue();
+    isValidation.value = false;
 }
 
 const changeParentCategory = () => {
@@ -221,6 +222,89 @@ const handlePostCategory = async (isCategoryType) => {
                     class="material-icons">
                     add
                 </span>Add Category</button>
+        </div>
+
+        <!-- category list  -->
+        <div class="row mt-2 g-4">
+            <div class="col-md-6 column-style">
+                <h3 class="text-center mt-2 mb-4">Parent Category</h3>
+                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                    <div class="d-flex align-items-center item-style">
+                        <h5><span>{{ parentItem?.parent_cat_id }}</span> - <span>{{ parentItem?.parent_cat_name
+                                }}</span></h5>
+                        <span class="material-icons ms-2 edit">
+                            edit
+                        </span>
+                        <span class="material-icons ms-2 delete">
+                            delete
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 column-style">
+                <h3 class="text-center mt-2 mb-4">Sub Category</h3>
+                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                    <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
+                        <div class="d-flex align-items-center item-style">
+                            <h5><span>{{ subItem?.sub_cat_id }}</span> - <span>{{ subItem?.sub_cat_name
+                                    }}</span></h5>
+                            <span class="material-icons ms-2 edit">
+                                edit
+                            </span>
+                            <span class="material-icons ms-2 delete">
+                                delete
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 column-style">
+                <h3 class="text-center mt-2 mb-4">Sub Category</h3>
+                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                    <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
+                        <div class="d-flex align-items-center item-style">
+                            <h5><span>{{ subItem?.sub_cat_id }}</span> - <span>{{ subItem?.sub_cat_name
+                                    }}</span></h5>
+                            <span class="material-icons ms-2 edit">
+                                edit
+                            </span>
+                            <span class="material-icons ms-2 delete">
+                                delete
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 column-style">
+                <h3 class="text-center mt-2 mb-4">Sub Sub Category</h3>
+                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                    <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
+                        <div
+                        v-for="(subSubItem, subSubIndex) in subItem?.sub_sub_cat_info"
+                        :key="subSubIndex"
+                        >
+                        <div
+                        v-for="(subSubSubItem, subSubSubIndex) in subSubItem?.sub_sub_sub_cat_info"
+                        :key="subSubSubIndex"
+                        >
+                        <div class="d-flex align-items-center item-style">
+                            <h5><span>{{ subSubSubItem?.sub_sub_sub_cat_id }}</span> - <span>{{ subSubSubItem?.sub_sub_sub_cat_name
+                                    }}</span></h5>
+                            <span class="material-icons ms-2 edit">
+                                edit
+                            </span>
+                            <span class="material-icons ms-2 delete">
+                                delete
+                            </span>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Add Category Modal div  -->
