@@ -1,35 +1,42 @@
 <script setup>
+import { getAdmin } from '../../../API/All_API.js';
 import { ref, onMounted, computed, watch, toRefs } from 'vue';
 import router from '../../../router/router'
-import { RouterLink, useRouter  } from 'vue-router';
+import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
 import getDataFromCentralApiFile from '../../../API/All_API.js';
 import initilizationAuthentication from '@/firebase/firebase.init';
 import { getAuth, signOut } from "firebase/auth";
+import axios from 'axios';
 
 initilizationAuthentication();
 
-const props = defineProps({
-    adminInfo: {
-        type: Number,
-        default: null
-    }
-});
-
-const { adminInfo } = toRefs(props);
+// declare a variable for using pinia store 
+const store = useStore();
 
 const isAdmin = ref(false);
 
 // mount the category items 
 onMounted(async () => {
-    await getCategories()
+    handleGetAdmin();
+    await getCategories();  
 });
+
+const handleGetAdmin = async () => {
+    try {
+        const response = await axios.get(`http://localhost:5000/admin/${store.user.email}`);
+        console.log(response)
+        isAdmin.value = response.data.admin;
+    }
+    catch(error) {
+        console.log(error);
+    }
+}
+
+
 
 // destructure get categpory api for mount 
 const { getCategories, categories } = getDataFromCentralApiFile();
-
-// declare a variable for using pinia store 
-const store = useStore();
 
 // declare a reactive variable for toggle category bar 
 const showSidebar = ref(false);
@@ -63,7 +70,7 @@ const emit = defineEmits(['search-products']);
 
 // emit('search-products', searchData.value.toLocaleLowerCase());
 
-const search = (event) => {
+const search = () => {
     emit('search-products', searchData.value.toLocaleLowerCase());
 }
 
@@ -71,6 +78,18 @@ watch(searchData, (newValue) => {
   // When the searchQuery changes, emit the 'search-products' event with the lowercase value
   emit('search-products', newValue.toLowerCase());
 });
+
+watch(() => store.user, (newVal) => {
+    if(newVal) {
+        handleGetAdmin();
+    }
+});
+
+watch(() => store.admin, (newVal) => {
+    if(newVal) {
+        handleGetAdmin();
+    }
+}) 
 
 </script>
 
@@ -108,6 +127,7 @@ watch(searchData, (newValue) => {
                                     href="#">Products</a></RouterLink>
                         </li>
                         <li 
+                        v-if="isAdmin"
                         class="nav-item admin"
                         >
                             <RouterLink :to="{ name: 'DashboardHome' }" class="link-decor-style"><a class="nav-link navbar-text"

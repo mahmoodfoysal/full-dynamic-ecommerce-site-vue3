@@ -7,7 +7,7 @@ export const useStore = defineStore({
         user: JSON.parse(sessionStorage.getItem('kitkat-user')) || null,
         cartItem: JSON.parse(localStorage.getItem('shopping_cart')) || [],
         buySingleItem: [],
-        isAdmin: false
+        admin: null
     }),
     actions: {
         setUser(userData) {
@@ -20,7 +20,7 @@ export const useStore = defineStore({
             this.buySingleItem = data;
         },
         setAdmin(data) {
-            this.isAdmin = data
+            this.admin = data
         }
     },
     getters: {

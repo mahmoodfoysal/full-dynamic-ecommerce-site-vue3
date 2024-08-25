@@ -1,7 +1,6 @@
 <script setup>
-import { getAdmin } from '@/API/All_API.js';
 import { RouterLink } from 'vue-router';
-import { onMounted, ref, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue';
 import router from '../../../router/router.js';
 import { useStore } from '@/stores/TaskStore.js';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -10,31 +9,13 @@ import initilizationAuthentication from '@/firebase/firebase.init';
 initilizationAuthentication()
 const auth = getAuth();
 const googleProvider = new GoogleAuthProvider();
-const emit = defineEmits(['admin-info'])
 
 // call the pinia store and set in the store value 
 const store = useStore();
-
 const getError = ref(null);
 const email = ref('');
 const password = ref('');
 const isValidation = ref(false);
-const adminList = ref([])
-const isAdmin = ref(0);
-
-onMounted(() => {
-    handleGetAdmin()
-})
-
-const handleGetAdmin = async () => {
-    try {
-        const result = await getAdmin();
-        adminList.value = result?.data;
-    }
-    catch(error) {
-
-    }
-}
 
 // event handler for login 
 const handleLogin = () => {
@@ -49,10 +30,7 @@ const handleLogin = () => {
             store.setUser(user)
             if (user) {
                 sessionStorage.setItem('kitkat-user', JSON.stringify(user));
-                const findAdmin = adminList.value.find((item) => item.email == email.value)
-                if(findAdmin.email && findAdmin.role == 'Admin') {
-                    emit('admin-info', isAdmin.value = 1);
-                }
+                store.setAdmin(user.email);
                 router.push({ name: 'Home' });
                 isValidation.value = false;
             }

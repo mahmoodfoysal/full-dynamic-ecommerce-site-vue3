@@ -6,10 +6,10 @@ import { onMounted, ref } from 'vue';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useStore } from './stores/TaskStore';
 import MobileMenu from '../src/components/shared/MobileMenu/MobileMenu.vue';
+
 const store = useStore();
 
 const searchData = ref('');
-const adminInfo = ref(null);
 
 const scrollToTop = () => {
     window.scrollTo({
@@ -34,11 +34,6 @@ const handleSearch = (search) => {
     searchData.value = search;
 };
 
-const handleAdmin = (info) => {
-    adminInfo.value = info;
-    console.log("app", adminInfo.value);
-}
-
 </script>
 
 <template>
@@ -46,13 +41,16 @@ const handleAdmin = (info) => {
     <div class="home-section-style">
         <NavBar 
         @search-products="handleSearch"
-        :adminInfo="adminInfo"
         ></NavBar>
         <!-- search for mobile menu  -->
         <div class="d-flex justify-content-center">
-            <form @submit.prevent="handleMobileSearch" class="d-flex search-field-style" role="search">
-                <input v-model="searchData" class="form-control me-2" type="search" placeholder="Search"
-                    aria-label="Search">
+            <form class="d-flex search-field-style" role="search">
+                <input 
+                v-model="searchData" 
+                class="form-control me-2" 
+                type="search" 
+                placeholder="Search"
+                aria-label="Search">
                 <button class="btn" type="submit">
                     <span class="material-icons">
                         search
@@ -61,8 +59,7 @@ const handleAdmin = (info) => {
             </form>
         </div>
         <RouterView 
-        :searchData="searchData"
-        @admin-info="handleAdmin">
+        :searchData="searchData">
         </RouterView>
         <button @click="scrollToTop" class="top-scroll-btn">
             <span class="material-icons">
