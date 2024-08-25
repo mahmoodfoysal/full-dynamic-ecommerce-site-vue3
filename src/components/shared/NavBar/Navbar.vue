@@ -8,15 +8,21 @@ import getDataFromCentralApiFile from '../../../API/All_API.js';
 import initilizationAuthentication from '@/firebase/firebase.init';
 import { getAuth, signOut } from "firebase/auth";
 import axios from 'axios';
-
 initilizationAuthentication();
 
-// declare a variable for using pinia store 
+const emit = defineEmits(['search-products']);
+
 const store = useStore();
+const { getCategories, categories } = getDataFromCentralApiFile();
 
 const isAdmin = ref(false);
+const showSidebar = ref(false);
+const searchData = ref("")
 
-// mount the category items 
+const logoLink = () => {
+    router.push('/')
+};
+
 onMounted(async () => {
     handleGetAdmin();
     await getCategories();  
@@ -24,8 +30,7 @@ onMounted(async () => {
 
 const handleGetAdmin = async () => {
     try {
-        const response = await axios.get(`http://localhost:5000/admin/${store.user.email}`);
-        console.log(response)
+        const response = await axios.get(`http://localhost:5000/admin/${store.user ? store.user.email : null}`);
         isAdmin.value = response.data.admin;
     }
     catch(error) {
@@ -33,15 +38,6 @@ const handleGetAdmin = async () => {
     }
 }
 
-
-
-// destructure get categpory api for mount 
-const { getCategories, categories } = getDataFromCentralApiFile();
-
-// declare a reactive variable for toggle category bar 
-const showSidebar = ref(false);
-
-// event handler for log out and kill the session 
 const handleLogout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
@@ -53,29 +49,11 @@ const handleLogout = () => {
     });
 }
 
-// call a computed property for show cart how many cart items added 
 const cartCount = computed(() => {
     return Object.values(store.cartItem).length || 0
 })
 
-const logoLink = () => {
-    router.push('/')
-};
-
-// all search code write here 
-
-const searchData = ref("")
-
-const emit = defineEmits(['search-products']);
-
-// emit('search-products', searchData.value.toLocaleLowerCase());
-
-const search = () => {
-    emit('search-products', searchData.value.toLocaleLowerCase());
-}
-
 watch(searchData, (newValue) => {
-  // When the searchQuery changes, emit the 'search-products' event with the lowercase value
   emit('search-products', newValue.toLowerCase());
 });
 
@@ -215,7 +193,7 @@ watch(() => store.admin, (newVal) => {
                     <span class="material-icons toggle-btn-style">menu</span>
                     <h6 class="ms-2 navbar-text">Shop By Category</h6>
                 </div>
-                <form @submit.prevent="search" class="d-flex search-field-style" role="search">
+                <form class="d-flex search-field-style" role="search">
                     <input 
                     v-model="searchData"
                     class="form-control me-2" 
