@@ -48,7 +48,7 @@ const handleLogin = () => {
             const user = userCredential.user;
             store.setUser(user)
             if (user) {
-                sessionStorage.setItem('user', JSON.stringify(user));
+                sessionStorage.setItem('kitkat-user', JSON.stringify(user));
                 const findAdmin = adminList.value.find((item) => item.email == email.value)
                 if(findAdmin.email && findAdmin.role == 'Admin') {
                     emit('admin-info', isAdmin.value = 1);
@@ -72,7 +72,7 @@ const handleGoogleLogin = () => {
             const token = credential.accessToken;
             const user = result.user;
             store.setUser(user);
-            sessionStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('kitkat-user', JSON.stringify(user));
         }).catch((error) => {
             const errorMessage = error.message;
             getError.value = errorMessage

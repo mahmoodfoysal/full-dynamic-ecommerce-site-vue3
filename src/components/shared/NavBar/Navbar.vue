@@ -20,31 +20,19 @@ const { adminInfo } = toRefs(props);
 
 const isAdmin = ref(false);
 
-
-
-watch(adminInfo, () => {
-    if(adminInfo.value == 1) {
-    isAdmin.value = true;
-    console.log("isAdmin", isAdmin)
-}
-})
-
-// destructure get categpory api for mount 
-const { getCategories, categories } = getDataFromCentralApiFile();
-
 // mount the category items 
 onMounted(async () => {
     await getCategories()
 });
+
+// destructure get categpory api for mount 
+const { getCategories, categories } = getDataFromCentralApiFile();
 
 // declare a variable for using pinia store 
 const store = useStore();
 
 // declare a reactive variable for toggle category bar 
 const showSidebar = ref(false);
-
-// declare a variable user where store the localStorage data 
-const user = ref(JSON.parse(window.localStorage.getItem('user-info')));
 
 // event handler for log out and kill the session 
 const handleLogout = () => {
@@ -121,7 +109,6 @@ watch(searchData, (newValue) => {
                         </li>
                         <li 
                         class="nav-item admin"
-                        :class="{'is-admin': isAdmin}"
                         >
                             <RouterLink :to="{ name: 'DashboardHome' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     href="#">Dashboard</a></RouterLink>
@@ -587,7 +574,7 @@ p {
 }
 
 .admin {
-    display: none;
+    display: block;
 }
 
 /* media for mega menu  */

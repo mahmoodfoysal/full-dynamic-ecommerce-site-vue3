@@ -37,7 +37,7 @@ const handleSignUp = () => {
                 photoURL: photoURL.value,
                 phoneNumber: phoneNo.value,
             })
-            sessionStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('kitkat-user', JSON.stringify(user));
             isValidation.value = false;
         })
         .catch((error) => {
@@ -56,7 +56,7 @@ const handleGoogleLogin = () => {
             const token = credential.accessToken;
             const user = result.user;
             store.setUser(user);
-            sessionStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('kitkat-user', JSON.stringify(user));
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
