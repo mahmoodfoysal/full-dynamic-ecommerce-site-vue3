@@ -1,17 +1,27 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { onMounted, ref } from 'vue';
-import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useStore } from '@/stores/TaskStore.js';
 import { getAuth, signOut } from 'firebase/auth';
+import { getCategories } from '@/API/All_API.js';
 
 const store = useStore();
 
-const { getCategories, categories } = getDataFromCentralApiFile();
+const categories = ref([]);
 
-onMounted(async () => {
-    await getCategories();
+onMounted(() => {
+    handleGetCategories();
 });
+
+const handleGetCategories = async () => {
+    try {
+        const result = await getCategories();
+        categories.value = result?.data;
+    }
+    catch(error) {
+        console.log("categories", error);
+    }
+};
 
 const showSidebar = ref(false);
 const toggleDropdown = (parentCat) => {

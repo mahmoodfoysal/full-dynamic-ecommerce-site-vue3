@@ -1,43 +1,47 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import getDataFromCentralApiFile from '@/API/All_API.js';
-import { postCategory } from '@/API/All_API.js';
+import { postCategory, getCategories } from '@/API/All_API.js';
 
-const { getCategories, categories } = getDataFromCentralApiFile();
-
+const categories = ref([]);
 const parentCategory = ref({
     parent_cat: null,
     parent_cat_name: null,
     parent_cat_id: null
 });
-
 const subCategory = ref({
     parent_cat: null,
     sub_cat_id: null,
     sub_cat_name: null
 });
-
 const subSubCategory = ref({
     parent_cat: null,
     sub_cat_id: null,
     sub_sub_cat_id: null,
     sub_sub_cat_name: null
 })
-
 const subSubSubCategory = ref({
     sub_sub_cat_id: null,
     sub_sub_sub_cat_id: null,
     sub_sub_sub_cat_name: null
 })
-
 const isValidation = ref(false);
 const toggleCategoryTypeField = ref(0);
 const subCategories = ref([])
 const subSubCategories = ref([]);
 
 onMounted(() => {
-    getCategories();
+    handleGetCategories()
 });
+
+const handleGetCategories = async () => {
+    try {
+        const result = await getCategories();
+        categories.value = result?.data;
+    }
+    catch(error) {
+        console.log("categories", error)
+    }
+}
 
 const handleResetInputValue = () => {
     parentCategory.value.parent_cat = null;

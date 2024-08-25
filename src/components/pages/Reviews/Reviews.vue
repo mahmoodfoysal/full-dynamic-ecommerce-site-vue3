@@ -1,8 +1,7 @@
 <script setup>
 import { ref, defineProps, toRef } from 'vue';
 import { useStore } from '@/stores/TaskStore.js';
-
-import getDataFromCentralApiFile from '@/API/All_API.js';
+import { postReview } from '@/API/All_API.js';
 
 const props = defineProps({
     productID: {
@@ -12,9 +11,6 @@ const props = defineProps({
 });
 
 const productID = toRef(props, 'productID');
-
-
-const { postReview } = getDataFromCentralApiFile();
 
 // all ref are declare here 
 const store = useStore();
@@ -53,7 +49,10 @@ const handleSubmitReview = async () => {
     else {
         const text = "Are sure want to review?";
         if (confirm(text) == true) {
-        await postReview(review);
+        const result = await postReview(review);
+        if(result?.data) {
+            alert("Review successfull");
+        }
         isValidation.value = false;
         comment.value = '';
         currentRating.value = 0

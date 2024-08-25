@@ -1,10 +1,10 @@
 <script setup>
 import { ref, toRefs, onMounted, watchEffect, computed } from 'vue';
 import ProductCard from '../Products/ProductCard/ProductCard.vue';
-import getDataFromCentralApiFile from '@/API/All_API.js';
 import { useRoute } from 'vue-router';
 import PriceFilter from '../Filters/PriceFilter.vue';
 import BrandFilter from '../Filters/BrandFilter.vue';
+import { getProducts } from '@/API/All_API.js';
 
 const props = defineProps({
     searchData: {
@@ -12,43 +12,33 @@ const props = defineProps({
         default: ''
     }
 });
-
+const products = ref([])
 const { searchData } = toRefs(props)
 
-// call a variable which name route and initial using vue router 
 const route = useRoute();
 
-// find the id from url 
 const routeParamsId = ref(Number(route.params.id));
 
-// reactive a variable for store filter data 
 const filterProducts = ref([]);
 
-// reactive price filter value
 const selectedPrice = ref(null);
 
-// event handler for change price 
 const handlePriceSelection = (value) => {
     selectedPrice.value = value;
 };
 
-
-// sliding price
 const rangePrice = ref({ min: 1, max: 500 });
 
 const handleSlidePrice = (value) => {
     rangePrice.value = value;
 }
 
-
-// decalre reactive value for set brand value 
 const selectedBrand = ref([]);
 
 const handleBrandSelect = (value) => {
     selectedBrand.value = value;
 }
 
-// filter products which id match 
 const filterProduct = () => {
     filterProducts.value = products.value.filter(product =>
         product.parent_cat_id === routeParamsId.value ||
@@ -57,28 +47,21 @@ const filterProduct = () => {
         product.sub_sub_sub_cat_id === routeParamsId.value
     );
 }
-// reactivation page for pagination 
+
 const page = ref(1);
 
-// decalare a variable for how much product show at single page
 const itemsPerPage = 8;
 
-// finding how much product in the array and division by 8
 const totalPages = computed(() => Math.ceil(filterProducts.value.length / itemsPerPage));
 
 const paginatedProducts = computed(() => {
     let filtered = filterProducts.value;
-    // Apply price filter
     if (selectedPrice.value !== null) {
         filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
     }
-
-    // apply sliding filter 
     else if (rangePrice.value.min < rangePrice.value.max) {
         filtered = filtered.filter((product) => product.price > rangePrice.value.min && product.price <= rangePrice.value.max);
     }
-
-    // apply for brand filter 
     if (selectedBrand.value.length > 0) {
         filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
     }
@@ -87,34 +70,35 @@ const paginatedProducts = computed(() => {
         const searchValue = searchData.value.toLowerCase();
         filtered = filtered.filter(product => product.pro_name.toLowerCase().includes(searchValue))
     }
-
-    // Apply pagination
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return filtered.slice(startIndex, endIndex);
 });
 
-// destructure get api handler for using 
-const { getProducts, products } = getDataFromCentralApiFile();
-
-// if use separate api must use watchEffect otherwise you get warning
 watchEffect(() => {
     routeParamsId.value = Number(route.params.id);
     filterProduct();
 });
-// call the api 
-onMounted(async () => {
-    await getProducts();
+
+onMounted(() => {
+    handleGetProducts();
     filterProduct();
 });
 
-// handler for pagination button
+const handleGetProducts = async () => {
+    try {
+        const result = await getProducts();
+        products.value = result?.data;
+    }
+    catch(error) {
+        console.log("Products", error);
+    }
+};
 const goToPage = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages.value) {
         page.value = newPage;
     }
 };
-
 </script>
 
 <template>

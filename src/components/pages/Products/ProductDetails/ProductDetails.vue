@@ -1,104 +1,88 @@
 <script setup>
-import getDataFromCentralApiFile from '/src/API/All_API.js';
 import Reviews from '@/components/pages/Reviews/Reviews.vue'
 import { ref, onMounted, computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router';
 import { useStore } from '/src/stores/TaskStore.js';
+import { getProducts, getReviews } from '@/API/All_API.js';
 
-// define route for useing route 
+const store = useStore();
 const route = useRoute();
 
-// set the id from the url 
+const products = ref([]);
+const reviewData = ref([]);
+const filterReviewData = ref([]);
 const routeParamsId = ref(Number(route.params.id));
 
-
-// destructure the data from the central api file 
-const {getProducts, getReviews, products, reviewData} = getDataFromCentralApiFile();
-
 onMounted(async () => {
-    await getProducts();
-    await getReviews();
+    await handleGetProducts()
+    await handleGetReviews();
     await filterReview();
 })
 
+const handleGetProducts = async () => {
+    try {
+        const result = await getProducts();
+        products.value = result?.data;
+    }
+    catch(error) {
+        console.log("Products", error);
+    }
+};
 
-// call pinia store and set in the variable store for using pinia store
-const store = useStore();
+const handleGetReviews = async () => {
+    try {
+        const result = await getReviews();
+        reviewData.value = result?.data;
+    }
+    catch(error) {
+        console.log("Reviews", error);
+    }
+}
 
-// call cart from pinia store 
-const cart = computed(() => {
-    return Object(store.cartItem)
-})
-
-// call cart item from pinia store 
-const cartItem = computed(() => {
-    return Object.values(store.cartItem);
-})
-
-// event handler for product add to the cart 
 const handleAddToCart = (product) => {
-  // destructure products data for set to the cart 
   const { pro_name, price, pro_image, pro_id } = product;
-  // declare a object for store in the localStorage 
   let item = {
     pro_name,
     price,
     pro_image,
     pro_id,
   }
-  // check shopping cart data have or empty 
   let shopping_cart = getDb() || {};
 
-  // if product have the localStorage then his quantity incease by one 
   if (shopping_cart[item.pro_id]) {
     shopping_cart[item.pro_id].quantity += 1;
   } 
-  // otherwise new item add in the storage and his quantity is 1 
+
   else {
     item.quantity = 1;
     shopping_cart[item.pro_id] = item;
   }
-  // update the database who store data to the localStorage 
   updateDb(shopping_cart);
-}
+};
 
-const handleIncrementQuantity = (id) => {
-    let shopping_cart = getDb() || {};
-    if (shopping_cart[id]) {
-        shopping_cart[id].quantity += 1;
-    }
-    else {
-        alert('Please Click Add To Cart Button');
-    }
-    updateDb(shopping_cart);
-}
+const filterReview = () => {
+    filterReviewData.value = reviewData.value.filter(review => review.productID === routeParamsId.value);
+};
 
-// event handler for decrement products 
-const handleDecrementQuantity = (id) => {
-    let shopping_cart = getDb() || {};
-        if (shopping_cart[id].quantity > 1) {
-            shopping_cart[id].quantity -= 1;
-        }
-    else {
-        const item = {
-            quantity: 1,
-        };
-        shopping_cart[id] = item;
-    }
-    updateDb(shopping_cart);
-}
+const cart = computed(() => {
+    return Object(store.cartItem)
+});
 
-// get data from localStorage 
+const cartItem = computed(() => {
+    return Object.values(store.cartItem);
+});
+
+
+
 const getDb = () => {
   const cartData = localStorage.getItem('shopping_cart');
   return cartData ? JSON.parse(cartData) : null;
-}
+};
 
-// update data to the localStorage 
 const updateDb = (cart) => {
   localStorage.setItem('shopping_cart', JSON.stringify(cart));
   store.setCartItem(cart);
-}
+};
 
 const itemQuantity = computed(() => {
     const item = store.cartItem;
@@ -111,14 +95,6 @@ const itemQuantity = computed(() => {
 const filteredProducts = computed(() => {
     return products.value.filter(product => product?.pro_id === routeParamsId.value);
 });
-
-
-
-// review visulize function 
-const filterReviewData = ref([]);
-const filterReview = () => {
-    filterReviewData.value = reviewData.value.filter(review => review.productID === routeParamsId.value);
-}
 
 </script>
 

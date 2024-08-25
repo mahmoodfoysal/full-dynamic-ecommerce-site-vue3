@@ -1,24 +1,36 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Keyboard } from 'swiper/modules';
-import getDataFromCentralApiFile from '@/API/All_API.js';
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
+import { getProducts } from '@/API/All_API.js';
 
 const store = useStore();
 
-const { getProducts, products } = getDataFromCentralApiFile();
+const products = ref([]);
+
 // Mousewheel its work for mouse wheel sliding 
 // import required modules
 const modules = [Navigation, Keyboard];
 
-onMounted(async () => {
-  await getProducts();
-})
+
+onMounted(() => {
+    handleGetProducts();
+});
+
+const handleGetProducts = async () => {
+    try {
+        const result = await getProducts();
+        products.value = result?.data;
+    }
+    catch(error) {
+        console.log("Products", error);
+    }
+};
 
 const filterProducts = computed(() => {
   return products.value.filter(product => product?.parent_cat_id === 1);

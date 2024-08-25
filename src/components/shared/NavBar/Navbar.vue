@@ -1,5 +1,5 @@
 <script setup>
-import { getAdmin } from '../../../API/All_API.js';
+import { getCategories } from '../../../API/All_API.js';
 import { ref, onMounted, computed, watch, toRefs } from 'vue';
 import router from '../../../router/router'
 import { RouterLink } from 'vue-router';
@@ -13,19 +13,19 @@ initilizationAuthentication();
 const emit = defineEmits(['search-products']);
 
 const store = useStore();
-const { getCategories, categories } = getDataFromCentralApiFile();
 
 const isAdmin = ref(false);
 const showSidebar = ref(false);
-const searchData = ref("")
+const searchData = ref('')
+const categories = ref([]);
 
 const logoLink = () => {
     router.push('/')
 };
 
-onMounted(async () => {
+onMounted(() => {
     handleGetAdmin();
-    await getCategories();  
+    handleGetCategories();
 });
 
 const handleGetAdmin = async () => {
@@ -34,9 +34,19 @@ const handleGetAdmin = async () => {
         isAdmin.value = response.data.admin;
     }
     catch(error) {
-        console.log(error);
+        console.log("Admin Api", error);
     }
-}
+};
+
+const handleGetCategories = async () => {
+    try {
+        const result = await getCategories();
+        categories.value = result?.data;
+    }
+    catch(error) {
+        console.log("categories", error);
+    }
+};
 
 const handleLogout = () => {
     const auth = getAuth();

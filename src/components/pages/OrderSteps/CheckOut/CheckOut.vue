@@ -2,10 +2,7 @@
 import { computed, ref } from 'vue';
 import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
-import getDataFromCentralApiFile from '@/API/All_API.js';
-
-// destructure event handler from central api 
-const { createOrders } = getDataFromCentralApiFile();
+import { createOrders } from '@/API/All_API.js';
 
 // call pinia store 
 const store = useStore();
@@ -56,7 +53,7 @@ const handleOrderSubmit = async () => {
     }
     const text = 'Are you sure? want to order!!!';
     if(confirm(text) == true) {
-        await createOrders({
+        const result = await createOrders({
         fullName: fullName.value,
         email: email.value,
         phoneNumber: phoneNumber.value,
@@ -76,10 +73,15 @@ const handleOrderSubmit = async () => {
         orderList: cartItem.value,
         orderStatus: "P",
         orderDate: orderDate.value
-    })
+    });
+    if(result?.data?.insertedId) {
+        alert("Order placed successful");
+        router.push({ name: 'Home' });
+        localStorage.removeItem('shopping_cart');
+        store.setCartItem([]);
     }
-    router.push({ name: 'Home' })
-    store.setCartItem([]);
+    }
+
 };
 
 

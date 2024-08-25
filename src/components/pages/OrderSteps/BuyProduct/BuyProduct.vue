@@ -4,12 +4,25 @@ import { ref, onMounted, computed, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import getDataFromCentralApiFile from '@/API/All_API.js';
 import router from '@/router/router.js';
+import { getProducts } from '@/API/All_API.js';
 
-const { createOrders, getProducts, products } = getDataFromCentralApiFile();
+const { createOrders } = getDataFromCentralApiFile();
 
-onMounted(async () => {
-    await getProducts();
-})
+const products = ref([]);
+
+onMounted(() => {
+    handleGetProducts();
+});
+
+const handleGetProducts = async () => {
+    try {
+        const result = await getProducts();
+        products.value = result?.data;
+    }
+    catch(error) {
+        console.log("Products", error);
+    }
+};
 
 const route = useRoute();
 

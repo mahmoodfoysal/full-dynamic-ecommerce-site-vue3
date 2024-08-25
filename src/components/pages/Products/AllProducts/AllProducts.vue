@@ -1,26 +1,34 @@
 <script setup>
 import { ref, onMounted, computed, toRefs } from 'vue';
 import ProductCard from '../ProductCard/ProductCard.vue';
-import axios from 'axios';
 import PriceFilter from '../../Filters/PriceFilter.vue';
 import BrandFilter from '../../Filters/BrandFilter.vue';
-import getDataFromCentralApiFile from '@/API/All_API.js'
-
-const { getProducts, products } = getDataFromCentralApiFile()
+import { getProducts } from '@/API/All_API.js';
 
 const props = defineProps({
     searchData: {
         type: String,
         default: ''
     }
-})
+});
+
+const products = ref([]);
 
 const { searchData } = toRefs(props);
 
-// call api for get product data 
-onMounted(async () => {
-    await getProducts();
-})
+onMounted(() => {
+    handleGetProducts();
+});
+
+const handleGetProducts = async () => {
+    try {
+        const result = await getProducts();
+        products.value = result?.data;
+    }
+    catch(error) {
+        console.log("Products", error);
+    }
+};
 
 
 // reactive price filter value
