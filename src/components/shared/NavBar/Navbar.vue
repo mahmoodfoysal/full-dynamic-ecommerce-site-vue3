@@ -4,7 +4,6 @@ import { ref, onMounted, computed, watch, toRefs } from 'vue';
 import router from '../../../router/router'
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore';
-import getDataFromCentralApiFile from '../../../API/All_API.js';
 import initilizationAuthentication from '@/firebase/firebase.init';
 import { getAuth, signOut } from "firebase/auth";
 import axios from 'axios';
