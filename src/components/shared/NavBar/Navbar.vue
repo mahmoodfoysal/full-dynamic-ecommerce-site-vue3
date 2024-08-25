@@ -115,7 +115,7 @@ watch(() => store.admin, (newVal) => {
                         </li>
                         <li 
                         v-if="isAdmin"
-                        class="nav-item admin"
+                        class="nav-item"
                         >
                             <RouterLink :to="{ name: 'DashboardHome' }" class="link-decor-style"><a class="nav-link navbar-text"
                                     href="#">Dashboard</a></RouterLink>
@@ -574,14 +574,6 @@ p {
 
 .link-decor-style {
     text-decoration: none;
-}
-
-.is-admin {
-    display: block !important;
-}
-
-.admin {
-    display: block;
 }
 
 /* media for mega menu  */

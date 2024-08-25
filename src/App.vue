@@ -29,7 +29,6 @@ onMounted(() => {
     });
 });
 
-// all search code write here 
 const handleSearch = (search) => {
     searchData.value = search;
 };

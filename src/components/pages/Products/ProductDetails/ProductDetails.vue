@@ -291,8 +291,6 @@ p {
     padding: 0;
 }
 
-.product-details-section {}
-
 .product-image-div {
     border: 1px solid gray;
     padding: 70px 10px;
