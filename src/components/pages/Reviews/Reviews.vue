@@ -12,7 +12,6 @@ const props = defineProps({
 
 const productID = toRef(props, 'productID');
 
-// all ref are declare here 
 const store = useStore();
 const currentRating = ref(0);
 const fullName = ref(store.user ? store.user.displayName : '');

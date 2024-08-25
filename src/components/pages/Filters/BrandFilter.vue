@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-// decclare brand name 
+
+const emit = defineEmits(['brand-select']);
+
 const brandName = [
     { id: 'bata', label: 'Bata', value: 'Bata', name: 'Bata' },
     { id: 'apex', label: 'Apex', value: 'Apex', name: 'Apex' },
@@ -11,10 +13,7 @@ const brandName = [
     { id: 'realme', label: 'Realme', value: 'realme', value: 'Realme' },
 ];
 
-// decalre reactive value for set brand value 
 const selectedBrand = ref([]);
-
-const emit = defineEmits(['brand-select']);
 
 const handleBrandChange = () => {
     emit('brand-select', selectedBrand.value);

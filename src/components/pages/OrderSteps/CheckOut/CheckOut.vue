@@ -4,20 +4,8 @@ import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
 import { createOrders } from '@/API/All_API.js';
 
-// call pinia store 
 const store = useStore();
 
-// call computed for finding real time cart data 
-const cart = computed(() => {
-    return Object(store.cartItem)
-})
-
-// call computed cart item for calculation 
-const cartItem = computed(() => {
-    return Object.values(store.cartItem);
-})
-
-// reactive for after input data store to the database
 const fullName = ref(store.user ? store.user.displayName : '');
 const email = ref(store.user ? store.user.email : '');
 const phoneNumber = ref(null);
@@ -32,6 +20,14 @@ const expireDate = ref('');
 const cvc = ref('');
 const orderDate = ref(Date());
 const isValidation = ref(false);
+
+const cart = computed(() => {
+    return Object(store.cartItem)
+})
+
+const cartItem = computed(() => {
+    return Object.values(store.cartItem);
+})
 
 // event handler for submit order 
 const handleOrderSubmit = async () => {
@@ -51,9 +47,8 @@ const handleOrderSubmit = async () => {
         cartItem,
         orderStatus: "P",
     }
-    const text = 'Are you sure? want to order!!!';
-    if(confirm(text) == true) {
-        const result = await createOrders({
+
+    const data = {
         fullName: fullName.value,
         email: email.value,
         phoneNumber: phoneNumber.value,
@@ -73,7 +68,10 @@ const handleOrderSubmit = async () => {
         orderList: cartItem.value,
         orderStatus: "P",
         orderDate: orderDate.value
-    });
+    }
+    const text = 'Are you sure? want to order!!!';
+    if(confirm(text) == true) {
+        const result = await createOrders(data);
     if(result?.data?.insertedId) {
         alert("Order placed successful");
         router.push({ name: 'Home' });
@@ -83,8 +81,6 @@ const handleOrderSubmit = async () => {
     }
 
 };
-
-
 
 // *******************************calculation section****************************
 

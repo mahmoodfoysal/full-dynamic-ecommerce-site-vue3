@@ -12,28 +12,26 @@ const props = defineProps({
         default: ''
     }
 });
-const products = ref([])
-const { searchData } = toRefs(props)
+const { searchData } = toRefs(props);
 
 const route = useRoute();
+const itemsPerPage = 8;
 
-const routeParamsId = ref(Number(route.params.id));
-
+const products = ref([]);
 const filterProducts = ref([]);
-
+const selectedBrand = ref([]);
 const selectedPrice = ref(null);
+const routeParamsId = ref(Number(route.params.id));
+const rangePrice = ref({ min: 1, max: 500 });
+const page = ref(1);
 
 const handlePriceSelection = (value) => {
     selectedPrice.value = value;
 };
 
-const rangePrice = ref({ min: 1, max: 500 });
-
 const handleSlidePrice = (value) => {
     rangePrice.value = value;
 }
-
-const selectedBrand = ref([]);
 
 const handleBrandSelect = (value) => {
     selectedBrand.value = value;
@@ -47,10 +45,6 @@ const filterProduct = () => {
         product.sub_sub_sub_cat_id === routeParamsId.value
     );
 }
-
-const page = ref(1);
-
-const itemsPerPage = 8;
 
 const totalPages = computed(() => Math.ceil(filterProducts.value.length / itemsPerPage));
 

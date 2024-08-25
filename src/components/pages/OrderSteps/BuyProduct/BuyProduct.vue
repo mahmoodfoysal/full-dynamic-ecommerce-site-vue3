@@ -2,13 +2,28 @@
 import { useStore } from '@/stores/TaskStore.js';
 import { ref, onMounted, computed, reactive } from 'vue';
 import { useRoute } from 'vue-router';
-import getDataFromCentralApiFile from '@/API/All_API.js';
 import router from '@/router/router.js';
-import { getProducts } from '@/API/All_API.js';
+import { getProducts, createOrders } from '@/API/All_API.js';
 
-const { createOrders } = getDataFromCentralApiFile();
+const route = useRoute();
+const store = useStore();
 
+const quantity = ref(1);
+const routeParamsId = ref(Number(route.params.id));
 const products = ref([]);
+const fullName = ref(store.user ? store.user.displayName : '');
+const email = ref(store.user ? store.user.email : '');
+const phoneNumber = ref(null);
+const city = ref('');
+const country = ref('');
+const state = ref('');
+const zip = ref(null);
+const address = ref('');
+const cardNumber = ref(null);
+const cardName = ref('');
+const expireDate = ref('');
+const cvc = ref('');
+const orderDate = ref(Date());
 
 onMounted(() => {
     handleGetProducts();
@@ -19,24 +34,16 @@ const handleGetProducts = async () => {
         const result = await getProducts();
         products.value = result?.data;
     }
-    catch(error) {
+    catch (error) {
         console.log("Products", error);
     }
 };
-
-const route = useRoute();
-
-const routeParamsId = ref(Number(route.params.id));
-
-const store = useStore();
 
 // product filter by params id 
 const filterProducts = computed(() => {
     return products.value.filter(product => product.pro_id === routeParamsId.value);
 });
 
-
-const quantity = ref(1);
 // event handler for increase product 
 const handleIncrementQuantity = (id) => {
     quantity.value += 1;
@@ -72,25 +79,9 @@ let totalAmount = computed(() => {
     return subTotal.value + vatTotal.value + delivaryFee.value;
 })
 
-
-// reactive for after input data store to the database
-const fullName = ref(store.user ? store.user.displayName : '');
-const email = ref(store.user ? store.user.email : '');
-const phoneNumber = ref(null);
-const city = ref('');
-const country = ref('');
-const state = ref('');
-const zip = ref(null);
-const address = ref('');
-const cardNumber = ref(null);
-const cardName = ref('');
-const expireDate = ref('');
-const cvc = ref('');
-const orderDate = ref(Date());
-
 // event handler for submit order 
 const handleOrderSubmit = async (product) => {
-    const orderList =[    {
+    const orderList = [{
         pro_id: product.pro_id,
         pro_name: product.pro_name,
         price: product.price,
@@ -98,7 +89,7 @@ const handleOrderSubmit = async (product) => {
         quantity: quantity.value,
     }]
 
-    await createOrders({
+    const data = {
         fullName: fullName.value,
         email: email.value,
         phoneNumber: phoneNumber.value,
@@ -115,11 +106,18 @@ const handleOrderSubmit = async (product) => {
         vatTotal: vatTotal.value,
         delivaryFee: delivaryFee.value,
         totalAmount: totalAmount.value,
-        orderList,
+        orderList: orderList,
         orderStatus: "P",
         orderDate: orderDate.value
-    })
-    router.push({ name: 'Home' })
+    }
+    const text = "Are you want to sure? Place this order..."
+    if (confirm(text) == true) {
+        const result = await createOrders(data);
+        if (result?.data?.insertedId) {
+            alert("Order placed successful");
+            router.push({ name: 'Home' });
+        };
+    }
 };
 </script>
 

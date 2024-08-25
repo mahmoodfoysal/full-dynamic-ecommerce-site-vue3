@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
-// Mousewheel its work for mouse wheel sliding 
+
 const modules = [Navigation, Pagination, Keyboard, Autoplay];
 </script>
 
@@ -21,15 +21,15 @@ const modules = [Navigation, Pagination, Keyboard, Autoplay];
   '640'
     : {
     slidesPerView: 1,
-    // spaceBetween: 20,
+
   },
   '768': {
     slidesPerView: 1,
-    // spaceBetween: 20,
+
   },
   '1024': {
     slidesPerView: 1,
-    // spaceBetween: 50,
+  
   },
 }" :modules="modules" class="mySwiper">
       <swiper-slide>

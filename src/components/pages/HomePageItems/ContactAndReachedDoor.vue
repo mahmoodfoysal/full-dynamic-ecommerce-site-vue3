@@ -10,7 +10,6 @@ const message = ref('');
 
 const sendEmail = (e) => {
     e.preventDefault();
-
     const templateParams = {
         name: name.value,
         email: email.value,
@@ -19,26 +18,19 @@ const sendEmail = (e) => {
         message: message.value
     };
 
-    console.log('Template Params:', templateParams); // Log form data for debugging
-
     emailjs.sendForm('service_8velmx9', 'template_a0wk1gc', e.target, 'Fxn081CAW6lcRjYKl')
         .then((result) => {
-            console.log('Email sent successfully:', result.text);
-            // Optionally reset form fields after successful submission
             name.value = '';
             subject.value = '';
             email.value = '';
             phone.value = '';
             message.value = '';
-            // Call any function to indicate that the message has been sent
             messageSent();
         })
         .catch((error) => {
             console.error('Error sending email:', error.text);
         });
 };
-
-// Define the function to be called after the message is sent
 const messageSent = () => {
     alert("Success")
 };

@@ -32,17 +32,17 @@ const handleAddToCart = (product) => {
     shopping_cart[item.pro_id] = item;
   }
   updateDb(shopping_cart);
-}
+};
 
 const getDb = () => {
   const cartData = localStorage.getItem('shopping_cart');
   return cartData ? JSON.parse(cartData) : null;
-}
+};
 
 const updateDb = (cart) => {
   localStorage.setItem('shopping_cart', JSON.stringify(cart));
   store.setCartItem(cart);
-}
+};
 
 </script>
 

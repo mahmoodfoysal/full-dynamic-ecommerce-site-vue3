@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 
-// declare price range for filter by product price
+const emit = defineEmits(['price-selected', 'slide-price']);
+
 const priceRanges = [
     { label: 'No Filter', min: 0, max: 100000 },
     { label: '$0 to $10', min: 0, max: 10 },
@@ -14,14 +15,8 @@ const priceRanges = [
     { label: '$301 to $400', min: 301, max: 400 },
 ];
 
-// reactive price filter value
 const selectedPrice = ref(null);
-
-// sliding price
 const rangePrice = ref({ min: 1, max: 500 });
-
-
-const emit = defineEmits(['price-selected', 'slide-price']);
 
 const handlePriceChange = () => {
     emit('price-selected', selectedPrice.value);
@@ -30,7 +25,6 @@ const handlePriceChange = () => {
 const handleSlidePriceChange = () => {
     emit('slide-price', rangePrice.value)
 }
-
 
 </script>
 

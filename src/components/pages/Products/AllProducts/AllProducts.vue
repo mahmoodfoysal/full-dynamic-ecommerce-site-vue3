@@ -12,9 +12,15 @@ const props = defineProps({
     }
 });
 
-const products = ref([]);
-
 const { searchData } = toRefs(props);
+
+const itemsPerPage = 8;
+
+const products = ref([]);
+const selectedPrice = ref(null);
+const rangePrice = ref({ min: 1, max: 500 });
+const selectedBrand = ref([]);
+const page = ref(1);
 
 onMounted(() => {
     handleGetProducts();
@@ -30,35 +36,18 @@ const handleGetProducts = async () => {
     }
 };
 
-
-// reactive price filter value
-const selectedPrice = ref(null);
-
 // event handler for change price 
 const handlePriceSelection = (value) => {
     selectedPrice.value = value;
 };
 
-// sliding price
-const rangePrice = ref({ min: 1, max: 500 });
-
 const handleSlidePrice = (value) => {
     rangePrice.value = value;
 }
 
-
-// decalre reactive value for set brand value 
-const selectedBrand = ref([]);
-
 const handleBrandSelect = (value) => {
     selectedBrand.value = value;
 }
-
-// reactivation page for pagination 
-const page = ref(1);
-
-// decalare a variable for how much product show at single page
-const itemsPerPage = 8;
 
 // finding how much product in the array and division by 8
 const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage));
@@ -80,13 +69,11 @@ const paginatedProducts = computed(() => {
     if (selectedBrand.value.length > 0) {
         filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
     }
-
+    // search products 
     if(searchData.value.length > 0) {
         const searchKeyword = searchData.value.toLowerCase();
         filtered = filtered.filter(product => product.pro_name.toLowerCase().includes(searchKeyword));
     }
-
-
     // Apply pagination
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;

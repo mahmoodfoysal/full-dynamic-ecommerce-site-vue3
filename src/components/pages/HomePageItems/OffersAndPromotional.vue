@@ -20,12 +20,6 @@
 </template>
 
 <style scoped>
-/* .promotional-container {
-    width: 1300px;
-    margin: auto;
-    margin-top: 30px;
-} */
-
 
 @media only screen and (max-width: 2560px) {
     .promotional-container {

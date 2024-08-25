@@ -3,6 +3,7 @@ import { GetCatImg } from '@/API/All_API.js';
 import { ref, onMounted } from 'vue';
 
 const categoryImgList = ref([]);
+
 onMounted(() => {
     handleGetCatImg();
 });

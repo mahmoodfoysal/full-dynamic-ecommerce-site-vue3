@@ -8,6 +8,7 @@ import { getCategories } from '@/API/All_API.js';
 const store = useStore();
 
 const categories = ref([]);
+const showSidebar = ref(false);
 
 onMounted(() => {
     handleGetCategories();
@@ -23,7 +24,6 @@ const handleGetCategories = async () => {
     }
 };
 
-const showSidebar = ref(false);
 const toggleDropdown = (parentCat) => {
     parentCat.isActive = !parentCat.isActive;
 };

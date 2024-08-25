@@ -9,8 +9,8 @@ const store = useStore();
 const route = useRoute();
 const products = ref([]);
 const reviewData = ref([]);
-const routeParamsId = ref(Number(route.params.id));
 const filterReviewData = ref([]);
+const routeParamsId = ref(Number(route.params.id));
 
 
 onMounted(async () => {

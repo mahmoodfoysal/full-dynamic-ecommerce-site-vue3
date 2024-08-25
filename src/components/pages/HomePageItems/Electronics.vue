@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
-// Mousewheel its work for mouse wheel sliding 
+
 const modules = [Navigation, Pagination, Keyboard];
 
 </script>

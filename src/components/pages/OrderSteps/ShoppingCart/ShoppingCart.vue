@@ -3,27 +3,21 @@ import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
 
-// call pinia store and set a variable store 
 const store = useStore();
 
-// call computed for real time data from the pinia store 
 const cart = computed(() => {
     return Object(store.cartItem)
 })
 
-// call cart item for real time data from the pinia store 
 const cartItem = computed(() => {
     return Object.values(store.cartItem);
 })
 
-
-// get data from the local storage
 const getDb = () => {
     const cartData = localStorage.getItem('shopping_cart');
     return cartData ? JSON.parse(cartData) : null;
 }
 
-// update lcoal storage
 const updateDb = (cart) => {
     localStorage.setItem('shopping_cart', JSON.stringify(cart));
     store.setCartItem(cart);

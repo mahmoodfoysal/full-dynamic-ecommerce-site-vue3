@@ -10,7 +10,6 @@ initilizationAuthentication();
 const auth = getAuth();
 const googleProvider = new GoogleAuthProvider();
 
-// call pinia store and set in the store variable for access the store 
 const store = useStore();
 
 const getError = ref(null);
