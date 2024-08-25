@@ -76,11 +76,9 @@ const handleIncrementQuantity = (id) => {
 // event handler for decrement products 
 const handleDecrementQuantity = (id) => {
     let shopping_cart = getDb() || {};
-    if (shopping_cart[id]) {
         if (shopping_cart[id].quantity > 1) {
             shopping_cart[id].quantity -= 1;
         }
-    }
     else {
         const item = {
             quantity: 1,
