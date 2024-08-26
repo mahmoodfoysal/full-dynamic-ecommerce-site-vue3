@@ -75,6 +75,12 @@ const routes = [
           name: 'Category',
           component: () => import('/src/components/dashboard/Features/Category/Category.vue'),
           // meta: { requiresAuth: true },
+        },
+        {
+          path: 'image-category',
+          name: 'ImageCategory',
+          component: () => import('/src/components/dashboard/Features/ImageCategory/ImageCategory.vue'),
+          // meta: { requiresAuth: true },
         }
       ]
     },
@@ -103,9 +109,7 @@ const router =createRouter({
                 try {
                     // Make an API call to your backend to check if the user is an admin
                     const response = await axios.get(`http://localhost:5000/admin/${user.email}`);
-                    
                     if (response.data.admin) {
-                      console.log(response)
                         next(); // Allow access if user is an admin
                     } else {
                         next('/login'); // Redirect to login if not an admin

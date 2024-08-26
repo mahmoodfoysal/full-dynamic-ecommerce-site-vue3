@@ -61,3 +61,9 @@ export const postCategory = async (data) => {
   const url = 'http://localhost:5000/categories';
   return await axios.post(url, data);
 };
+
+// post image category 
+export const postImageCategory = async (data) => {
+  const url = 'http://localhost:5000/squreCardForHome';
+  return await axios.post(url, data)
+};

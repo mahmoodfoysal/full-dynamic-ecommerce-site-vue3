@@ -47,6 +47,10 @@ const handleGetCategories = async () => {
     }
 };
 
+const handleClientProfile = () => {
+    console.log('Click')
+}
+
 const handleLogout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
@@ -127,7 +131,7 @@ watch(() => store.admin, (newVal) => {
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Dropdown
                             </a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu-style">
                                 <ul>
                                     <li><a class="dropdown-item" href="#">Action</a></li>
                                     <li><a class="dropdown-item" href="">Drop menu 1</a></li>
@@ -175,7 +179,23 @@ watch(() => store.admin, (newVal) => {
                             <small>{{ cartCount }}</small>
                         </div>
 
-                        <img v-if="store.user !== null" :src="store.user.photoURL" alt="Avatar" class="avatar">
+<div class="dropdown">
+    <img 
+                        @click="handleClientProfile"
+                        v-if="store.user !== null" 
+                        :src="store.user.photoURL" 
+                        alt="Avatar" 
+                        class="dropdown-toggle avatar"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        >
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Address</a></li>
+                            <li><a class="dropdown-item" href="#">Orders</a></li>
+                        </ul>
+</div>
 
                         <span v-if="store.user === null" class="d-flex flex-column">
                             <RouterLink :to="{ name: 'Login' }" class="link-decor-style"><small
@@ -292,6 +312,7 @@ p {
     height: 41px;
     border-radius: 50%;
     margin-right: 16px;
+    cursor: pointer;
 }
 
 .form-control {
@@ -495,25 +516,25 @@ p {
     justify-content: space-between;
 }
 
-.dropdown-menu {
+.dropdown-menu-style {
     border: none;
     border-radius: 0;
     padding: .5em;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .23);
 }
 
-.dropdown-menu ul {
+.dropdown-menu-style ul {
     list-style: none;
     padding: 0;
 }
 
-.dropdown-menu li a {
+.dropdown-menu-style li a {
     color: gray;
     padding: 0.5em 1em;
 
 }
 
-.dropdown-menu li:first-child a {
+.dropdown-menu-style li:first-child a {
     font-weight: bold;
     font-size: 1.2em;
 
@@ -576,13 +597,19 @@ p {
     text-decoration: none;
 }
 
+.dropdown-menu {
+    top: 100%;
+    left: -55px !important;
+    margin-top: var(--bs-dropdown-spacer);
+}
+
 /* media for mega menu  */
 @media screen and (min-width: 993px) {
-    .dropdown-menu.show {
+    .dropdown-menu-style.show {
         display: flex !important;
     }
 
-    .dropdown:hover .dropdown-menu {
+    .dropdown:hover .dropdown-menu-style {
         display: flex !important;
     }
 
@@ -599,7 +626,7 @@ p {
 }
 
 @media screen and (max-width: 1024px) {
-    .dropdown-menu.show {
+    .dropdown-menu-style.show {
         max-height: 60vh;
         overflow-y: scroll;
     }
@@ -628,7 +655,7 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-    .dropdown-menu.show {
+    .dropdown-menu-style.show {
         max-height: 60vh;
         overflow-y: scroll;
     }
@@ -694,7 +721,7 @@ p {
 }
 
 @media screen and (max-width: 540px) {
-    .dropdown-menu.show {
+    .dropdown-menu-style.show {
         max-height: 60vh;
         overflow-y: scroll;
     }

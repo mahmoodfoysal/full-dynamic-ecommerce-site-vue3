@@ -3,45 +3,52 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-    <RouterLink 
-    :to="{name: 'DashboardHomeDefault'}"
-    class="router-link-style"
-    >
+    <RouterLink :to="{ name: 'DashboardHomeDefault' }" class="router-link-style">
         <div class="d-flex align-items-center menu-items-style mb-2">
-        <span class="material-icons">
-            home
-        </span>
-        <h5>
-            Home
-        </h5>
-    </div>
-    </RouterLink>
-    <RouterLink 
-    :to="{name: 'Admin'}"
-    class="router-link-style"
-    >
-        <div class="d-flex align-items-center menu-items-style mb-2">
-        <span class="material-icons">
             <span class="material-icons">
-                admin_panel_settings
+                home
             </span>
-        </span>
-        <h5>
-            Make Admin
-        </h5>
-    </div>
+            <h5>
+                Home
+            </h5>
+        </div>
     </RouterLink>
-    <RouterLink :to="{name: 'Category'}" class="router-link-style">
+    <RouterLink :to="{ name: 'Admin' }" class="router-link-style">
         <div class="d-flex align-items-center menu-items-style mb-2">
-        <span class="material-icons">
             <span class="material-icons">
-category
-</span>
-        </span>
-        <h5>
-            Category
-        </h5>
-    </div>
+                <span class="material-icons">
+                    admin_panel_settings
+                </span>
+            </span>
+            <h5>
+                Make Admin
+            </h5>
+        </div>
+    </RouterLink>
+    <RouterLink :to="{ name: 'Category' }" class="router-link-style">
+        <div class="d-flex align-items-center menu-items-style mb-2">
+            <span class="material-icons">
+                <span class="material-icons">
+                    category
+                </span>
+            </span>
+            <h5>
+                Category
+            </h5>
+        </div>
+    </RouterLink>
+
+    <RouterLink :to="{ name: 'ImageCategory' }" class="router-link-style">
+        <div class="d-flex align-items-center menu-items-style mb-2">
+            <span class="material-icons">
+                <span class="material-icons">
+                    collections
+                </span>
+            </span>
+            <h5>
+                Image Category
+            </h5>
+        </div>
     </RouterLink>
 
 </template>
@@ -76,9 +83,9 @@ p {
     text-decoration: none;
     color: black;
 }
+
 .active-link {
     text-decoration: none;
     color: #1F5DA0;
 }
-
 </style>
