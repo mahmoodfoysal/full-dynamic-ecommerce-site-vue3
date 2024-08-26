@@ -24,6 +24,7 @@ const cardName = ref('');
 const expireDate = ref('');
 const cvc = ref('');
 const orderDate = ref(Date());
+const isValidation = ref(false);
 
 onMounted(() => {
     handleGetProducts();
@@ -81,6 +82,20 @@ let totalAmount = computed(() => {
 
 // event handler for submit order 
 const handleOrderSubmit = async (product) => {
+    if(
+    !fullName.value ||
+    !email.value || 
+    !phoneNumber.value ||
+    !city.value || 
+    !country.value ||
+    !state.value ||
+    !zip.value || 
+    !address.value ) {
+        isValidation.value = true;
+        alert("Please fill up all required field!!!");
+        return;
+    };
+
     const orderList = [{
         pro_id: product.pro_id,
         pro_name: product.pro_name,
@@ -115,6 +130,7 @@ const handleOrderSubmit = async (product) => {
         const result = await createOrders(data);
         if (result?.data?.insertedId) {
             alert("Order placed successful");
+            isValidation.value = false;
             router.push({ name: 'Home' });
         };
     }
@@ -129,20 +145,41 @@ const handleOrderSubmit = async (product) => {
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name</label>
-                        <input v-model="fullName" type="text" class="form-control" id="inputEmail4" disabled>
+                        <input 
+                        v-model="fullName" 
+                        :class="{'is-validate': isValidation && !fullName}"
+                        type="text" 
+                        class="form-control" 
+                        id="inputEmail4" 
+                        disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input v-model="email" type="email" class="form-control" id="inputEmail4" disabled>
+                        <input 
+                        v-model="email" 
+                        :class="{'is-validate': isValidation && !email}"
+                        type="email" 
+                        class="form-control" 
+                        id="inputEmail4" 
+                        disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No</label>
-                        <input v-model.trim="phoneNumber" type="number" class="form-control" id="inputEmail4"
-                            placeholder="Enter Your Contact Number" required>
+                        <input 
+                        v-model.trim="phoneNumber"
+                        :class="{'is-validate': isValidation && !phoneNumber}" 
+                        type="number" 
+                        class="form-control" 
+                        id="inputEmail4"
+                        placeholder="Enter Your Contact Number" 
+                        required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Country</label>
-                        <select v-model.trim="country" id="inputState" class="form-select" required>
+                        <select 
+                        v-model.trim="country" 
+                        :class="{'is-validate': isValidation && !country}"
+                        id="inputState" class="form-select" required>
                             <option selected>Select Country</option>
                             <option>Bangladesh</option>
                             <option>India</option>
@@ -152,22 +189,34 @@ const handleOrderSubmit = async (product) => {
 
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">City</label>
-                        <input v-model.trim="city" type="text" class="form-control" id="inputEmail4"
+                        <input 
+                        v-model.trim="city" 
+                        :class="{'is-validate': isValidation && !city}"
+                        type="text" class="form-control" id="inputEmail4"
                             placeholder="City Name" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">state</label>
-                        <input v-model.trim="state" type="text" class="form-control" id="inputEmail4"
+                        <input 
+                        v-model.trim="state" 
+                        :class="{'is-validate': isValidation && !state}"
+                        type="text" class="form-control" id="inputEmail4"
                             placeholder="Enter State">
                     </div>
                     <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip</label>
-                        <input v-model.trim="zip" type="zip" class="form-control" id="inputZip" placeholder="Zip Code"
+                        <input 
+                        v-model.trim="zip" 
+                        :class="{'is-validate': isValidation && !zip}"
+                        type="zip" class="form-control" id="inputZip" placeholder="Zip Code"
                             required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Address</label>
-                        <input v-model.trim="address" type="text" class="form-control" id="inputAddress"
+                        <input 
+                        v-model.trim="address" 
+                        :class="{'is-validate': isValidation && !address}"
+                        type="text" class="form-control" id="inputAddress"
                             placeholder="1234 Main St" required>
                     </div>
                     <h4>Delivary Method</h4>
@@ -347,7 +396,9 @@ p {
     cursor: pointer;
 }
 
-
+.is-validate {
+    border: 1px solid red !important;
+}
 
 @media only screen and (max-width: 2560px) {
     .check-out-container-style {
