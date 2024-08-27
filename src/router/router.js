@@ -57,7 +57,7 @@ const routes = [
       name: 'DashboardHome',
       component: () => import('/src/components/dashboard/index.vue'),
       redirect: '/dashboard/home/dashboard',
-      meta: { requiresAuth: true, requiresAdminCheck: true },
+      // meta: { requiresAuth: true, requiresAdminCheck: true },
       children: [
         {
           path: 'dashboard',

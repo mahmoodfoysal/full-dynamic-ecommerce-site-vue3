@@ -31,12 +31,12 @@
     border: 1px solid red !important;
 }
 
-.item-style .edit {
+.item-style .edit:hover {
     color: #1F5DA0;
     cursor: pointer;
     font-size: 22px;
 }
-.item-style .delete {
+.item-style .delete:hover {
     color: #D71110;
     cursor: pointer;
     font-size: 22px;

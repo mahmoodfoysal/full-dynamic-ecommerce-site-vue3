@@ -175,7 +175,7 @@ const handleDeleteAdmin = async (id) => {
 }
 
 .icon-style span:last-child:hover {
-    color: red;
+    color: #D71110;
     cursor: pointer;
 }
 </style>

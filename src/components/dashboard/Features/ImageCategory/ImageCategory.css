@@ -47,7 +47,23 @@
     overflow-y: scroll;
 }
 
+.image-style img {
+    height: 100%;
+}
 
+.icon-style span:first-child:hover {
+    color: #1F5DA0;
+    cursor: pointer;
+}
+
+.icon-style span:last-child:hover {
+    color: #D71110;
+    cursor: pointer;
+}
+
+.offcanvas.show {
+    visibility: visible;
+  }
 
 /* media query write here s */
 

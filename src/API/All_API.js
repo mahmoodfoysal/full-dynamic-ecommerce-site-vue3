@@ -22,8 +22,27 @@ export const getReviews = async () => {
 };
 
 export const GetCatImg = async () => {
-  const url = 'https://kitkat-ecommerce-server.onrender.com/squreCardForHome';
+  const url = 'http://localhost:5000/imageCategory';
   return await axios.get(url);
+};
+
+// get admin list 
+export const getAdmin = async (data) => {
+  const url = 'http://localhost:5000/admin';
+  return await axios.get(url);
+};
+
+
+ // post category
+export const postCategory = async (data) => {
+  const url = 'http://localhost:5000/categories';
+  return await axios.post(url, data);
+};
+
+// post image category 
+export const postImageCategory = async (data) => {
+  const url = 'http://localhost:5000/imageCategory';
+  return await axios.post(url, data)
 };
 
 // ###################### all post operation are here ######################## 
@@ -37,33 +56,23 @@ export const createOrders = async (data) => {
   return await axios.post(url, data);
 };
 
-// ######################## here write the dashboard some api ######################## 
-
 // post admin for and role 
 export const postRole = async (data) => {
   const url = 'http://localhost:5000/admin';
   return await axios.post(url, data);
 };
 
-// get admin list 
-export const getAdmin = async (data) => {
-  const url = 'http://localhost:5000/admin';
-  return await axios.get(url);
-};
+// ###################### all delete operation are here ######################## 
 
 // delete admin 
 export const deleteAdmin = async (id) => {
   const url = `http://localhost:5000/admin/${id}`;
   return await axios.delete(url);
-}
- // post category
-export const postCategory = async (data) => {
-  const url = 'http://localhost:5000/categories';
-  return await axios.post(url, data);
 };
 
-// post image category 
-export const postImageCategory = async (data) => {
-  const url = 'http://localhost:5000/squreCardForHome';
-  return await axios.post(url, data)
+// delete admin 
+export const deleteImageCategory = async (id) => {
+  const url = `http://localhost:5000/imageCategory/${id}`;
+  return await axios.delete(url);
 };
+
