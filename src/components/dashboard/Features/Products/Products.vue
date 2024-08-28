@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { getProducts, getCategories } from '@/API/All_API';
+import { getProducts, getCategories, postProduct } from '@/API/All_API';
 
 const productList = ref([]);
 const categoryList = ref([]);
@@ -94,6 +94,25 @@ const handleSubSubSubCategory = () => {
     subSubSubCategoryList.value = inputData.value.sub_sub_cat_info.sub_sub_sub_cat_info
 };
 
+const handleSubmit = async () => {
+    try {
+
+        const data = {
+            
+        }
+
+        const text = "Are you want to sure?";
+        if(confirm(text) == true) {
+            const result = await postProduct();
+            console.log(result?.data);
+        }
+        
+    }
+    catch(error) {
+        console.log("product post", error);
+    }
+}
+
 const handleResetInput = () => {
     inputData.value.parent_cat_info = null;
     inputData.value.sub_cat_info = null;
@@ -108,7 +127,7 @@ const handleResetInput = () => {
     inputData.value.offer_price = null;
     inputData.value.prod_stock = null;
     inputData.value.brand_name = null;
-    inputData.value.descriptio = null;
+    inputData.value.description = null;
 };
 
 </script>

@@ -32,13 +32,6 @@ export const getAdmin = async (data) => {
   return await axios.get(url);
 };
 
-
- // post category
-export const postCategory = async (data) => {
-  const url = 'http://localhost:5000/categories';
-  return await axios.post(url, data);
-};
-
 // ###################### all post operation are here ######################## 
 
 // post image category 
@@ -61,6 +54,17 @@ export const createOrders = async (data) => {
 // post admin for and role 
 export const postRole = async (data) => {
   const url = 'http://localhost:5000/admin';
+  return await axios.post(url, data);
+};
+
+ // post category
+ export const postCategory = async (data) => {
+  const url = 'http://localhost:5000/categories';
+  return await axios.post(url, data);
+};
+
+export const postProduct = async (data) => {
+  const url = 'http://localhost:5000/products';
   return await axios.post(url, data);
 };
 
