@@ -58,10 +58,6 @@ const handleGetCatImg = async () => {
     }
 };
 
-const handleSubCategory = () => {
-    subCatList.value = inputData.value.parent_cat_id.sub_cat_info;
-};
-
 const handleSubmit = async () => {
     try {
         const data = {
@@ -114,14 +110,18 @@ const handleEdit = (item) => {
     if(isEdit) {
         inputData.value.cat_name = item?.cat_name;
         inputData.value.img = item?.img;
-        const parentCat = categoryList?.value.find(item => item.parent_cat_id == item.parent_cat_id);
+        const parentCat = categoryList?.value.find((cat) => cat.parent_cat_id === item.parent_cat_id );
         inputData.value.parent_cat_id = parentCat;
         const subCat = parentCat.sub_cat_info;
-        // handleSubCategory()
-        inputData.value.sub_cat_id = subCat.find(item => item.sub_cat_id == item.sub_cat_id);
-        console.log(item)
+        subCatList.value = item?.sub_cat_info
+        inputData.value.sub_cat_id = subCat.find((subCat) => subCat.sub_cat_id == item.sub_cat_id);
+        handleSubCategory();
     }
-}
+};
+
+const handleSubCategory = () => {
+    subCatList.value = inputData.value.parent_cat_id.sub_cat_info;
+};
 
 </script>
 
