@@ -81,7 +81,13 @@ const routes = [
           name: 'ImageCategory',
           component: () => import('/src/components/dashboard/Features/ImageCategory/ImageCategory.vue'),
           // meta: { requiresAuth: true },
-        }
+        },
+        {
+          path: 'add-products',
+          name: 'AddProducts',
+          component: () => import('/src/components/dashboard/Features/Products/Products.vue'),
+          // meta: { requiresAuth: true },
+        },
       ]
     },
     {

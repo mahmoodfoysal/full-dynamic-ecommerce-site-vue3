@@ -51,6 +51,20 @@ import { RouterLink } from 'vue-router';
         </div>
     </RouterLink>
 
+    <RouterLink 
+    :to="{ name: 'AddProducts' }" 
+    class="router-link-style">
+        <div class="d-flex align-items-center menu-items-style mb-2">
+            <span class="material-icons">
+                <span class="material-icons">
+                    inventory_2
+                </span>
+            </span>
+            <h5>
+                Products
+            </h5>
+        </div>
+    </RouterLink>
 </template>
 
 <style scoped>

@@ -2,22 +2,22 @@ import axios from "axios";
 
 // ######################## all get api ######################## 
 export const getCategories = async () => {
-  const url = 'https://kitkat-ecommerce-server.onrender.com/categories';
+  const url = 'http://localhost:5000/categories';
   return await axios.get(url);
 };
 
 export const getProducts = async () => {
-    const url = 'https://kitkat-ecommerce-server.onrender.com/products';
+    const url = 'http://localhost:5000/products';
     return await axios.get(url);
 };
 
 export const getBrands = async () => {
-  const url = 'https://kitkat-ecommerce-server.onrender.com/brands';
+  const url = 'http://localhost:5000/brands';
   return await axios.get(url);
 };
 
 export const getReviews = async () => {
-  const url = 'https://kitkat-ecommerce-server.onrender.com/reviews';
+  const url = 'http://localhost:5000/reviews';
   return await axios.get(url);
 };
 
@@ -39,20 +39,22 @@ export const postCategory = async (data) => {
   return await axios.post(url, data);
 };
 
+// ###################### all post operation are here ######################## 
+
 // post image category 
 export const postImageCategory = async (data) => {
   const url = 'http://localhost:5000/imageCategory';
   return await axios.post(url, data)
 };
-
-// ###################### all post operation are here ######################## 
+// post review
 export const postReview = async (data) => {
-  const url = 'https://kitkat-ecommerce-server.onrender.com/reviews';
+  const url = 'http://localhost:5000/reviews';
   return await axios.post(url, data)
 };
 
+// post orders
 export const createOrders = async (data) => {
-  const url = 'https://kitkat-ecommerce-server.onrender.com/orders';
+  const url = 'http://localhost:5000/orders';
   return await axios.post(url, data);
 };
 

@@ -61,7 +61,7 @@ const handleGetCatImg = async () => {
 const handleSubmit = async () => {
     try {
         const data = {
-
+            _id: isEdit ? inputData.value.id : null,
             cat_name: inputData.value.cat_name,
             parent_cat_id: Number(inputData.value.parent_cat_id.parent_cat_id),
             sub_cat_id: Number(inputData.value.sub_cat_id.sub_cat_id),
@@ -108,6 +108,7 @@ const handleEdit = (item) => {
     isEdit.value = true;
     isModal.value = true;
     if(isEdit) {
+        inputData.value.id = item?._id;
         inputData.value.cat_name = item?.cat_name;
         inputData.value.img = item?.img;
         const parentCat = categoryList?.value.find((cat) => cat.parent_cat_id === item.parent_cat_id );
@@ -225,10 +226,10 @@ const handleSubCategory = () => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
-                                Category image *
+                                Category image url *
                             </label>
                             <input v-model="inputData.img" :class="{ isValidate: isValidation && !inputData.img }"
-                                type="text" class="form-control" id="exampleInputText" placeholder="Category image">
+                                type="url" class="form-control" id="exampleInputText" placeholder="Category image">
                         </div>
 
                         <div class="col-md-6 mb-1">
