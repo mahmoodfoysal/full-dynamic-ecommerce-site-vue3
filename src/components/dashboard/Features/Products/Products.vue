@@ -116,14 +116,14 @@ const handleSubmit = async () => {
             sub_sub_sub_cat_id: inputData.value.sub_sub_sub_cat_info  ? Number(inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_id) : null,
             sub_sub_sub_cat_name: inputData.value.sub_sub_sub_cat_info  ? inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_name : null,
 
-            prod_type: inputData.value.prod_type.name,
+            prod_type_name: inputData.value.prod_type.name,
             prod_type: inputData.value.prod_type.type,
             prod_id: Number(inputData.value.prod_id),
             prod_image: inputData.value.prod_image,
             prod_name: inputData.value.prod_name,
             prod_price: Number(inputData.value.prod_price),
-            discount_price: Number(inputData.value.discount_price),
-            offer_price: Number(inputData.value.offer_price),
+            discount_price: inputData.value.discount_price ? Number(inputData.value.discount_price) : null,
+            offer_price: inputData.value.offer_price ? Number(inputData.value.offer_price) : null,
             prod_stock: Number(inputData.value.prod_stock),
             description: inputData.value.description,
             brand_name: inputData.value.brand_name,
@@ -263,7 +263,7 @@ const handleResetInput = () => {
                         </div>
                         <div class="d-flex justify-content-between">
                             <p class="card-text mb-0">Product id: {{ item.prod_id }}</p>
-                            <p class="card-text mb-0">Product Type: {{ item.prod_type }}</p>
+                            <p class="card-text mb-0">Product Type: {{ item.prod_type_name }}</p>
                             <p class="card-text mb-0">Brand: {{ item.brand_name }}</p>
                             
                         </div>
