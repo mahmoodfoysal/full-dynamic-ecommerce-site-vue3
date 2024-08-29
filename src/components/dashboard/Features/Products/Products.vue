@@ -267,15 +267,30 @@ const handleResetInput = () => {
                             <p class="card-text mb-0">Brand: {{ item.brand_name }}</p>
                             
                         </div>
-                        <p class="card-text mb-0">Parent category: {{ item?.parent_cat_id }}</p>
-                        <p class="card-text mb-0">Sub category: {{ item.sub_cat_id }}</p>
-                        <p class="card-text mb-0">Sub sub category: {{ item.sub_sub_cat_id }}</p>
-                        <p class="card-text mb-0">Sub sub sub category: {{ item.sub_sub_sub_cat_id }}</p>
+                        <p 
+                        class="card-text mb-0">
+                        Parent category: ({{ item?.parent_cat_id }}) - {{ item?.parent_cat_name }}
+                        </p>
+                        <p 
+                        v-if="item.sub_cat_id" 
+                        class="card-text mb-0">
+                        Sub category: ({{ item?.sub_cat_id }}) - {{ item.sub_cat_name }}
+                        </p>
+                        <p 
+                        v-if="item.sub_sub_cat_id" 
+                        class="card-text mb-0">
+                        Sub sub category: ({{ item?.sub_sub_cat_id }}) - {{ item.sub_sub_cat_name }}
+                        </p>
+                        <p 
+                        v-if="item.sub_sub_sub_cat_id" 
+                        class="card-text mb-0">
+                        Sub sub sub category: ({{ item?.sub_sub_sub_cat_id }}) - {{ item.sub_sub_sub_cat_name }}
+                        </p>
 
 
                         <div class="d-flex justify-content-between">
-                            <p class="card-text mb-0">Discount price: {{ item.discount_price }}</p>
-                            <p class="card-text mb-0">Offer price: {{ item.offer_price }}</p>
+                            <p v-if="item.discount_price" class="card-text mb-0">Discount price: {{ item.discount_price }}</p>
+                            <p v-if="item.offer_price" class="card-text mb-0">Offer price: {{ item.offer_price }}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p class="card-text mb-0">Product price: {{ item.prod_price }}</p>
