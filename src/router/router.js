@@ -88,6 +88,30 @@ const routes = [
           component: () => import('/src/components/dashboard/Features/Products/Products.vue'),
           // meta: { requiresAuth: true },
         },
+        {
+          path: 'pending',
+          name: 'Pending',
+          component: () => import('/src/components/dashboard/Features/Orders/Pending/PendingHome.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'store',
+          name: 'Store',
+          component: () => import('/src/components/dashboard/Features/Orders/Store/Store.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'shipping',
+          name: 'Shipping',
+          component: () => import('/src/components/dashboard/Features/Orders/Shipping/Shipping.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'delivery',
+          name: 'Delivery',
+          component: () => import('/src/components/dashboard/Features/Orders/Delivery/Delivery.vue'),
+          // meta: { requiresAuth: true },
+        },
       ]
     },
     {
