@@ -88,7 +88,7 @@ const filterProducts = computed(() => {
       <swiper-slide v-for="(product, index) in filterProducts" :key="index">
         <div class="slider-card-style">
           <RouterLink class="no-underline-link"
-            :to="{ name: 'ProductDetail', params: { id: product.pro_id, slug: product.pro_name.replace(/\s+/g, '-') } }">
+            :to="{ name: 'ProductDetail', params: { id: product.pro_id, slug: product?.pro_name?.replace(/\s+/g, '-') } }">
             <img :src="product?.pro_image" alt="">
           </RouterLink>
 

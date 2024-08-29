@@ -82,3 +82,9 @@ export const deleteImageCategory = async (id) => {
   return await axios.delete(url);
 };
 
+// delete product 
+export const deleteProduct = async (id) => {
+  const url = `http://localhost:5000/products/${id}`;
+  return await axios.delete(url);
+};
+

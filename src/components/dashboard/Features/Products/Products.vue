@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { getProducts, getCategories, postProduct } from '@/API/All_API';
+import { getProducts, getCategories, postProduct, deleteProduct } from '@/API/All_API.js';
 
 const productList = ref([]);
 const categoryList = ref([]);
@@ -51,6 +51,7 @@ onMounted(() => {
 const handleCreate = () => {
     isModal.value = true;
     isValidation.value = false;
+    handleResetInput();
 };
 
 const handleCancel = () => {
@@ -59,6 +60,7 @@ const handleCancel = () => {
 
 const handleClose = () => {
     isModal.value = false;
+    handleResetInput();
 }
 
 const handleGetProducts = async () => {
@@ -89,6 +91,8 @@ const handleSubCategory = () => {
 
 const handleSubSubCategory = () => {
     subSubSubCategoryList.value = [];
+    inputData.value.sub_sub_sub_cat_info = null;
+    inputData.value.sub_sub_cat_info = null;
     subSubCategoryList.value = inputData.value.sub_cat_info.sub_sub_cat_info
 };
 
@@ -100,14 +104,19 @@ const handleSubmit = async () => {
     try {
 
         const data = {
+            _id: isEdit ? inputData.value.id : null,
             parent_cat_id: Number(inputData.value.parent_cat_info.parent_cat_id),
             parent_cat_name: inputData.value.parent_cat_info.parent_cat_name,
             sub_cat_id: Number(inputData.value.sub_cat_info.sub_cat_id),
             sub_cat_name: inputData.value.sub_cat_info.sub_cat_name,
-            sub_sub_cat_id: Number(inputData.value.sub_sub_cat_info.sub_sub_cat_id),
-            sub_sub_cat_name: inputData.value.sub_sub_cat_info.sub_sub_cat_name,
-            sub_sub_sub_cat_id: Number(inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_id),
-            sub_sub_sub_cat_name: inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_name,
+
+            sub_sub_cat_id: inputData.value.sub_sub_cat_info ? Number(inputData.value.sub_sub_cat_info.sub_sub_cat_id) : null,
+            sub_sub_cat_name: inputData.value.sub_sub_cat_info ? inputData.value.sub_sub_cat_info.sub_sub_cat_name : null,
+
+            sub_sub_sub_cat_id: inputData.value.sub_sub_sub_cat_info  ? Number(inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_id) : null,
+            sub_sub_sub_cat_name: inputData.value.sub_sub_sub_cat_info  ? inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_name : null,
+
+            prod_type: inputData.value.prod_type.name,
             prod_type: inputData.value.prod_type.type,
             prod_id: Number(inputData.value.prod_id),
             prod_image: inputData.value.prod_image,
@@ -127,6 +136,7 @@ const handleSubmit = async () => {
                 alert(result.data.insertedId ? 'Product added successful' : 'Update product info');
                 handleResetInput();
                 isModal.value = false;
+                isEdit.value = false;
             }
         }
 
@@ -139,12 +149,30 @@ const handleSubmit = async () => {
 const handleEdit = (prod_item) => {
     isEdit.value = true;
     isModal.value = true;
+    console.log(prod_item)
     if(isEdit) {
-        inputData.value.id = prod_item._id,
-        inputData.value.parent_cat_info = null;
-        inputData.value.sub_cat_info = null;
-        inputData.value.sub_sub_cat_info = null;
-        inputData.value.sub_sub_sub_cat_info = null;
+        inputData.value.id = prod_item._id;
+        const findParentCat = categoryList?.value.find((item) => item.parent_cat_id === prod_item.parent_cat_id );
+        inputData.value.parent_cat_info = findParentCat;
+
+            const findSubCat = findParentCat?.sub_cat_info.find((item) => item.sub_cat_id === prod_item.sub_cat_id);
+            handleSubCategory();
+            inputData.value.sub_cat_info = findSubCat;
+
+       
+            const findSubSubCat = findSubCat?.sub_sub_cat_info.find((item) => item.sub_sub_cat_id == prod_item.sub_sub_cat_id);
+            handleSubSubCategory();
+            inputData.value.sub_sub_cat_info = findSubSubCat;
+     
+        
+            if(prod_item.sub_sub_sub_cat_id) {
+                const findSubSubSubCat = findSubSubCat.sub_sub_sub_cat_info.find((item) => item.sub_sub_sub_cat_id == prod_item.sub_sub_sub_cat_id);
+                handleSubSubSubCategory();
+            inputData.value.sub_sub_sub_cat_info = findSubSubSubCat;
+        }
+
+
+
         inputData.value.prod_type = productType.find((item) => item.type == prod_item.prod_type);
         inputData.value.prod_id = prod_item?.prod_id;
         inputData.value.prod_image = prod_item?.prod_image;
@@ -156,10 +184,29 @@ const handleEdit = (prod_item) => {
         inputData.value.brand_name = prod_item?.brand_name;
         inputData.value.description = prod_item?.description;
     }
-}
+};
+
+const handleDelete = async (id) => {
+    try {
+        const text = 'Are you want to sure?';
+        if(confirm(text) == true) {
+            const result = await deleteProduct(id);
+            if(result.data.deletedCount == 1) {
+                alert("Product delete");
+                const index = productList.value.findIndex((item) => item._id === id);
+                if (index !== -1) {
+                    productList.value.splice(index, 1);
+                }
+            }
+        }
+    
+    }
+    catch(error) {
+        console.log("Product delete", error);
+    }
+};
 
 const handleResetInput = () => {
-    
     inputData.value.id = null;
     inputData.value.parent_cat_info = null;
     inputData.value.sub_cat_info = null;
@@ -209,7 +256,7 @@ const handleResetInput = () => {
                                 <span @click="handleEdit(item)" class="material-icons me-2">
                                     edit
                                 </span>
-                                <span @click="handleDelete()" class="material-icons">
+                                <span @click="handleDelete(item?._id)" class="material-icons">
                                     delete
                                 </span>
                             </div>
@@ -224,7 +271,7 @@ const handleResetInput = () => {
                         <p class="card-text mb-0">Sub category: {{ item.sub_cat_id }}</p>
                         <p class="card-text mb-0">Sub sub category: {{ item.sub_sub_cat_id }}</p>
                         <p class="card-text mb-0">Sub sub sub category: {{ item.sub_sub_sub_cat_id }}</p>
-                        <p class="card-text mb-0">Sub sub sub sub category: {{ item.sub_sub_sub_cat_id }}</p>
+
 
                         <div class="d-flex justify-content-between">
                             <p class="card-text mb-0">Discount price: {{ item.discount_price }}</p>
