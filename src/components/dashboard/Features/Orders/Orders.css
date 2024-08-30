@@ -1,0 +1,43 @@
+.order-details{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 2560px) {
+    .container-style {
+        max-width: 2300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1920px) {
+    .container-style {
+        max-width: 1800px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .container-style {
+        max-width: 1300px !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container-style {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .container-style {
+        max-width: 100% !important;
+        margin: auto;
+        margin-top: 30px;
+    }
+}

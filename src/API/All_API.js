@@ -32,6 +32,11 @@ export const getAdmin = async (data) => {
   return await axios.get(url);
 };
 
+export const getPendingOrders = async () => {
+  const url = 'http://localhost:5000/pending-orders';
+  return await axios.get(url);
+};
+
 // ###################### all post operation are here ######################## 
 
 // post image category 
