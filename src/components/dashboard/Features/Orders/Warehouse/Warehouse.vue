@@ -28,7 +28,7 @@ const handleGetWarehouse = async () => {
 const handleUpdateOrderStatus = async (item) => {
     try {
         const data = {
-            orderStatus: "W",
+            orderStatus: "S",
         }
         const text = 'Are you want to sure ?';
         if (confirm(text) == true) {
@@ -50,8 +50,7 @@ const handleOrderDetails = (details) => {
 }
 </script>
 
-
-    <template>
+<template>
     <div class="container container-style">
         <table class="table table-striped">
             <thead>
@@ -90,7 +89,7 @@ const handleOrderDetails = (details) => {
                         <div class="d-flex align-items-center justify-content-center">
                             <button type="button" class="btn btn-danger me-2">Reject</button>
                             <button @click="handleUpdateOrderStatus(item)" type="button"
-                                class="btn btn-success">Shipping</button>
+                                class="btn btn-success">Approve</button>
                         </div>
                     </td>
                 </tr>
@@ -100,6 +99,4 @@ const handleOrderDetails = (details) => {
     </div>
 </template>
 
-<style scoped src="../../Orders/Orders.css">
-
-</style>
+<style scoped src="../../Orders/Orders.css"></style>

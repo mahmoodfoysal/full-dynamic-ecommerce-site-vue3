@@ -42,6 +42,16 @@ export const getWarehouse = async () => {
   return await axios.get(url);
 };
 
+export const getShipping = async () => {
+  const url = 'http://localhost:5000/shipping';
+  return await axios.get(url);
+};
+
+export const getDelivery = async () => {
+  const url = 'http://localhost:5000/delivery';
+  return await axios.get(url);
+};
+
 // ###################### all post operation are here ######################## 
 
 // post image category 

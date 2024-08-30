@@ -28,13 +28,13 @@ const handleGetPendingOrders = async () => {
 const handleUpdateOrderStatus = async (item) => {
     try {
         const data = {
-            orderStatus: "S",
+            orderStatus: "W",
         }
         const text = 'Are you want to sure ?';
         if (confirm(text) == true) {
             const result = await updateOrderStatus(item._id, data);
             if (result?.data?.modifiedCount == 1) {
-                alert("Order status update to shipping");
+                alert("Order status update to Warehouse");
                 handleGetPendingOrders();
             }
         }
@@ -89,7 +89,7 @@ const handleOrderDetails = (details) => {
                         <div class="d-flex align-items-center justify-content-center">
                             <button type="button" class="btn btn-danger me-2">Reject</button>
                             <button @click="handleUpdateOrderStatus(item)" type="button"
-                                class="btn btn-success">Shipping</button>
+                                class="btn btn-success">Approve</button>
                         </div>
                     </td>
                 </tr>
