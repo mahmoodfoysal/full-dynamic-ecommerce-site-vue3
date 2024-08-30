@@ -1,7 +1,7 @@
 <script setup>
 import moment from 'moment';
 import { ref, onMounted } from 'vue';
-import { getPendingOrders } from '@/API/All_API';
+import { getPendingOrders, updateOrderStatus } from '@/API/All_API';
 
 const pendingOrderList = ref([]);
 
@@ -23,6 +23,29 @@ const handleGetPendingOrders = async () => {
         console.log(error);
     }
 };
+
+const handleUpdateOrderStatus = async (item) => {
+    try {
+        const data = {
+            orderStatus: "S",
+        }
+        const text = 'Are you want to sure ?';
+        if(confirm(text) == true) {
+            const result = await updateOrderStatus(item._id, data);
+            if(result?.data?.modifiedCount == 1) {
+                alert("Order status update to shipping");
+                handleGetPendingOrders();
+            }
+            }
+    }
+    catch(error) {
+        console.log(error);
+    }
+};
+
+const handleOrderDetails = (details) => {
+    console.log("details", details);
+;}
 </script>
 
 <template>
@@ -51,7 +74,9 @@ const handleGetPendingOrders = async () => {
                     <td>{{ item.orderStatus == "P" ? 'Pending' : '' }}</td>
                     <td class="text-center">{{ item?.orderList.length }}</td>
                     <td class="order-details vertical-center">
-                        <div class="d-flex align-items-center">
+                        <div 
+                        @click="handleOrderDetails(item?.orderList)"
+                        class="d-flex align-items-center">
                             <span class="material-icons me-1">
                                 visibility
                             </span>
@@ -63,7 +88,9 @@ const handleGetPendingOrders = async () => {
                     <td>
                         <div class="d-flex align-items-center justify-content-center">
                             <button type="button" class="btn btn-danger me-2">Reject</button>
-                            <button type="button" class="btn btn-success">Shipping</button>
+                            <button 
+                            @click="handleUpdateOrderStatus(item)"
+                            type="button" class="btn btn-success">Shipping</button>
                         </div>
                     </td>
                 </tr>

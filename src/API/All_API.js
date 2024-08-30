@@ -73,6 +73,11 @@ export const postProduct = async (data) => {
   return await axios.post(url, data);
 };
 
+export const updateOrderStatus = async (id, data) => {
+  const url = `http://localhost:5000/orders/${id}`;
+  return await axios.patch(url, data);
+}
+
 // ###################### all delete operation are here ######################## 
 
 // delete admin 
