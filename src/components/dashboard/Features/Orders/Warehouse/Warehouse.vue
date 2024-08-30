@@ -1,13 +1,13 @@
 <script setup>
 import moment from 'moment';
 import { ref, onMounted } from 'vue';
-import { getPendingOrders, updateOrderStatus } from '@/API/All_API.js';
+import { getWarehouse, updateOrderStatus } from '@/API/All_API.js';
 
-const pendingOrderList = ref([]);
+const warehouseList = ref([]);
 const isModal = ref(false);
 
 onMounted(() => {
-    handleGetPendingOrders();
+    handleGetWarehouse();
 });
 
 const formatDate = (dateString) => {
@@ -15,10 +15,10 @@ const formatDate = (dateString) => {
     return moment(dateString).format('DD-MMM-YYYY');
 }
 
-const handleGetPendingOrders = async () => {
+const handleGetWarehouse = async () => {
     try {
-        const result = await getPendingOrders();
-        pendingOrderList.value = result?.data;
+        const result = await getWarehouse();
+        warehouseList.value = result?.data;
     }
     catch (error) {
         console.log(error);
@@ -28,14 +28,14 @@ const handleGetPendingOrders = async () => {
 const handleUpdateOrderStatus = async (item) => {
     try {
         const data = {
-            orderStatus: "S",
+            orderStatus: "W",
         }
         const text = 'Are you want to sure ?';
         if (confirm(text) == true) {
             const result = await updateOrderStatus(item._id, data);
             if (result?.data?.modifiedCount == 1) {
                 alert("Order status update to shipping");
-                handleGetPendingOrders();
+                handleGetWarehouse();
             }
         }
     }
@@ -50,7 +50,8 @@ const handleOrderDetails = (details) => {
 }
 </script>
 
-<template>
+
+    <template>
     <div class="container container-style">
         <table class="table table-striped">
             <thead>
@@ -67,7 +68,7 @@ const handleOrderDetails = (details) => {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item, index) in pendingOrderList" :key="index">
+                <tr v-for="(item, index) in warehouseList" :key="index">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ item?.fullName }}</td>
                     <td>{{ item?.email }}</td>
@@ -99,4 +100,6 @@ const handleOrderDetails = (details) => {
     </div>
 </template>
 
-<style scoped src="../../Orders/Orders.css"></style>
+<style scoped src="../../Orders/Orders.css">
+
+</style>

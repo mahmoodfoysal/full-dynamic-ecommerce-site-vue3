@@ -96,11 +96,11 @@ import { RouterLink } from 'vue-router';
         <div class="d-flex align-items-center menu-items-style mb-2">
             <span class="material-icons">
                 <span class="material-icons">
-                    storefront
+                    warehouse
                 </span>
             </span>
             <h5>
-                Store
+                Warehouse
             </h5>
         </div>
     </RouterLink>

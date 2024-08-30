@@ -37,6 +37,11 @@ export const getPendingOrders = async () => {
   return await axios.get(url);
 };
 
+export const getWarehouse = async () => {
+  const url = 'http://localhost:5000/warehouse';
+  return await axios.get(url);
+};
+
 // ###################### all post operation are here ######################## 
 
 // post image category 
@@ -76,7 +81,7 @@ export const postProduct = async (data) => {
 export const updateOrderStatus = async (id, data) => {
   const url = `http://localhost:5000/orders/${id}`;
   return await axios.patch(url, data);
-}
+};
 
 // ###################### all delete operation are here ######################## 
 

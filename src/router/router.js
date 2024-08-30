@@ -97,7 +97,7 @@ const routes = [
         {
           path: 'store',
           name: 'Store',
-          component: () => import('/src/components/dashboard/Features/Orders/Store/Store.vue'),
+          component: () => import('/src/components/dashboard/Features/Orders/Warehouse/Warehouse.vue'),
           // meta: { requiresAuth: true },
         },
         {
