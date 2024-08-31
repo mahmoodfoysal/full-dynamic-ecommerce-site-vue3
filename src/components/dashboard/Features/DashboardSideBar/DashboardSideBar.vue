@@ -126,19 +126,19 @@ import { RouterLink } from 'vue-router';
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                    <RouterLink :to="{ name: 'HomeSlider' }" class="router-link-style">
                         <div class="d-flex align-items-center menu-items-style mb-2">
                             <span class="material-icons">
                                 image
                             </span>
 
                             <h5>
-                                Sliding Poster
+                                Home Slider
                             </h5>
                         </div>
                     </RouterLink>
 
-                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                    <RouterLink :to="{ name: 'DiscountPoster' }" class="router-link-style">
                         <div class="d-flex align-items-center menu-items-style mb-2">
                             <span class="material-icons">
                                 trending_down
@@ -149,7 +149,7 @@ import { RouterLink } from 'vue-router';
                             </h5>
                         </div>
                     </RouterLink>
-                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                    <RouterLink :to="{ name: 'OfferPoster' }" class="router-link-style">
                         <div class="d-flex align-items-center menu-items-style mb-2">
                             <span class="material-icons">
                                 shopping_bag
@@ -160,7 +160,7 @@ import { RouterLink } from 'vue-router';
                             </h5>
                         </div>
                     </RouterLink>
-                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                    <RouterLink :to="{ name: 'Brands' }" class="router-link-style">
                         <div class="d-flex align-items-center menu-items-style mb-2">
                             <span class="material-icons">
                                 add_box
@@ -171,7 +171,7 @@ import { RouterLink } from 'vue-router';
                             </h5>
                         </div>
                     </RouterLink>
-                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                    <RouterLink :to="{ name: 'UpcommingEvents' }" class="router-link-style">
                         <div class="d-flex align-items-center menu-items-style mb-2">
                             <span class="material-icons">
                                 upcoming

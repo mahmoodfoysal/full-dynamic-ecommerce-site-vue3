@@ -112,6 +112,36 @@ const routes = [
           component: () => import('/src/components/dashboard/Features/Orders/Delivery/Delivery.vue'),
           // meta: { requiresAuth: true },
         },
+        {
+          path: 'upcomming-events',
+          name: 'UpcommingEvents',
+          component: () => import('/src/components/dashboard/Features/HomeItems/UpcommingEvents/UpcommingEvents.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'offer-poster',
+          name: 'OfferPoster',
+          component: () => import('/src/components/dashboard/Features/HomeItems/OfferPoster/OfferPoster.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'home-slider',
+          name: 'HomeSlider',
+          component: () => import('/src/components/dashboard/Features/HomeItems/HomeSlider/HomeSlider.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'brands',
+          name: 'Brands',
+          component: () => import('/src/components/dashboard/Features/HomeItems/Brands/Brands.vue'),
+          // meta: { requiresAuth: true },
+        },
+        {
+          path: 'discount-poster',
+          name: 'DiscountPoster',
+          component: () => import('/src/components/dashboard/Features/HomeItems/DiscountPoster/DiscountPoster.vue'),
+          // meta: { requiresAuth: true },
+        },
       ]
     },
     {
