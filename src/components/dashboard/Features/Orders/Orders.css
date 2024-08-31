@@ -2,6 +2,19 @@
     cursor: pointer;
 }
 
+.category-div {
+    width: 1100px !important;
+}
+
+
+.offcanvas.show {
+    visibility: visible;
+  }
+
+.image-style img {
+    height: 100%;
+}
+
 @media only screen and (max-width: 2560px) {
     .container-style {
         max-width: 2300px !important;

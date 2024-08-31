@@ -53,14 +53,14 @@ const routes = [
       meta: { requiresAuth: true },
     },
     {
-      path: '/dashboard/home',
+      path: '/dashboard/features',
       name: 'DashboardHome',
       component: () => import('/src/components/dashboard/index.vue'),
-      redirect: '/dashboard/home/dashboard',
+      redirect: '/dashboard/features/home',
       // meta: { requiresAuth: true, requiresAdminCheck: true },
       children: [
         {
-          path: 'dashboard',
+          path: 'home',
           name: 'DashboardHomeDefault',
           component: () => import('/src/components/dashboard/Features/DashboardHome/DashboardHome.vue'),
         },
@@ -91,7 +91,7 @@ const routes = [
         {
           path: 'pending',
           name: 'Pending',
-          component: () => import('/src/components/dashboard/Features/Orders/Pending/PendingHome.vue'),
+          component: () => import('/src/components/dashboard/Features/Orders/Pending/Pending.vue'),
           // meta: { requiresAuth: true },
         },
         {

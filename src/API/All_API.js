@@ -33,7 +33,7 @@ export const getAdmin = async (data) => {
 };
 
 export const getPendingOrders = async () => {
-  const url = 'http://localhost:5000/pending-orders';
+  const url = 'http://localhost:5000/pending';
   return await axios.get(url);
 };
 
