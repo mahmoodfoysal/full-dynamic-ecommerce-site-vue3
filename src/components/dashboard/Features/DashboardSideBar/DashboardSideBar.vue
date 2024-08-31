@@ -86,7 +86,7 @@ import { RouterLink } from 'vue-router';
                 </span>
             </span>
             <h5>
-                Panding
+                Pending
             </h5>
         </div>
     </RouterLink>

@@ -81,6 +81,7 @@ const handleOrderDetails = (details) => {
                     <th scope="col">Contact</th>
                     <th scope="col">Date</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col">Total Bill</th>
                     <th scope="col">Details</th>
                     <th scope="col" class="text-center">Actions</th>
                 </tr>
@@ -93,6 +94,7 @@ const handleOrderDetails = (details) => {
                     <td>{{ item?.phoneNumber }}</td>
                     <td>{{ formatDate(item?.orderDate) }}</td>
                     <td class="text-center">{{ item?.orderList.length }}</td>
+                    <td>{{ item?.totalAmount }}</td>
                     <td class="order-details vertical-center">
                         <div @click="handleOrderDetails(item)" class="d-flex align-items-center">
                             <span class="material-icons me-1">
