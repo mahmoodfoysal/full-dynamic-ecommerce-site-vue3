@@ -113,3 +113,9 @@ export const deleteProduct = async (id) => {
   return await axios.delete(url);
 };
 
+// delete product 
+export const deleteOrders = async (id) => {
+  const url = `http://localhost:5000/orders/${id}`;
+  return await axios.delete(url);
+};
+

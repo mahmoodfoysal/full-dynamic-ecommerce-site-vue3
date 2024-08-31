@@ -1,7 +1,7 @@
 <script setup>
 import moment from 'moment';
 import { ref, onMounted } from 'vue';
-import { getPendingOrders, updateOrderStatus } from '@/API/All_API.js';
+import { getPendingOrders, updateOrderStatus, deleteOrders } from '@/API/All_API.js';
 
 const pendingOrderList = ref([]);
 const isModal = ref(false);
@@ -44,6 +44,22 @@ const handleUpdateOrderStatus = async (item) => {
     }
 };
 
+const handleDeleteOrders = async (id) => {
+    try {
+        const text = 'Are you want to sure?';
+        if (confirm(text) == true) {
+            const result = await deleteOrders(id);
+            if (result?.data?.deletedCount == 1) {
+                alert("Order reject successful");
+                handleGetPendingOrders();
+            }
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+};
+
 const handleOrderDetails = (details) => {
     console.log("details", details);
     ;
@@ -60,7 +76,6 @@ const handleOrderDetails = (details) => {
                     <th scope="col">Email</th>
                     <th scope="col">Contact</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Details</th>
                     <th scope="col" class="text-center">Actions</th>
@@ -73,7 +88,6 @@ const handleOrderDetails = (details) => {
                     <td>{{ item?.email }}</td>
                     <td>{{ item?.phoneNumber }}</td>
                     <td>{{ formatDate(item?.orderDate) }}</td>
-                    <td>{{ item.orderStatus == "P" ? 'Pending' : '' }}</td>
                     <td class="text-center">{{ item?.orderList.length }}</td>
                     <td class="order-details vertical-center">
                         <div @click="handleOrderDetails(item?.orderList)" class="d-flex align-items-center">
@@ -87,7 +101,8 @@ const handleOrderDetails = (details) => {
                     </td>
                     <td>
                         <div class="d-flex align-items-center justify-content-center">
-                            <button type="button" class="btn btn-danger me-2">Reject</button>
+                            <button @click="handleDeleteOrders(item?._id)" type="button"
+                                class="btn btn-danger me-2">Reject</button>
                             <button @click="handleUpdateOrderStatus(item)" type="button"
                                 class="btn btn-success">Approve</button>
                         </div>
