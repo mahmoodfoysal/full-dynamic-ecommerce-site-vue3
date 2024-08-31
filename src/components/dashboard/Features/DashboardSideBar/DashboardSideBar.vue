@@ -16,9 +16,7 @@ import { RouterLink } from 'vue-router';
     <RouterLink :to="{ name: 'Admin' }" class="router-link-style">
         <div class="d-flex align-items-center menu-items-style mb-2">
             <span class="material-icons">
-                <span class="material-icons">
-                    admin_panel_settings
-                </span>
+                admin_panel_settings
             </span>
             <h5>
                 Make Admin
@@ -28,9 +26,7 @@ import { RouterLink } from 'vue-router';
     <RouterLink :to="{ name: 'Category' }" class="router-link-style">
         <div class="d-flex align-items-center menu-items-style mb-2">
             <span class="material-icons">
-                <span class="material-icons">
-                    category
-                </span>
+                category
             </span>
             <h5>
                 Category
@@ -41,9 +37,7 @@ import { RouterLink } from 'vue-router';
     <RouterLink :to="{ name: 'ImageCategory' }" class="router-link-style">
         <div class="d-flex align-items-center menu-items-style mb-2">
             <span class="material-icons">
-                <span class="material-icons">
-                    collections
-                </span>
+                collections
             </span>
             <h5>
                 Image Category
@@ -51,14 +45,10 @@ import { RouterLink } from 'vue-router';
         </div>
     </RouterLink>
 
-    <RouterLink 
-    :to="{ name: 'AddProducts' }" 
-    class="router-link-style">
+    <RouterLink :to="{ name: 'AddProducts' }" class="router-link-style">
         <div class="d-flex align-items-center menu-items-style mb-2">
             <span class="material-icons">
-                <span class="material-icons">
-                    inventory_2
-                </span>
+                inventory_2
             </span>
             <h5>
                 Products
@@ -68,98 +58,155 @@ import { RouterLink } from 'vue-router';
 
     <!-- accrodion  -->
     <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Orders
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <RouterLink 
-    :to="{ name: 'Pending' }" 
-    class="router-link-style">
-        <div class="d-flex align-items-center menu-items-style mb-2">
-            <span class="material-icons">
-                <span class="material-icons">
-                    pending_actions
-                </span>
-            </span>
-            <h5>
-                Pending
-            </h5>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    <span class="material-icons me-1">
+                        list_alt
+                    </span> Orders
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                pending_actions
+                            </span>
+                            <h5>
+                                Pending
+                            </h5>
+                        </div>
+                    </RouterLink>
+                    <RouterLink :to="{ name: 'Store' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                warehouse
+                            </span>
+                            <h5>
+                                Warehouse
+                            </h5>
+                        </div>
+                    </RouterLink>
+                    <RouterLink :to="{ name: 'Shipping' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                local_shipping
+                            </span>
+                            <h5>
+                                Shipping
+                            </h5>
+                        </div>
+                    </RouterLink>
+                    <RouterLink :to="{ name: 'Delivery' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style">
+                            <span class="material-icons">
+                                delivery_dining
+                            </span>
+                            <h5>
+                                Delivery
+                            </h5>
+                        </div>
+                    </RouterLink>
+                </div>
+            </div>
         </div>
-    </RouterLink>
-        <RouterLink 
-    :to="{ name: 'Store' }" 
-    class="router-link-style">
-        <div class="d-flex align-items-center menu-items-style mb-2">
-            <span class="material-icons">
-                <span class="material-icons">
-                    warehouse
-                </span>
-            </span>
-            <h5>
-                Warehouse
-            </h5>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="material-icons me-1">
+                        gamepad
+                    </span>
+                    Home Controller
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                image
+                            </span>
+
+                            <h5>
+                                Sliding Poster
+                            </h5>
+                        </div>
+                    </RouterLink>
+
+                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                trending_down
+                            </span>
+
+                            <h5>
+                                Discount Poster
+                            </h5>
+                        </div>
+                    </RouterLink>
+                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                shopping_bag
+                            </span>
+
+                            <h5>
+                                Offer Poster
+                            </h5>
+                        </div>
+                    </RouterLink>
+                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                add_box
+                            </span>
+
+                            <h5>
+                                Brand
+                            </h5>
+                        </div>
+                    </RouterLink>
+                    <RouterLink :to="{ name: 'Pending' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
+                            <span class="material-icons">
+                                upcoming
+                            </span>
+
+                            <h5>
+                                Upcoming Events
+                            </h5>
+                        </div>
+                    </RouterLink>
+
+                </div>
+            </div>
         </div>
-    </RouterLink>
-        <RouterLink 
-    :to="{ name: 'Shipping' }" 
-    class="router-link-style">
-        <div class="d-flex align-items-center menu-items-style mb-2">
-            <span class="material-icons">
-                <span class="material-icons">
-                    local_shipping
-                </span>
-            </span>
-            <h5>
-                Shipping
-            </h5>
-        </div>
-    </RouterLink>
-        <RouterLink 
-    :to="{ name: 'Delivery' }" 
-    class="router-link-style">
-        <div class="d-flex align-items-center menu-items-style">
-            <span class="material-icons">
-                <span class="material-icons">
-                    delivery_dining
-                </span>
-            </span>
-            <h5>
-                Delivery
-            </h5>
-        </div>
-    </RouterLink>
-      </div>
+
+        <!-- <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Accordion Item #3
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
+                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
+                    overflow.
+                </div>
+            </div>
+        </div> -->
     </div>
-  </div>
-  <!-- <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div> -->
-</div>
 </template>
 
 <style scoped>
@@ -213,6 +260,7 @@ p {
     overflow-anchor: none;
     transition: var(--bs-accordion-transition);
 }
+
 .accordion-button:focus {
     outline: none;
     box-shadow: none;
@@ -221,5 +269,4 @@ p {
 .accordion-body {
     padding: 8px 8px !important;
 }
-
 </style>
