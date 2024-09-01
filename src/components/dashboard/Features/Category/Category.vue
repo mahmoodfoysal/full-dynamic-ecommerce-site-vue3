@@ -368,7 +368,7 @@ const handlePostCategory = async (isCategoryType) => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                ID *
+                                Parent category id *
                             </label>
                             <input v-model="parentCategory.parent_cat_id" type="number" class="form-control"
                                 :class="{ isValidate: isValidation && !parentCategory.parent_cat_id }"
@@ -413,7 +413,7 @@ const handlePostCategory = async (isCategoryType) => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                ID *
+                                Sub category id *
                             </label>
                             <input v-model="subCategory.sub_cat_id" type="number" class="form-control"
                                 :class="{ isValidate: isValidation && !subCategory.cat_id }" id="exampleInputEmail1"
@@ -472,7 +472,7 @@ const handlePostCategory = async (isCategoryType) => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                ID *
+                                Sub sub category id *
                             </label>
                             <input v-model="subSubCategory.sub_sub_cat_id"
                                 :class="{ isValidate: isValidation && !subSubCategory.sub_sub_cat_id }" type="number"
@@ -546,7 +546,7 @@ const handlePostCategory = async (isCategoryType) => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Id *
+                                Sub sub sub category id *
                             </label>
                             <input v-model="subSubSubCategory.sub_sub_sub_cat_id"
                                 :class="{ isValidate: isValidation && !subSubSubCategory.sub_sub_sub_cat_id }"

@@ -23,7 +23,15 @@ onMounted(() => {
 
 const handleCreate = () => {
     isModal.value = true;
-}
+    isEdit.value = false;
+    resetInputData();
+};
+
+const handleClose = () => {
+    isModal.value = false;
+    isEdit.value = false;
+    resetInputData()
+};
 
 const resetInputData = () => {
     inputData.value.id = null;
@@ -31,11 +39,12 @@ const resetInputData = () => {
     inputData.value.parent_cat_id = null;
     inputData.value.sub_cat_id = null;
     inputData.value.img = null;
-}
+};
 
 const handleCancel = () => {
     resetInputData();
     isValidation.value = false;
+    isEdit.value = false;
 };
 
 const handleGetCategories = async () => {
@@ -127,7 +136,6 @@ const handleSubCategory = () => {
 </script>
 
 <template>
-
     <section class="container container-style">
         <!-- button div  -->
         <div class="add-btn-style">
@@ -149,7 +157,7 @@ const handleSubCategory = () => {
                             <img :src="item?.img" class="card-img-top" alt="...">
                         </div>
                         <div class="col-md-7">
-                            <div class="card-body">
+                            <div class="card-body item-style">
                                 <h5 class="card-title">{{ item?.cat_name }}</h5>
                                 <p class="card-text mb-0">Parent Category: {{ item?.parent_cat_id }}</p>
                                 <p class="card-text mb-0">Sub Category: {{ item?.sub_cat_id }}</p>
@@ -185,22 +193,22 @@ const handleSubCategory = () => {
 
             <div class="d-flex align-items-center">
                 <button 
-                @click="isModal = false"
+                @click="handleClose"
                 type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Add Category</h5>
+                <h5 class="offcanvas-title modal-title" id="offcanvasNavbarLabel">Add Image Category</h5>
             </div>
 
             <div class="offcanvas-body">
 
                 <!-- modal input field  -->
                 <section class="parent-item">
-                    <h5 class="text-center mb-3">Add image category</h5>
-                    <div class="row g-4">
+                    <h5 class="text-center mb-3 modal-title">Add image category</h5>
+                    <div class="row g-4 input-group-style">
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Parent category ID *
+                                Parent category Id *
                             </label>
                             <select v-model="inputData.parent_cat_id" @change="handleSubCategory"
                                 :class="{ isValidate: isValidation && !inputData.parent_cat_id }"
@@ -213,7 +221,7 @@ const handleSubCategory = () => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Sub category ID *
+                                Sub category id *
                             </label>
                             <select v-model="inputData.sub_cat_id"
                                 :class="{ isValidate: isValidation && !inputData.sub_cat_id }"
@@ -241,12 +249,12 @@ const handleSubCategory = () => {
                                 class="form-control" id="exampleInputText" placeholder="Category name">
                         </div>
 
-                        <div>
-                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                        <div class="submit-cancel-btn-style">
+                            <button @click="handleCancel" type="button" class="cancel-style me-2">
                                 Cancel
                             </button>
-                            <button @click="handleSubmit" type="button" class="btn btn-primary">
-                                Submit
+                            <button @click="handleSubmit" type="button" class="submit-style">
+                                {{ isEdit ? 'Update' : 'Submit' }}
                             </button>
                         </div>
                     </div>

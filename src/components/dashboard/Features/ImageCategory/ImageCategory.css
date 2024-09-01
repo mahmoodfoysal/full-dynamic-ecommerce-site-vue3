@@ -4,6 +4,7 @@
 .add-btn-style button {
     background: #1F5DA0 ;
     color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
     cursor: pointer;
 }
 .add-btn-style button:hover {
@@ -31,15 +32,98 @@
     border: 1px solid red !important;
 }
 
+.modal-title {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.submit-cancel-btn-style .submit-style {
+    background:#1F5DA0;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+}
+
+.submit-cancel-btn-style .cancel-style {
+    background:#323333;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+}
+
+.submit-cancel-btn-style .submit-style:hover {
+    opacity: 0.9;
+}
+
+.submit-cancel-btn-style .cancel-style:hover {
+    opacity: 0.9;
+}
+
+.input-group-style label {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.input-group-style input {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.input-group-style select {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.card-style h5 {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
 .item-style .edit {
-    color: #1F5DA0;
+    color:#212529;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 18px;
 }
 .item-style .delete {
-    color: #D71110;
+    color:#212529;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 18px;
+}
+.item-style .edit:hover {
+    color: #1F5DA0;
+}
+.item-style .delete:hover {
+    color: #D71110;
+
+}
+
+.item-style h5 {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+.item-style p {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .column-style {
