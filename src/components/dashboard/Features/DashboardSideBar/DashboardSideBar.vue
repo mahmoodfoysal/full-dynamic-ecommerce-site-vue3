@@ -229,15 +229,19 @@ p {
 
 .menu-items-style span {
     font-size: 25px;
+    color:#212529;
 }
 
 .menu-items-style h5 {
     font-size: 15px;
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 .router-link-style {
     text-decoration: none;
-    color: black;
+    color: #212529;
 }
 
 .active-link {
@@ -259,14 +263,20 @@ p {
     border-radius: 0;
     overflow-anchor: none;
     transition: var(--bs-accordion-transition);
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    
 }
 
 .accordion-button:focus {
     outline: none;
     box-shadow: none;
+    
 }
 
 .accordion-body {
+    border-top: 1px solid #212529;
     padding: 8px 8px !important;
 }
 </style>
