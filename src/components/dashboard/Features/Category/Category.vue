@@ -38,7 +38,7 @@ const handleGetCategories = async () => {
         const result = await getCategories();
         categories.value = result?.data;
     }
-    catch(error) {
+    catch (error) {
         console.log("categories", error)
     }
 }
@@ -213,11 +213,9 @@ const handlePostCategory = async (isCategoryType) => {
     }
 };
 
-
 </script>
 
 <template>
-
     <section class="container container-style">
         <!-- button div  -->
         <div class="add-btn-style">
@@ -229,82 +227,102 @@ const handlePostCategory = async (isCategoryType) => {
         </div>
 
         <!-- category list  -->
-        <div class="row mt-2 g-4">
-            <div class="col-md-6 column-style">
-                <h3 class="text-center mt-2 mb-4">Parent Category</h3>
-                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
-                    <div class="d-flex align-items-center item-style">
-                        <h5><span>{{ parentItem?.parent_cat_id }}</span> - <span>{{ parentItem?.parent_cat_name
-                                }}</span></h5>
-                        <span class="material-icons ms-2 edit">
-                            edit
-                        </span>
-                        <span class="material-icons ms-2 delete">
-                            delete
-                        </span>
+        <div class="row mt-2 mb-5 g-4">
+            <div class="col-md-6">
+                <div class="card card-style">
+                    <div class="card-header">
+                        <h5>Parent Catrgory</h5>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 column-style">
-                <h3 class="text-center mt-2 mb-4">Sub Category</h3>
-                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
-                    <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
-                        <div class="d-flex align-items-center item-style">
-                            <h5><span>{{ subItem?.sub_cat_id }}</span> - <span>{{ subItem?.sub_cat_name
-                                    }}</span></h5>
-                            <span class="material-icons ms-2 edit">
-                                edit
-                            </span>
-                            <span class="material-icons ms-2 delete">
-                                delete
-                            </span>
+                    <div class="card-body column-style">
+                        <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                            <div class="d-flex align-items-center item-style">
+                                <p><span>{{ parentItem?.parent_cat_id }}</span> - <span>{{ parentItem?.parent_cat_name
+                                        }}</span></p>
+                                <span class="material-icons ms-2 edit">
+                                    edit
+                                </span>
+                                <span class="material-icons ms-2 delete">
+                                    delete
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6 column-style">
-                <h3 class="text-center mt-2 mb-4">Sub Category</h3>
-                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
-                    <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
-                        <div class="d-flex align-items-center item-style">
-                            <h5><span>{{ subItem?.sub_cat_id }}</span> - <span>{{ subItem?.sub_cat_name
-                                    }}</span></h5>
-                            <span class="material-icons ms-2 edit">
-                                edit
-                            </span>
-                            <span class="material-icons ms-2 delete">
-                                delete
-                            </span>
+            <div class="col-md-6">
+                <div class="card ">
+                    <div class="card-header card-style">
+                        <h5>Sub Category</h5>
+                    </div>
+                    <div class="card-body column-style">
+                        <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                            <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
+                                <div class="d-flex align-items-center item-style">
+                                    <p><span>{{ subItem?.sub_cat_id }}</span> - <span>{{ subItem?.sub_cat_name
+                                            }}</span></p>
+                                    <span class="material-icons ms-2 edit">
+                                        edit
+                                    </span>
+                                    <span class="material-icons ms-2 delete">
+                                        delete
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6 column-style">
-                <h3 class="text-center mt-2 mb-4">Sub Sub Category</h3>
-                <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
-                    <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
-                        <div
-                        v-for="(subSubItem, subSubIndex) in subItem?.sub_sub_cat_info"
-                        :key="subSubIndex"
-                        >
-                        <div
-                        v-for="(subSubSubItem, subSubSubIndex) in subSubItem?.sub_sub_sub_cat_info"
-                        :key="subSubSubIndex"
-                        >
-                        <div class="d-flex align-items-center item-style">
-                            <h5><span>{{ subSubSubItem?.sub_sub_sub_cat_id }}</span> - <span>{{ subSubSubItem?.sub_sub_sub_cat_name
-                                    }}</span></h5>
-                            <span class="material-icons ms-2 edit">
-                                edit
-                            </span>
-                            <span class="material-icons ms-2 delete">
-                                delete
-                            </span>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-style">
+                        <h5>Sub Sub Category</h5>
+                    </div>
+                    <div class="card-body column-style">
+                        <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                            <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
+                                <div class="d-flex align-items-center item-style">
+                                    <p><span>{{ subItem?.sub_cat_id }}</span> - <span>{{ subItem?.sub_cat_name
+                                            }}</span></p>
+                                    <span class="material-icons ms-2 edit">
+                                        edit
+                                    </span>
+                                    <span class="material-icons ms-2 delete">
+                                        delete
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-style">
+                        <h5>Sub Sub Sub Category</h5>
+                    </div>
+                    <div class="card-body column-style">
+                        <div v-for="(parentItem, parentIndex) in categories" :key="parentIndex">
+                            <div v-for="(subItem, subIndex) in parentItem?.sub_cat_info" :key="subIndex">
+                                <div v-for="(subSubItem, subSubIndex) in subItem?.sub_sub_cat_info" :key="subSubIndex">
+                                    <div v-for="(subSubSubItem, subSubSubIndex) in subSubItem?.sub_sub_sub_cat_info"
+                                        :key="subSubSubIndex">
+                                        <div class="d-flex align-items-center item-style">
+                                            <p><span>{{ subSubSubItem?.sub_sub_sub_cat_id }}</span> - <span>{{
+                                                subSubSubItem?.sub_sub_sub_cat_name
+                                                    }}</span></p>
+                                            <span class="material-icons ms-2 edit">
+                                                edit
+                                            </span>
+                                            <span class="material-icons ms-2 delete">
+                                                delete
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -318,7 +336,7 @@ const handlePostCategory = async (isCategoryType) => {
             <div class="d-flex align-items-center">
                 <button type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Add Category</h5>
+                <h5 class="offcanvas-title modal-title" id="offcanvasNavbarLabel">Add Category</h5>
             </div>
             <div class="offcanvas-body">
                 <!-- modal boday -->
@@ -345,8 +363,8 @@ const handlePostCategory = async (isCategoryType) => {
 
                 <!-- modal input field  -->
                 <section v-if="toggleCategoryTypeField == 1" class="parent-item">
-                    <h5 class="text-center mt-3 mb-3">Add parent category</h5>
-                    <div class="row g-4">
+                    <h5 class="text-center mt-3 mb-3 modal-title">Add parent category</h5>
+                    <div class="row g-4 input-group-style">
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
@@ -366,11 +384,11 @@ const handlePostCategory = async (isCategoryType) => {
                                 id="exampleInputEmail1" placeholder="Category name">
                         </div>
 
-                        <div>
-                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                        <div class="submit-cancel-btn-style">
+                            <button @click="handleCancel" type="button" class="cancel-style me-2">
                                 Cancel
                             </button>
-                            <button @click="handlePostCategory(101)" type="button" class="btn btn-primary">
+                            <button @click="handlePostCategory(101)" type="button" class="submit-style">
                                 Submit
                             </button>
                         </div>
@@ -378,8 +396,8 @@ const handlePostCategory = async (isCategoryType) => {
                 </section>
                 <!-- sub category field  -->
                 <section v-if="toggleCategoryTypeField == 2" class="parent-item">
-                    <h5 class="text-center mt-3 mb-3">Add sub category</h5>
-                    <div class="row g-4">
+                    <h5 class="text-center mt-3 mb-3 modal-title">Add sub category</h5>
+                    <div class="row g-4 input-group-style">
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
                                 Parent category name *
@@ -411,11 +429,11 @@ const handlePostCategory = async (isCategoryType) => {
                                 placeholder="Category name">
                         </div>
 
-                        <div>
-                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                        <div class="submit-cancel-btn-style">
+                            <button @click="handleCancel" type="button" class="cancel-style me-2">
                                 Cancel
                             </button>
-                            <button @click="handlePostCategory(102)" type="button" class="btn btn-primary">
+                            <button @click="handlePostCategory(102)" type="button" class="submit-style">
                                 Submit
                             </button>
                         </div>
@@ -424,8 +442,8 @@ const handlePostCategory = async (isCategoryType) => {
 
                 <!-- sub sub category field  -->
                 <section v-if="toggleCategoryTypeField == 3" class="parent-item">
-                    <h5 class="text-center mt-3 mb-3">Add sub sub category</h5>
-                    <div class="row g-4">
+                    <h5 class="text-center mt-3 mb-3 modal-title">Add sub sub category</h5>
+                    <div class="row g-4 input-group-style">
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
                                 Parent category name *
@@ -443,22 +461,6 @@ const handlePostCategory = async (isCategoryType) => {
                             <label for="exampleInputPassword1" class="form-label">
                                 Sub Category *
                             </label>
-                            <!-- <select v-model="subCategory.parent_cat"
-                                :class="{ isValidate: isValidation && !subCategory.parent_cat }"
-                                class="form-select form-select-md mb-1" placeholder="Please Select Category">
-
-                                <option disabled value="">Please Select Category</option>
-
-                                <optgroup v-for="(item, index) in categories" :key="index"
-                                    :label="item.parent_cat_name">
-                                    <option v-for="(subItem, subIndex) in item.sub_cat_info" :key="subIndex"
-                                        :value="subItem.sub_cat_name">
-                                        {{ subItem.sub_cat_name }}
-                                    </option>
-                                </optgroup>
-
-                            </select> -->
-
                             <select v-model="subSubCategory.sub_cat_id"
                                 :class="{ isValidate: isValidation && !subSubCategory.sub_cat_id }"
                                 class="form-select form-select-md mb-1" placeholder="Please Select Category">
@@ -486,11 +488,11 @@ const handlePostCategory = async (isCategoryType) => {
                                 class="form-control" id="exampleInputEmail1" placeholder="Category name">
                         </div>
 
-                        <div>
-                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                        <div class="submit-cancel-btn-style">
+                            <button @click="handleCancel" type="button" class="cancel-style me-2">
                                 Cancel
                             </button>
-                            <button @click="handlePostCategory(103)" type="button" class="btn btn-primary">
+                            <button @click="handlePostCategory(103)" type="button" class="submit-style">
                                 Submit
                             </button>
                         </div>
@@ -498,8 +500,8 @@ const handlePostCategory = async (isCategoryType) => {
                 </section>
                 <!-- sub sub sub category  -->
                 <section v-if="toggleCategoryTypeField == 4" class="parent-item">
-                    <h5 class="text-center mt-3 mb-3">Add sub sub sub category</h5>
-                    <div class="row g-4">
+                    <h5 class="text-center mt-3 mb-3 modal-title">Add sub sub sub category</h5>
+                    <div class="row g-4 input-group-style">
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
                                 Parent category name *
@@ -515,7 +517,7 @@ const handlePostCategory = async (isCategoryType) => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Sub Category *
+                                Sub category *
                             </label>
 
                             <select v-model="subSubCategory.sub_cat_id" @change="changeSubSubCategory"
@@ -544,7 +546,7 @@ const handlePostCategory = async (isCategoryType) => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                ID *
+                                Id *
                             </label>
                             <input v-model="subSubSubCategory.sub_sub_sub_cat_id"
                                 :class="{ isValidate: isValidation && !subSubSubCategory.sub_sub_sub_cat_id }"
@@ -560,11 +562,17 @@ const handlePostCategory = async (isCategoryType) => {
                                 type="text" class="form-control" id="exampleInputEmail1" placeholder="Category name">
                         </div>
 
-                        <div>
-                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                        <div class="submit-cancel-btn-style">
+                            <button 
+                            @click="handleCancel" 
+                            type="button" 
+                            class="cancel-style me-2">
                                 Cancel
                             </button>
-                            <button @click="handlePostCategory(104)" type="button" class="btn btn-primary">
+                            <button 
+                            @click="handlePostCategory(104)" 
+                            type="button" 
+                            class="submit-style">
                                 Submit
                             </button>
                         </div>

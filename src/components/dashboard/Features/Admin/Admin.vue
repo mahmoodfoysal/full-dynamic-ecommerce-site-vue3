@@ -111,7 +111,7 @@ const handleDeleteAdmin = async (id) => {
 <template>
     <div class="row g-4">
         <div class="col-md-6 mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <label for="exampleInputEmail1" class="form-label">Email Address</label>
             <input v-model="email" 
             type="email" 
             class="form-control" 
