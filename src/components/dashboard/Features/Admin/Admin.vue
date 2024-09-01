@@ -109,9 +109,9 @@ const handleDeleteAdmin = async (id) => {
 </script>
 
 <template>
-    <div class="row g-4">
+    <div class="row g-4 input-group-style">
         <div class="col-md-6 mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email Address</label>
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input v-model="email" 
             type="email" 
             class="form-control" 
@@ -136,13 +136,13 @@ const handleDeleteAdmin = async (id) => {
             </select>
         </div>
     </div>
-    <button type="submit" @click="handlePostRole" class="btn btn-primary">{{ isEdit ? 'Update' : 'Submit' }}</button>
-    <button v-if="isEdit" type="Cancel" @click="handleCancelEdit" class="btn btn-secondary ms-3">Cancel</button>
+    <button type="submit" @click="handlePostRole" class="submit-style">{{ isEdit ? 'Update' : 'Submit' }}</button>
+    <button v-if="isEdit" type="Cancel" @click="handleCancelEdit" class="cancel-style ms-3">Cancel</button>
     <h5 class="text-center mt-3 mb-3">Admin List</h5>
     <div class="row g-4">
         <div v-for="(item, index) in adminList" :key="index" class="col-md-6">
             <div class="d-flex align-items-center">
-                <div class="me-2">
+                <div class="item-style me-2">
                     <h6>Email: {{ item?.email }}</h6>
                     <p>Role: {{ item?.role }}</p>
                 </div>
@@ -162,20 +162,89 @@ const handleDeleteAdmin = async (id) => {
 
 <style scoped>
 .isValidate {
-    border: 1px solid red !important;
+    border: 1px solid #D71110 !important;
 }
 
 .icon-style span {
     cursor: pointer;
 }
 
-.icon-style span:first-child:hover {
-    color: #1F5DA0;
+.icon-style span:first-child {
+    color:#212529;
+    cursor: pointer;
+    font-size: 18px;
     cursor: pointer;
 }
+.icon-style span:first-child:hover {
+    color: #1F5DA0;
+}
 
+.icon-style span:last-child {
+    color:#212529;
+    cursor: pointer;
+    font-size: 18px;
+    cursor: pointer;
+}
 .icon-style span:last-child:hover {
     color: #D71110;
     cursor: pointer;
+}
+
+.input-group-style label {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.input-group-style input {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.input-group-style select {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.item-style h6 {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.item-style p {
+    color:#212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.submit-style {
+    background:#1F5DA0;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+}
+.submit-style:hover {
+    opacity: 0.9;
+}
+
+.cancel-style {
+    background:#323333;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
 }
 </style>
