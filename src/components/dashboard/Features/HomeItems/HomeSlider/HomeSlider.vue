@@ -81,7 +81,7 @@ const handleDelete = async (id) => {
         if (confirm(text) == true) {
             const result = await deleteSlider(id)
             if (result.data?.deletedCount == 1) {
-                alert("Image category delete");
+                alert("Image category delete successfull");
                 const index = sliderImageList.value.findIndex((item) => item._id === id);
                 if (index !== -1) {
                     sliderImageList.value.splice(index, 1);
@@ -133,7 +133,6 @@ const handleReset = () => {
                         </div>
                         <div class="col-md-7">
                             <div class="card-body">
-                                <h5 class="card-title">{{ item?.cat_name }}</h5>
                                 <p class="card-text mb-0">Text: {{ item?.slider_text }}</p>
                                 <p class="card-text mb-0">Offer: {{ item?.offer }}</p>
                                 <p class="card-text mb-0">Price: {{ item?.price }}</p>
@@ -217,7 +216,7 @@ const handleReset = () => {
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
-                                price
+                                Price
                             </label>
                             <input 
                             v-model="inputData.price" 

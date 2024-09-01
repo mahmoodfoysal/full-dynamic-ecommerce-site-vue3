@@ -57,6 +57,11 @@ export const getSliderImage = async () => {
   return await axios.get(url);
 };
 
+export const getOfferPoster = async () => {
+  const url = 'http://localhost:5000/offer';
+  return await axios.get(url);
+};
+
 // ###################### all post operation are here ######################## 
 
 // post image category 
@@ -98,6 +103,11 @@ export const postsliderImage = async (data) => {
   return await axios.post(url, data);
 };
 
+export const postOfferPoster = async (data) => {
+  const url = 'http://localhost:5000/offer';
+  return await axios.post(url, data);
+};
+
 export const updateOrderStatus = async (id, data) => {
   const url = `http://localhost:5000/orders/${id}`;
   return await axios.patch(url, data);
@@ -132,6 +142,11 @@ export const deleteOrders = async (id) => {
 // delete product 
 export const deleteSlider = async (id) => {
   const url = `http://localhost:5000/slider-image/${id}`;
+  return await axios.delete(url);
+};
+
+export const deleteOffer = async (id) => {
+  const url = `http://localhost:5000/offer/${id}`;
   return await axios.delete(url);
 };
 
