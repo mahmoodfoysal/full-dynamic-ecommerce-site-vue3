@@ -166,15 +166,15 @@ const handleReset = () => {
             <div class="d-flex align-items-center">
                 <button @click="handleCloseModal" type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Create Offer</h5>
+                <h5 class="offcanvas-title modal-title" id="offcanvasNavbarLabel">Create Offer</h5>
             </div>
 
             <div class="offcanvas-body">
 
                 <!-- modal input field  -->
                 <section class="parent-item">
-                    <h5 class="text-center mb-3">Create Offer</h5>
-                    <div class="row g-4">
+                    <h5 class="text-center mb-3 modal-title">Create Offer</h5>
+                    <div class="row g-4 input-group-style">
 
                         <div class="col-md-6 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
@@ -231,11 +231,11 @@ const handleReset = () => {
                             </select>
                         </div>
 
-                        <div>
-                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                        <div class="submit-cancel-btn-style">
+                            <button @click="handleCancel" type="button" class="cancel-style me-2">
                                 Cancel
                             </button>
-                            <button @click="handleSubmit" type="button" class="btn btn-primary">
+                            <button @click="handleSubmit" type="button" class="submit-style">
                                 Submit
                             </button>
                         </div>
