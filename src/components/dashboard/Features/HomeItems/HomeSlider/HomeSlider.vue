@@ -49,10 +49,10 @@ const handleSubmit = async () => {
         const text = 'Are you want to sure?';
         if(confirm(text) == true) {
             const result = await postsliderImage(data);
-        if(result?.data?.insertedId || result?.data?.matchedCount) {
+        if(result?.data?.insertedId || result?.data?.modifiedCount == 1) {
             alert(result?.data?.insertedId ?'Data inserted successful!' : 'Data updated successful');
             handleReset();
-            isModal.value = flase;
+            isModal.value = false;
         }
         }
     }
@@ -95,8 +95,14 @@ const handleDelete = async (id) => {
 };
 
 const handleCancel = () => {
-    handleReset()
+    handleReset();
+    isEdit.value = false;
 };
+
+const handleCloseModal = () => {
+    isModal.value = false;
+    isEdit.value = false;
+}
 
 const handleReset = () => {
     inputData.value = {
@@ -161,7 +167,7 @@ const handleReset = () => {
             aria-labelledby="offcanvasNavbarLabel" style="visibility: visible; width: 100%;">
 
             <div class="d-flex align-items-center">
-                <button @click="isModal = false" type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
+                <button @click="handleCloseModal" type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Add Slider</h5>
             </div>

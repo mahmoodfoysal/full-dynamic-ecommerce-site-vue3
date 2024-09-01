@@ -47,10 +47,11 @@ const handleSubmit = async () => {
         const text = 'Are you want to sure?';
         if(confirm(text) == true) {
             const result = await postOfferPoster(data);
-        if(result?.data?.insertedId || result?.data?.matchedCount) {
+        if(result?.data?.insertedId || result?.data?.modifiedCount == 1) {
             alert(result?.data?.insertedId ?'Data inserted successful!' : 'Data updated successful');
             handleReset();
-            isModal.value = flase;
+            isModal.value = false;
+            isEdit.value = false;
         }
         }
     }
@@ -92,8 +93,14 @@ const handleDelete = async (id) => {
 };
 
 const handleCancel = () => {
-    handleReset()
+    handleReset();
+    isEdit.value = false;
 };
+
+const handleCloseModal = () => {
+    isModal.value = false;
+    isEdit.value = false;
+}
 
 const handleReset = () => {
     inputData.value = {
@@ -114,7 +121,7 @@ const handleReset = () => {
             <button @click="handleCreate" type="button" class="btn d-flex aligns-items-center mb-2"><span
                     class="material-icons">
                     add
-                </span>Add Slider</button>
+                </span>Add Offer</button>
         </div>
 
         <!-- Image category list  -->
@@ -157,7 +164,7 @@ const handleReset = () => {
             aria-labelledby="offcanvasNavbarLabel" style="visibility: visible; width: 100%;">
 
             <div class="d-flex align-items-center">
-                <button @click="isModal = false" type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
+                <button @click="handleCloseModal" type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Create Offer</h5>
             </div>
@@ -175,7 +182,7 @@ const handleReset = () => {
                             </label>
                             <input v-model="inputData.offer_id"
                                 :class="{ isValidate: isValidation && !inputData.offer_id }" type="number"
-                                class="form-control" id="exampleInputText" placeholder="Slider ID">
+                                class="form-control" id="exampleInputText" placeholder="Offer ID">
                         </div>
 
                         <div class="col-md-6 mb-1">
@@ -183,7 +190,7 @@ const handleReset = () => {
                                 Offer Text
                             </label>
                             <input v-model="inputData.offer_text" type="text" class="form-control"
-                                id="exampleInputText" placeholder="Slider text">
+                                id="exampleInputText" placeholder="Offer text">
                         </div>
 
                         <div class="col-md-6 mb-1">
@@ -196,7 +203,7 @@ const handleReset = () => {
                             type="url"
                             class="form-control" 
                             id="exampleInputText" 
-                            placeholder="Slider image">
+                            placeholder="Offer image">
                         </div>
 
                         <div class="col-md-6 mb-1">

@@ -62,6 +62,12 @@ export const getOfferPoster = async () => {
   return await axios.get(url);
 };
 
+export const getEvent = async () => {
+  const url = 'http://localhost:5000/upcomming-events';
+  return await axios.get(url);
+};
+
+
 // ###################### all post operation are here ######################## 
 
 // post image category 
@@ -108,6 +114,16 @@ export const postOfferPoster = async (data) => {
   return await axios.post(url, data);
 };
 
+export const postBrand = async (data) => {
+  const url = 'http://localhost:5000/brands';
+  return await axios.post(url, data);
+};
+
+export const postEvent = async (data) => {
+  const url = 'http://localhost:5000/upcomming-events';
+  return await axios.post(url, data);
+};
+
 export const updateOrderStatus = async (id, data) => {
   const url = `http://localhost:5000/orders/${id}`;
   return await axios.patch(url, data);
@@ -147,6 +163,16 @@ export const deleteSlider = async (id) => {
 
 export const deleteOffer = async (id) => {
   const url = `http://localhost:5000/offer/${id}`;
+  return await axios.delete(url);
+};
+
+export const deleteBrand = async (id) => {
+  const url = `http://localhost:5000/brands/${id}`;
+  return await axios.delete(url);
+};
+
+export const deleteEvent = async (id) => {
+  const url = `http://localhost:5000/upcomming-events/${id}`;
   return await axios.delete(url);
 };
 
