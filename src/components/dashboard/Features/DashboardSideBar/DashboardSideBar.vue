@@ -229,12 +229,12 @@ p {
 
 .menu-items-style span {
     font-size: 25px;
-    color:#212529;
+    /* color:#212529; */
 }
 
 .menu-items-style h5 {
     font-size: 15px;
-    color:#212529;
+    /* color:#212529;  */
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
@@ -246,7 +246,9 @@ p {
 
 .active-link {
     text-decoration: none;
-    color: #1F5DA0;
+    color: #1F5DA0 !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 .accordion-button {

@@ -14,6 +14,10 @@
     width: 1100px !important;
 }
 
+.details-div {
+    width: 800px !important;
+}
+
 .category-btn-group-style {
     border-bottom: 1.5px solid #1A4F88;
 }
@@ -55,6 +59,10 @@
     color: #1F5DA0;
     cursor: pointer;
 }
+.icon-style span:nth-child(2):hover {
+    color: #1F5DA0;
+    cursor: pointer;
+}
 
 .icon-style span:last-child:hover {
     color: #D71110;
@@ -63,6 +71,22 @@
 
 .offcanvas.show {
     visibility: visible;
+  }
+
+  .table-style thead tr th {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+  .table-style tbody tr td {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  }
+
+  .details:hover {
+    cursor: pointer;
+    color: #1F5DA0;
   }
 
 /* media query write here s */
