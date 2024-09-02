@@ -28,7 +28,8 @@ const inputData = ref({
     prod_stock: null,
     brand_name: null,
     description: null,
-    currency_type: null
+    currency_type: null,
+    status: null,
 });
 
 const productType = [
@@ -133,8 +134,10 @@ const handleSubmit = async () => {
 
         const data = {
             _id: isEdit ? inputData.value.id : null,
+            
             parent_cat_id: Number(inputData.value.parent_cat_info.parent_cat_id),
             parent_cat_name: inputData.value.parent_cat_info.parent_cat_name,
+
             sub_cat_id: Number(inputData.value.sub_cat_info.sub_cat_id),
             sub_cat_name: inputData.value.sub_cat_info.sub_cat_name,
 
@@ -156,7 +159,8 @@ const handleSubmit = async () => {
             description: inputData.value.description,
             brand_name: inputData.value.brand_name,
             currency_id: Number(inputData.value.currency_type.currency_id),
-            currency_name: inputData.value.currency_type.currency_name
+            currency_name: inputData.value.currency_type.currency_name,
+            status: inputData.value.status
         }
 
         const text = "Are you want to sure?";
@@ -252,6 +256,7 @@ const handleResetInput = () => {
     inputData.value.prod_stock = null;
     inputData.value.brand_name = null;
     inputData.value.description = null;
+    inputData.value.currency_type = null;
 };
 
 </script>

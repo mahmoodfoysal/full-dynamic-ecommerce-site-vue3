@@ -475,7 +475,9 @@
       "prod_stock": 100,
       "brand_name": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "cece"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1
     },
     {
       "parent_cat_id": 1,
@@ -491,7 +493,9 @@
       "prod_stock": 100,
       "brand_name": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f860"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1
     },
     {
       "parent_cat_id": 1,
@@ -507,7 +511,9 @@
       "prod_stock": 100,
       "brand_name": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f53d"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1
     },
     {
       "parent_cat_id": 1,
@@ -523,7 +529,9 @@
       "prod_stock": 100,
       "brand_name": "Easy",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "5cf0"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1
     },
     {
       "parent_cat_id": 1,
@@ -1124,7 +1132,9 @@
       "prod_stock": 100,
       "brand_name":"Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f8a9"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1
     },
     {
       "parent_cat_id": 2,
@@ -1140,7 +1150,9 @@
       "prod_stock": 100,
       "brand_name":"Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "4556"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1
     },
     {
       "parent_cat_id": 2,
@@ -1156,7 +1168,9 @@
       "prod_stock": 100,
       "brand_name":"Bata",
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "381e"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1
     },
     {
       "parent_cat_id": 2,
@@ -1171,7 +1185,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "8568"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1186,7 +1203,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f378"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1201,7 +1221,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "5cc6"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1216,7 +1239,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "380a"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1231,7 +1257,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "555e"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1246,7 +1275,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "226d"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1261,7 +1293,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "eb4c"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1276,7 +1311,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "3169"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1291,7 +1329,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "2d12"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1306,7 +1347,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "25b2"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1321,7 +1365,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "5390"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1336,7 +1383,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f90c"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1351,7 +1401,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "9c2f"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1366,7 +1419,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "6ebf"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1381,7 +1437,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "1fe6"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1396,7 +1455,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "30f1"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1411,7 +1473,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "828f"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1426,7 +1491,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f068"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1441,7 +1509,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "5259"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1456,7 +1527,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "2e90"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1471,7 +1545,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "2056"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1486,7 +1563,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "8c47"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1501,7 +1581,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f9e6"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 2,
@@ -1516,7 +1599,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "5534"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 3,
@@ -1531,7 +1617,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "4db0"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 3,
@@ -1546,7 +1635,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "5aa7"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 3,
@@ -1561,7 +1653,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "8959"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 3,
@@ -1576,7 +1671,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "617b"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 3,
@@ -1591,7 +1689,10 @@
       "rating": 4,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "8873"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 3,
@@ -1606,7 +1707,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "942b"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     },
     {
       "parent_cat_id": 3,
@@ -1621,7 +1725,10 @@
       "rating": 5,
       "prod_stock": 100,
       "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse commodi sunt sapiente suscipit quam nobis voluptatum, saepe obcaecati sit ut aperiam tenetur illum quis corrupti fuga laboriosam, mollitia, possimus quos aliquid facere dolore. Dolor reprehenderit impedit sint minus, accusantium et quaerat illo doloremque sapiente ab fuga animi quam dolorum sed voluptates veniam laborum? Vitae inventore dolor quidem dignissimos magnam pariatur quisquam alias nisi sed quis, explicabo corporis quos quas optio beatae, debitis eveniet sint modi. Magnam perferendis enim iure repellendus atque aliquam dolorum, a aperiam perspiciatis nulla alias illum dolores? Excepturi vitae minima magnam voluptatum officia tempore pariatur soluta praesentium, nisi iste tenetur. Nostrum non officiis aliquam eligendi sed architecto, provident blanditiis tempora iusto temporibus! Nesciunt a quis ipsum laborum soluta corporis debitis reprehenderit ducimus qui tenetur placeat dolorem dolor nobis quo, ullam magni architecto ipsa earum dignissimos aspernatur expedita quidem, itaque modi.",
-      "id": "f056"
+      "currency_id": 302,
+      "currency_name": "USD",
+      "status": 1,
+      "brand_name": ""
     }
   ],
   "brand_name": [
