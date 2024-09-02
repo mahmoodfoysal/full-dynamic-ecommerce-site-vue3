@@ -72,7 +72,7 @@ const handleOrderDetails = (details) => {
 
 <template>
     <div class="container container-style">
-        <table class="table table-striped">
+        <table class="table table-striped table-style">
             <thead>
                 <tr>
                     <th scope="col">SL</th>
@@ -98,7 +98,7 @@ const handleOrderDetails = (details) => {
                     <td class="order-details vertical-center">
                         <div @click="handleOrderDetails(item)" class="d-flex align-items-center">
                             <span class="material-icons me-1">
-                                visibility
+                                info
                             </span>
                             <span>
                                 Details

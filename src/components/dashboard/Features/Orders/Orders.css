@@ -15,6 +15,22 @@
     height: 100%;
 }
 
+.table-style thead tr th {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+  .table-style tbody tr td {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  }
+
+  .details:hover {
+    cursor: pointer;
+    color: #1F5DA0;
+  }
+
 @media only screen and (max-width: 2560px) {
     .container-style {
         max-width: 2300px !important;
