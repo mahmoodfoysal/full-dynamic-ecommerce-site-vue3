@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged  } from 'firebase/auth';
 import axios from 'axios';
 
 const routes = [
@@ -57,7 +57,7 @@ const routes = [
       name: 'DashboardHome',
       component: () => import('/src/components/dashboard/index.vue'),
       redirect: '/dashboard/features/home',
-      // meta: { requiresAuth: true, requiresAdminCheck: true },
+      meta: { requiresAuth: true, requiresAdminCheck: true },
       children: [
         {
           path: 'home',
@@ -157,36 +157,72 @@ const router =createRouter({
     linkActiveClass: 'active-link'
   })
 
-  router.beforeEach(async (to, from, next) => {
-    const auth = getAuth();
+//   router.beforeEach(async (to, from, next) => {
+//     const auth = getAuth();
 
-    if (to.meta.requiresAuth) {
-        const user = auth.currentUser;
+//     if (to.meta.requiresAuth) {
+//         const user = auth.currentUser;
 
-        if (user) {
-            // Check if the route requires an admin check
-            if (to.meta.requiresAdminCheck) {
-                try {
-                    // Make an API call to your backend to check if the user is an admin
-                    const response = await axios.get(`http://localhost:5000/admin/${user.email}`);
-                    if (response.data.admin) {
-                        next(); // Allow access if user is an admin
-                    } else {
-                        next('/login'); // Redirect to login if not an admin
-                    }
-                } catch (error) {
-                    console.error('Error checking admin status:', error);
-                    next('/login'); // Redirect to login if there's an error
-                }
-            } else {
-                next(); // Allow access if no admin check is needed
-            }
-        } else {
-            next('/login'); // Redirect to login if user is not authenticated
-        }
-    } else {
-        next(); // Allow access to routes that don't require authentication
-    }
+//         if (user) {
+//             // Check if the route requires an admin check
+//             if (to.meta.requiresAdminCheck) {
+//                 try {
+//                     // Make an API call to your backend to check if the user is an admin
+//                     const response = await axios.get(`http://localhost:5000/admin/${user.email}`);
+//                     if (response.data.admin) {
+//                         next(); // Allow access if user is an admin
+//                     } else {
+//                         next('/login'); // Redirect to login if not an admin
+//                     }
+//                 } catch (error) {
+//                     console.error('Error checking admin status:', error);
+//                     next('/login'); // Redirect to login if there's an error
+//                 }
+//             } else {
+//                 next(); // Allow access if no admin check is needed
+//             }
+//         } else {
+//             next('/login'); // Redirect to login if user is not authenticated
+//         }
+//     } else {
+//         next(); // Allow access to routes that don't require authentication
+//     }
+// });
+
+
+
+router.beforeEach((to, from, next) => {
+  const auth = getAuth();
+
+  // Check if the route requires authentication
+  if (to.meta.requiresAuth) {
+      // Listen to the Firebase Auth state change
+      onAuthStateChanged(auth, async (user) => {
+          if (user) {
+              // Check if the route requires an admin check
+              if (to.meta.requiresAdminCheck) {
+                  try {
+                      // Make an API call to your backend to check if the user is an admin
+                      const response = await axios.get(`http://localhost:5000/admin/${user.email}`);
+                      if (response.data.admin) {
+                          next(); // Allow access if user is an admin
+                      } else {
+                          next('/login'); // Redirect to login if not an admin
+                      }
+                  } catch (error) {
+                      console.error('Error checking admin status:', error);
+                      next('/login'); // Redirect to login if there's an error
+                  }
+              } else {
+                  next(); // Allow access if no admin check is needed
+              }
+          } else {
+              next('/login'); // Redirect to login if user is not authenticated
+          }
+      });
+  } else {
+      next(); // Allow access to routes that don't require authentication
+  }
 });
 
   export default router

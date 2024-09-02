@@ -32,7 +32,7 @@ const handleGetAdmin = async () => {
         const response = await axios.get(`http://localhost:5000/admin/${store.user ? store.user.email : null}`);
         isAdmin.value = response.data.admin;
     }
-    catch(error) {
+    catch (error) {
         console.log("Admin Api", error);
     }
 };
@@ -42,7 +42,7 @@ const handleGetCategories = async () => {
         const result = await getCategories();
         categories.value = result?.data;
     }
-    catch(error) {
+    catch (error) {
         console.log("categories", error);
     }
 };
@@ -57,6 +57,7 @@ const handleLogout = () => {
         sessionStorage.removeItem('kitkat-user');
         store.setUser(null);
         isAdmin.value = false;
+        router.push('/')
     }).catch((error) => {
 
     });
@@ -67,20 +68,20 @@ const cartCount = computed(() => {
 })
 
 watch(searchData, (newValue) => {
-  emit('search-products', newValue.toLowerCase());
+    emit('search-products', newValue.toLowerCase());
 });
 
 watch(() => store.user, (newVal) => {
-    if(newVal) {
+    if (newVal) {
         handleGetAdmin();
     }
 });
 
 watch(() => store.admin, (newVal) => {
-    if(newVal) {
+    if (newVal) {
         handleGetAdmin();
     }
-}) 
+})
 
 </script>
 
@@ -90,8 +91,8 @@ watch(() => store.admin, (newVal) => {
     <section class="sticky-top">
         <nav class="navbar navbar-expand-lg bg-body-tertiary first-navbar-style">
             <div class="container-fluid">
- 
-                    <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#" @click="logoLink">Kitkat</a>
+
+                <a style="text-decoration: none;" class="navbar-brand navbar-text" href="#" @click="logoLink">Kitkat</a>
                 <div>
                     <RouterLink :to="{ name: 'Cart' }">
                         <span class="material-icons me-3 mobile-shopping-cart">shopping_cart</span>
@@ -99,7 +100,7 @@ watch(() => store.admin, (newVal) => {
                     <div class="cart-i-back mobile-i">
                         <small>{{ cartCount }}</small>
                     </div>
-                    
+
                 </div>
                 <span class="material-icons mobile-cart-menu-style">menu</span>
                 <button class="navbar-toggler toggle-hamburg-btn" type="button" data-bs-toggle="collapse"
@@ -114,15 +115,12 @@ watch(() => store.admin, (newVal) => {
                                     aria-current="page" href="#">Home</a></RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink :to="{ name: 'Products' }" class="link-decor-style"><a class="nav-link navbar-text"
-                                    href="#">Products</a></RouterLink>
+                            <RouterLink :to="{ name: 'Products' }" class="link-decor-style"><a
+                                    class="nav-link navbar-text" href="#">Products</a></RouterLink>
                         </li>
-                        <li 
-                        v-if="isAdmin"
-                        class="nav-item"
-                        >
-                            <RouterLink :to="{ name: 'DashboardHome' }" class="link-decor-style"><a class="nav-link navbar-text"
-                                    href="#">Dashboard</a></RouterLink>
+                        <li v-if="isAdmin" class="nav-item">
+                            <RouterLink :to="{ name: 'DashboardHome' }" class="link-decor-style"><a
+                                    class="nav-link navbar-text" href="#">Dashboard</a></RouterLink>
                         </li>
 
                         <!-- comment for future work  -->
@@ -179,23 +177,19 @@ watch(() => store.admin, (newVal) => {
                             <small>{{ cartCount }}</small>
                         </div>
 
-<div class="dropdown">
-    <img 
-                        @click="handleClientProfile"
-                        v-if="store.user !== null" 
-                        :src="store.user.photoURL" 
-                        alt="Avatar" 
-                        class="dropdown-toggle avatar"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        >
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Address</a></li>
-                            <li><a class="dropdown-item" href="#">Orders</a></li>
-                        </ul>
-</div>
+                        <div class="dropdown">
+                            <img 
+                            @click="handleClientProfile" 
+                            v-if="store.user !== null" 
+                            :src="store?.user?.photoURL"
+                                alt="Avatar" class="dropdown-toggle avatar" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Address</a></li>
+                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                            </ul>
+                        </div>
 
                         <span v-if="store.user === null" class="d-flex flex-column">
                             <RouterLink :to="{ name: 'Login' }" class="link-decor-style"><small
@@ -223,16 +217,10 @@ watch(() => store.admin, (newVal) => {
                     <h6 class="ms-2 navbar-text">Shop By Category</h6>
                 </div>
                 <form class="d-flex search-field-style" role="search">
-                    <input 
-                    v-model="searchData"
-                    class="form-control me-2" 
-                    type="search" 
-                    placeholder="Search" 
-                    aria-label="Search">
-                    <button 
-                    class="btn" 
-                    type="submit">
-                    <span class="material-icons">
+                    <input v-model="searchData" class="form-control me-2" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn" type="submit">
+                        <span class="material-icons">
                             search
                         </span>
                     </button>
@@ -620,6 +608,7 @@ p {
     .mobile-shopping-cart {
         display: none;
     }
+
     .mobile-i {
         display: none;
     }
@@ -631,12 +620,12 @@ p {
         overflow-y: scroll;
     }
 
-    
+
 
     .search-field-style input {
-    width: 480px;
-    height: 100%;
-}
+        width: 480px;
+        height: 100%;
+    }
 
     .first-navbar-style {
         z-index: 5;
@@ -649,6 +638,7 @@ p {
     .mobile-shopping-cart {
         display: none;
     }
+
     .mobile-i {
         display: none;
     }
@@ -692,6 +682,7 @@ p {
     .second-navbar-style {
         display: none;
     }
+
     .cart-i-back {
         position: absolute;
         top: 11px;
@@ -715,6 +706,7 @@ p {
         z-index: 2;
         font-weight: bold;
     }
+
     .mobile-i {
         display: block;
     }
@@ -782,6 +774,7 @@ p {
         z-index: 2;
         font-weight: bold;
     }
+
     .mobile-i {
         display: block;
     }
