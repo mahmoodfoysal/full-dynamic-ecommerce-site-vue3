@@ -48,12 +48,13 @@ const cartItem = computed(() => {
 })
 
 const handleAddToCart = (product) => {
-  const { pro_name, price, pro_image, pro_id } = product;
+  const { pro_name, price, pro_image, pro_id, currency_name } = product;
   let item = {
     pro_name,
     price,
     pro_image,
     pro_id,
+    currency_name
   }
   let shopping_cart = getDb() || {};
 
@@ -74,8 +75,7 @@ const handleIncrementQuantity = (id) => {
         shopping_cart[id].quantity += 1;
     }
     else {
-        // alert('Please Click Add To Cart Button');
-        handleAddToCart(filteredProducts[0])
+        alert('Please Click Add To Cart Button');
     }
     updateDb(shopping_cart);
 }

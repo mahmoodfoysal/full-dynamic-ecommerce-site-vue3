@@ -102,6 +102,7 @@ const handleOrderSubmit = async (product) => {
         price: product.price,
         pro_image: product.pro_image,
         quantity: quantity.value,
+        currency_name: product.currency_name
     }]
 
     const data = {
@@ -131,7 +132,7 @@ const handleOrderSubmit = async (product) => {
         if (result?.data?.insertedId) {
             alert("Order placed successful");
             isValidation.value = false;
-            router.push({ name: 'Home' });
+            router.push('/');
         };
     }
 };

@@ -74,7 +74,7 @@ const handleOrderSubmit = async () => {
         const result = await createOrders(data);
     if(result?.data?.insertedId) {
         alert("Order placed successful");
-        router.push({ name: 'Home' });
+        router.push('/');
         localStorage.removeItem('shopping_cart');
         store.setCartItem([]);
     }

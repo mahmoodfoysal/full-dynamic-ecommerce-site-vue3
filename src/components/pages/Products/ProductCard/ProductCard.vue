@@ -15,12 +15,13 @@ const props = defineProps({
 const { productItem } = toRefs(props);
 
 const handleAddToCart = (product) => {
-  const { pro_name, price, pro_image, pro_id } = product;
+  const { pro_name, price, pro_image, pro_id, currency_name } = product;
   let item = {
     pro_name,
     price,
     pro_image,
     pro_id,
+    currency_name
   }
   let shopping_cart = getDb() || {};
   if (shopping_cart[item.pro_id]) {
@@ -55,7 +56,7 @@ const updateDb = (cart) => {
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
         <h6 class="card-title">{{ productItem.pro_name }}</h6>
-        <h6 class="card-title">$ {{ productItem.price }}</h6>
+        <h6 class="card-title">{{ productItem.price }} {{ productItem.currency_name }}</h6>
       </div>
       <p class="card-text">{{ productItem.description.substr(0, 90) }}</p>
       <div class="card-btn-style">

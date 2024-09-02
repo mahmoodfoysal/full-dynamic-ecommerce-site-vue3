@@ -79,7 +79,7 @@ const handleOrderDetails = (details) => {
                     <th scope="col">Email</th>
                     <th scope="col">Contact</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">Items</th>
                     <th scope="col">Total Bill</th>
                     <th scope="col">Details</th>
                     <th scope="col" class="text-center">Actions</th>
@@ -188,7 +188,7 @@ const handleOrderDetails = (details) => {
                                             <h5 class="card-title">{{ item?.cat_name }}</h5>
                                             <p class="card-text mb-0">Product Name: {{ item?.pro_name }}</p>
                                             <div>
-                                                <p class="card-text mb-0">Price: {{ item?.price }}</p>
+                                                <p class="card-text mb-0">Price: {{ item?.price }} {{ item?.currency_name }}</p>
                                                 <p class="card-text mb-0">Prod ID: {{ item?.pro_id }}</p>
                                                 <p class="card-text mb-0">Quantity: {{ item?.quantity }}</p>
                                             </div>
