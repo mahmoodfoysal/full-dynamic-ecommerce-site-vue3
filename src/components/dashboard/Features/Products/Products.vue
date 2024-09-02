@@ -19,14 +19,14 @@ const inputData = ref({
     sub_sub_cat_info: null,
     sub_sub_sub_cat_info: null,
     prod_type: null,
-    prod_id: null,
-    prod_image: '',
-    prod_name: '',
-    prod_price: null,
+    pro_id: null,
+    pro_image: '',
+    pro_name: '',
+    price: null,
     discount_price: null,
     offer_price: null,
-    prod_stock: null,
-    brand_name: null,
+    stock: null,
+    brand: null,
     description: null,
     currency_type: null,
     status: null,
@@ -64,7 +64,18 @@ const currencyList = [
         currency_id: 304,
         currency_name: 'INR',
     },
-]
+];
+
+const productStatus = [
+    {
+        id: 0,
+        name: 'Inactive'
+    },
+    {
+        id: 1,
+        name: 'Active'
+    }
+];
 
 onMounted(() => {
     handleGetProducts();
@@ -134,7 +145,7 @@ const handleSubmit = async () => {
 
         const data = {
             _id: isEdit ? inputData.value.id : null,
-            
+
             parent_cat_id: Number(inputData.value.parent_cat_info.parent_cat_id),
             parent_cat_name: inputData.value.parent_cat_info.parent_cat_name,
 
@@ -149,18 +160,18 @@ const handleSubmit = async () => {
 
             prod_type_name: inputData.value.prod_type.name,
             prod_type: inputData.value.prod_type.type,
-            prod_id: Number(inputData.value.prod_id),
-            prod_image: inputData.value.prod_image,
-            prod_name: inputData.value.prod_name,
-            prod_price: Number(inputData.value.prod_price),
+            pro_id: Number(inputData.value.pro_id),
+            pro_image: inputData.value.pro_image,
+            pro_name: inputData.value.pro_name,
+            price: Number(inputData.value.price),
             discount_price: inputData.value.discount_price ? Number(inputData.value.discount_price) : null,
             offer_price: inputData.value.offer_price ? Number(inputData.value.offer_price) : null,
-            prod_stock: Number(inputData.value.prod_stock),
+            stock: Number(inputData.value.stock),
             description: inputData.value.description,
-            brand_name: inputData.value.brand_name,
+            brand: inputData.value.brand,
             currency_id: Number(inputData.value.currency_type.currency_id),
             currency_name: inputData.value.currency_type.currency_name,
-            status: inputData.value.status
+            status: inputData.value.status.id
         }
 
         const text = "Are you want to sure?";
@@ -205,17 +216,15 @@ const handleEdit = (prod_item) => {
             inputData.value.sub_sub_sub_cat_info = findSubSubSubCat;
         }
 
-
-
         inputData.value.prod_type = productType.find((item) => item.type == prod_item.prod_type);
-        inputData.value.prod_id = prod_item?.prod_id;
-        inputData.value.prod_image = prod_item?.prod_image;
-        inputData.value.prod_name = prod_item?.prod_name;
-        inputData.value.prod_price = prod_item?.prod_price;
+        inputData.value.pro_id = prod_item?.pro_id;
+        inputData.value.pro_image = prod_item?.pro_image;
+        inputData.value.pro_name = prod_item?.pro_name;
+        inputData.value.price = prod_item?.price;
         inputData.value.discount_price = prod_item?.discount_price;
         inputData.value.offer_price = prod_item?.offer_price;
-        inputData.value.prod_stock = prod_item?.prod_stock;
-        inputData.value.brand_name = prod_item?.brand_name;
+        inputData.value.stock = prod_item?.stock;
+        inputData.value.brand = prod_item?.brand;
         inputData.value.description = prod_item?.description;
     }
 };
@@ -247,14 +256,14 @@ const handleResetInput = () => {
     inputData.value.sub_sub_cat_info = null;
     inputData.value.sub_sub_sub_cat_info = null;
     inputData.value.prod_type = null;
-    inputData.value.prod_id = null;
-    inputData.value.prod_image = null;
-    inputData.value.prod_name = null;
-    inputData.value.prod_price = null;
+    inputData.value.pro_id = null;
+    inputData.value.pro_image = null;
+    inputData.value.pro_name = null;
+    inputData.value.price = null;
     inputData.value.discount_price = null;
     inputData.value.offer_price = null;
-    inputData.value.prod_stock = null;
-    inputData.value.brand_name = null;
+    inputData.value.stock = null;
+    inputData.value.brand = null;
     inputData.value.description = null;
     inputData.value.currency_type = null;
 };
@@ -342,12 +351,12 @@ const handleResetInput = () => {
                 <div class="row row-cols-1 row-cols-md-1 g-4 mt-2 mb-2">
                     <div class="col">
                         <div class="card">
-                            <img :src="prodDetails?.prod_image" class="card-img-top" alt="...">
+                            <img :src="prodDetails?.pro_image" class="card-img-top" alt="...">
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h5 class="card-title mt-3">{{ prodDetails?.prod_name }}</h5>
+                                        <h5 class="card-title mt-3">{{ prodDetails?.pro_name }}</h5>
                                     </div>
 
                                     <div class="icon-style d-flex align-items-center mt-3">
@@ -360,9 +369,9 @@ const handleResetInput = () => {
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <p class="card-text mb-0">Product id: {{ prodDetails.prod_id }}</p>
+                                    <p class="card-text mb-0">Product id: {{ prodDetails.pro_id }}</p>
                                     <p class="card-text mb-0">Product Type: {{ prodDetails.prod_type_name }}</p>
-                                    <p class="card-text mb-0">Brand: {{ prodDetails.brand_name }}</p>
+                                    <p class="card-text mb-0">Brand: {{ prodDetails.brand ? prodDetails.brand : 'No information about brand' }}</p>
 
                                 </div>
                                 <p class="card-text mb-0">
@@ -387,8 +396,10 @@ const handleResetInput = () => {
                                         prodDetails.offer_price }}</p>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <p class="card-text mb-0">Product price: {{ prodDetails.prod_price }}</p>
-                                    <p class="card-text mb-0">Stock: {{ prodDetails.prod_stock }}</p>
+                                    <p class="card-text mb-0">Product price: 
+                                        {{ prodDetails.price }} {{ prodDetails.currency_name }}
+                                    </p>
+                                    <p class="card-text mb-0">Stock: {{ prodDetails.stock }}</p>
                                 </div>
                                 <p class="card-text mb-0">Description: {{ prodDetails.description }}</p>
                             </div>
@@ -417,7 +428,7 @@ const handleResetInput = () => {
 
                         <div class="col-md-4 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Parent category ID *
+                                Parent category id *
                             </label>
                             <select @change="handleSubCategory" v-model="inputData.parent_cat_info"
                                 :class="{ isValidate: isValidation && !inputData.parent_cat_info }"
@@ -430,7 +441,7 @@ const handleResetInput = () => {
 
                         <div class="col-md-4 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Sub category ID *
+                                Sub category id *
                             </label>
                             <select @change="handleSubSubCategory" v-model="inputData.sub_cat_info"
                                 :class="{ isValidate: isValidation && !inputData.sub_cat_info }"
@@ -443,7 +454,7 @@ const handleResetInput = () => {
 
                         <div class="col-md-4 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Sub sub category ID
+                                Sub sub category id
                             </label>
                             <select @change="handleSubSubSubCategory" v-model="inputData.sub_sub_cat_info"
                                 class="form-select form-select-md mb-1">
@@ -455,7 +466,7 @@ const handleResetInput = () => {
 
                         <div class="col-md-4 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Sub sub sub category ID
+                                Sub sub sub category id
                             </label>
                             <select v-model="inputData.sub_sub_sub_cat_info" class="form-select form-select-md mb-1">
                                 <option v-for="(item, index) in subSubSubCategoryList" :key="index" :value="item">
@@ -465,8 +476,17 @@ const handleResetInput = () => {
                         </div>
 
                         <div class="col-md-4 mb-1">
+                            <label for="exampleInputEmail1" class="form-label">
+                                Product id *
+                            </label>
+                            <input v-model="inputData.pro_id"
+                                :class="{ isValidate: isValidation && !inputData.pro_id }" type="Number"
+                                class="form-control" id="exampleInputText" placeholder="Product ID">
+                        </div>
+
+                        <div class="col-md-4 mb-1">
                             <label for="exampleInputPassword1" class="form-label">
-                                Product Type *
+                                Product type *
                             </label>
                             <select v-model="inputData.prod_type"
                                 :class="{ isValidate: isValidation && !inputData.prod_type }"
@@ -477,39 +497,48 @@ const handleResetInput = () => {
                             </select>
                         </div>
 
-                        <div class="col-md-4 mb-1">
-                            <label for="exampleInputEmail1" class="form-label">
-                                Product Category ID *
-                            </label>
-                            <input v-model="inputData.prod_id"
-                                :class="{ isValidate: isValidation && !inputData.prod_id }" type="Number"
-                                class="form-control" id="exampleInputText" placeholder="Product ID">
-                        </div>
 
-                        <div class="col-md-6 mb-1">
+
+                        <div class="col-md-5 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
                                 Product image url *
                             </label>
-                            <input v-model="inputData.prod_image"
-                                :class="{ isValidate: isValidation && !inputData.prod_image }" type="url"
+                            <input v-model="inputData.pro_image"
+                                :class="{ isValidate: isValidation && !inputData.pro_image }" type="url"
                                 class="form-control" id="exampleInputText" placeholder="Product image">
                         </div>
 
-                        <div class="col-md-6 mb-1">
+                        <div class="col-md-5 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
                                 Product name *
                             </label>
-                            <input v-model="inputData.prod_name"
-                                :class="{ isValidate: isValidation && !inputData.prod_name }" type="text"
+                            <input v-model="inputData.pro_name"
+                                :class="{ isValidate: isValidation && !inputData.pro_name }" type="text"
                                 class="form-control" id="exampleInputText" placeholder="Product name">
+                        </div>
+
+                        <div class="col-md-2 mb-1">
+                            <label for="exampleInputPassword1" class="form-label">
+                                Product status *
+                            </label>
+                            <select 
+                            v-model="inputData.status"
+                                :class="{ isValidate: isValidation && !inputData.status }"
+                                class="form-select form-select-md mb-1">
+                                <option 
+                                v-for="(item, index) in productStatus" :key="index" 
+                                :value="item">
+                                    ( {{ item?.id }} ) - {{ item?.name }}
+                                </option>
+                            </select>
                         </div>
 
                         <div class="col-md-3 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
                                 Price *
                             </label>
-                            <input v-model="inputData.prod_price"
-                                :class="{ isValidate: isValidation && !inputData.prod_price }" type="number"
+                            <input v-model="inputData.price"
+                                :class="{ isValidate: isValidation && !inputData.price }" type="number"
                                 class="form-control" id="exampleInputText" placeholder="Product price">
                         </div>
 
@@ -533,8 +562,8 @@ const handleResetInput = () => {
                             <label for="exampleInputEmail1" class="form-label">
                                 Stock *
                             </label>
-                            <input v-model="inputData.prod_stock"
-                                :class="{ isValidate: isValidation && !inputData.prod_stock }" type="number"
+                            <input v-model="inputData.stock"
+                                :class="{ isValidate: isValidation && !inputData.stock }" type="number"
                                 class="form-control" id="exampleInputText" placeholder="Product stock">
                         </div>
 
@@ -542,8 +571,8 @@ const handleResetInput = () => {
                             <label for="exampleInputEmail1" class="form-label">
                                 Brand *
                             </label>
-                            <input v-model="inputData.brand_name"
-                                :class="{ isValidate: isValidation && !inputData.brand_name }" type="text"
+                            <input v-model="inputData.brand"
+                                :class="{ isValidate: isValidation && !inputData.brand }" type="text"
                                 class="form-control" id="exampleInputText" placeholder="Brand name">
                         </div>
 

@@ -158,7 +158,7 @@ const filterReview = () => {
                             <span class="material-icons">favorite</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <h6>$ {{ filteredProducts[0]?.price }}</h6>
+                            <span>Price: {{ filteredProducts[0]?.price }} {{ filteredProducts[0]?.currency_name }}</span>
                             <span>Stock: {{ filteredProducts[0]?.stock }}</span>
                             <span>Product ID: {{ filteredProducts[0]?.pro_id }}</span>
 
