@@ -67,6 +67,11 @@ export const getEvent = async () => {
   return await axios.get(url);
 };
 
+export const getOrders = async () => {
+  const url = 'http://localhost:5000/orders';
+  return await axios.get(url);
+};
+
 
 // ###################### all post operation are here ######################## 
 

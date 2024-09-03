@@ -101,12 +101,23 @@ import { RouterLink } from 'vue-router';
                         </div>
                     </RouterLink>
                     <RouterLink :to="{ name: 'Delivery' }" class="router-link-style">
-                        <div class="d-flex align-items-center menu-items-style">
+                        <div class="d-flex align-items-center menu-items-style mb-2">
                             <span class="material-icons">
                                 delivery_dining
                             </span>
                             <h5>
                                 Delivery
+                            </h5>
+                        </div>
+                    </RouterLink>
+
+                    <RouterLink :to="{ name: 'OrderTracking' }" class="router-link-style">
+                        <div class="d-flex align-items-center menu-items-style">
+                            <span class="material-icons">
+                                timeline
+                            </span>
+                            <h5>
+                                Order Track
                             </h5>
                         </div>
                     </RouterLink>
