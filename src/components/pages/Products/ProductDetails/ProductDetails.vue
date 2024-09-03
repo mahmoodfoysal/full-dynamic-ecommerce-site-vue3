@@ -24,7 +24,7 @@ const handleGetProducts = async () => {
         const result = await getProducts();
         products.value = result?.data;
     }
-    catch(error) {
+    catch (error) {
         console.log("Products", error);
     }
 };
@@ -34,7 +34,7 @@ const handleGetReviews = async () => {
         const result = await getReviews();
         reviewData.value = result?.data;
     }
-    catch(error) {
+    catch (error) {
         console.log("Reviews", error);
     }
 }
@@ -48,25 +48,25 @@ const cartItem = computed(() => {
 })
 
 const handleAddToCart = (product) => {
-  const { pro_name, price, pro_image, pro_id, currency_name } = product;
-  let item = {
-    pro_name,
-    price,
-    pro_image,
-    pro_id,
-    currency_name
-  }
-  let shopping_cart = getDb() || {};
+    const { pro_name, price, pro_image, pro_id, currency_name } = product;
+    let item = {
+        pro_name,
+        price,
+        pro_image,
+        pro_id,
+        currency_name
+    }
+    let shopping_cart = getDb() || {};
 
-  if (shopping_cart[item.pro_id]) {
-    shopping_cart[item.pro_id].quantity += 1;
-  } 
+    if (shopping_cart[item.pro_id]) {
+        shopping_cart[item.pro_id].quantity += 1;
+    }
 
-  else {
-    item.quantity = 1;
-    shopping_cart[item.pro_id] = item;
-  }
-  updateDb(shopping_cart);
+    else {
+        item.quantity = 1;
+        shopping_cart[item.pro_id] = item;
+    }
+    updateDb(shopping_cart);
 }
 
 const handleIncrementQuantity = (id) => {
@@ -82,20 +82,20 @@ const handleIncrementQuantity = (id) => {
 
 const handleDecrementQuantity = (id) => {
     let shopping_cart = getDb() || {};
-        if (shopping_cart[id].quantity > 1) {
-            shopping_cart[id].quantity -= 1;
-        }
+    if (shopping_cart[id].quantity > 1) {
+        shopping_cart[id].quantity -= 1;
+    }
     updateDb(shopping_cart);
 }
 
 const getDb = () => {
-  const cartData = localStorage.getItem('shopping_cart');
-  return cartData ? JSON.parse(cartData) : null;
+    const cartData = localStorage.getItem('shopping_cart');
+    return cartData ? JSON.parse(cartData) : null;
 }
 
 const updateDb = (cart) => {
-  localStorage.setItem('shopping_cart', JSON.stringify(cart));
-  store.setCartItem(cart);
+    localStorage.setItem('shopping_cart', JSON.stringify(cart));
+    store.setCartItem(cart);
 }
 
 const itemQuantity = computed(() => {
@@ -117,34 +117,14 @@ const filterReview = () => {
 </script>
 
 <template>
-    <section v-if="products.length === 0" class="d-flex justify-content-center" role="status">
-        <div class="spinner-grow text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-secondary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-danger" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-warning" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-info" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-light" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-dark" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </section>
+
     <section class="container product-details-section">
-        <div class="row g-4">
+        <div v-if="products.length === 0" class="row g-4 placeholder-glow">
+            <div class="col-md-12 ">
+                <span style="padding: 300px;" class="placeholder col-12"></span>
+            </div>
+        </div>
+        <div v-else class="row g-4">
             <div class="col-md-4 product-image-div">
                 <img :src="filteredProducts[0]?.pro_image" class="img-fluid rounded-start" alt="product-img">
             </div>
@@ -158,7 +138,8 @@ const filterReview = () => {
                             <span class="material-icons">favorite</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <span>Price: {{ filteredProducts[0]?.price }} {{ filteredProducts[0]?.currency_name }}</span>
+                            <span>Price: {{ filteredProducts[0]?.price }} {{ filteredProducts[0]?.currency_name
+                                }}</span>
                             <span>Stock: {{ filteredProducts[0]?.stock }}</span>
                             <span>Product ID: {{ filteredProducts[0]?.pro_id }}</span>
 
@@ -174,27 +155,23 @@ const filterReview = () => {
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
 
                             <div class="checkout-btn-div">
-                                <button
-                                @click="handleAddToCart(filteredProducts[0])"
-                                >Add To Cart</button>
+                                <button @click="handleAddToCart(filteredProducts[0])">Add To Cart</button>
                             </div>
                             <div class="col-md-3 d-flex justify-content-center align-items-center">
                                 <div class="d-flex align-items-center add-sub-style">
-                                    <span 
-                                    @click="handleDecrementQuantity(filteredProducts[0]?.pro_id)"
-                                    class="material-icons me-2">
+                                    <span @click="handleDecrementQuantity(filteredProducts[0]?.pro_id)"
+                                        class="material-icons me-2">
                                         remove
                                     </span>
                                     <h5 class="me-2 mb-0">{{ itemQuantity }}</h5>
-                                    <span 
-                                    @click="handleIncrementQuantity(filteredProducts[0]?.pro_id)"
-                                    class="material-icons me-2">
+                                    <span @click="handleIncrementQuantity(filteredProducts[0]?.pro_id)"
+                                        class="material-icons me-2">
                                         add
                                     </span>
                                 </div>
                             </div>
                             <div class="checkout-btn-div">
-                                <RouterLink :to="{name: 'BuyProduct', params: {id: filteredProducts[0]?.pro_id}}">
+                                <RouterLink :to="{ name: 'BuyProduct', params: { id: filteredProducts[0]?.pro_id } }">
                                     <button>Buy Now</button>
                                 </RouterLink>
                             </div>
@@ -250,12 +227,26 @@ const filterReview = () => {
             </div>
         </div>
 
-                <!-- reviews div  -->
+        <!-- reviews div  -->
 
-                <h4 class="text-center mt-3 mb-3 text-success review-text">Reviews({{ filterReviewData.length }})</h4>
+        <h4 class="text-center mt-3 mb-3 text-success review-text">Reviews({{ filterReviewData.length }})</h4>
         <div class="col-lg-12">
             <!-- filter style down  -->
-            <div :class="{ 'project-review': filterReviewData.length > 2 }"> 
+
+            <div v-if="reviewData.length === 0">
+                <div v-for="n in 2" :key="n" class="d-flex align-items-center placeholder-glow mb-2">
+                    <div>
+                        <img src="" class="img-fluid rounded-circle p-3 placeholder col-3 me-2"
+                            style="width: 70px; height: 70px;" alt="">
+                    </div>
+                    <div>
+                        <h1><span class="placeholder col-12">Loading.............</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div 
+            v-else
+            :class="{ 'project-review': filterReviewData.length > 2 }">
                 <div v-for="(review, index) in filterReviewData" :key="index" class="d-flex">
                     <img :src="review?.photo" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;"
                         alt="">
@@ -332,7 +323,7 @@ p {
 
 /* review style write here  */
 
-.rating-style { 
+.rating-style {
     cursor: pointer;
 }
 
@@ -428,6 +419,7 @@ p {
         margin-top: 30px;
     }
 }
+
 @media only screen and (max-width: 1920px) {
     .product-details-section {
         max-width: 1800px !important;
@@ -435,6 +427,7 @@ p {
         margin-top: 30px;
     }
 }
+
 @media only screen and (max-width: 1440px) {
     .product-details-section {
         max-width: 1300px !important;
@@ -442,6 +435,7 @@ p {
         margin-top: 30px;
     }
 }
+
 @media only screen and (max-width: 1024px) {
     .product-details-section {
         max-width: 950px !important;
@@ -449,6 +443,7 @@ p {
         margin-top: 30px;
     }
 }
+
 @media only screen and (max-width: 768px) {
     .product-details-section {
         max-width: 100% !important;
@@ -456,6 +451,7 @@ p {
         margin-top: 30px;
     }
 }
+
 @media only screen and (max-width: 540px) {
     .product-details-section {
         max-width: 100% !important;
@@ -463,5 +459,4 @@ p {
         margin-top: 30px;
     }
 }
-
 </style>
