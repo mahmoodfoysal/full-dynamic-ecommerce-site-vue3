@@ -141,6 +141,10 @@
     cursor: pointer;
 }
 
+.isValidate {
+    border: 1px solid #D71110 !important;
+}
+
 .offcanvas.show {
     visibility: visible;
   }

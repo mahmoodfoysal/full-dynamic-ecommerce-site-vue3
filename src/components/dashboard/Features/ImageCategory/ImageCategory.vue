@@ -30,6 +30,7 @@ const handleCreate = () => {
 const handleClose = () => {
     isModal.value = false;
     isEdit.value = false;
+    isValidation.value = false;
     resetInputData()
 };
 
@@ -69,6 +70,15 @@ const handleGetCatImg = async () => {
 
 const handleSubmit = async () => {
     try {
+        isValidation.value = true;
+        if(!inputData.value.parent_cat_id ||
+            !inputData.value.sub_cat_id ||
+            !inputData.value.img ||
+            !inputData.value.cat_name
+        ) {
+            alert("Please fill up all the required fields");
+            return;
+        }
         const data = {
             _id: isEdit ? inputData.value.id : null,
             cat_name: inputData.value.cat_name,
@@ -83,7 +93,8 @@ const handleSubmit = async () => {
             if (result.data.insertedId || result.data.modifiedCount == 1) {
                 alert(result.data.insertedId ? 'Category added successful' : 'Update category info');
                 resetInputData();
-                isModal.value = false
+                isModal.value = false;
+                isValidation.value = false;
             }
         }
 
@@ -116,11 +127,11 @@ const handleDelete = async (id) => {
 const handleEdit = (item) => {
     isEdit.value = true;
     isModal.value = true;
-    if(isEdit) {
+    if (isEdit) {
         inputData.value.id = item?._id;
         inputData.value.cat_name = item?.cat_name;
         inputData.value.img = item?.img;
-        const parentCat = categoryList?.value.find((cat) => cat.parent_cat_id === item.parent_cat_id );
+        const parentCat = categoryList?.value.find((cat) => cat.parent_cat_id === item.parent_cat_id);
         inputData.value.parent_cat_id = parentCat;
         const subCat = parentCat.sub_cat_info;
         subCatList.value = item?.sub_cat_info
@@ -139,10 +150,7 @@ const handleSubCategory = () => {
     <section class="container container-style">
         <!-- button div  -->
         <div class="add-btn-style">
-            <button 
-            @click="handleCreate"
-            type="button" 
-            class="btn d-flex aligns-items-center mb-2"><span
+            <button @click="handleCreate" type="button" class="btn d-flex aligns-items-center mb-2"><span
                     class="material-icons">
                     add
                 </span>Add Image Category</button>
@@ -174,27 +182,17 @@ const handleSubCategory = () => {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
 
         <!-- Add image Category Modal div  -->
 
-        <div
-      v-if="isModal"
-      class="offcanvas offcanvas-end category-div show"
-      tabindex="-1"
-      id="offcanvasNavbar"
-      aria-labelledby="offcanvasNavbarLabel"
-      style="visibility: visible; width: 100%;"
-    >
+        <div v-if="isModal" class="offcanvas offcanvas-end category-div show" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel" style="visibility: visible; width: 100%;">
 
             <div class="d-flex align-items-center">
-                <button 
-                @click="handleClose"
-                type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
+                <button @click="handleClose" type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
                 <h5 class="offcanvas-title modal-title" id="offcanvasNavbarLabel">Add Image Category</h5>
             </div>
