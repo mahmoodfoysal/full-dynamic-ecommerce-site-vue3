@@ -15,6 +15,7 @@ const isEdit = ref(false);
 
 const handleCreate = () => {
     isModal.value = true;
+    isValidation.value = false;
     handleReset();
 };
 
@@ -34,6 +35,15 @@ const handleEvents = async () => {
 
 const handleSubmit = async () => {
     try {
+        isValidation.value = true;
+        if(
+            !inputData.value.event_id ||
+            !inputData.value.event_name ||
+            !inputData.value.event_image
+        ) {
+            alert("Please fill up all the required field");
+            return;
+        }
         const data = {
             _id: isEdit ? inputData?.value?.id : null,
             event_id: inputData.value.event_id,
@@ -47,6 +57,7 @@ const handleSubmit = async () => {
                 alert(result?.data?.insertedId ? 'Data inserted successful!' : 'Data updated successful');
                 handleReset();
                 isModal.value = false;
+                isValidation.value = false;
             }
         }
     }
@@ -88,11 +99,13 @@ const handleDelete = async (id) => {
 const handleCancel = () => {
     handleReset();
     isEdit.value = false;
+    isValidation.value = false;
 };
 
 const handleCloseModal = () => {
     isModal.value = false;
     isEdit.value = false;
+    isValidation.value = false;
 }
 
 const handleReset = () => {
