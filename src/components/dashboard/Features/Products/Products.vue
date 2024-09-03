@@ -96,10 +96,12 @@ const handleProductDetails = (item) => {
 
 const handleCancel = () => {
     handleResetInput();
+    isValidation.value = false;
 };
 
 const handleClose = () => {
     isModal.value = false;
+    isValidation.value = false;
     handleResetInput();
 }
 
@@ -143,6 +145,25 @@ const handleSubSubSubCategory = () => {
 const handleSubmit = async () => {
     try {
 
+        // add validation 
+        isValidation.value = true;
+        if(
+            !inputData.value.parent_cat_info ||
+            !inputData.value.sub_cat_info ||
+            !inputData.value.pro_id ||
+            !inputData.value.prod_type ||
+            !inputData.value.pro_image ||
+            !inputData.value.pro_name ||
+            !inputData.value.status ||
+            !inputData.value.price ||
+            !inputData.value.currency_type ||
+            !inputData.value.stock ||
+            !inputData.value.stock
+        ) {
+            alert("Please fill up all the required fields");
+            return;
+        }
+
         const data = {
             _id: isEdit ? inputData.value.id : null,
 
@@ -182,6 +203,7 @@ const handleSubmit = async () => {
                 handleResetInput();
                 isModal.value = false;
                 isEdit.value = false;
+                isValidation.value = false;
             }
         }
 
@@ -592,10 +614,10 @@ const handleResetInput = () => {
 
                         <div class="col-md-3 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
-                                Brand *
+                                Brand
                             </label>
                             <input v-model="inputData.brand"
-                                :class="{ isValidate: isValidation && !inputData.brand }" type="text"
+                             type="text"
                                 class="form-control" id="exampleInputText" placeholder="Brand name">
                         </div>
 
