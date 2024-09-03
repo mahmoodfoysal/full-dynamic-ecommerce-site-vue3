@@ -236,7 +236,14 @@ watch(() => store.admin, (newVal) => {
         <nav @mouseover="showSidebar = true" @mouseout="showSidebar = false"
             :class="{ 'd-none': !showSidebar, 'd-block': showSidebar }" class="sidebar-style">
             <ul>
-                <li v-for="(parentCat, index) in categories" :key="index" class="dropdown">
+                <li v-if="categories.length === 0" class="card-text placeholder-glow dropdown">
+                    <a class="placeholder col-12"></a>
+                    <a class="placeholder col-12"></a>
+                    <a class="placeholder col-12"></a>
+                </li>
+                <li
+                v-for="(parentCat, index) in categories" 
+                :key="index" class="dropdown">
                     <RouterLink
                         :to="{ name: 'CategoryProducts', params: { id: parentCat.parent_cat_id, slug: parentCat.parent_cat_name.replace(/\s+/g, '-') } }">
                         <a href="">
