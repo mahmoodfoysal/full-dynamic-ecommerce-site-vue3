@@ -16,17 +16,17 @@ const products = ref([]);
 
 
 onMounted(() => {
-    handleGetProducts();
+  handleGetProducts();
 });
 
 const handleGetProducts = async () => {
-    try {
-        const result = await getProducts();
-        products.value = result?.data;
-    }
-    catch(error) {
-        console.log("Products", error);
-    }
+  try {
+    const result = await getProducts();
+    products.value = result?.data;
+  }
+  catch (error) {
+    console.log("Products", error);
+  }
 };
 
 // cart code write here 
@@ -85,7 +85,15 @@ const filterProducts = computed(() => {
         spaceBetween: 50,
       },
     }" :modules="modules" class="mySwiper">
-      <swiper-slide v-for="(product, index) in filterProducts" :key="index">
+      <swiper-slide 
+      v-if="filterProducts.length === 0"
+      v-for="n in 10" :key="n">
+        <div class="slider-card-style placeholder-glow">
+          <span style="padding: 110px;" class="placeholder col-12"></span>
+        </div>
+      </swiper-slide>
+
+      <swiper-slide v-else v-for="(product, index) in filterProducts" :key="index">
         <div class="slider-card-style">
           <RouterLink class="no-underline-link"
             :to="{ name: 'ProductDetail', params: { id: product.pro_id, slug: product?.pro_name?.replace(/\s+/g, '-') } }">

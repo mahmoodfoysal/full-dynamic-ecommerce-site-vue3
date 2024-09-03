@@ -49,6 +49,16 @@ const handleGetBrands = async () => {
             spaceBetween: 30,
           },
         }" :modules="modules" class="mySwiper">
+
+      <swiper-slide 
+      v-if="brands.length === 0"
+      v-for="n in 10" 
+      :key="n">
+        <div class="slider-card-style placeholder-glow">
+          <span style="padding: 50px;" class="placeholder col-12"></span>
+        </div>
+      </swiper-slide>
+
       <swiper-slide v-for="(item, index) in brands" :key="index">
         <div class="slider-card-style">
           <img :src="item?.brand_img" alt="Brand">

@@ -35,38 +35,25 @@ const handleGetCatImg = async () => {
 </script>
 
 <template>
-        <section v-if="categoryImgList.length === 0" class="d-flex justify-content-center mb-5 mt-5" role="status">
-        <div class="spinner-grow text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+        
+    <section class="image-category-style container">
+        <div 
+        v-if="categoryImgList.length === 0"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-sm-1 g-4">
+            <div v-for="n in 4" :key="n" class="placeholder-glow col">
+                <span 
+                style="padding: 230px;"
+                class="placeholder col-12"></span>
+            </div>
+
         </div>
-        <div class="spinner-grow text-secondary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-danger" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-warning" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-info" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-light" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-dark" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </section>
-    <section v-else class="image-category-style container">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-sm-1 g-4">
+
+        <div 
+        v-else
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-sm-1 g-4">
             <div v-for="(item, index) in categoryImgList" :key="index" class="col">
                 <img class="image-style" :src="item.img" alt="">
             </div>
-
         </div>
     </section>
 </template>
