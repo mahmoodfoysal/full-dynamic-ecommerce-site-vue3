@@ -350,9 +350,9 @@ const handleResetInput = () => {
                     <td>{{ item?.pro_name }}</td>
                     <td>{{ item?.pro_id }}</td>
                     <td>{{ item?.prod_type }}</td>
-                    <td>{{ item?.status }}</td>
+                    <td>{{ item?.status== 1 ? 'Active' : 'Inactive' }}</td>
                     <td>{{ item?.stock }}</td>
-                    <td>{{ item?.price }}</td>
+                    <td>{{ item?.price }} {{ item?.currency_name }}</td>
                     <td class="order-details vertical-center">
                         <div 
                         @click="handleProductDetails(item)" 
