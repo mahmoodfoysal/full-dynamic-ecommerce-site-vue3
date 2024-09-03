@@ -139,8 +139,26 @@ const handleDeleteAdmin = async (id) => {
     <button type="submit" @click="handlePostRole" class="submit-style">{{ isEdit ? 'Update' : 'Submit' }}</button>
     <button v-if="isEdit" type="Cancel" @click="handleCancelEdit" class="cancel-style ms-3">Cancel</button>
     <h5 class="text-center mt-3 mb-3">Admin List</h5>
-    <div class="row g-4">
-        <div v-for="(item, index) in adminList" :key="index" class="col-md-6">
+
+    <div 
+    v-if="adminList.length === 0"
+    class="row g-4">
+        <div 
+        v-for="n in 6" :key="n" 
+        class="col-md-6">
+            <div class="d-flex align-items-center placeholder-glow">
+                    <h6><span class="placeholder col-6"></span></h6>
+                    <span class="placeholder col-6"></span>
+            </div>
+        </div>
+    </div>
+
+    <div 
+    v-else
+    class="row g-4">
+        <div 
+        v-for="(item, index) in adminList" 
+        :key="index" class="col-md-6">
             <div class="d-flex align-items-center">
                 <div class="item-style me-2">
                     <h6>Email: {{ item?.email }}</h6>

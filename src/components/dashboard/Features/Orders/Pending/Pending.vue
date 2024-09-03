@@ -86,6 +86,29 @@ const handleOrderDetails = (details) => {
                 </tr>
             </thead>
             <tbody>
+                <tr class="placeholder-glow"
+                    v-if="pendingOrderList.length === 0"
+                    v-for="n in 5" :key="n">
+                    <th scope="row">
+                        <span class="placeholder col-12"></span>
+                    </th>
+                    <td>
+                        <span class="placeholder col-12"></span>
+                    </td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td class="order-details vertical-center">
+                        <span class="placeholder col-12"></span>
+                    </td>
+                    <td>
+                        <span class="placeholder col-12"></span>
+                    </td>
+                </tr>
+
                 <tr v-for="(item, index) in pendingOrderList" :key="index">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ item?.fullName }}</td>

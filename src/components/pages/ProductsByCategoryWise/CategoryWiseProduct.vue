@@ -157,7 +157,10 @@ const goToPage = (newPage) => {
             </div>
             <div class="col-md-9">
                 <div v-if="products.length === 0"  class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4 mt-1">
-                    <div v-for="item in 8" class="card card-style">
+                    <div 
+                    v-for="n in 8"
+                    :key="n"
+                    class="card card-style">
                         <h5 class="card-title placeholder-glow">
                             <span style="padding: 150px;"class="placeholder col-12"></span>
                         </h5>

@@ -87,6 +87,33 @@ const handleOrderDetails = (details) => {
                 </tr>
             </thead>
             <tbody>
+
+                <tr 
+                    v-if="deliveryList.length === 0"
+                    v-for="n in 5" 
+                    :key="n"
+                    class="placeholder-glow"
+                    >
+                    <th scope="row">
+                        <span class="placeholder col-12"></span>
+                    </th>
+                    <td>
+                        <span class="placeholder col-12"></span>
+                    </td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td><span class="placeholder col-12"></span></td>
+                    <td class="order-details vertical-center">
+                        <span class="placeholder col-12"></span>
+                    </td>
+                    <td>
+                        <span class="placeholder col-12"></span>
+                    </td>
+                </tr>
+
                 <tr v-for="(item, index) in deliveryList" :key="index">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ item?.fullName }}</td>

@@ -151,7 +151,7 @@ const handleSubCategory = () => {
         <!-- Image category list  -->
         <div class="row row-cols-1 row-cols-md-2 g-4 mt-2 mb-2">
             <div v-for="(item, index) in categoryImgList" :key="index" class="col">
-                <div class="card">
+                <div class="card card-style">
                     <div class="row">
                         <div class="col-md-3 image-style">
                             <img :src="item?.img" class="card-img-top" alt="...">

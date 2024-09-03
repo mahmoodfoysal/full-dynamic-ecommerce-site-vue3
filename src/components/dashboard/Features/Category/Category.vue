@@ -227,7 +227,32 @@ const handlePostCategory = async (isCategoryType) => {
         </div>
 
         <!-- category list  -->
-        <div class="row mt-2 mb-5 g-4">
+
+        <div v-if="categories.length === 0"class="row mt-2 mb-5 g-4">
+            <div 
+            v-for="n in 4"
+            :key="n"
+            class="col-md-6">
+                <div class="card card-style">
+                    <div class="card-header">
+                        <span class="placeholder col-12"></span>
+                    </div>
+                    <div class="card-body column-style">
+                        <p class="card-text placeholder-glow">
+                            <span class="placeholder col-12"></span>
+                            <span class="placeholder col-12"></span>
+                            <span class="placeholder col-12"></span>
+                            <span class="placeholder col-12"></span>
+                            <span class="placeholder col-12"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div 
+        v-else
+        class="row mt-2 mb-5 g-4">
             <div class="col-md-6">
                 <div class="card card-style">
                     <div class="card-header">

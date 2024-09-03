@@ -131,10 +131,6 @@
     overflow-y: scroll;
 }
 
-.image-style img {
-    height: 100%;
-}
-
 .icon-style span:first-child:hover {
     color: #1F5DA0;
     cursor: pointer;
@@ -149,6 +145,15 @@
     visibility: visible;
   }
 
+  .card-style {
+    height: 135px;
+    width: 100%;
+  }
+
+  .image-style img {
+    height: 135px;
+    padding: 5px 0;
+}
 /* media query write here s */
 
 @media only screen and (max-width: 2560px) {
