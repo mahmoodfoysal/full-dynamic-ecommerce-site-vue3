@@ -15,6 +15,7 @@ const isEdit = ref(false);
 
 const handleCreate = () => {
     isModal.value = true;
+    isValidation.value = false;
     handleReset();
 };
 
@@ -34,11 +35,20 @@ const handleGetBrands = async () => {
 
 const handleSubmit = async () => {
     try {
+        isValidation.value = true;
+        if(
+            !inputData.value.brnad_id ||
+            !inputData.value.brand_name ||
+            !inputData.value.brand_image
+        ) {
+            alert("Please fill up all the required fields");
+            return;
+        }
         const data = {
             _id: isEdit ? inputData?.value?.id : null,
             brnad_id: inputData.value.brnad_id,
             brand_name: inputData.value.brand_name,
-            brnad_image: inputData.value.brand_image,
+            brand_image: inputData.value.brand_image,
         };
         const text = 'Are you want to sure?';
         if (confirm(text) == true) {
@@ -47,6 +57,7 @@ const handleSubmit = async () => {
                 alert(result?.data?.insertedId ? 'Data inserted successful!' : 'Data updated successful');
                 handleReset();
                 isModal.value = false;
+                isValidation.value = false;
             }
         }
     }
@@ -62,7 +73,7 @@ const handleEdit = (item) => {
         inputData.value.id = item?._id;
         inputData.value.brnad_id = item?.brnad_id;
         inputData.value.brand_name = item?.brand_name;
-        inputData.value.brand_image = item?.brnad_image;
+        inputData.value.brand_image = item?.brand_image;
     }
 };
 
@@ -88,11 +99,13 @@ const handleDelete = async (id) => {
 const handleCancel = () => {
     handleReset();
     isEdit.value = false;
+    isValidation.value = false;
 };
 
 const handleCloseModal = () => {
     isModal.value = false;
     isEdit.value = false;
+    isValidation.value = false;
 }
 
 const handleReset = () => {
@@ -122,7 +135,7 @@ const handleReset = () => {
                 <div class="card">
                     <div class="row">
                         <div class="col-md-3 image-style">
-                            <img :src="item?.brnad_image" class="card-img-top" alt="...">
+                            <img :src="item?.brand_image" class="card-img-top" alt="...">
                         </div>
                         <div class="col-md-7">
                             <div class="card-body">

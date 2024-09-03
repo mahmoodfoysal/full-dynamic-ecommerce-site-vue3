@@ -17,6 +17,7 @@ const isEdit = ref(false);
 
 const handleCreate = () => {
     isModal.value = true;
+    isValidation.value = false;
     handleReset();
 };
 
@@ -36,6 +37,14 @@ const handleGetOfferPoster = async () => {
 
 const handleSubmit = async () => {
     try {
+        isValidation.value = true;
+        if(
+            !inputData.value.offer_id ||
+            !inputData.value.offer_image
+        ) {
+            alert("Please fill up all the required fields");
+            return;
+        }
         const data = {
             _id: isEdit ? inputData?.value?.id : null,
             offer_id: inputData.value.offer_id,
@@ -52,6 +61,7 @@ const handleSubmit = async () => {
             handleReset();
             isModal.value = false;
             isEdit.value = false;
+            isValidation.value = false;
         }
         }
     }
@@ -95,11 +105,13 @@ const handleDelete = async (id) => {
 const handleCancel = () => {
     handleReset();
     isEdit.value = false;
+    isValidation.value = false;
 };
 
 const handleCloseModal = () => {
     isModal.value = false;
     isEdit.value = false;
+    isValidation.value = false;
 }
 
 const handleReset = () => {
