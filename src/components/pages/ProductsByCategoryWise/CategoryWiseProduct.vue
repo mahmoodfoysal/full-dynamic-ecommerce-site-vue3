@@ -96,35 +96,12 @@ const goToPage = (newPage) => {
 </script>
 
 <template>
-            <section v-if="products.length === 0" class="d-flex justify-content-center mb-5 mt-5" role="status">
-        <div class="spinner-grow text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-secondary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-danger" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-warning" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-info" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-light" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-        <div class="spinner-grow text-dark" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </section>
     <!-- card section are here  -->
     <section class="container card-container">
-        <div class="component-info-div">
+        <p v-if="products.length === 0" class="placeholder-glow">
+            <span class="placeholder col-12 pt-4 pb-4"></span>
+        </p>
+        <div v-else class="component-info-div">
             <h6><span>{{ filterProducts.length }}</span> Products Found</h6>
             <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p>
         </div>
@@ -179,6 +156,23 @@ const goToPage = (newPage) => {
                 </div>
             </div>
             <div class="col-md-9">
+                <div v-if="products.length === 0"  class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4 mt-1">
+                    <div v-for="item in 8" class="card card-style">
+                        <h5 class="card-title placeholder-glow">
+                            <span style="padding: 150px;"class="placeholder col-12"></span>
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text placeholder-glow">
+                                <span class="placeholder col-3"></span>
+                                <span class="placeholder col-3"></span>
+                                <span class="placeholder col-3"></span>
+                                <span class="placeholder col-3"></span>
+                                <span class="placeholder col-3"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div v-if="paginatedProducts.length === 0" class="text-center mt-5 mb-5">
                     <h1>No Product Found</h1>
                 </div>
