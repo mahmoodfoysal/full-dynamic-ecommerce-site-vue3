@@ -187,7 +187,12 @@ watch(() => store.admin, (newVal) => {
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Address</a></li>
-                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                                <RouterLink 
+                                :to="{name: 'MyOrder'}"
+                                class="link-decor-style"
+                                >
+                                    <li><a class="dropdown-item" href="#">Orders</a></li>
+                                </RouterLink>
                             </ul>
                         </div>
 

@@ -53,6 +53,12 @@ const routes = [
       meta: { requiresAuth: true },
     },
     {
+      path: '/my-order',
+      name: 'MyOrder',
+      component: () => import('/src/components/pages/ClientDashboard/Orders/Orders.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
       path: '/dashboard/features',
       name: 'DashboardHome',
       component: () => import('/src/components/dashboard/index.vue'),
