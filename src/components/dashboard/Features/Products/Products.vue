@@ -11,6 +11,7 @@ const isModal = ref(false);
 const isDetailsModal = ref(false)
 const isValidation = ref(false);
 const isEdit = ref(false);
+const toggleField = ref(null);
 const prodDetails = ref({})
 const inputData = ref({
     id: null,
@@ -163,6 +164,13 @@ const handleSubmit = async () => {
             alert("Please fill up all the required fields");
             return;
         }
+        if(
+            inputData.value.prod_type.type == 'D' ? !inputData.value.discount_price : inputData.value.discount_price = null || inputData.value.prod_type.type == 'D' ? !inputData.value.offer_price : inputData.value.offer_price = null
+
+        ) {
+            alert("Please give offer or discount amount");
+            return;
+        }
 
         const data = {
             _id: isEdit ? inputData.value.id : null,
@@ -290,6 +298,9 @@ const handleResetInput = () => {
     inputData.value.currency_type = null;
 };
 
+const handleChangeProdType = () => {
+    toggleField.value = inputData.value.prod_type.type
+};
 </script>
 
 <template>
@@ -533,7 +544,9 @@ const handleResetInput = () => {
                             <label for="exampleInputPassword1" class="form-label">
                                 Product type *
                             </label>
-                            <select v-model="inputData.prod_type"
+                            <select 
+                                @change="handleChangeProdType"
+                                v-model="inputData.prod_type"
                                 :class="{ isValidate: isValidation && !inputData.prod_type }"
                                 class="form-select form-select-md mb-1">
                                 <option v-for="(item, index) in productType" :key="index" :value="item">
@@ -541,7 +554,6 @@ const handleResetInput = () => {
                                 </option>
                             </select>
                         </div>
-
 
 
                         <div class="col-md-5 mb-1">
@@ -621,12 +633,30 @@ const handleResetInput = () => {
                                 class="form-control" id="exampleInputText" placeholder="Brand name">
                         </div>
 
+                        <div v-if="toggleField == 'D'" class="col-md-3 mb-1">
+                            <label for="exampleInputEmail1" class="form-label">
+                                Discount price *
+                            </label>
+                            <input v-model="inputData.discount_price"
+                                :class="{ isValidate: isValidation && !inputData.discount_price }" type="Number"
+                                class="form-control" id="exampleInputText" placeholder="Discount price">
+                        </div>
+                        <div v-if="toggleField == 'O'" class="col-md-3 mb-1">
+                            <label for="exampleInputEmail1" class="form-label">
+                                Offer price *
+                            </label>
+                            <input v-model="inputData.offer_price"
+                                :class="{ isValidate: isValidation && !inputData.offer_price }" type="Number"
+                                class="form-control" id="exampleInputText" placeholder="Offer price">
+                        </div>
+
+
                         <div class="col-md-12 mb-1">
                             <label for="exampleInputEmail1" class="form-label">
-                                Description *
+                                Description
                             </label>
                             <textarea v-model="inputData.description"
-                                :class="{ isValidate: isValidation && !inputData.description }" type="text"
+                                 type="text"
                                 class="form-control" id="exampleInputText" placeholder="Product description"></textarea>
                         </div>
 
