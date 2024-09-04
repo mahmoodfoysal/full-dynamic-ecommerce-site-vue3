@@ -29,7 +29,7 @@ const handleGetDelivery = async () => {
 const handleUpdateOrderStatus = async (item) => {
     try {
         const data = {
-            orderStatus: "D",
+            orderStatus: "C",
         }
         const text = 'Are you want to sure ?';
         if (confirm(text) == true) {

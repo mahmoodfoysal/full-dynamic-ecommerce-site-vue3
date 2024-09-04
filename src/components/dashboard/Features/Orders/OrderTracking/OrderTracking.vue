@@ -82,8 +82,197 @@ const handleOrderDetails = (details) => {
             </div>
 
             <div class="offcanvas-body">
-                <!-- modal input field  -->
                 <section class="parent-item">
+                    <div class="text-center mt-2 mb-4">
+                        <h4 class="order-status-heading">Order status</h4>
+                    </div>
+                    <!-- order status  -->
+                    <div class="details-content">
+                        <ul class="list-unstyled">
+                            <li v-if="orderDetails?.orderStatus == 'P'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'P'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'P' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'C'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'W'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'W'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'W' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'C'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'S'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'S'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'C'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'D'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'D'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'C'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Pending</p>
+                            </li>
+
+                            <li v-if="orderDetails?.orderStatus == 'P'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'W'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'W' ? 'done' : 'update'}}</span>
+
+                                <p>Warehouse</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'W'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'W'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'W' ? 'done' : 'update'}}</span>
+
+                                <p>Warehouse</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'S'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'S'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
+
+                                <p>Warehouse</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'D'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'D'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
+
+                                <p>Warehouse</p>
+                            </li>
+
+                            <li v-if="orderDetails?.orderStatus == 'W'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'S'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
+
+                                <p>Shipping</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'P'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'S'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
+
+                                <p>Shipping</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'S'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'S'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
+
+                                <p>Shipping</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'D'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'D'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
+
+                                <p>Shipping</p>
+                            </li>
+
+                            <li v-if="orderDetails?.orderStatus == 'W'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'D'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
+
+                                <p>Delivery</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'P'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'D'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
+
+                                <p>Delivery</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'S'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'D'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
+
+                                <p>Delivery</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'D'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'D'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
+
+                                <p>Delivery</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'P'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Completed</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'W'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Completed</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'S'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Completed</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'D'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Completed</p>
+                            </li>
+                            <li v-if="orderDetails?.orderStatus == 'C'">
+                                <span 
+                                :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
+                                class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
+
+                                <p>Completed</p>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+
                     <!-- order info start -->
                     <div class="card">
                         <div class="card-header">
@@ -141,7 +330,8 @@ const handleOrderDetails = (details) => {
                                             <h5 class="card-title">{{ item?.cat_name }}</h5>
                                             <p class="card-text mb-0">Product Name: {{ item?.pro_name }}</p>
                                             <div>
-                                                <p class="card-text mb-0">Price: {{ item?.price }} {{ item?.currency_name }}</p>
+                                                <p class="card-text mb-0">Price: {{ item?.price }} {{
+                                                    item?.currency_name }}</p>
                                                 <p class="card-text mb-0">Prod ID: {{ item?.pro_id }}</p>
                                                 <p class="card-text mb-0">Quantity: {{ item?.quantity }}</p>
                                             </div>
@@ -155,9 +345,8 @@ const handleOrderDetails = (details) => {
                 </section>
             </div>
             <div class="d-flex justify-content-center mb-2">
-                <button 
-                @click="isModal = false"
-                type="button" class="btn btn-primary text-center ps-3 pe-3" data-bs-dismiss="modal">Ok</button>
+                <button @click="isModal = false" type="button" class="btn btn-primary text-center ps-3 pe-3"
+                    data-bs-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>
