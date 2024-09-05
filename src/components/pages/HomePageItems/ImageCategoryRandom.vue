@@ -64,6 +64,7 @@ const handleGetCatImg = async () => {
 }
 
 .image-style {
+    cursor: pointer;
     width: 100%;
     height: 70vh;
     object-fit: cover;

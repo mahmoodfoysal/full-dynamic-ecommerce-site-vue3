@@ -1,6 +1,13 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, toRefs } from 'vue';
 import { getProducts, getCategories, postProduct, deleteProduct } from '@/API/All_API.js';
+
+const props = defineProps({
+    searchData: {
+        type: String,
+        default: ''
+    }
+});
 
 const productList = ref([]);
 const categoryList = ref([]);
@@ -34,6 +41,8 @@ const inputData = ref({
     currency_type: null,
     status: null,
 });
+
+const {searchData} = toRefs(props);
 
 const productType = [
     {
@@ -284,7 +293,7 @@ const handleDelete = async (id) => {
 const totalPages = computed(() => Math.ceil(productList.value.length / itemsPerPage));
 
 const paginationProducts = computed(() => {
-    let filtered = productList.value;
+    let filtered = filterSearchProducts.value;
 
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -319,6 +328,20 @@ const handleResetInput = () => {
 const handleChangeProdType = () => {
     toggleField.value = inputData.value.prod_type.type
 };
+
+const filterSearchProducts = computed(() => {
+        return productList.value?.filter((item) =>
+            Object.entries(item)
+                .reduce(
+                    (result, [, value]) =>
+                        !(value instanceof Object) ? (result += ` ${value}`) : result,
+                    ''
+                )
+                .toString()
+                .toLowerCase()
+                .includes(searchData.value.toString().toLowerCase())
+        );
+    });
 </script>
 
 <template>

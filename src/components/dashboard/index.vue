@@ -1,6 +1,16 @@
 <script setup>
+import { toRefs } from 'vue';
 import { RouterView } from 'vue-router';
 import DashboardSideBar from './Features/DashboardSideBar/DashboardSideBar.vue';
+
+const props = defineProps({
+    searchData: {
+        type: String,
+        default: ''
+    }
+});
+
+const {searchData} = toRefs(props)
 </script>
 
 <template>
@@ -14,7 +24,9 @@ import DashboardSideBar from './Features/DashboardSideBar/DashboardSideBar.vue';
                 </div>
             </div>
             <div class="col-md-10">
-                <RouterView></RouterView>
+                <RouterView
+                :searchData="searchData"
+                ></RouterView>
             </div>
         </div>
     </section>
