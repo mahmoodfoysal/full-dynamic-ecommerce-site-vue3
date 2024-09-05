@@ -30,6 +30,8 @@ const handleUpdateOrderStatus = async (item) => {
     try {
         const data = {
             orderStatus: "S",
+            warehouse_date: item?.warehouse_date,
+            shipping_date: Date()
         }
         const text = 'Are you want to sure ?';
         if (confirm(text) == true) {

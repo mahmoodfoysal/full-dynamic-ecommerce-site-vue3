@@ -95,6 +95,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'P' ? 'done' : 'update'}}</span>
 
                                 <p>Pending</p>
+                                <p>{{ formatDate(orderDetails?.orderDate) }}</p>
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'C'">
                                 <span 
@@ -102,6 +103,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
                                 <p>Pending</p>
+                                {{ formatDate(orderDetails?.orderDate) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'W'">
                                 <span 
@@ -109,13 +111,15 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'W' ? 'done' : 'update'}}</span>
 
                                 <p>Pending</p>
+                                {{ formatDate(orderDetails?.orderDate) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'C'">
                                 <span 
                                 :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
-                                <p>Pending</p>
+                                <p>Warehouse</p>
+                                {{ formatDate(orderDetails?.warehouse_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'S'">
                                 <span 
@@ -123,13 +127,15 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
 
                                 <p>Pending</p>
+                                {{ formatDate(orderDetails?.orderDate) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'C'">
                                 <span 
                                 :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
-                                <p>Pending</p>
+                                <p>Shipping</p>
+                                {{ formatDate(orderDetails?.shipping_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'D'">
                                 <span 
@@ -137,13 +143,15 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
 
                                 <p>Pending</p>
+                                {{ formatDate(orderDetails?.orderDate) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'C'">
                                 <span 
                                 :class="{activeOrder: orderDetails?.orderStatus == 'C'}"
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
-                                <p>Pending</p>
+                                <p>Delivery</p>
+                                {{ formatDate(orderDetails?.delivery_date) }}
                             </li>
 
                             <li v-if="orderDetails?.orderStatus == 'P'">
@@ -152,6 +160,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'W' ? 'done' : 'update'}}</span>
 
                                 <p>Warehouse</p>
+                                {{ formatDate(orderDetails?.warehouse_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'W'">
                                 <span 
@@ -159,6 +168,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'W' ? 'done' : 'update'}}</span>
 
                                 <p>Warehouse</p>
+                                {{ formatDate(orderDetails?.warehouse_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'S'">
                                 <span 
@@ -166,6 +176,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
 
                                 <p>Warehouse</p>
+                                {{ formatDate(orderDetails?.warehouse_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'D'">
                                 <span 
@@ -173,6 +184,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
 
                                 <p>Warehouse</p>
+                                {{ formatDate(orderDetails?.warehouse_date) }}
                             </li>
 
                             <li v-if="orderDetails?.orderStatus == 'W'">
@@ -181,6 +193,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
 
                                 <p>Shipping</p>
+                                {{ formatDate(orderDetails?.shipping_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'P'">
                                 <span 
@@ -188,6 +201,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
 
                                 <p>Shipping</p>
+                                {{ formatDate(orderDetails?.shipping_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'S'">
                                 <span 
@@ -195,6 +209,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'S' ? 'done' : 'update'}}</span>
 
                                 <p>Shipping</p>
+                                {{ formatDate(orderDetails?.shipping_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'D'">
                                 <span 
@@ -202,6 +217,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
 
                                 <p>Shipping</p>
+                                {{ formatDate(orderDetails?.shipping_date) }}
                             </li>
 
                             <li v-if="orderDetails?.orderStatus == 'W'">
@@ -210,6 +226,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
 
                                 <p>Delivery</p>
+                                {{ formatDate(orderDetails?.delivery_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'P'">
                                 <span 
@@ -217,6 +234,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
 
                                 <p>Delivery</p>
+                                {{ formatDate(orderDetails?.delivery_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'S'">
                                 <span 
@@ -224,6 +242,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
 
                                 <p>Delivery</p>
+                                {{ formatDate(orderDetails?.delivery_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'D'">
                                 <span 
@@ -231,6 +250,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'D' ? 'done' : 'update'}}</span>
 
                                 <p>Delivery</p>
+                                {{ formatDate(orderDetails?.delivery_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'P'">
                                 <span 
@@ -238,6 +258,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
                                 <p>Completed</p>
+                                {{ formatDate(orderDetails?.complete_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'W'">
                                 <span 
@@ -245,6 +266,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
                                 <p>Completed</p>
+                                {{ formatDate(orderDetails?.complete_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'S'">
                                 <span 
@@ -252,6 +274,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
                                 <p>Completed</p>
+                                {{ formatDate(orderDetails?.complete_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'D'">
                                 <span 
@@ -259,6 +282,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
                                 <p>Completed</p>
+                                {{ formatDate(orderDetails?.complete_date) }}
                             </li>
                             <li v-if="orderDetails?.orderStatus == 'C'">
                                 <span 
@@ -266,6 +290,7 @@ const handleOrderDetails = (details) => {
                                 class="material-icons circular-btn">{{orderDetails?.orderStatus == 'C' ? 'done' : 'update'}}</span>
 
                                 <p>Completed</p>
+                                {{ formatDate(orderDetails?.complete_date) }}
                             </li>
                         </ul>
                     </div>
