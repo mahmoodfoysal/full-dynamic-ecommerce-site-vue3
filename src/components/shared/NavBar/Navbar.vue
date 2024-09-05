@@ -263,7 +263,7 @@ watch(() => store.admin, (newVal) => {
                                     {{ subCat.sub_cat_name }}<span>&rsaquo;</span>
                                 </a>
                             </RouterLink>
-                            <ul>
+                            <ul v-if="subCat.sub_sub_cat_info">
                                 <li v-for="(subSubCat, index) in subCat.sub_sub_cat_info" :key="index"
                                     class="dropdown-3">
                                     <RouterLink
@@ -272,7 +272,7 @@ watch(() => store.admin, (newVal) => {
                                             {{ subSubCat.sub_sub_cat_name }} <span>&rsaquo;</span>
                                         </a>
                                     </RouterLink>
-                                    <ul>
+                                    <ul v-if="subSubCat.sub_sub_sub_cat_info">
                                         <li v-for="(subSubSubCat, index) in subSubCat.sub_sub_sub_cat_info" :key="index"
                                             class="dropdown-4">
                                             <RouterLink

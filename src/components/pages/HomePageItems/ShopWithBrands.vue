@@ -61,7 +61,7 @@ const handleGetBrands = async () => {
 
       <swiper-slide v-for="(item, index) in brands" :key="index">
         <div class="slider-card-style">
-          <img :src="item?.brand_img" alt="Brand">
+          <img :src="item?.brand_image" alt="Brand">
         </div>
       </swiper-slide>
     </swiper>
