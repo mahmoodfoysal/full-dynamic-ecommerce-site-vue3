@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { getProducts, getCategories, postProduct, deleteProduct } from '@/API/All_API.js';
 
 const productList = ref([]);
@@ -12,7 +12,9 @@ const isDetailsModal = ref(false)
 const isValidation = ref(false);
 const isEdit = ref(false);
 const toggleField = ref(null);
-const prodDetails = ref({})
+const prodDetails = ref({});
+const itemsPerPage = 16;
+const page = ref(1);
 const inputData = ref({
     id: null,
     parent_cat_info: null,
@@ -109,7 +111,7 @@ const handleClose = () => {
 const handleGetProducts = async () => {
     try {
         const result = await getProducts();
-        productList.value = result?.data;
+        productList.value = result?.data.map((mp, index) => ({...mp, sl:index + 1}));
     }
     catch (error) {
         console.log("get products", error);
@@ -279,6 +281,22 @@ const handleDelete = async (id) => {
     }
 };
 
+const totalPages = computed(() => Math.ceil(productList.value.length / itemsPerPage));
+
+const paginationProducts = computed(() => {
+    let filtered = productList.value;
+
+    const startIndex = (page.value - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filtered.slice(startIndex, endIndex);
+});
+
+const goToPage = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages.value) {
+        page.value = newPage;
+    }
+};
+
 const handleResetInput = () => {
     inputData.value.id = null;
     inputData.value.parent_cat_info = null;
@@ -331,7 +349,7 @@ const handleChangeProdType = () => {
             <tbody>
                 <tr 
                     v-if="productList.length === 0"
-                    v-for="n in 5" :key="n">
+                    v-for="n in 8" :key="n">
                     <th scope="row">
                         <span class="placeholder col-12"></span>
                     </th>
@@ -352,8 +370,9 @@ const handleChangeProdType = () => {
                     </td>
                 </tr>
 
-                <tr v-for="(item, index) in productList" :key="index">
-                    <th scope="row">{{ index + 1 }}</th>
+                <tr v-for="(item, index) in paginationProducts" :key="index">
+                    <!-- <th scope="row">{{ item.sl }}</th> -->
+                    <th scope="row">{{index +((itemsPerPage*page) - 16) +1 }}</th>
                     <td>
                         <img style="width: 50px; 
                         height: 50px;" :src="item?.pro_image" alt="">
@@ -393,6 +412,32 @@ const handleChangeProdType = () => {
 
             </tbody>
         </table>
+
+        <div class="pagination-style mt-3">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li @click="goToPage(page - 1)" :disabled="page === 1" class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li @click="goToPage(1)" :disabled="page === 1" class="page-item"><a class="page-link"
+                            href="#">1</a>
+                    </li>
+                    <li @click="goToPage(2)" :disabled="page === 2" class="page-item"><a class="page-link"
+                            href="#">2</a>
+                    </li>
+                    <li @click="goToPage(3)" :disabled="page === 3" class="page-item"><a class="page-link"
+                            href="#">3</a>
+                    </li>
+                    <li @click="goToPage(page + 1)" :disabled="page === totalPages" class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
         <div v-if="isDetailsModal" class="offcanvas offcanvas-end details-div show" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel" style="visibility: visible; width: 100%;">

@@ -89,6 +89,11 @@
     color: #1F5DA0;
   }
 
+  .pagination-style {
+    display: flex;
+    justify-content: center;
+}
+
 /* media query write here s */
 
 @media only screen and (max-width: 2560px) {
