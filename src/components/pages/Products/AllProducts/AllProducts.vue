@@ -69,11 +69,11 @@ const paginatedProducts = computed(() => {
     if (selectedBrand.value.length > 0) {
         filtered = filtered.filter((product) => selectedBrand.value.includes(product.brand));
     }
-    // search products 
-    if (searchData.value.length > 0) {
-        const searchKeyword = searchData.value.toLowerCase();
-        filtered = filtered.filter(product => product.pro_name.toLowerCase().includes(searchKeyword));
-    }
+    // old search products
+    // if (searchData.value.length > 0) {
+    //     const searchKeyword = searchData.value.toLowerCase();
+    //     filtered = filtered.filter(product => product.pro_name.toLowerCase().includes(searchKeyword));
+    // }
     // Apply pagination
     const startIndex = (page.value - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -87,6 +87,20 @@ const goToPage = (newPage) => {
     }
 };
 
+const filterSearchProducts = computed(() => {
+        return paginatedProducts.value?.filter((item) =>
+            Object.entries(item)
+                .reduce(
+                    (result, [, value]) =>
+                        !(value instanceof Object) ? (result += ` ${value}`) : result,
+                    ''
+                )
+                .toString()
+                .toLowerCase()
+                .includes(searchData.value.toString().toLowerCase())
+        );
+    });
+
 </script>
 
 <template>
@@ -95,7 +109,7 @@ const goToPage = (newPage) => {
             <span class="placeholder col-12 pt-4 pb-4"></span>
         </p>
         <div v-else class="component-info-div">
-            <h6><span>{{ products.length }}</span> Products Found</h6>
+            <h6><span>{{ filterSearchProducts.length }}</span> Products Found</h6>
             <p>Products > Category > Products</p>
         </div>
         <div class="row g-4">
@@ -173,7 +187,7 @@ const goToPage = (newPage) => {
                 </div>
 
                 <div v-else class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4">
-                    <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
+                    <div v-for="(item, index) in filterSearchProducts" :key="index" class="col">
                         <ProductCard :productItem="item"></ProductCard>
                     </div>
                 </div>
