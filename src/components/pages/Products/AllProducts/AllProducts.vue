@@ -14,7 +14,7 @@ const props = defineProps({
 
 const { searchData } = toRefs(props);
 
-const itemsPerPage = 8;
+const itemsPerPage = 16;
 
 const products = ref([]);
 const selectedPrice = ref(null);
@@ -54,7 +54,7 @@ const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage
 
 // pagination and filter all value 
 const paginatedProducts = computed(() => {
-    let filtered = products.value;
+    let filtered = filterSearchProducts.value;
 
     // Apply price filter
     if (selectedPrice.value !== null && (selectedPrice.value.min < selectedPrice.value.max)) {
@@ -88,7 +88,7 @@ const goToPage = (newPage) => {
 };
 
 const filterSearchProducts = computed(() => {
-        return paginatedProducts.value?.filter((item) =>
+        return products.value?.filter((item) =>
             Object.entries(item)
                 .reduce(
                     (result, [, value]) =>
@@ -187,7 +187,7 @@ const filterSearchProducts = computed(() => {
                 </div>
 
                 <div v-else class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4">
-                    <div v-for="(item, index) in filterSearchProducts" :key="index" class="col">
+                    <div v-for="(item, index) in paginatedProducts" :key="index" class="col">
                         <ProductCard :productItem="item"></ProductCard>
                     </div>
                 </div>

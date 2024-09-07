@@ -4,13 +4,13 @@ import { onMounted, computed, ref } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Navigation, Keyboard } from 'swiper/modules';
+import { Navigation, Keyboard, Autoplay, Pagination } from 'swiper/modules';
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
 import { getProducts } from '@/API/All_API.js';
 
 const store = useStore();
-const modules = [Navigation, Keyboard];
+const modules = [Navigation, Keyboard, Autoplay, Pagination];
 
 const products = ref([]);
 
@@ -63,15 +63,33 @@ const updateDb = (cart) => {
 }
 
 const filterProducts = computed(() => {
-  return products.value.filter(product => product?.parent_cat_id === 1);
+  return products.value.filter(product => product?.parent_cat_id === 1 && product?.prod_type == "R");
 });
 
 </script>
 
 <template>
   <section class="home-product-horizontal-style">
-    <h2>Cloths and Footware</h2>
-    <swiper :mousewheel="true" :navigation="true" :keyboard="true" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
+    <RouterLink
+    class="link-decoration"
+    :to="{ name: 'CategoryProducts', params: { id: 1, slug: 'Clothing-and-Fashion' } }"
+    >
+      <h2>Cloths and Footware</h2>
+    </RouterLink>
+    <swiper 
+    :mousewheel="true" 
+    :navigation="true" 
+    :keyboard="true" 
+    :slidesPerView="1" 
+    :spaceBetween="30" 
+    :autoplay="{
+      delay: 2500,
+      disableOnInteraction: false,
+    }"
+    :pagination="{
+      clickable: false,
+    }"
+    :breakpoints="{
       '640': {
         slidesPerView: 1,
         spaceBetween: 20,
@@ -101,8 +119,8 @@ const filterProducts = computed(() => {
           </RouterLink>
 
           <div>
-            <h5><del>$45</del> Save <span>${{ product?.price }}</span></h5>
-            <p>Description</p>
+            <h5><del>45 USD</del> Save <span>{{ product?.price }} {{ product?.currency_name }}</span></h5>
+            <p>{{ product?.pro_name }}</p>
             <span @click="handleAddToCart(product)" class="material-icons">
               shopping_cart
             </span>
@@ -218,5 +236,9 @@ p {
 .material-icons:hover {
   color: #1F5DA0;
   cursor: pointer;
+}
+
+.link-decoration {
+  text-decoration: none;
 }
 </style>

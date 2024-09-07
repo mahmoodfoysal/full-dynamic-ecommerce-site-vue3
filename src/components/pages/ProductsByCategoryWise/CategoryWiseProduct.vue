@@ -15,7 +15,7 @@ const props = defineProps({
 const { searchData } = toRefs(props);
 
 const route = useRoute();
-const itemsPerPage = 8;
+const itemsPerPage = 16;
 
 const products = ref([]);
 const filterProducts = ref([]);
