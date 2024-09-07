@@ -15,13 +15,15 @@ const props = defineProps({
 const { productItem } = toRefs(props);
 
 const handleAddToCart = (product) => {
-  const { pro_name, price, pro_image, pro_id, currency_name } = product;
+  const { _id, pro_name, price, pro_image, pro_id, currency_name, stock } = product;
   let item = {
+    _id,
     pro_name,
     price,
     pro_image,
     pro_id,
-    currency_name
+    currency_name,
+    stock
   }
   let shopping_cart = getDb() || {};
   if (shopping_cart[item.pro_id]) {

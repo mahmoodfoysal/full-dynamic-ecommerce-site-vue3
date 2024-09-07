@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue';
 import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
-import { createOrders } from '@/API/All_API.js';
+import { createOrders, updateStock } from '@/API/All_API.js';
 
 const store = useStore();
 
@@ -73,13 +73,28 @@ const handleOrderSubmit = async () => {
     if(confirm(text) == true) {
         const result = await createOrders(data);
     if(result?.data?.insertedId) {
+        const updateStockPromises = cartItem.value.map(item => {
+                const newStock = item.stock - item.quantity;
+                return handleUpdateStock(item._id, { stock: newStock });
+            });
+
+            // Wait for all stock updates to complete
+            await Promise.all(updateStockPromises);
         alert("Order placed successful");
         router.push('/');
         localStorage.removeItem('shopping_cart');
         store.setCartItem([]);
     }
     }
+};
 
+const handleUpdateStock = async (id, data) => {
+    try {
+        const response = await updateStock(id, data);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating stock", error);
+    }
 };
 
 // *******************************calculation section****************************
