@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref, computed, toRefs } from 'vue';
-import { getProducts, getCategories, postProduct, deleteProduct } from '@/API/All_API.js';
+import { getProducts, getCategories, postProduct, deleteProduct, updateStatus } from '@/API/All_API.js';
 
 const props = defineProps({
     searchData: {
@@ -331,6 +331,21 @@ const handleChangeProdType = () => {
     toggleField.value = inputData.value.prod_type.type
 };
 
+const handleUpdateStatus = async (id, status) => {
+    try {
+        const text = 'Are you want to sure?';
+        if(confirm(text) == true) {
+        const result = await updateStatus(id, {status: status});
+        if(result.data.modifiedCount == 1) {
+            alert("Status update");
+        }
+        }
+    }
+    catch(error) {
+        console.log('status', error);
+    }
+};
+
 const filterSearchProducts = computed(() => {
         return productList.value?.filter((item) =>
             Object.entries(item)
@@ -422,8 +437,16 @@ const filterSearchProducts = computed(() => {
                     </td>
                     <td>
                         <div class="icon-style d-flex align-items-center">
-                            <span class="material-icons me-2">
+                            <span v-if="item.status == 1" 
+                            @click="handleUpdateStatus(item?._id, 0)"
+                            class="material-icons me-2 text-success">
                                 visibility
+                            </span>
+                            <span 
+                            v-if="item.status == 0"
+                            @click="handleUpdateStatus(item?._id, 1)"
+                            class="material-icons me-2 text-danger">
+                            visibility_off
                             </span>
                             <span @click="handleEdit(item)" class="material-icons me-2">
                                 edit

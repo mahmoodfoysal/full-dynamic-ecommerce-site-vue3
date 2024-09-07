@@ -144,6 +144,11 @@ export const updateStock = async (id, data) => {
   return await axios.patch(url, data);
 };
 
+export const updateStatus = async (id, data) => {
+  const url = `http://localhost:5000/status/${id}`;
+  return await axios.patch(url, data);
+}
+
 // ###################### all delete operation are here ######################## 
 
 // delete admin 
