@@ -258,6 +258,8 @@ const handleEdit = (prod_item) => {
         }
 
         inputData.value.prod_type = productType.find((item) => item.type == prod_item.prod_type);
+        inputData.value.status = productStatus.find((item) => item?.id == prod_item.status);
+        inputData.value.currency_type = currencyList.find((item) => item?.currency_id == prod_item?.currency_id)
         inputData.value.pro_id = prod_item?.pro_id;
         inputData.value.pro_image = prod_item?.pro_image;
         inputData.value.pro_name = prod_item?.pro_name;
@@ -618,7 +620,7 @@ const filterSearchProducts = computed(() => {
                                 :class="{ isValidate: isValidation && !inputData.prod_type }"
                                 class="form-select form-select-md mb-1">
                                 <option v-for="(item, index) in productType" :key="index" :value="item">
-                                    {{ item?.name }} - ( {{ item.type }} )
+                                    ( {{ item.type }} ) - {{ item?.name }}
                                 </option>
                             </select>
                         </div>

@@ -145,7 +145,7 @@ const handleOrderSubmit = async (product) => {
                 <h3 class="contact-info-style">Contact Information</h3>
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Full Name</label>
+                        <label for="inputEmail4" class="form-label">Full Name *</label>
                         <input 
                         v-model="fullName" 
                         :class="{'is-validate': isValidation && !fullName}"
@@ -155,7 +155,7 @@ const handleOrderSubmit = async (product) => {
                         disabled>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Email</label>
+                        <label for="inputEmail4" class="form-label">Email *</label>
                         <input 
                         v-model="email" 
                         :class="{'is-validate': isValidation && !email}"
@@ -165,7 +165,7 @@ const handleOrderSubmit = async (product) => {
                         disabled>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Phone No</label>
+                        <label for="inputEmail4" class="form-label">Phone No *</label>
                         <input 
                         v-model.trim="phoneNumber"
                         :class="{'is-validate': isValidation && !phoneNumber}" 
@@ -176,7 +176,7 @@ const handleOrderSubmit = async (product) => {
                         required>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputState" class="form-label">Country</label>
+                        <label for="inputState" class="form-label">Country *</label>
                         <select 
                         v-model.trim="country" 
                         :class="{'is-validate': isValidation && !country}"
@@ -189,7 +189,7 @@ const handleOrderSubmit = async (product) => {
                     </div>
 
                     <div class="col-md-4">
-                        <label for="inputEmail4" class="form-label">City</label>
+                        <label for="inputEmail4" class="form-label">City *</label>
                         <input 
                         v-model.trim="city" 
                         :class="{'is-validate': isValidation && !city}"
@@ -197,7 +197,7 @@ const handleOrderSubmit = async (product) => {
                             placeholder="City Name" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="inputEmail4" class="form-label">state</label>
+                        <label for="inputEmail4" class="form-label">state *</label>
                         <input 
                         v-model.trim="state" 
                         :class="{'is-validate': isValidation && !state}"
@@ -205,7 +205,7 @@ const handleOrderSubmit = async (product) => {
                             placeholder="Enter State">
                     </div>
                     <div class="col-md-4">
-                        <label for="inputZip" class="form-label">Zip</label>
+                        <label for="inputZip" class="form-label">Zip *</label>
                         <input 
                         v-model.trim="zip" 
                         :class="{'is-validate': isValidation && !zip}"
@@ -213,7 +213,7 @@ const handleOrderSubmit = async (product) => {
                             required>
                     </div>
                     <div class="col-12">
-                        <label for="inputAddress" class="form-label">Address</label>
+                        <label for="inputAddress" class="form-label">Address *</label>
                         <input 
                         v-model.trim="address" 
                         :class="{'is-validate': isValidation && !address}"

@@ -146,7 +146,7 @@ const filterReview = () => {
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
                             <span>Sold By: {{ filteredProducts[0]?.brand }}</span>
-                            <span>Category: </span>
+                            <span>Category: {{ filteredProducts[0]?.parent_cat_name }}</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
                             <span>Size:</span>
