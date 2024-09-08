@@ -48,37 +48,66 @@ const cartItem = computed(() => {
 })
 
 const handleAddToCart = (product) => {
-    const { pro_name, price, pro_image, pro_id, currency_name } = product;
+    const { _id, pro_name, price, pro_image, pro_id, currency_name, stock } = product;
     let item = {
+        _id,
         pro_name,
         price,
         pro_image,
         pro_id,
-        currency_name
+        currency_name,
+        stock
     }
     let shopping_cart = getDb() || {};
+
+    // if (shopping_cart[item.pro_id]) {
+    //     shopping_cart[item.pro_id].quantity += 1;
+    // }
+
+    // else {
+    //     item.quantity = 1;
+    //     shopping_cart[item.pro_id] = item;
+    // }
 
     if (shopping_cart[item.pro_id]) {
-        shopping_cart[item.pro_id].quantity += 1;
+    if (shopping_cart[item.pro_id].quantity < stock) {
+      shopping_cart[item.pro_id].quantity += 1;
+    } else {
+      alert("Cannot add more, stock limit reached!");
     }
-
-    else {
-        item.quantity = 1;
-        shopping_cart[item.pro_id] = item;
-    }
+  } else {
+    item.quantity = 1;
+    shopping_cart[item.pro_id] = item;
+  }
     updateDb(shopping_cart);
 }
+
+// const handleIncrementQuantity = (id) => {
+//     let shopping_cart = getDb() || {};
+//     if (shopping_cart[id]) {
+//         shopping_cart[id].quantity += 1;
+//     }
+//     else {
+//         alert('Please Click Add To Cart Button');
+//     }
+//     updateDb(shopping_cart);
+// }
 
 const handleIncrementQuantity = (id) => {
-    let shopping_cart = getDb() || {};
-    if (shopping_cart[id]) {
-        shopping_cart[id].quantity += 1;
+  let shopping_cart = getDb() || {};
+  if (shopping_cart[id]) {
+    if (shopping_cart[id].quantity < shopping_cart[id].stock) {
+      shopping_cart[id].quantity += 1;
+    } else {
+      alert("Cannot add more, stock limit reached!");
     }
-    else {
-        alert('Please Click Add To Cart Button');
-    }
-    updateDb(shopping_cart);
-}
+  } else {
+    alert("Please click the 'Add To Cart' button first.");
+  }
+
+  updateDb(shopping_cart);
+};
+
 
 const handleDecrementQuantity = (id) => {
     let shopping_cart = getDb() || {};
