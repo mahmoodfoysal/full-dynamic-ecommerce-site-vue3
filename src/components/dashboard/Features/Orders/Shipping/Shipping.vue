@@ -230,10 +230,10 @@ const handleOrderDetails = (details) => {
                     <!-- product info end  -->
                 </section>
             </div>
-            <div class="d-flex justify-content-center mb-2">
+            <div class="d-flex justify-content-center mb-2 btn-style">
                 <button 
                 @click="isModal = false"
-                type="button" class="btn btn-primary text-center ps-3 pe-3" data-bs-dismiss="modal">Ok</button>
+                type="button" class="text-center ps-3 pe-3" data-bs-dismiss="modal">Ok</button>
             </div>
         </div>
     </div>

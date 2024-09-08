@@ -10,6 +10,33 @@
     opacity: 0.9;
 }
 
+.submit-cancel-btn-group .cancel-btn {
+    background:#323333;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+}
+.submit-cancel-btn-group .submit-btn {
+    background:#1F5DA0;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+}
+.submit-cancel-btn-group .cancel-btn:hover {
+    opacity: 0.9;
+}
+.submit-cancel-btn-group .submit-btn:hover {
+    opacity: 0.9;
+}
+
 .category-div {
     width: 1100px !important;
 }

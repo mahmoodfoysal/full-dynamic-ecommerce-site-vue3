@@ -98,6 +98,7 @@ const handleCreate = () => {
     isModal.value = true;
     isValidation.value = false;
     isDetailsModal.value = false;
+    isEdit.value = false;
     handleResetInput();
 };
 
@@ -109,6 +110,7 @@ const handleProductDetails = (item) => {
 const handleCancel = () => {
     handleResetInput();
     isValidation.value = false;
+    isEdit.value = false;
 };
 
 const handleClose = () => {
@@ -219,10 +221,43 @@ const handleSubmit = async () => {
             const result = await postProduct(data);
             if (result.data.insertedId || result.data.modifiedCount == 1) {
                 alert(result.data.insertedId ? 'Product added successful' : 'Update product info');
-                handleResetInput();
+                
                 isModal.value = false;
                 isEdit.value = false;
                 isValidation.value = false;
+                const obj = {
+            parent_cat_id: Number(inputData.value.parent_cat_info.parent_cat_id),
+            parent_cat_name: inputData.value.parent_cat_info.parent_cat_name,
+            sub_cat_id: Number(inputData.value.sub_cat_info.sub_cat_id),
+            sub_cat_name: inputData.value.sub_cat_info.sub_cat_name,
+            sub_sub_cat_id: inputData.value.sub_sub_cat_info ? Number(inputData.value.sub_sub_cat_info.sub_sub_cat_id) : null,
+            sub_sub_cat_name: inputData.value.sub_sub_cat_info ? inputData.value.sub_sub_cat_info.sub_sub_cat_name : null,
+            sub_sub_sub_cat_id: inputData.value.sub_sub_sub_cat_info ? Number(inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_id) : null,
+            sub_sub_sub_cat_name: inputData.value.sub_sub_sub_cat_info ? inputData.value.sub_sub_sub_cat_info.sub_sub_sub_cat_name : null,
+            prod_type_name: inputData.value.prod_type.name,
+            prod_type: inputData.value.prod_type.type,
+            pro_id: Number(inputData.value.pro_id),
+            pro_image: inputData.value.pro_image,
+            pro_name: inputData.value.pro_name,
+            price: Number(inputData.value.price),
+            discount_price: inputData.value.discount_price ? Number(inputData.value.discount_price) : null,
+            offer_price: inputData.value.offer_price ? Number(inputData.value.offer_price) : null,
+            stock: Number(inputData.value.stock),
+            description: inputData.value.description,
+            brand: inputData.value.brand,
+            currency_id: Number(inputData.value.currency_type.currency_id),
+            currency_name: inputData.value.currency_type.currency_name,
+            status: inputData.value.status.id
+                }
+                const index = productList.value.findIndex(
+                        (item) => item._id == inputData.value.id
+                    );
+                    if (index > -1) {
+                        productList.value[index] = obj;
+                    } else {
+                        productList.value.unshift(obj);
+                    }
+                    handleResetInput();
             }
         }
 
@@ -325,6 +360,7 @@ const handleResetInput = () => {
     inputData.value.brand = null;
     inputData.value.description = null;
     inputData.value.currency_type = null;
+    inputData.value.status = null;
 };
 
 const handleChangeProdType = () => {
@@ -338,6 +374,7 @@ const handleUpdateStatus = async (id, status) => {
         const result = await updateStatus(id, {status: status});
         if(result.data.modifiedCount == 1) {
             alert("Status update");
+            handleGetProducts();
         }
         }
     }
@@ -753,12 +790,12 @@ const filterSearchProducts = computed(() => {
                                 class="form-control" id="exampleInputText" placeholder="Product description"></textarea>
                         </div>
 
-                        <div>
-                            <button @click="handleCancel" type="button" class="btn btn-secondary me-2">
+                        <div class="submit-cancel-btn-group">
+                            <button @click="handleCancel" type="button" class="cancel-btn me-2">
                                 Cancel
                             </button>
-                            <button @click="handleSubmit" type="button" class="btn btn-primary">
-                                Submit
+                            <button @click="handleSubmit" type="button" class="submit-btn">
+                                {{ isEdit ? 'Update' : 'Submit' }}
                             </button>
                         </div>
                     </div>
