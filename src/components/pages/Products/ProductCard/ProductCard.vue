@@ -14,8 +14,42 @@ const props = defineProps({
 
 const { productItem } = toRefs(props);
 
+// const handleAddToCart = (product) => {
+//   const { _id, pro_name, price, pro_image, pro_id, currency_name, stock } = product;
+//   let item = {
+//     _id,
+//     pro_name,
+//     price,
+//     pro_image,
+//     pro_id,
+//     currency_name,
+//     stock
+//   }
+//   let shopping_cart = getDb() || {};
+//   if (shopping_cart[item.pro_id]) {
+//     shopping_cart[item.pro_id].quantity += 1;
+//   } 
+
+//   else {
+//     item.quantity = 1;
+//     shopping_cart[item.pro_id] = item;
+//   }
+//   updateDb(shopping_cart);
+// };
+
+// const getDb = () => {
+//   const cartData = localStorage.getItem('shopping_cart');
+//   return cartData ? JSON.parse(cartData) : null;
+// };
+
+// const updateDb = (cart) => {
+//   localStorage.setItem('shopping_cart', JSON.stringify(cart));
+//   store.setCartItem(cart);
+// };
+
 const handleAddToCart = (product) => {
   const { _id, pro_name, price, pro_image, pro_id, currency_name, stock } = product;
+  
   let item = {
     _id,
     pro_name,
@@ -24,16 +58,21 @@ const handleAddToCart = (product) => {
     pro_id,
     currency_name,
     stock
-  }
+  };
+  
   let shopping_cart = getDb() || {};
-  if (shopping_cart[item.pro_id]) {
-    shopping_cart[item.pro_id].quantity += 1;
-  } 
 
-  else {
+  if (shopping_cart[item.pro_id]) {
+    if (shopping_cart[item.pro_id].quantity < stock) {
+      shopping_cart[item.pro_id].quantity += 1;
+    } else {
+      alert("Cannot add more, stock limit reached!");
+    }
+  } else {
     item.quantity = 1;
     shopping_cart[item.pro_id] = item;
   }
+
   updateDb(shopping_cart);
 };
 
@@ -44,8 +83,10 @@ const getDb = () => {
 
 const updateDb = (cart) => {
   localStorage.setItem('shopping_cart', JSON.stringify(cart));
+
   store.setCartItem(cart);
 };
+
 
 </script>
 

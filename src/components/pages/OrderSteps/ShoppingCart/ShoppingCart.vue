@@ -24,19 +24,39 @@ const updateDb = (cart) => {
 }
 
 // event handler for increase product 
+// const handleIncrementQuantity = (id) => {
+//     let shopping_cart = getDb() || {};
+//     if (shopping_cart[id]) {
+//         shopping_cart[id].quantity += 1;
+//     }
+//     else {
+//         const item = {
+//             quantity: 1,
+//         };
+//         shopping_cart[id] = item;
+//     }
+//     updateDb(shopping_cart);
+// }
+
+// event handler for increase product 
 const handleIncrementQuantity = (id) => {
     let shopping_cart = getDb() || {};
     if (shopping_cart[id]) {
-        shopping_cart[id].quantity += 1;
-    }
-    else {
+        const currentItem = shopping_cart[id];
+        if (currentItem.quantity < currentItem.stock) {
+            shopping_cart[id].quantity += 1;
+        } else {
+            alert("Cannot add more, stock limit reached!");
+        }
+    } else {
         const item = {
             quantity: 1,
+            stock: shopping_cart.stock,
         };
         shopping_cart[id] = item;
     }
     updateDb(shopping_cart);
-}
+};
 
 // event handler for decrement products 
 const handleDecrementQuantity = (id) => {
