@@ -157,7 +157,33 @@ const handleSubCategory = () => {
         </div>
 
         <!-- Image category list  -->
-        <div class="row row-cols-1 row-cols-md-2 g-4 mt-2 mb-2">
+
+        <div 
+        v-if="categoryImgList.length === 0"
+        class="row row-cols-1 row-cols-md-2 g-4 mt-2 mb-2">
+            <div v-for="(n, index) in 10" :key="index" class="col">
+                <div class="card card-style">
+                    <div class="row placeholder-glow">
+                        <div class="col-md-3 image-style">
+                            <img src="" class="card-img-top placeholder " alt="...">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body item-style">
+                                <h5 class="card-title"><span class="placeholder col-12"></span></h5>
+                                <p class="card-text mb-0"><span class="placeholder col-12"></span></p>
+                                <p class="card-text mb-0"><span class="placeholder col-12"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div 
+        v-else
+        class="row row-cols-1 row-cols-md-2 g-4 mt-2 mb-2">
             <div v-for="(item, index) in categoryImgList" :key="index" class="col">
                 <div class="card card-style">
                     <div class="row">
@@ -188,13 +214,17 @@ const handleSubCategory = () => {
 
         <!-- Add image Category Modal div  -->
 
-        <div v-if="isModal" class="offcanvas offcanvas-end category-div show" tabindex="-1" id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel" style="visibility: visible; width: 100%;">
+        <nav
+        v-if="isModal" 
+        class="offcanvas offcanvas-end category-div show" 
+        tabindex="-1" 
+        id="offcanvasNavbar"
+        style="visibility: visible; width: 100%;">
 
             <div class="d-flex align-items-center">
                 <button @click="handleClose" type="button" class="btn-close me-2 ms-1" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
-                <h5 class="offcanvas-title modal-title" id="offcanvasNavbarLabel">Add Image Category</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Add Image Category</h5>
             </div>
 
             <div class="offcanvas-body">
@@ -258,7 +288,7 @@ const handleSubCategory = () => {
                     </div>
                 </section>
             </div>
-        </div>
+        </nav>
 
     </section>
 </template>
