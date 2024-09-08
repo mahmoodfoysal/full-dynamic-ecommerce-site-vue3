@@ -4,13 +4,13 @@ import { onMounted, computed, ref } from 'vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Navigation, Keyboard, Autoplay, Pagination } from 'swiper/modules';
+import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
 import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
 import { getProducts } from '@/API/All_API.js';
 
 const store = useStore();
-const modules = [Navigation, Keyboard, Autoplay, Pagination];
+const modules = [Navigation, Keyboard, Autoplay];
 
 const products = ref([]);
 
@@ -31,12 +31,14 @@ const handleGetProducts = async () => {
 
 // cart code write here 
 const handleAddToCart = (product) => {
-  const { pro_name, price, pro_image, pro_id } = product;
+  const { _id, pro_name, price, pro_image, pro_id, stock } = product;
   let item = {
+    _id,
     pro_name,
     price,
     pro_image,
     pro_id,
+    stock
   }
   let shopping_cart = getDb() || {};
 
@@ -104,14 +106,14 @@ const filterProducts = computed(() => {
       },
     }" :modules="modules" class="mySwiper">
       <swiper-slide 
-      v-if="filterProducts.length === 0"
+      v-if="products.length === 0"
       v-for="n in 10" :key="n">
         <div class="slider-card-style placeholder-glow">
           <span style="padding: 110px;" class="placeholder col-12"></span>
         </div>
       </swiper-slide>
 
-      <swiper-slide v-else v-for="(product, index) in filterProducts" :key="index">
+      <swiper-slide v-for="(product, index) in filterProducts" :key="index">
         <div class="slider-card-style">
           <RouterLink class="no-underline-link"
             :to="{ name: 'ProductDetail', params: { id: product.pro_id, slug: product?.pro_name?.replace(/\s+/g, '-') } }">

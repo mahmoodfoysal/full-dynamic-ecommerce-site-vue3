@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, computed, ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
+import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -9,7 +9,7 @@ import { RouterLink } from 'vue-router';
 import { useStore } from '@/stores/TaskStore.js';
 import { getProducts } from '@/API/All_API.js';
 
-const modules = [Navigation, Pagination, Keyboard, Autoplay];
+const modules = [Navigation, Keyboard, Autoplay];
 const store = useStore();
 
 const productList = ref([]);
@@ -29,12 +29,14 @@ const handleGetProducts = async () => {
 };
 
 const handleAddToCart = (product) => {
-  const { pro_name, price, pro_image, pro_id } = product;
+  const { _id ,pro_name, price, pro_image, pro_id, stock } = product;
   let item = {
+    _id,
     pro_name,
     price,
     pro_image,
     pro_id,
+    stock
   }
   let shopping_cart = getDb() || {};
 
@@ -63,8 +65,6 @@ const updateDb = (cart) => {
 const filterProducts = computed(() => {
   return productList.value.filter(product => product?.parent_cat_id === 3 && product?.prod_type == "R" && product?.status === 1);
 });
-
-
 
 </script>
     
@@ -104,14 +104,14 @@ const filterProducts = computed(() => {
       },
     }" :modules="modules" class="mySwiper">
       <swiper-slide 
-      v-if="filterProducts.length === 0"
+      v-if="productList.length === 0"
       v-for="n in 10" :key="n">
         <div class="slider-card-style placeholder-glow">
           <span style="padding: 90px;" class="placeholder col-12"></span>
         </div>
       </swiper-slide>
 
-      <swiper-slide v-else v-for="(product, index) in filterProducts" :key="index">
+      <swiper-slide v-for="(product, index) in filterProducts" :key="index">
         <div class="slider-card-style">
           <RouterLink class="no-underline-link"
             :to="{ name: 'ProductDetail', params: { id: product.pro_id, slug: product?.pro_name?.replace(/\s+/g, '-') } }">
