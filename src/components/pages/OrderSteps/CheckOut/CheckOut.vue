@@ -126,7 +126,7 @@ let totalAmount = computed(() => {
 
 <template>
     <section class="check-out-container-style container">
-        <div class="row g-4">
+        <div class="row g-4 checkout-field-style">
             <div class="col-md-6">
                 <h3 class="contact-info-style">Contact Information</h3>
                 <div class="row g-3">
@@ -220,7 +220,7 @@ let totalAmount = computed(() => {
                         placeholder="1234 Main St" 
                         required>
                     </div>
-                    <h4>Delivary Method</h4>
+                    <h4 class="delivery-text">Delivery Method</h4>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Number</label>
                         <input 
@@ -261,7 +261,7 @@ let totalAmount = computed(() => {
                     </div>
 
                     <div class="col-12">
-                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary big-screen-submit-btn">Submit</button>
+                        <button @click="handleOrderSubmit" type="submit" class="big-screen-submit-btn">Submit</button>
                     </div>
                 </div>
 
@@ -321,7 +321,7 @@ scale
                             </tr>
                         </table>
                         <div class="text-center mobile-screen-submit-btn mt-3">
-                        <button @click="handleOrderSubmit" type="submit" class="btn btn-primary">Submit</button>
+                        <button @click="handleOrderSubmit" type="submit" class="submit-btn-style">Submit</button>
                     </div>
                     </section>
                 </section>
@@ -344,6 +344,40 @@ p {
 
 .contact-info-style {
     margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.delivery-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.checkout-field-style label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+.checkout-field-style input {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+.checkout-field-style select {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.big-screen-submit-btn {
+    background:#1F5DA0;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+}
+.big-screen-submit-btn:hover {
+opacity: 0.9;
 }
 
 .cart-container {
@@ -353,6 +387,11 @@ p {
 .calculation-section {
     border-top: 1px solid black;
     margin-top: 20px;
+}
+
+.calculation-section td {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
 .checkout-btn-div {
@@ -375,6 +414,10 @@ p {
     width: 100%;
     margin: auto;
     overflow-y: scroll;
+}
+.cart-section-style h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 
@@ -408,6 +451,20 @@ p {
 
 .checkout-btn-div button:hover {
     cursor: pointer;
+}
+
+.mobile-screen-submit-btn button {
+    background: #1F5DA0;
+    padding: 10px 18px;
+    border: none;
+    color: #FFF;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+.mobile-screen-submit-btn button:hover {
+opacity: 0.9;
 }
 
 .scale-quantity {

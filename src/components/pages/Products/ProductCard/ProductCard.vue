@@ -137,6 +137,7 @@ p, span {
   color: #1F5DA9;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
+  font-size: 18px;
 }
 
 .card-style p {

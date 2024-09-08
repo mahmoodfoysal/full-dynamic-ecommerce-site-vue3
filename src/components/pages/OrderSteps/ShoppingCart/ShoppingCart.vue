@@ -121,7 +121,7 @@ let totalAmount = computed(() => {
             <section class="cart-section-style">
                 <div v-for="(item, index) in cart" :key="index" class="card mb-3"
                     style="max-width: 540px; margin: auto;">
-                    <div class="row g-0">
+                    <div class="row g-0 card-font-style">
                         <div class="col-md-3">
                             <img :src="item.pro_image" class="img-fluid rounded-start cart-img-style" alt="...">
                         </div>
@@ -201,6 +201,11 @@ p {
     padding: 0;
 }
 
+.card-font-style h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
 /* .cart-section-style {
     height: calc(100vh - 320px);
     width: 40%;
@@ -216,6 +221,10 @@ p {
     border-top: 1px solid black;
     margin-top: 20px;
 }
+.calculation-section td {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
 
 .checkout-btn-div {
     width: 50%;
@@ -230,6 +239,11 @@ p {
     box-sizing: border-box;
     margin-bottom: 10px;
     border-radius: 8px;
+}
+
+.component-info-div h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 .cart-img-style {

@@ -3,7 +3,7 @@ import { useStore } from '@/stores/TaskStore.js';
 import { ref, onMounted, computed, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import router from '@/router/router.js';
-import { getProducts, createOrders } from '@/API/All_API.js';
+import { getProducts, createOrders, updateStock } from '@/API/All_API.js';
 
 const route = useRoute();
 const store = useStore();
@@ -47,7 +47,13 @@ const filterProducts = computed(() => {
 
 // event handler for increase product 
 const handleIncrementQuantity = (id) => {
-    quantity.value += 1;
+    if (quantity.value < filterProducts.value[0].stock) {
+        quantity.value += 1;
+    }
+    else {
+        alert('You quentity more then available stock');
+        return;
+    }
 };
 
 // event handler for decrement products 
@@ -82,15 +88,15 @@ let totalAmount = computed(() => {
 
 // event handler for submit order 
 const handleOrderSubmit = async (product) => {
-    if(
-    !fullName.value ||
-    !email.value || 
-    !phoneNumber.value ||
-    !city.value || 
-    !country.value ||
-    !state.value ||
-    !zip.value || 
-    !address.value ) {
+    if (
+        !fullName.value ||
+        !email.value ||
+        !phoneNumber.value ||
+        !city.value ||
+        !country.value ||
+        !state.value ||
+        !zip.value ||
+        !address.value) {
         isValidation.value = true;
         alert("Please fill up all required field!!!");
         return;
@@ -131,56 +137,50 @@ const handleOrderSubmit = async (product) => {
         const result = await createOrders(data);
         if (result?.data?.insertedId) {
             alert("Order placed successful");
+            const newStock = filterProducts.value[0].stock - quantity.value;
+            handleUpdateStock(filterProducts.value[0]._id, { stock: newStock });
             isValidation.value = false;
             router.push('/');
         };
+    }
+};
+
+const handleUpdateStock = async (id, data) => {
+    try {
+        const response = await updateStock(id, data);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating stock", error);
     }
 };
 </script>
 
 <template>
     <section class="check-out-container-style container">
-        <div class="row g-4">
+        <div class="row g-4 order-form-style">
             <div class="col-md-6">
                 <h3 class="contact-info-style">Contact Information</h3>
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name *</label>
-                        <input 
-                        v-model="fullName" 
-                        :class="{'is-validate': isValidation && !fullName}"
-                        type="text" 
-                        class="form-control" 
-                        id="inputEmail4" 
-                        disabled>
+                        <input v-model="fullName" :class="{ 'is-validate': isValidation && !fullName }" type="text"
+                            class="form-control" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email *</label>
-                        <input 
-                        v-model="email" 
-                        :class="{'is-validate': isValidation && !email}"
-                        type="email" 
-                        class="form-control" 
-                        id="inputEmail4" 
-                        disabled>
+                        <input v-model="email" :class="{ 'is-validate': isValidation && !email }" type="email"
+                            class="form-control" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No *</label>
-                        <input 
-                        v-model.trim="phoneNumber"
-                        :class="{'is-validate': isValidation && !phoneNumber}" 
-                        type="number" 
-                        class="form-control" 
-                        id="inputEmail4"
-                        placeholder="Enter Your Contact Number" 
-                        required>
+                        <input v-model.trim="phoneNumber" :class="{ 'is-validate': isValidation && !phoneNumber }"
+                            type="number" class="form-control" id="inputEmail4" placeholder="Enter Your Contact Number"
+                            required>
                     </div>
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Country *</label>
-                        <select 
-                        v-model.trim="country" 
-                        :class="{'is-validate': isValidation && !country}"
-                        id="inputState" class="form-select" required>
+                        <select v-model.trim="country" :class="{ 'is-validate': isValidation && !country }"
+                            id="inputState" class="form-select" required>
                             <option selected>Select Country</option>
                             <option>Bangladesh</option>
                             <option>India</option>
@@ -190,37 +190,25 @@ const handleOrderSubmit = async (product) => {
 
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">City *</label>
-                        <input 
-                        v-model.trim="city" 
-                        :class="{'is-validate': isValidation && !city}"
-                        type="text" class="form-control" id="inputEmail4"
-                            placeholder="City Name" required>
+                        <input v-model.trim="city" :class="{ 'is-validate': isValidation && !city }" type="text"
+                            class="form-control" id="inputEmail4" placeholder="City Name" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">state *</label>
-                        <input 
-                        v-model.trim="state" 
-                        :class="{'is-validate': isValidation && !state}"
-                        type="text" class="form-control" id="inputEmail4"
-                            placeholder="Enter State">
+                        <input v-model.trim="state" :class="{ 'is-validate': isValidation && !state }" type="text"
+                            class="form-control" id="inputEmail4" placeholder="Enter State">
                     </div>
                     <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip *</label>
-                        <input 
-                        v-model.trim="zip" 
-                        :class="{'is-validate': isValidation && !zip}"
-                        type="zip" class="form-control" id="inputZip" placeholder="Zip Code"
-                            required>
+                        <input v-model.trim="zip" :class="{ 'is-validate': isValidation && !zip }" type="zip"
+                            class="form-control" id="inputZip" placeholder="Zip Code" required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Address *</label>
-                        <input 
-                        v-model.trim="address" 
-                        :class="{'is-validate': isValidation && !address}"
-                        type="text" class="form-control" id="inputAddress"
-                            placeholder="1234 Main St" required>
+                        <input v-model.trim="address" :class="{ 'is-validate': isValidation && !address }" type="text"
+                            class="form-control" id="inputAddress" placeholder="1234 Main St" required>
                     </div>
-                    <h4>Delivary Method</h4>
+                    <h4 class="delivery-info-style">Delivary Method</h4>
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Card Number</label>
                         <input v-model.trim="cardNumber" type="number" class="form-control" id="inputEmail4"
@@ -258,18 +246,18 @@ const handleOrderSubmit = async (product) => {
                                         class="img-fluid rounded-start cart-img-style" alt="...">
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                    <div class="">
+                                    <div class="card-name-style">
                                         <h6>{{ filterProducts[0]?.pro_name }}</h6>
                                     </div>
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
                                         <div class="d-flex add-sub-style">
-                                            <span @click="handleDecrementQuantity()" class="material-icons me-2">
+                                            <span @click="handleDecrementQuantity" class="material-icons me-2">
                                                 remove
                                             </span>
                                             <h5 class="me-2">{{ quantity }}</h5>
-                                            <span @click="handleIncrementQuantity()" class="material-icons me-2">
+                                            <span @click="handleIncrementQuantity" class="material-icons me-2">
                                                 add
                                             </span>
                                         </div>
@@ -331,8 +319,30 @@ p {
     padding: 0;
 }
 
+.delivery-info-style {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
 .contact-info-style {
     margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.order-form-style label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.order-form-style input {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.order-form-style select {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
 .cart-container {
@@ -342,6 +352,13 @@ p {
 .calculation-section {
     border-top: 1px solid black;
     margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.card-name-style {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 .checkout-btn-div {
@@ -375,11 +392,13 @@ p {
 
 .price-delete-style {
     cursor: pointer;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
 }
 
 .price-delete-style span:hover {
     cursor: pointer;
-    color: rgb(204, 9, 9);
+    color: #323333;
 }
 
 .checkout-btn-div button {
