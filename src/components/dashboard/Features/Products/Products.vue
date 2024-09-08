@@ -538,11 +538,12 @@ const filterSearchProducts = computed(() => {
                     <div class="col">
                         <div class="card">
                             <img :src="prodDetails?.pro_image" class="card-img-top" alt="...">
-                            <div class="card-body">
+                            <div class="card-body card-style">
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h5 class="card-title mt-3">{{ prodDetails?.pro_name }}</h5>
+                                        <h5 class="card-title mt-3">
+                                            {{ prodDetails?.pro_name }}</h5>
                                     </div>
 
                                     <div class="icon-style d-flex align-items-center mt-3">
@@ -555,44 +556,70 @@ const filterSearchProducts = computed(() => {
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <p class="card-text mb-0">Product id: {{ prodDetails.pro_id }}</p>
-                                    <p class="card-text mb-0">Product Type: {{ prodDetails.prod_type_name }}</p>
-                                    <p class="card-text mb-0">Brand: {{ prodDetails.brand ? prodDetails.brand : 'No information about brand' }}</p>
+                                    <p class="card-text mb-0">Product id: <span>
+                                        {{ prodDetails.pro_id }}
+                                    </span></p>
+                                    <p class="card-text mb-0">Product Type: <span>
+                                        {{ prodDetails.prod_type_name }}
+                                    </span></p>
+                                    <p class="card-text mb-0">Brand: <span>
+                                        {{ prodDetails.brand ? prodDetails.brand : 'No information about brand' }}
+                                    </span></p>
 
                                 </div>
-                                <p class="card-text mb-0">
-                                    Parent category: ({{ prodDetails?.parent_cat_id }}) - {{
+
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text mb-0">
+                                    Parent category: <span>
+                                        ({{ prodDetails?.parent_cat_id }}) - {{
                                     prodDetails?.parent_cat_name }}
+                                    </span>
                                 </p>
                                 <p v-if="prodDetails.sub_cat_id" class="card-text mb-0">
-                                    Sub category: ({{ prodDetails?.sub_cat_id }}) - {{ prodDetails.sub_cat_name }}
+                                    Sub category: <span>
+                                        ({{ prodDetails?.sub_cat_id }}) - {{ prodDetails.sub_cat_name }}
+                                    </span>
                                 </p>
-                                <p v-if="prodDetails.sub_sub_cat_id" class="card-text mb-0">
-                                    Sub sub category: ({{ prodDetails?.sub_sub_cat_id }}) - {{
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <p v-if="prodDetails.sub_sub_cat_id" class="card-text mb-0">
+                                    Sub sub category: <span>
+                                        ({{ prodDetails?.sub_sub_cat_id }}) - {{
                                     prodDetails.sub_sub_cat_name }}
+                                    </span>
                                 </p>
                                 <p v-if="prodDetails.sub_sub_sub_cat_id" class="card-text mb-0">
-                                    Sub sub sub category: ({{ prodDetails?.sub_sub_sub_cat_id }}) - {{
+                                    Sub sub sub category: <span>
+                                        ({{ prodDetails?.sub_sub_sub_cat_id }}) - {{
                                     prodDetails.sub_sub_sub_cat_name }}
+                                    </span>
                                 </p>
+                                </div>
                                 <div class="d-flex justify-content-between">
-                                    <p v-if="prodDetails.discount_price" class="card-text mb-0">Discount price: {{
-                                        prodDetails.discount_price }}</p>
-                                    <p v-if="prodDetails.offer_price" class="card-text mb-0">Offer price: {{
-                                        prodDetails.offer_price }}</p>
+                                    <p v-if="prodDetails.discount_price" class="card-text mb-0">Discount price: <span>
+                                        {{
+                                        prodDetails.discount_price }}
+                                    </span></p>
+                                    <p v-if="prodDetails.offer_price" class="card-text mb-0">Offer price: <span>{{
+                                        prodDetails.offer_price }}</span></p>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text mb-0">Product price: 
-                                        {{ prodDetails.price }} {{ prodDetails.currency_name }}
+                                        <span>{{ prodDetails.price }} {{ prodDetails.currency_name }}</span>
                                     </p>
-                                    <p class="card-text mb-0">Stock: {{ prodDetails.stock }}</p>
+                                    <p class="card-text mb-0">Stock: <span>{{ prodDetails.stock }}</span></p>
                                 </div>
-                                <p class="card-text mb-0">Description: {{ prodDetails.description }}</p>
+                                <p class="card-text mb-0 mt-2">Description: <span>{{ prodDetails.description }}</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="submit-cancel-btn-group text-center">
+                            <button @click="handleSubmit" type="button" class="submit-btn">
+                                Ok
+                            </button>
+                        </div>
             </div>
         </div>
 

@@ -130,27 +130,26 @@ const filterReview = () => {
             </div>
             <div class="col-md-5">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body details-style">
                         <h5 class="card-title">{{ filteredProducts[0]?.pro_name }}</h5>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <span>Brand: {{ filteredProducts[0]?.brand }}</span>
-                            <span>Rating: {{ filteredProducts[0]?.rating }}</span>
+                            <p>Brand: <span>{{ filteredProducts[0]?.brand }}</span></p>
+                            <p>Rating: <span>{{ filteredProducts[0]?.rating }}</span></p>
                             <span class="material-icons">favorite</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <span>Price: {{ filteredProducts[0]?.price }} {{ filteredProducts[0]?.currency_name
-                                }}</span>
-                            <span>Stock: {{ filteredProducts[0]?.stock }}</span>
-                            <span>Product ID: {{ filteredProducts[0]?.pro_id }}</span>
+                            <p>Price: <span><del v-if="filteredProducts[0]?.discount">45 USD</del> {{ filteredProducts[0]?.price }} {{ filteredProducts[0]?.currency_name }}</span></p>
+                            <p>Stock: <span>{{ filteredProducts[0]?.stock }}</span></p>
+                            <p>Product ID: <span>{{ filteredProducts[0]?.pro_id }}</span></p>
 
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <span>Sold By: {{ filteredProducts[0]?.brand }}</span>
-                            <span>Category: {{ filteredProducts[0]?.parent_cat_name }}</span>
+                            <p>Sold By: <span>{{ filteredProducts[0]?.brand }}</span></p>
+                            <p>Category: <span>{{ filteredProducts[0]?.parent_cat_name }}</span></p>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <span>Size:</span>
-                            <span>Color:</span>
+                            <p>Size: <span></span></p>
+                            <p>Color: <span></span></p>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
 
@@ -177,12 +176,12 @@ const filterReview = () => {
                             </div>
 
                         </div>
-                        <p class="card-text">{{ filteredProducts[0]?.description }}</p>
+                        <p class="card-text">Description: <span>{{ filteredProducts[0]?.description }}</span></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 condition-div-style">
-                <section>
+                <section class="trams-info-style">
                     <div class="d-flex justify-contain-between mb-3 mt-3">
                         <span class="material-icons me-2">
                             add
@@ -319,6 +318,29 @@ p {
 
 .checkout-btn-div button:hover {
     cursor: pointer;
+}
+
+.details-style h5 {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+.details-style p {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-align: justify;
+}
+.details-style p span {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.trams-info-style span p {
+    color:#323333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 /* review style write here  */

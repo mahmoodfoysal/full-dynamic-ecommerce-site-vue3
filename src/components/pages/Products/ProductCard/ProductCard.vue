@@ -98,10 +98,13 @@ const updateDb = (cart) => {
     </RouterLink>
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
-        <h6 class="card-title">{{ productItem.pro_name }}</h6>
-        <h6 class="card-title">{{ productItem.price }} {{ productItem.currency_name }}</h6>
+        <h6 class="card-title mb-1">{{ productItem.pro_name }}</h6>
       </div>
-      <p class="card-text">{{ productItem.description.substr(0, 90) }}</p>
+      <div>
+        <p class="card-title mb-1">Price: <span><del v-if="productItem.discount">45 USD</del> {{ productItem.price }} {{ productItem.currency_name }}</span></p>
+        <p class="card-title mb-1">Stock: <span>{{ productItem.stock }}</span></p>
+      </div>
+      <p class="card-text">Description:  <span>{{ productItem.description.substr(0, 90) }}</span></p>
       <div class="card-btn-style">
         <button @click="handleAddToCart(productItem)">Add to Cart</button>
       </div>
@@ -110,6 +113,16 @@ const updateDb = (cart) => {
 </template>
 
 <style scoped>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p, span {
+  margin: 0;
+  padding: 0;
+}
 .card-style:hover {
   cursor: pointer;
   box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, .25);
@@ -122,10 +135,20 @@ const updateDb = (cart) => {
 
 .card-style h6 {
   color: #1F5DA9;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 }
 
 .card-style p {
   text-align: justify;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.card-style p span{
+  text-align: justify;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 
 .card-style img {
@@ -136,6 +159,10 @@ const updateDb = (cart) => {
 
 .card-btn-style {
   text-align: center;
+}
+
+.card-style p del {
+  color: #E33F5D;
 }
 
 .card-btn-style button {
