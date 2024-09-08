@@ -201,7 +201,7 @@ router.beforeEach((to, from, next) => {
               if (to.meta.requiresAdminCheck) {
                   try {
                       // Make an API call to your backend to check if the user is an admin
-                      const response = await axios.get(`http://localhost:5000/admin/${user.email}`);
+                      const response = await axios.get(`https://kitkat-ecommerce-server.onrender.com/admin/${user.email}`);
                       if (response.data.admin) {
                           next(); // Allow access if user is an admin
                       } else {

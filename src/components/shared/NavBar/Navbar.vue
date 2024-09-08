@@ -29,7 +29,7 @@ onMounted(() => {
 
 const handleGetAdmin = async () => {
     try {
-        const response = await axios.get(`http://localhost:5000/admin/${store.user ? store.user.email : null}`);
+        const response = await axios.get(`https://kitkat-ecommerce-server.onrender.com/admin/${store.user ? store.user.email : null}`);
         isAdmin.value = response.data.admin;
     }
     catch (error) {

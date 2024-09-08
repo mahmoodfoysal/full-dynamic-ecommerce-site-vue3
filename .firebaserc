@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "ecommerce-vue3-compo-kitkat"
-  }
+    "default": "kitkat-ecom",
+    "y": "kitkat-ecom"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
