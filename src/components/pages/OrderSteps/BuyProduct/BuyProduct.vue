@@ -231,7 +231,7 @@ const handleUpdateStock = async (id, data) => {
 
                     <div class="col-12">
                         <button @click="handleOrderSubmit(filterProducts[0])" type="submit"
-                            class="btn btn-primary big-screen-submit-btn">Submit</button>
+                            class="big-screen-submit-btn">Submit</button>
                     </div>
                 </div>
 
@@ -418,6 +418,20 @@ p {
 
 .is-validate {
     border: 1px solid red !important;
+}
+
+.big-screen-submit-btn {
+    background:#1F5DA0;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+}
+.big-screen-submit-btn:hover {
+opacity: 0.9;
 }
 
 @media only screen and (max-width: 2560px) {
