@@ -63,7 +63,7 @@ const updateDb = (cart) => {
 }
 
 const filterProducts = computed(() => {
-  return products.value.filter(product => product?.parent_cat_id === 1 && product?.prod_type == "R");
+  return products.value.filter(product => product?.parent_cat_id === 1 && product?.prod_type == "R" && product?.status === 1);
 });
 
 </script>

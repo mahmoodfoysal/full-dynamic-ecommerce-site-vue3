@@ -54,7 +54,7 @@ const totalPages = computed(() => Math.ceil(products.value.length / itemsPerPage
 
 // pagination and filter all value 
 const paginatedProducts = computed(() => {
-    let filtered = filterSearchProducts.value;
+    let filtered = filterSearchProducts.value.filter((item) => item?.status === 1);
 
     // Apply price filter
     if (selectedPrice.value !== null && (selectedPrice.value.min < selectedPrice.value.max)) {
@@ -109,7 +109,7 @@ const filterSearchProducts = computed(() => {
             <span class="placeholder col-12 pt-4 pb-4"></span>
         </p>
         <div v-else class="component-info-div">
-            <h6><span>{{ filterSearchProducts.length }}</span> Products Found</h6>
+            <h6><span>{{ paginatedProducts.length }}</span> Products Found</h6>
             <p>Products > Category > Products</p>
         </div>
         <div class="row g-4">

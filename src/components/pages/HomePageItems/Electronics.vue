@@ -61,7 +61,7 @@ const updateDb = (cart) => {
 }
 
 const filterProducts = computed(() => {
-  return productList.value.filter(product => product?.parent_cat_id === 3 && product?.prod_type == "R");
+  return productList.value.filter(product => product?.parent_cat_id === 3 && product?.prod_type == "R" && product?.status === 1);
 });
 
 
@@ -72,7 +72,7 @@ const filterProducts = computed(() => {
   <section class="home-product-horizontal-style">
     <RouterLink
     class="link-decoration"
-    :to="{ name: 'CategoryProducts', params: { id: 3, slug: 'Clothing-and-Fashion' } }"
+    :to="{ name: 'CategoryProducts', params: { id: 3, slug: 'Electronics' } }"
     >
       <h2>Electronics</h2>
     </RouterLink>

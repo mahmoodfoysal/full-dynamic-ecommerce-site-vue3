@@ -49,7 +49,7 @@ const filterProduct = () => {
 const totalPages = computed(() => Math.ceil(filterProducts.value.length / itemsPerPage));
 
 const paginatedProducts = computed(() => {
-    let filtered = filterProducts.value;
+    let filtered = filterProducts.value.filter((item) => item?.status === 1);
     if (selectedPrice.value !== null) {
         filtered = filtered.filter((product) => product.price > selectedPrice.value.min && product.price <= selectedPrice.value.max);
     }
