@@ -88,18 +88,18 @@ const goToPage = (newPage) => {
 };
 
 const filterSearchProducts = computed(() => {
-        return products.value?.filter((item) =>
-            Object.entries(item)
-                .reduce(
-                    (result, [, value]) =>
-                        !(value instanceof Object) ? (result += ` ${value}`) : result,
-                    ''
-                )
-                .toString()
-                .toLowerCase()
-                .includes(searchData.value.toString().toLowerCase())
-        );
-    });
+    return products.value?.filter((item) =>
+        Object.entries(item)
+            .reduce(
+                (result, [, value]) =>
+                    !(value instanceof Object) ? (result += ` ${value}`) : result,
+                ''
+            )
+            .toString()
+            .toLowerCase()
+            .includes(searchData.value.toString().toLowerCase())
+    );
+});
 
 </script>
 
@@ -162,24 +162,28 @@ const filterSearchProducts = computed(() => {
                 </div>
             </div>
             <div class="col-md-9">
-                <div v-if="products.length === 0"  class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4 mt-1">
-                    <div 
-                    v-for="n in 8" 
+                <div 
+                v-if="products.length === 0"
+                class="row row-cols-1 row-cols-lg-4 row-cols-xl-4 row-cols-md-2 row-cols-sm-1 g-4 mt-1">
+                    <div class="col" 
+                    v-for="n in 10"
                     :key="n"
-                    class="card card-style">
-                        <h5 class="card-title placeholder-glow">
-                            <span style="padding: 150px;"class="placeholder col-12"></span>
-                        </h5>
-                        <div class="card-body">
-                            <p class="card-text placeholder-glow">
-                                <span class="placeholder col-3"></span>
-                                <span class="placeholder col-3"></span>
-                                <span class="placeholder col-3"></span>
-                                <span class="placeholder col-3"></span>
-                                <span class="placeholder col-3"></span>
-                            </p>
+                    >
+                        <div class="card card-style placeholder-glow">
+                            <img src="" class="card-img-top placeholder" alt="Card Image">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="card-title mb-1 placeholder col-12"></h6>
+                                </div>
+                                <div>
+                                    <p class="card-title mb-1 placeholder col-12"></p>
+                                    <p class="card-title mb-1 placeholder col-12"></p>
+                                </div>
+                                <p class="card-text placeholder col-12"></p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div v-if="paginatedProducts.length === 0" class="text-center mt-5 mb-5">
@@ -302,6 +306,12 @@ p {
 .accordion-body {
     margin-bottom: 12px;
     padding-top: 0 !important;
+}
+
+.card-style img {
+    width: 100%;
+    height: 40vh;
+    object-fit: contain;
 }
 
 

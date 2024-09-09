@@ -48,7 +48,7 @@ const { productItem } = toRefs(props);
 // };
 
 const handleAddToCart = (product) => {
-  const { _id, pro_name, price, pro_image, pro_id, currency_name, stock } = product;
+  const { _id, pro_name, price, pro_image, pro_id, stock, currency_name, currency_id } = product;
   
   let item = {
     _id,
@@ -56,8 +56,9 @@ const handleAddToCart = (product) => {
     price,
     pro_image,
     pro_id,
-    currency_name,
-    stock
+    stock,
+    currency_name, 
+    currency_id
   };
   
   let shopping_cart = getDb() || {};

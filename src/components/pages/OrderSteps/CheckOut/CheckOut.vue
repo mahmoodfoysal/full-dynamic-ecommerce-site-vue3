@@ -522,6 +522,14 @@ p {
     color: red !important;
 }
 
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-select:focus {
+    box-shadow: none;
+}
+
 @media only screen and (max-width: 2560px) {
     .check-out-container-style {
         max-width: 2300px !important;

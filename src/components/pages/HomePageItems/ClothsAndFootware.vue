@@ -31,14 +31,16 @@ const handleGetProducts = async () => {
 
 // cart code write here 
 const handleAddToCart = (product) => {
-  const { _id, pro_name, price, pro_image, pro_id, stock } = product;
+  const { _id, pro_name, price, pro_image, pro_id, stock, currency_name, currency_id } = product;
   let item = {
     _id,
     pro_name,
     price,
     pro_image,
     pro_id,
-    stock
+    stock,
+    currency_name, 
+    currency_id
   }
   let shopping_cart = getDb() || {};
 
