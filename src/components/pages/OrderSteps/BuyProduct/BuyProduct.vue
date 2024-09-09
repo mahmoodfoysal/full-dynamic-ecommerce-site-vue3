@@ -186,23 +186,23 @@ watch(selectPayment, (newVal) => {
                 <h3 class="contact-info-style">Contact Information</h3>
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Full Name *</label>
+                        <label for="fullName" class="form-label">Full Name *</label>
                         <input v-model="fullName" :class="{ 'is-validate': isValidation && !fullName }" type="text"
-                            class="form-control" id="inputEmail4" disabled>
+                            class="form-control" id="fullName" disabled>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Email *</label>
+                        <label for="email" class="form-label">Email *</label>
                         <input v-model="email" :class="{ 'is-validate': isValidation && !email }" type="email"
-                            class="form-control" id="inputEmail4" disabled>
+                            class="form-control" id="email" disabled>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Phone No *</label>
+                        <label for="phone" class="form-label">Phone No *</label>
                         <input v-model.trim="phoneNumber" :class="{ 'is-validate': isValidation && !phoneNumber }"
-                            type="number" class="form-control" id="inputEmail4" placeholder="Enter Your Contact Number"
+                            type="number" class="form-control" id="phone" placeholder="Enter Your Contact Number"
                             required>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputState" class="form-label">Country *</label>
+                        <label for="country" class="form-label">Country *</label>
                         <select v-model.trim="country" :class="{ 'is-validate': isValidation && !country }"
                             id="inputState" class="form-select" required>
                             <option selected>Select Country</option>
@@ -213,14 +213,14 @@ watch(selectPayment, (newVal) => {
                     </div>
 
                     <div class="col-md-4">
-                        <label for="inputEmail4" class="form-label">City *</label>
+                        <label for="city" class="form-label">City *</label>
                         <input v-model.trim="city" :class="{ 'is-validate': isValidation && !city }" type="text"
-                            class="form-control" id="inputEmail4" placeholder="City Name" required>
+                            class="form-control" id="city" placeholder="City Name" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="inputEmail4" class="form-label">state *</label>
+                        <label for="state" class="form-label">state *</label>
                         <input v-model.trim="state" :class="{ 'is-validate': isValidation && !state }" type="text"
-                            class="form-control" id="inputEmail4" placeholder="Enter State">
+                            class="form-control" id="state" placeholder="Enter State">
                     </div>
                     <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip *</label>
@@ -276,34 +276,34 @@ watch(selectPayment, (newVal) => {
 
                     <div v-if="selectPayment == 3">
                         <div class="col-md-12">
-                        <label for="inputEmail4" class="form-label">Card Number *</label>
+                        <label for="card" class="form-label">Card Number *</label>
                         <input 
                         v-model.trim="cardNumber" 
                         :class="{ 'is-validate': isValidation && !cardNumber }"
-                        type="number" class="form-control" id="inputEmail4"
+                        type="number" class="form-control" id="card"
                             placeholder="111 1111 11111 1111" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="inputEmail4" class="form-label">Card Name *</label>
+                        <label for="cardName" class="form-label">Card Name *</label>
                         <input 
                         v-model.trim="cardName"
                         :class="{ 'is-validate': isValidation && !cardName }" 
-                        type="text" class="form-control" id="inputEmail4"
+                        type="text" class="form-control" id="cardName"
                             placeholder="Card Name" required>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Expire Date *</label>
+                        <label for="expDate" class="form-label">Expire Date *</label>
                         <input v-model.trim="expireDate" 
                         :class="{ 'is-validate': isValidation && !expireDate }"
-                        type="date" class="form-control" id="inputEmail4" required>
+                        type="date" class="form-control" id="expDate" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">CVC *</label>
+                        <label for="cvc" class="form-label">CVC *</label>
                         <input 
                         v-model.trim="cvc" 
                         :class="{ 'is-validate': isValidation && !cvc }"
-                        type="number" class="form-control" id="inputEmail4" placeholder="111"
+                        type="number" class="form-control" id="cvc" placeholder="111"
                             required>
                     </div>
                     </div>
@@ -314,39 +314,19 @@ watch(selectPayment, (newVal) => {
                     class="row mt-2"
                     >
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Mobile bank no *</label>
+                            <label for="mobileb" class="form-label">Mobile bank no *</label>
                             <input v-model.trim="mobile_banking" type="number" class="form-control"
-                            :class="{ 'is-validate': isValidation && !mobile_banking }" id="inputEmail4" placeholder="Mobile bank no"
+                            :class="{ 'is-validate': isValidation && !mobile_banking }" id="mobileb" placeholder="Mobile bank no"
                             required>
                         </div>
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Transaction id *</label>
+                            <label for="transID" class="form-label">Transaction id *</label>
                             <input v-model.trim="trans_id" type="text" class="form-control"
-                            :class="{ 'is-validate': isValidation && !trans_id }" id="inputEmail4" placeholder="Transaction id"
+                            :class="{ 'is-validate': isValidation && !trans_id }" id="transID" placeholder="Transaction id"
                             required>
                         </div>
                     </div>
                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <div class="col-12">
                         <button @click="handleOrderSubmit(filterProducts[0])" type="submit"
                             class="big-screen-submit-btn">Submit</button>
