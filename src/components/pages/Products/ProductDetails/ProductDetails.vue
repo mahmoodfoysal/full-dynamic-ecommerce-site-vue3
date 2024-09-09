@@ -56,7 +56,7 @@ const handleAddToCart = (product) => {
         pro_image,
         pro_id,
         stock,
-        currency_name, 
+        currency_name,
         currency_id
     }
     let shopping_cart = getDb() || {};
@@ -71,15 +71,15 @@ const handleAddToCart = (product) => {
     // }
 
     if (shopping_cart[item.pro_id]) {
-    if (shopping_cart[item.pro_id].quantity < stock) {
-      shopping_cart[item.pro_id].quantity += 1;
+        if (shopping_cart[item.pro_id].quantity < stock) {
+            shopping_cart[item.pro_id].quantity += 1;
+        } else {
+            alert("Cannot add more, stock limit reached!");
+        }
     } else {
-      alert("Cannot add more, stock limit reached!");
+        item.quantity = 1;
+        shopping_cart[item.pro_id] = item;
     }
-  } else {
-    item.quantity = 1;
-    shopping_cart[item.pro_id] = item;
-  }
     updateDb(shopping_cart);
 }
 
@@ -95,18 +95,18 @@ const handleAddToCart = (product) => {
 // }
 
 const handleIncrementQuantity = (id) => {
-  let shopping_cart = getDb() || {};
-  if (shopping_cart[id]) {
-    if (shopping_cart[id].quantity < shopping_cart[id].stock) {
-      shopping_cart[id].quantity += 1;
+    let shopping_cart = getDb() || {};
+    if (shopping_cart[id]) {
+        if (shopping_cart[id].quantity < shopping_cart[id].stock) {
+            shopping_cart[id].quantity += 1;
+        } else {
+            alert("Cannot add more, stock limit reached!");
+        }
     } else {
-      alert("Cannot add more, stock limit reached!");
+        alert("Please click the 'Add To Cart' button first.");
     }
-  } else {
-    alert("Please click the 'Add To Cart' button first.");
-  }
 
-  updateDb(shopping_cart);
+    updateDb(shopping_cart);
 };
 
 
@@ -168,7 +168,12 @@ const filterReview = () => {
                             <span class="material-icons">favorite</span>
                         </div>
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
-                            <p>Price: <span><del v-if="filteredProducts[0]?.discount">45 USD</del> {{ filteredProducts[0]?.price }} {{ filteredProducts[0]?.currency_name }}</span></p>
+                            <p v-if="filteredProducts[0].prod_type == 'D'" class="card-title mb-1">Price: <span><del class="discount">{{
+                                        filteredProducts[0].price }} {{ filteredProducts[0].currency_name }}</del> Save {{
+                                            filteredProducts[0].discount_price }} {{ filteredProducts[0].currency_name }}</span></p>
+
+                            <p v-if="filteredProducts[0].prod_type == 'R'" class="card-title mb-1">Price: <span>{{
+                                    filteredProducts[0].price }} {{ filteredProducts[0].currency_name }}</span></p>
                             <p>Stock: <span>{{ filteredProducts[0]?.stock }}</span></p>
                             <p>Product ID: <span>{{ filteredProducts[0]?.pro_id }}</span></p>
 
@@ -273,9 +278,7 @@ const filterReview = () => {
                     </div>
                 </div>
             </div>
-            <div 
-            v-else
-            :class="{ 'project-review': filterReviewData.length > 2 }">
+            <div v-else :class="{ 'project-review': filterReviewData.length > 2 }">
                 <div v-for="(review, index) in filterReviewData" :key="index" class="d-flex">
                     <img :src="review?.photo" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;"
                         alt="">
@@ -351,24 +354,26 @@ p {
 }
 
 .details-style h5 {
-    color:#323333;
+    color: #323333;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
+
 .details-style p {
-    color:#323333;
+    color: #323333;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     text-align: justify;
 }
+
 .details-style p span {
-    color:#323333;
+    color: #323333;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 
 .trams-info-style span p {
-    color:#323333;
+    color: #323333;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
@@ -462,6 +467,10 @@ p {
     font-style: normal;
     font-size: 15px;
     color: gray;
+}
+
+.discount {
+  color: #E33F5D;
 }
 
 @media only screen and (max-width: 2560px) {
