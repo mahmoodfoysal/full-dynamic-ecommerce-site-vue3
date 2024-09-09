@@ -103,13 +103,6 @@ const filterProducts = computed(() => {
         spaceBetween: 50,
       },
     }" :modules="modules" class="mySwiper">
-      <swiper-slide 
-      v-if="productList.length === 0"
-      v-for="n in 10" :key="n">
-        <div class="slider-card-style placeholder-glow">
-          <span style="padding: 90px;" class="placeholder col-12"></span>
-        </div>
-      </swiper-slide>
 
       <swiper-slide v-for="(product, index) in filterProducts" :key="index">
         <div class="slider-card-style">
@@ -120,7 +113,8 @@ const filterProducts = computed(() => {
 
           <div>
             <h5><del>45 USD</del> Save <span>{{ product?.price }} {{ product?.currency_name }}</span></h5>
-            <p>{{ product?.pro_name }}</p>
+            <h6><span>{{ product?.pro_name }}</span></h6>
+            <p>Stock: <span>{{ product?.stock }}</span></p>
             <span @click="handleAddToCart(product)" class="material-icons">
               shopping_cart
             </span>
@@ -193,9 +187,6 @@ p {
   object-fit: cover;
 }
 
-
-
-
 /* card style  */
 .slider-card-style {
   padding: 10px 10px;
@@ -229,7 +220,6 @@ p {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
 

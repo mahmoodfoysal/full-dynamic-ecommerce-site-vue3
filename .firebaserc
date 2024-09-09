@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "kitkat-ecom",
-    "y": "kitkat-ecom"
+    "y": "kitkat-ecom",
+    "Y": "kitkat-ecom"
   },
   "targets": {},
   "etags": {},
