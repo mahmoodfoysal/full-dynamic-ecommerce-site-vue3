@@ -265,4 +265,24 @@ const handleDeleteAdmin = async (id) => {
     border: none;
     border-radius: 8px;
 }
+
+.form-control {
+    border: 1px solid gray;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
+
+.form-select {
+    border: 1px solid gray;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
+
+
 </style>

@@ -130,6 +130,23 @@ h1, h2, h3, h4, h5, h6, p {
     font-size: 14px;
 }
 
+.form-control {
+    border: 1px solid gray;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
+
+.form-select {
+    border: 1px solid gray;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
 /* media query write here s */
 @media only screen and (max-width: 2560px) {
     .container-style {

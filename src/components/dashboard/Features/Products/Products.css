@@ -136,7 +136,24 @@
     color:#323333;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    
+}
+
+.form-control {
+    border: 1px solid gray;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
+
+.form-select {
+    border: 1px solid gray;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
 }
 
 /* media query write here s */

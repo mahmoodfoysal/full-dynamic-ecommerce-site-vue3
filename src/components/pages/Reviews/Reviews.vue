@@ -68,19 +68,19 @@ const handleSubmitReview = async () => {
             <div class="col-lg-6">
                 <div class="border-bottom rounded input-field-style">
                     <input v-model="fullName" type="text" :class="{ 'is-validate': isValidation && !fullName }"
-                        class="form-control border-0 me-4" placeholder="Enter Your Full Name *" disabled required>
+                        class="form-control me-4" placeholder="Enter Your Full Name *" disabled required>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="border-bottom rounded input-field-style">
-                    <input v-model="email" type="email" class="form-control border-0"
+                    <input v-model="email" type="email" class="form-control"
                         :class="{ 'is-validate': isValidation && !email }" placeholder="Enter Your Email *" disabled
                         required>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="border-bottom rounded my-4 input-field-style">
-                    <textarea v-model="comment" class="form-control border-0"
+                    <textarea v-model="comment" class="form-control"
                         :class="{ 'is-validate': isValidation && !comment }" cols="30" rows="8"
                         placeholder="Please Enter Your Valuable Comment *" spellcheck="false">
                     </textarea>
@@ -181,5 +181,13 @@ textarea {
 
 .is-validate {
     border: 1px solid red !important;
+}
+
+.form-control {
+    border: 1px solid gray;
+}
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
 }
 </style>

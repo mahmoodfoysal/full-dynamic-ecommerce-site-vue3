@@ -79,7 +79,6 @@ const handleOrderSubmit = async () => {
         mobile_banking: mobile_banking.value,
         trans_id: trans_id.value
     };
-    console.log("Data", data);
     const text = 'Are you sure? want to order!!!';
     if (confirm(text) == true) {
         const result = await createOrders(data);
@@ -206,7 +205,7 @@ watch(selectPayment, (newVal) => {
                     <h4 
                     class="delivery-text mt-2"
                     :class="{ 'payment-validate': isValidation && !selectPayment }"
-                    >Delivery Method *</h4>
+                    >Payment Method *</h4>
                     <div class="col-md-12">
                         <input 
                         type="radio" 
@@ -515,19 +514,29 @@ p {
 }
 
 .is-validate {
-    border: 1px solid red !important;
+    border: 1px solid #D71110 !important;
 }
 
 .payment-validate {
-    color: red !important;
+    color: #D71110 !important;
+}
+
+.form-control {
+    border: 1px solid gray;
 }
 
 .form-control:focus {
     box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
+
+.form-select {
+    border: 1px solid gray;
 }
 
 .form-select:focus {
     box-shadow: none;
+    border: 1px solid #1F5DA0;
 }
 
 @media only screen and (max-width: 2560px) {

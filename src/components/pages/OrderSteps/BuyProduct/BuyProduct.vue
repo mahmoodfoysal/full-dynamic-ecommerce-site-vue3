@@ -1,6 +1,6 @@
 <script setup>
 import { useStore } from '@/stores/TaskStore.js';
-import { ref, onMounted, computed, reactive } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import router from '@/router/router.js';
 import { getProducts, createOrders, updateStock } from '@/API/All_API.js';
@@ -25,6 +25,9 @@ const expireDate = ref('');
 const cvc = ref('');
 const orderDate = ref(Date());
 const isValidation = ref(false);
+const selectPayment = ref(null);
+const mobile_banking = ref(null);
+const trans_id = ref(null);
 
 onMounted(() => {
     handleGetProducts();
@@ -96,7 +99,11 @@ const handleOrderSubmit = async (product) => {
         !country.value ||
         !state.value ||
         !zip.value ||
-        !address.value) {
+        !address.value ||
+        !selectPayment.value ||
+        selectPayment.value == 3 ? !cardName.value || !cardNumber.value || !cvc.value || !expireDate.value : null ||
+        selectPayment.value == 2 ? !mobile_banking.value || !trans_id.value : null
+    ) {
         isValidation.value = true;
         alert("Please fill up all required field!!!");
         return;
@@ -108,7 +115,8 @@ const handleOrderSubmit = async (product) => {
         price: product.price,
         pro_image: product.pro_image,
         quantity: quantity.value,
-        currency_name: product.currency_name
+        currency_name: product.currency_name,
+        currency_id: product.currency_id
     }]
 
     const data = {
@@ -130,8 +138,13 @@ const handleOrderSubmit = async (product) => {
         totalAmount: totalAmount.value,
         orderList: orderList,
         orderStatus: "P",
-        orderDate: orderDate.value
+        orderDate: orderDate.value,
+        payment_method: selectPayment.value,
+        mobile_banking: mobile_banking.value,
+        trans_id: trans_id.value
     }
+
+    console.log("data", data)
     const text = "Are you want to sure? Place this order..."
     if (confirm(text) == true) {
         const result = await createOrders(data);
@@ -153,6 +166,17 @@ const handleUpdateStock = async (id, data) => {
         console.error("Error updating stock", error);
     }
 };
+
+watch(selectPayment, (newVal) => {
+    if(newVal) {
+        trans_id.value = null;
+        mobile_banking.value = null;
+        cardName.value = null;
+        cardNumber.value = null;
+        expireDate.value = null;
+        cvc.value = null;
+    }
+})
 </script>
 
 <template>
@@ -208,26 +232,120 @@ const handleUpdateStock = async (id, data) => {
                         <input v-model.trim="address" :class="{ 'is-validate': isValidation && !address }" type="text"
                             class="form-control" id="inputAddress" placeholder="1234 Main St" required>
                     </div>
-                    <h4 class="delivery-info-style">Delivary Method</h4>
+                    <h4 
+                    class="delivery-text mt-2"
+                    :class="{ 'payment-validate': isValidation && !selectPayment }"
+                    >Payment Method *</h4>
                     <div class="col-md-12">
-                        <label for="inputEmail4" class="form-label">Card Number</label>
-                        <input v-model.trim="cardNumber" type="number" class="form-control" id="inputEmail4"
+                        <input 
+                        type="radio" 
+                        id="cash" 
+                        name="fav_language"
+                        v-model="selectPayment" 
+                        value="1">
+                        <label 
+                        for="cash" 
+                        class="ms-2">
+                        Cash on delivery
+                        </label> 
+                        <br>
+                        <input 
+                        type="radio" 
+                        id="bkash" 
+                        name="fav_language" 
+                        v-model="selectPayment"
+                        value="2"> 
+                        <label 
+                        for="bkash" 
+                        class="ms-2">
+                        Bkash
+                        </label> 
+                        <br>
+                        <input 
+                        type="radio" 
+                        id="card" 
+                        name="fav_language" 
+                        v-model="selectPayment"
+                        value="3">
+                        <label 
+                        for="card" 
+                        class="ms-2">
+                        Card payment
+                        </label>
+                    </div>
+
+                    <div v-if="selectPayment == 3">
+                        <div class="col-md-12">
+                        <label for="inputEmail4" class="form-label">Card Number *</label>
+                        <input 
+                        v-model.trim="cardNumber" 
+                        :class="{ 'is-validate': isValidation && !cardNumber }"
+                        type="number" class="form-control" id="inputEmail4"
                             placeholder="111 1111 11111 1111" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="inputEmail4" class="form-label">Card Name</label>
-                        <input v-model.trim="cardName" type="text" class="form-control" id="inputEmail4"
+                        <label for="inputEmail4" class="form-label">Card Name *</label>
+                        <input 
+                        v-model.trim="cardName"
+                        :class="{ 'is-validate': isValidation && !cardName }" 
+                        type="text" class="form-control" id="inputEmail4"
                             placeholder="Card Name" required>
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Expire Date</label>
-                        <input v-model.trim="expireDate" type="date" class="form-control" id="inputEmail4" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Expire Date *</label>
+                        <input v-model.trim="expireDate" 
+                        :class="{ 'is-validate': isValidation && !expireDate }"
+                        type="date" class="form-control" id="inputEmail4" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">CVC</label>
-                        <input v-model.trim="cvc" type="number" class="form-control" id="inputEmail4" placeholder="111"
+                        <label for="inputEmail4" class="form-label">CVC *</label>
+                        <input 
+                        v-model.trim="cvc" 
+                        :class="{ 'is-validate': isValidation && !cvc }"
+                        type="number" class="form-control" id="inputEmail4" placeholder="111"
                             required>
                     </div>
+                    </div>
+                    </div>
+
+                    <div 
+                    v-if="selectPayment == 2"
+                    class="row mt-2"
+                    >
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Mobile bank no *</label>
+                            <input v-model.trim="mobile_banking" type="number" class="form-control"
+                            :class="{ 'is-validate': isValidation && !mobile_banking }" id="inputEmail4" placeholder="Mobile bank no"
+                            required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Transaction id *</label>
+                            <input v-model.trim="trans_id" type="text" class="form-control"
+                            :class="{ 'is-validate': isValidation && !trans_id }" id="inputEmail4" placeholder="Transaction id"
+                            required>
+                        </div>
+                    </div>
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <div class="col-12">
                         <button @click="handleOrderSubmit(filterProducts[0])" type="submit"
@@ -417,7 +535,7 @@ p {
 }
 
 .is-validate {
-    border: 1px solid red !important;
+    border: 1px solid #D71110 !important;
 }
 
 .big-screen-submit-btn {
@@ -432,6 +550,28 @@ p {
 }
 .big-screen-submit-btn:hover {
 opacity: 0.9;
+}
+
+.form-control {
+    border: 1px solid gray;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
+
+.form-select {
+    border: 1px solid gray;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    border: 1px solid #1F5DA0;
+}
+
+.payment-validate {
+    color: #D71110 !important;
 }
 
 @media only screen and (max-width: 2560px) {
