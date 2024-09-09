@@ -128,7 +128,7 @@ const filterProducts = computed(() => {
           </RouterLink>
 
           <div>
-            <h5><del>{{ product?.price }} {{ product?.currency_name }}</del> Save <span>{{ product?.discount_price }} {{ product?.currency_name }}</span></h5>
+            <h5><del>{{ product?.currency_name == 'USD' ? '$' : product?.currency_name == 'BDT' ? '৳' : product?.currency_name == 'EURO' ? '€' : product?.currency_name == 'INR' ? '₹': '' }} {{ product?.price }}</del> Save <span>{{ product?.currency_name == 'USD' ? '$' : product?.currency_name == 'BDT' ? '৳' : product?.currency_name == 'EURO' ? '€' : product?.currency_name == 'INR' ? '₹': '' }} {{ product?.discount_price }}</span></h5>
             <h6><span>{{ product?.pro_name }}</span></h6>
             <p>Stock: <span>{{ product?.stock }}</span></p>
             <span @click="handleAddToCart(product)" class="material-icons">
