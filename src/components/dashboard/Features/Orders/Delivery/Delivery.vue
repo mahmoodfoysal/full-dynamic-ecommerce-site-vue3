@@ -230,7 +230,6 @@ const handleOrderDetails = (details) => {
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body details-card-style">
-                                            <h5 class="card-title">Category: <span>{{ item?.cat_name }}</span></h5>
                                             <p class="card-text mb-0">Product Name: <span>{{ item?.pro_name }}</span></p>
                                             <div>
                                                 <p class="card-text mb-0">Price: <span>{{ item?.price }} {{ item?.currency_name }}</span></p>

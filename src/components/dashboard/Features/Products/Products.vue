@@ -616,7 +616,7 @@ const filterSearchProducts = computed(() => {
                     </div>
                 </div>
                 <div class="submit-cancel-btn-group text-center">
-                            <button @click="handleSubmit" type="button" class="submit-btn">
+                            <button @click="isDetailsModal = false" type="button" class="submit-btn">
                                 Ok
                             </button>
                         </div>

@@ -213,7 +213,10 @@ const handleOrderDetails = (details) => {
                     <!-- product info start  -->
                     <h5 class="text-center mt-3 mb-3">Product Info</h5>
                     <div class="row row-cols-1 row-cols-md-2 g-4 mb-2">
-                        <div v-for="(item, index) in orderDetails?.orderList" :key="index" class="col">
+                        <div 
+                        v-for="(item, index) in orderDetails?.orderList" 
+                        :key="index" 
+                        class="col">
                             <div class="card">
                                 <div class="row">
                                     <div class="col-md-4 image-style">
@@ -221,7 +224,6 @@ const handleOrderDetails = (details) => {
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body details-card-style">
-                                            <h5 class="card-title">Category: <span>{{ item?.cat_name }}</span></h5>
                                             <p class="card-text mb-0">Product Name: <span>{{ item?.pro_name }}</span></p>
                                             <div>
                                                 <p class="card-text mb-0">Price: <span>{{ item?.price }} {{ item?.currency_name }}</span></p>
