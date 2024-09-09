@@ -91,7 +91,7 @@ const handleRemoveItem = (id) => {
 // calculate subtotal 
 let subTotal = computed(() => {
     const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
-        return total + (item.price * item.quantity);
+        return total + (item.discount_price ? item.discount_price : item.price * item.quantity);
     }, 0);
     return totalQuantityWithPrice;
 });
@@ -118,7 +118,13 @@ let totalAmount = computed(() => {
             <h6><span></span>Home > Cart</h6>
             <!-- <p>Products > Category > {{ route.params.slug.replaceAll('-', ' ') }}</p> -->
         </div>
-            <section class="cart-section-style">
+        <div v-if="cartItem.length === 0" class="text-center mb-4 empty-cart-style">
+            <span class="material-icons">
+                shopping_cart
+            </span>
+            <h3>Cart Item Empty!!!</h3>
+        </div>
+            <section v-else class="cart-section-style">
                 <div v-for="(item, index) in cart" :key="index" class="card mb-3"
                     style="max-width: 540px; margin: auto;">
                     <div class="row g-0 card-font-style">
@@ -143,7 +149,7 @@ let totalAmount = computed(() => {
                         </div>
                         <div class="col-md-3 d-flex justify-content-center align-items-center">
                             <div class="d-flex price-delete-style">
-                                <h6>${{ item.price }}</h6>
+                                <h6>${{ item.discount_price ? item.discount_price : item.price }}</h6>
                                 <span @click="handleRemoveItem(item.pro_id)" class="material-icons ms-2">
                                     delete
                                 </span>
@@ -183,9 +189,7 @@ let totalAmount = computed(() => {
                 </RouterLink>
             </div>
         </section>
-        <div v-else class="text-center mb-4">
-            <h3>Cart Item Empty!!!</h3>
-        </div>
+
     </section>
 </template>
 
@@ -234,9 +238,10 @@ p {
 }
 
 .component-info-div {
-    padding: 11px 10px;
+    padding: 18px 10px;
     box-shadow: -2px -6px 12px 20px #F5F5F5;
     box-sizing: border-box;
+    margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
 }
@@ -280,6 +285,13 @@ p {
     cursor: pointer;
 }
 
+.empty-cart-style span {
+    font-size: 300px;
+}
+.empty-cart-style h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
 
 @media (max-width: 2560px) {
     .cart-container {

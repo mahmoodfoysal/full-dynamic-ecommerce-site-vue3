@@ -70,7 +70,7 @@ const handleDecrementQuantity = (id) => {
 
 // calculate subtotal 
 const subTotal = computed(() => {
-    const totalQuantityWithPrice = Number(filterProducts.value[0]?.price) * quantity.value;
+    const totalQuantityWithPrice = Number(filterProducts.value[0]?.discount_price ? filterProducts.value[0]?.discount_price : filterProducts.value[0]?.price) * quantity.value;
     return totalQuantityWithPrice;
 });
 
@@ -116,7 +116,8 @@ const handleOrderSubmit = async (product) => {
         pro_image: product.pro_image,
         quantity: quantity.value,
         currency_name: product.currency_name,
-        currency_id: product.currency_id
+        currency_id: product.currency_id,
+        discount_price: product.discount_price ? product.discount_price : null
     }]
 
     const data = {
@@ -363,7 +364,7 @@ watch(selectPayment, (newVal) => {
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
-                                        <h6>$ {{ filterProducts[0]?.price }}</h6>
+                                        <h6>$ {{ filterProducts[0]?.discount_price ? filterProducts[0]?.discount_price : filterProducts[0]?.price }}</h6>
                                     </div>
                                 </div>
 

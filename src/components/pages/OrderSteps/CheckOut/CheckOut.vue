@@ -79,6 +79,7 @@ const handleOrderSubmit = async () => {
         mobile_banking: mobile_banking.value,
         trans_id: trans_id.value
     };
+    console.log("Data", data)
     const text = 'Are you sure? want to order!!!';
     if (confirm(text) == true) {
         const result = await createOrders(data);
@@ -112,7 +113,7 @@ const handleUpdateStock = async (id, data) => {
 // calculate subtotal 
 let subTotal = computed(() => {
     const totalQuantityWithPrice = cartItem.value.reduce((total, item) => {
-        return total + (item.price * item.quantity);
+        return total + (item.discount_price ? item.discount_price : item.price * item.quantity);
     }, 0);
     return totalQuantityWithPrice;
 });
@@ -326,7 +327,7 @@ watch(selectPayment, (newVal) => {
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
-                                        <h6>$ {{ item.price }}</h6>
+                                        <h6>$ {{ item.discount_price ? item.discount_price : item.price }}</h6>
                                     </div>
                                 </div>
 
@@ -339,7 +340,7 @@ watch(selectPayment, (newVal) => {
                             <tr>
                                 <td style="text-align: right; width:25%"></td>
                                 <td style="text-align: left; width:50%">Subtotal</td>
-                                <td style="text-align: left; width:25%">${{ subTotal }} </td>
+                                <td style="text-align: left; width:25%">${{ subTotal.toFixed(2) }} </td>
                             </tr>
                             <tr>
                                 <td style="text-align: left; width:25%"></td>
