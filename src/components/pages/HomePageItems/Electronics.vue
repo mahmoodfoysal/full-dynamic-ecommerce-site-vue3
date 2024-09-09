@@ -65,7 +65,7 @@ const updateDb = (cart) => {
 }
 
 const filterProducts = computed(() => {
-  return productList.value.filter(product => product?.parent_cat_id === 3 && product?.prod_type == "R" && product?.status === 1);
+  return productList.value.filter(product => product?.parent_cat_id === 3 && product?.prod_type == "D" && product?.status === 1);
 });
 
 </script>
@@ -114,7 +114,7 @@ const filterProducts = computed(() => {
           </RouterLink>
 
           <div>
-            <h5><del>45 USD</del> Save <span>{{ product?.price }} {{ product?.currency_name }}</span></h5>
+            <h5><del>{{ product?.price }} {{ product?.currency_name }}</del> Save <span>{{ product?.discount_price }} {{ product?.currency_name }}</span></h5>
             <h6><span>{{ product?.pro_name }}</span></h6>
             <p>Stock: <span>{{ product?.stock }}</span></p>
             <span @click="handleAddToCart(product)" class="material-icons">

@@ -258,6 +258,7 @@ const handleSubmit = async () => {
                         productList.value.unshift(obj);
                     }
                     handleResetInput();
+                    handleGetProducts();
             }
         }
 

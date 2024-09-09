@@ -78,7 +78,7 @@ const updateDb = (cart) => {
 }
 
 const filterProducts = computed(() => {
-  return products.value.filter(product => product?.sub_cat_id === 14 && product?.prod_type == "R" && product?.status === 1);
+  return products.value.filter(product => product?.sub_cat_id === 11 && product?.prod_type == "D" && product?.status === 1);
 });
 
 
@@ -88,7 +88,7 @@ const filterProducts = computed(() => {
   <section class="home-product-horizontal-style">
     <RouterLink
     class="link-decoration"
-    :to="{ name: 'CategoryProducts', params: { id: 14, slug: 'Smartphone' } }"
+    :to="{ name: 'CategoryProducts', params: { id: 11, slug: `Women's-Fashion` } }"
     >
       <h2>Life Style</h2>
     </RouterLink>
@@ -128,7 +128,7 @@ const filterProducts = computed(() => {
           </RouterLink>
 
           <div>
-            <h5><del>45 USD</del> Save <span>{{ product?.price }} {{ product?.currency_name }}</span></h5>
+            <h5><del>{{ product?.price }} {{ product?.currency_name }}</del> Save <span>{{ product?.discount_price }} {{ product?.currency_name }}</span></h5>
             <h6><span>{{ product?.pro_name }}</span></h6>
             <p>Stock: <span>{{ product?.stock }}</span></p>
             <span @click="handleAddToCart(product)" class="material-icons">

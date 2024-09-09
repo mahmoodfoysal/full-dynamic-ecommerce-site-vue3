@@ -102,7 +102,14 @@ const updateDb = (cart) => {
         <h6 class="card-title mb-1">{{ productItem.pro_name }}</h6>
       </div>
       <div>
-        <p class="card-title mb-1">Price: <span><del v-if="productItem.discount">45 USD</del> {{ productItem.price }} {{ productItem.currency_name }}</span></p>
+        <p 
+        v-if="productItem.prod_type == 'D'"
+        class="card-title mb-1">Price: <span><del>{{ productItem.price }} {{ productItem.currency_name }}</del> Save {{ productItem.discount_price }} {{ productItem.currency_name }}</span></p>
+
+        <p 
+        v-if="productItem.prod_type == 'R'"
+        class="card-title mb-1">Price: <span>{{ productItem.price }} {{ productItem.currency_name }}</span></p>
+        
         <p class="card-title mb-1">Stock: <span>{{ productItem.stock }}</span></p>
       </div>
       <p class="card-text">Description:  <span>{{ productItem.description.substr(0, 90) }}</span></p>
