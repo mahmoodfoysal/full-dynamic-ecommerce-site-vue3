@@ -460,7 +460,7 @@ const filterSearchProducts = computed(() => {
                     <td>{{ item?.prod_type }}</td>
                     <td>{{ item?.status== 1 ? 'Active' : 'Inactive' }}</td>
                     <td>{{ item?.stock }}</td>
-                    <td>{{ item?.price }} {{ item?.currency_name }}</td>
+                    <td>{{ item?.currency_name == 'USD' ? '$' : item?.currency_name == 'BDT' ? '৳' : item?.currency_name == 'EURO' ? '€' : item?.currency_name == 'INR' ? '₹': '' }} {{ item?.price }}</td>
                     <td class="order-details vertical-center">
                         <div 
                         @click="handleProductDetails(item)" 
@@ -607,7 +607,7 @@ const filterSearchProducts = computed(() => {
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text mb-0">Product price: 
-                                        <span>{{ prodDetails.price }} {{ prodDetails.currency_name }}</span>
+                                        <span>{{ prodDetails?.currency_name == 'USD' ? '$' : prodDetails?.currency_name == 'BDT' ? '৳' : prodDetails?.currency_name == 'EURO' ? '€' : prodDetails?.currency_name == 'INR' ? '₹': '' }} {{ prodDetails.price }}</span>
                                     </p>
                                     <p class="card-text mb-0">Stock: <span>{{ prodDetails.stock }}</span></p>
                                 </div>
