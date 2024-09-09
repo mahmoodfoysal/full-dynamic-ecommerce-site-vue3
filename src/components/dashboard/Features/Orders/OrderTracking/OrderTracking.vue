@@ -303,28 +303,28 @@ const handleOrderDetails = (details) => {
                         <div class="card-header">
                             Order Information
                         </div>
-                        <div class="card-body">
+                        <div class="card-body order-details-style">
                             <div class="d-flex justify-content-between">
-                                <h5 class="card-title">Name: {{ orderDetails?.fullName }}</h5>
-                                <h5 class="card-title">Email: {{ orderDetails?.email }}</h5>
-                                <h5 class="card-title">Contact: {{ orderDetails?.phoneNumber }}</h5>
+                                <h5 class="card-title">Name: <span>{{ orderDetails?.fullName }}</span></h5>
+                                <h5 class="card-title">Email: <span>{{ orderDetails?.email }}</span></h5>
+                                <h5 class="card-title">Contact: <span>{{ orderDetails?.phoneNumber }}</span></h5>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <p class="card-title">County: {{ orderDetails?.country }}</p>
-                                <p class="card-title">State: {{ orderDetails?.state }}</p>
-                                <p class="card-title">City: {{ orderDetails?.city }}</p>
-                                <p class="card-title">Zip: {{ orderDetails?.zip }}</p>
+                                <p class="card-title">County: <span>{{ orderDetails?.country }}</span></p>
+                                <p class="card-title">State: <span>{{ orderDetails?.state }}</span></p>
+                                <p class="card-title">City: <span>{{ orderDetails?.city }}</span></p>
+                                <p class="card-title">Zip: <span>{{ orderDetails?.zip }}</span></p>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <p class="card-title">Sub Total: {{ orderDetails?.subTotal }}</p>
-                                <p class="card-title">Vat Total: {{ orderDetails?.vatTotal }}</p>
-                                <p class="card-title">Delivery Fee: {{ orderDetails?.delivaryFee }}</p>
-                                <p class="card-title">Total Amount: {{ orderDetails?.totalAmount }}</p>
+                                <p class="card-title">Sub Total: <span>{{ orderDetails?.subTotal }}</span></p>
+                                <p class="card-title">Vat Total: <span>{{ orderDetails?.vatTotal }}</span></p>
+                                <p class="card-title">Delivery Fee: <span>{{ orderDetails?.delivaryFee }}</span></p>
+                                <p class="card-title">Total Amount: <span>{{ orderDetails?.totalAmount }}</span></p>
                             </div>
 
                             <div class="d-flex justify-content-between">
-                                <p class="card-title">Address: {{ orderDetails?.address }}</p>
-                                <p class="card-title">Date: {{ formatDate(orderDetails?.orderDate) }}</p>
+                                <p class="card-title">Address: <span>{{ orderDetails?.address }}</span></p>
+                                <p class="card-title">Date: <span>{{ formatDate(orderDetails?.orderDate) }}</span></p>
                             </div>
 
                             <h5>Payment Information</h5>
@@ -363,14 +363,13 @@ const handleOrderDetails = (details) => {
                                         <img :src="item?.pro_image" class="card-img-top" alt="...">
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ item?.cat_name }}</h5>
-                                            <p class="card-text mb-0">Product Name: {{ item?.pro_name }}</p>
+                                        <div class="card-body details-card-style">
+                                            <h5 class="card-title">Category: <span>{{ item?.cat_name }}</span></h5>
+                                            <p class="card-text mb-0">Product Name: <span>{{ item?.pro_name }}</span></p>
                                             <div>
-                                                <p class="card-text mb-0">Price: {{ item?.price }} {{
-                                                    item?.currency_name }}</p>
-                                                <p class="card-text mb-0">Prod ID: {{ item?.pro_id }}</p>
-                                                <p class="card-text mb-0">Quantity: {{ item?.quantity }}</p>
+                                                <p class="card-text mb-0">Price: <span>{{ item?.price }} {{ item?.currency_name }}</span></p>
+                                                <p class="card-text mb-0">Prod ID: <span>{{ item?.pro_id }}</span></p>
+                                                <p class="card-text mb-0">Quantity: <span>{{ item?.quantity }}</span></p>
                                             </div>
                                         </div>
                                     </div>
