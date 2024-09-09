@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useStore } from '@/stores/TaskStore';
 import router from '@/router/router.js';
 import { createOrders, updateStock } from '@/API/All_API.js';
@@ -20,6 +20,9 @@ const expireDate = ref('');
 const cvc = ref('');
 const orderDate = ref(Date());
 const isValidation = ref(false);
+const selectPayment = ref(null);
+const mobile_banking = ref(null);
+const trans_id = ref(null);
 
 const cart = computed(() => {
     return Object(store.cartItem)
@@ -31,14 +34,18 @@ const cartItem = computed(() => {
 
 // event handler for submit order 
 const handleOrderSubmit = async () => {
-    if(!fullName.value ||
-    !email.value || 
-    !phoneNumber.value ||
-    !city.value || 
-    !country.value ||
-    !state.value ||
-    !zip.value || 
-    !address.value ) {
+    if (!fullName.value ||
+        !email.value ||
+        !phoneNumber.value ||
+        !city.value ||
+        !country.value ||
+        !state.value ||
+        !zip.value ||
+        !address.value ||
+        !selectPayment.value ||
+        selectPayment.value == 3 ? !cardName.value || !cardNumber.value || !cvc.value || !expireDate.value : null ||
+        selectPayment.value == 2 ? !mobile_banking.value || !trans_id.value : null
+        ) {
         isValidation.value = true;
         alert("Please fill up all required field!!!");
         return;
@@ -67,24 +74,28 @@ const handleOrderSubmit = async () => {
         totalAmount: totalAmount.value,
         orderList: cartItem.value,
         orderStatus: "P",
-        orderDate: orderDate.value
-    }
+        orderDate: orderDate.value,
+        payment_method: selectPayment.value,
+        mobile_banking: mobile_banking.value,
+        trans_id: trans_id.value
+    };
+    console.log("Data", data);
     const text = 'Are you sure? want to order!!!';
-    if(confirm(text) == true) {
+    if (confirm(text) == true) {
         const result = await createOrders(data);
-    if(result?.data?.insertedId) {
-        const updateStockPromises = cartItem.value.map(item => {
+        if (result?.data?.insertedId) {
+            const updateStockPromises = cartItem.value.map(item => {
                 const newStock = item.stock - item.quantity;
                 return handleUpdateStock(item._id, { stock: newStock });
             });
 
             // Wait for all stock updates to complete
             await Promise.all(updateStockPromises);
-        alert("Order placed successful");
-        router.push('/');
-        localStorage.removeItem('shopping_cart');
-        store.setCartItem([]);
-    }
+            alert("Order placed successful");
+            router.push('/');
+            localStorage.removeItem('shopping_cart');
+            store.setCartItem([]);
+        }
     }
 };
 
@@ -110,16 +121,27 @@ let subTotal = computed(() => {
 // calculate vat 
 const vatTotal = computed(() => {
     return subTotal.value * 0.15;
-})
+});
 
 // calculate delivary fee 
 let delivaryFee = computed(() => {
     return 8;
-})
+});
 
 // calculate total amount 
 let totalAmount = computed(() => {
     return subTotal.value + vatTotal.value + delivaryFee.value;
+});
+
+watch(selectPayment, (newVal) => {
+    if(newVal) {
+        trans_id.value = null;
+        mobile_banking.value = null;
+        cardName.value = null;
+        cardNumber.value = null;
+        expireDate.value = null;
+        cvc.value = null;
+    }
 })
 
 </script>
@@ -132,46 +154,26 @@ let totalAmount = computed(() => {
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Full Name *</label>
-                        <input 
-                        v-model="fullName" 
-                        type="text" 
-                        class="form-control"
-                        :class="{'is-validate': isValidation && !fullName}"
-                        id="inputEmail4"
-                        disabled>
+                        <input v-model="fullName" type="text" class="form-control"
+                            :class="{ 'is-validate': isValidation && !fullName }" id="inputEmail4" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email *</label>
-                        <input 
-                        v-model="email" 
-                        type="email" 
-                        class="form-control"
-                        :class="{'is-validate': isValidation && !email}"
-                        id="inputEmail4" 
-                        disabled>
+                        <input v-model="email" type="email" class="form-control"
+                            :class="{ 'is-validate': isValidation && !email }" id="inputEmail4" disabled>
                     </div>
 
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Phone No *</label>
-                        <input 
-                        v-model.trim="phoneNumber" 
-                        type="number" 
-                        class="form-control"
-                        :class="{'is-validate': isValidation && !phoneNumber}"
-                        id="inputEmail4"
-                        placeholder="Enter Your Contact Number" 
-                        required>
+                        <input v-model.trim="phoneNumber" type="number" class="form-control"
+                            :class="{ 'is-validate': isValidation && !phoneNumber }" id="inputEmail4"
+                            placeholder="Enter Your Contact Number" required>
                     </div>
 
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Country *</label>
-                        <select 
-                        v-model.trim="country" 
-                        id="inputState" 
-                        class="form-select"
-                        :class="{'is-validate': isValidation && !country}" 
-                        placeholder="Select country"
-                        required>
+                        <select v-model.trim="country" id="inputState" class="form-select"
+                            :class="{ 'is-validate': isValidation && !country }" placeholder="Select country" required>
                             <option>Bangladesh</option>
                             <option>India</option>
                             <option>China</option>
@@ -180,85 +182,121 @@ let totalAmount = computed(() => {
 
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">City *</label>
-                        <input 
-                        v-model.trim="city" 
-                        type="text" 
-                        class="form-control"
-                        :class="{'is-validate': isValidation && !city}" 
-                        id="inputEmail4"
-                        placeholder="City Name" 
-                        required>
+                        <input v-model.trim="city" type="text" class="form-control"
+                            :class="{ 'is-validate': isValidation && !city }" id="inputEmail4" placeholder="City Name"
+                            required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">state *</label>
-                        <input 
-                        v-model.trim="state" 
-                        type="text" 
-                        class="form-control"
-                        :class="{'is-validate': isValidation && !state}" 
-                        id="inputEmail4"
-                        placeholder="Enter State">
+                        <input v-model.trim="state" type="text" class="form-control"
+                            :class="{ 'is-validate': isValidation && !state }" id="inputEmail4" placeholder="Enter State">
                     </div>
                     <div class="col-md-4">
                         <label for="inputZip" class="form-label">Zip *</label>
-                        <input 
-                        v-model.trim="zip" 
-                        type="zip" 
-                        class="form-control"
-                        :class="{'is-validate': isValidation && !zip}"
-                        id="inputZip"
-                        placeholder="Zip Code" required>
+                        <input v-model.trim="zip" type="zip" class="form-control"
+                            :class="{ 'is-validate': isValidation && !zip }" id="inputZip" placeholder="Zip Code"
+                            required>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Address *</label>
-                        <input 
-                        v-model.trim="address" 
-                        type="text" 
-                        class="form-control"
-                        :class="{'is-validate': isValidation && !address}" 
-                        id="inputAddress"
-                        placeholder="1234 Main St" 
-                        required>
+                        <input v-model.trim="address" type="text" class="form-control"
+                            :class="{ 'is-validate': isValidation && !address }" id="inputAddress"
+                            placeholder="1234 Main St" required>
                     </div>
-                    <h4 class="delivery-text">Delivery Method</h4>
+                    <h4 
+                    class="delivery-text mt-2"
+                    :class="{ 'payment-validate': isValidation && !selectPayment }"
+                    >Delivery Method *</h4>
                     <div class="col-md-12">
-                        <label for="inputEmail4" class="form-label">Card Number</label>
+                        <input 
+                        type="radio" 
+                        id="cash" 
+                        name="fav_language"
+                        v-model="selectPayment" 
+                        value="1">
+                        <label 
+                        for="cash" 
+                        class="ms-2">
+                        Cash on delivery
+                        </label> 
+                        <br>
+                        <input 
+                        type="radio" 
+                        id="bkash" 
+                        name="fav_language" 
+                        v-model="selectPayment"
+                        value="2"> 
+                        <label 
+                        for="bkash" 
+                        class="ms-2">
+                        Bkash
+                        </label> 
+                        <br>
+                        <input 
+                        type="radio" 
+                        id="card" 
+                        name="fav_language" 
+                        v-model="selectPayment"
+                        value="3">
+                        <label 
+                        for="card" 
+                        class="ms-2">
+                        Card payment
+                        </label>
+                    </div>
+                    <div v-if="selectPayment == 3">
+                        <div class="col-md-12">
+                        <label for="inputEmail4" class="form-label">Card Number *</label>
                         <input 
                         v-model.trim="cardNumber" 
-                        type="number" 
-                        class="form-control" 
-                        id="inputEmail4"
-                        placeholder="111 1111 11111 1111" required>
+                        :class="{ 'is-validate': isValidation && !cardNumber }"
+                        type="number" class="form-control" id="inputEmail4"
+                            placeholder="111 1111 11111 1111" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="inputEmail4" class="form-label">Card Name</label>
+                        <label for="inputEmail4" class="form-label">Card Name *</label>
                         <input 
-                        v-model.trim="cardName" 
-                        type="text" 
-                        class="form-control" 
-                        id="inputEmail4"
-                        placeholder="Card Name" 
-                        required>
+                        v-model.trim="cardName"
+                        :class="{ 'is-validate': isValidation && !cardName }" 
+                        type="text" class="form-control" id="inputEmail4"
+                            placeholder="Card Name" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Expire Date *</label>
+                        <input v-model.trim="expireDate" 
+                        :class="{ 'is-validate': isValidation && !expireDate }"
+                        type="date" class="form-control" id="inputEmail4" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Expire Date</label>
-                        <input 
-                        v-model.trim="expireDate" 
-                        type="date" 
-                        class="form-control" 
-                        id="inputEmail4" 
-                        required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">CVC</label>
+                        <label for="inputEmail4" class="form-label">CVC *</label>
                         <input 
                         v-model.trim="cvc" 
-                        type="number" 
-                        class="form-control" 
-                        id="inputEmail4"
-                        placeholder="111" 
-                        required>
+                        :class="{ 'is-validate': isValidation && !cvc }"
+                        type="number" class="form-control" id="inputEmail4" placeholder="111"
+                            required>
                     </div>
+                    </div>
+                    </div>
+
+                    <div 
+                    v-if="selectPayment == 2"
+                    class="row mt-2"
+                    >
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Mobile bank no *</label>
+                            <input v-model.trim="mobile_banking" type="number" class="form-control"
+                            :class="{ 'is-validate': isValidation && !mobile_banking }" id="inputEmail4" placeholder="Mobile bank no"
+                            required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Transaction id *</label>
+                            <input v-model.trim="trans_id" type="text" class="form-control"
+                            :class="{ 'is-validate': isValidation && !trans_id }" id="inputEmail4" placeholder="Transaction id"
+                            required>
+                        </div>
+                    </div>
+                    
 
                     <div class="col-12">
                         <button @click="handleOrderSubmit" type="submit" class="big-screen-submit-btn">Submit</button>
@@ -283,8 +321,8 @@ let totalAmount = computed(() => {
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
                                         <h6><span class="material-icons scale-quantity">
-scale
-</span> {{ item.quantity }}</h6>
+                                                scale
+                                            </span> {{ item.quantity }}</h6>
                                     </div>
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
@@ -321,8 +359,8 @@ scale
                             </tr>
                         </table>
                         <div class="text-center mobile-screen-submit-btn mt-3">
-                        <button @click="handleOrderSubmit" type="submit" class="submit-btn-style">Submit</button>
-                    </div>
+                            <button @click="handleOrderSubmit" type="submit" class="submit-btn-style">Submit</button>
+                        </div>
                     </section>
                 </section>
             </div>
@@ -357,17 +395,19 @@ p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
+
 .checkout-field-style input {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
+
 .checkout-field-style select {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 
 .big-screen-submit-btn {
-    background:#1F5DA0;
+    background: #1F5DA0;
     color: #FFFFFF;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -376,8 +416,9 @@ p {
     border: none;
     border-radius: 8px;
 }
+
 .big-screen-submit-btn:hover {
-opacity: 0.9;
+    opacity: 0.9;
 }
 
 .cart-container {
@@ -415,6 +456,7 @@ opacity: 0.9;
     margin: auto;
     overflow-y: scroll;
 }
+
 .cart-section-style h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -463,8 +505,9 @@ opacity: 0.9;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
 }
+
 .mobile-screen-submit-btn button:hover {
-opacity: 0.9;
+    opacity: 0.9;
 }
 
 .scale-quantity {
@@ -475,6 +518,10 @@ opacity: 0.9;
     border: 1px solid red !important;
 }
 
+.payment-validate {
+    color: red !important;
+}
+
 @media only screen and (max-width: 2560px) {
     .check-out-container-style {
         max-width: 2300px !important;
@@ -482,13 +529,16 @@ opacity: 0.9;
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 1920px) {
     .check-out-container-style {
         max-width: 1800px !important;
@@ -496,13 +546,16 @@ opacity: 0.9;
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 1440px) {
     .check-out-container-style {
         max-width: 1300px !important;
@@ -510,13 +563,16 @@ opacity: 0.9;
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 1024px) {
     .check-out-container-style {
         max-width: 900px;
@@ -524,13 +580,16 @@ opacity: 0.9;
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 768px) {
     .check-out-container-style {
         max-width: 100%;
@@ -538,13 +597,16 @@ opacity: 0.9;
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: block;
     }
+
     .mobile-screen-submit-btn {
         display: none;
     }
 }
+
 @media only screen and (max-width: 540px) {
     .check-out-container-style {
         max-width: 100%;
@@ -552,17 +614,13 @@ opacity: 0.9;
         margin-bottom: 30px;
         margin-top: 30px;
     }
+
     .big-screen-submit-btn {
         display: none;
     }
+
     .mobile-screen-submit-btn {
         display: block;
     }
 }
-
-
-
-
-
-
 </style>

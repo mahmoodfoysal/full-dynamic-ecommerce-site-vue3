@@ -184,7 +184,19 @@ const handleOrderDetails = (details) => {
 
                             <h5>Payment Information</h5>
                             <div class="d-flex justify-content-between">
-                                <p class="card-title">Method: Card</p>
+                                <p class="card-title">Method: <span>{{ orderDetails?.payment_method == 2 ? 'Mobile Banking' : orderDetails?.payment_method == 3 ? 'Card payment' : orderDetails?.payment_method == 1 ? 'Cash on delivery' : ''}}</span></p>
+                            </div>
+
+                            <div v-if="orderDetails?.payment_method == 2" class="d-flex justify-content-between">
+                                <p class="card-title">Account no: <span>{{ orderDetails?.mobile_banking }}</span></p>
+                                <p class="card-title">Transaction id: <span>{{ orderDetails?.trans_id }}</span></p>
+                            </div>
+
+                            <div v-if="orderDetails?.payment_method == 3" class="d-flex justify-content-between">
+                                <p class="card-title">Card no: <span>{{ orderDetails?.cardNumber }}</span></p>
+                                <p class="card-title">Card name: <span>{{ orderDetails?.cardName }}</span></p>
+                                <p class="card-title">Expire date: <span>{{ formatDate(orderDetails?.expireDate) }}</span></p>
+                                <p class="card-title">Cvc: <span>{{ orderDetails?.cvc }}</span></p>
                             </div>
 
                             <div class="d-flex align-items-center justify-content-end">
