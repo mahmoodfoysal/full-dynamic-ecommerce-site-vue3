@@ -364,7 +364,7 @@ watch(selectPayment, (newVal) => {
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
-                                        <h6>$ {{ filterProducts[0]?.discount_price ? filterProducts[0]?.discount_price : filterProducts[0]?.price }}</h6>
+                                        <h6>{{ filterProducts[0]?.currency_name == 'USD' ? '$' : filterProducts[0]?.currency_name == 'BDT' ? '৳' : filterProducts[0]?.currency_name == 'EURO' ? '€' : filterProducts[0]?.currency_name == 'INR' ? '₹': '' }}{{ filterProducts[0]?.discount_price ? filterProducts[0]?.discount_price : filterProducts[0]?.price }}</h6>
                                     </div>
                                 </div>
 

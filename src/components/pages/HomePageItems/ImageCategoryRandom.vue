@@ -42,8 +42,8 @@ const handleGetCatImg = async () => {
         class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-sm-1 g-4">
             <div v-for="n in 4" :key="n" class="placeholder-glow col">
                 <span 
-                style="padding: 230px;"
-                class="placeholder col-12"></span>
+                style="padding: 230px 0; width: 100%"
+                class="placeholder"></span>
             </div>
 
         </div>
@@ -51,7 +51,10 @@ const handleGetCatImg = async () => {
         <div 
         v-else
         class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-sm-1 g-4">
-            <div v-for="(item, index) in categoryImgList" :key="index" class="col">
+            <div 
+            v-for="(item, index) in categoryImgList" 
+            :key="index" 
+            class="col">
                 <img class="image-style" :src="item.img" alt="">
             </div>
         </div>

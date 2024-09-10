@@ -105,11 +105,11 @@ const updateDb = (cart) => {
       <div>
         <p 
         v-if="productItem.prod_type == 'D'"
-        class="card-title mb-1">Price: <span><del>{{ productItem?.currency_name == 'USD' ? '$' : productItem?.currency_name == 'BDT' ? '৳' : productItem?.currency_name == 'EURO' ? '€' : productItem?.currency_name == 'INR' ? '₹': '' }} {{ productItem.price }}</del> Save {{ productItem?.currency_name == 'USD' ? '$' : productItem?.currency_name == 'BDT' ? '৳' : productItem?.currency_name == 'EURO' ? '€' : productItem?.currency_name == 'INR' ? '₹': '' }} {{ productItem.discount_price }}</span></p>
+        class="card-title mb-1">Price: <span><del>{{ productItem?.currency_name == 'USD' ? '$' : productItem?.currency_name == 'BDT' ? '৳' : productItem?.currency_name == 'EURO' ? '€' : productItem?.currency_name == 'INR' ? '₹': '' }}{{ productItem.price }}</del> Save {{ productItem?.currency_name == 'USD' ? '$' : productItem?.currency_name == 'BDT' ? '৳' : productItem?.currency_name == 'EURO' ? '€' : productItem?.currency_name == 'INR' ? '₹': '' }}{{ productItem.discount_price }}</span></p>
 
         <p 
         v-if="productItem.prod_type == 'R'"
-        class="card-title mb-1">Price: <span>{{ productItem?.currency_name == 'USD' ? '$' : productItem?.currency_name == 'BDT' ? '৳' : productItem?.currency_name == 'EURO' ? '€' : productItem?.currency_name == 'INR' ? '₹': '' }} {{ productItem.price }}</span></p>
+        class="card-title mb-1">Price: <span>{{ productItem?.currency_name == 'USD' ? '$' : productItem?.currency_name == 'BDT' ? '৳' : productItem?.currency_name == 'EURO' ? '€' : productItem?.currency_name == 'INR' ? '₹': '' }}{{ productItem.price }}</span></p>
         
         <p class="card-title mb-1">Stock: <span>{{ productItem.stock }}</span></p>
       </div>

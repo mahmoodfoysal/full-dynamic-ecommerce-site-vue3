@@ -170,13 +170,13 @@ const filterReview = () => {
                         <div class="d-flex align-items-center justify-content-between pb-3 pt-3 border-bottom">
                             <p v-if="filteredProducts[0].prod_type == 'D'" class="card-title mb-1">Price: <span><del class="discount">
                                 
-                                {{ filteredProducts[0]?.currency_name == 'USD' ? '$' : filteredProducts[0]?.currency_name == 'BDT' ? '৳' : filteredProducts[0]?.currency_name == 'EURO' ? '€' : filteredProducts[0]?.currency_name == 'INR' ? '₹': '' }} {{
-                                        filteredProducts[0].price }}</del> Save {{ filteredProducts[0]?.currency_name == 'USD' ? '$' : filteredProducts[0]?.currency_name == 'BDT' ? '৳' : filteredProducts[0]?.currency_name == 'EURO' ? '€' : filteredProducts[0]?.currency_name == 'INR' ? '₹': '' }} {{
+                                {{ filteredProducts[0]?.currency_name == 'USD' ? '$' : filteredProducts[0]?.currency_name == 'BDT' ? '৳' : filteredProducts[0]?.currency_name == 'EURO' ? '€' : filteredProducts[0]?.currency_name == 'INR' ? '₹': '' }}{{
+                                        filteredProducts[0].price }}</del> Save {{ filteredProducts[0]?.currency_name == 'USD' ? '$' : filteredProducts[0]?.currency_name == 'BDT' ? '৳' : filteredProducts[0]?.currency_name == 'EURO' ? '€' : filteredProducts[0]?.currency_name == 'INR' ? '₹': '' }}{{
                                             filteredProducts[0].discount_price }}</span></p>
 
                             <p v-if="filteredProducts[0].prod_type == 'R'" class="card-title mb-1">Price: <span>
                                 
-                                {{ filteredProducts[0]?.currency_name == 'USD' ? '$' : filteredProducts[0]?.currency_name == 'BDT' ? '৳' : filteredProducts[0]?.currency_name == 'EURO' ? '€' : filteredProducts[0]?.currency_name == 'INR' ? '₹': '' }} {{
+                                {{ filteredProducts[0]?.currency_name == 'USD' ? '$' : filteredProducts[0]?.currency_name == 'BDT' ? '৳' : filteredProducts[0]?.currency_name == 'EURO' ? '€' : filteredProducts[0]?.currency_name == 'INR' ? '₹': '' }}{{
                                     filteredProducts[0].price }}</span></p>
                             <p>Stock: <span>{{ filteredProducts[0]?.stock }}</span></p>
                             <p>Product ID: <span>{{ filteredProducts[0]?.pro_id }}</span></p>

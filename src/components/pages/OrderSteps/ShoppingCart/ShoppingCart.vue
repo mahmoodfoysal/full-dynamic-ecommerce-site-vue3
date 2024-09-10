@@ -149,7 +149,7 @@ let totalAmount = computed(() => {
                         </div>
                         <div class="col-md-3 d-flex justify-content-center align-items-center">
                             <div class="d-flex price-delete-style">
-                                <h6>${{ item.discount_price ? item.discount_price : item.price }}</h6>
+                                <h6>{{ item?.currency_name == 'USD' ? '$' : item?.currency_name == 'BDT' ? '৳' : item?.currency_name == 'EURO' ? '€' : item?.currency_name == 'INR' ? '₹': '' }}{{ item.discount_price ? item.discount_price : item.price }}</h6>
                                 <span @click="handleRemoveItem(item.pro_id)" class="material-icons ms-2">
                                     delete
                                 </span>

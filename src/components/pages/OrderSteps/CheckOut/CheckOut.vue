@@ -50,6 +50,10 @@ const handleOrderSubmit = async () => {
         alert("Please fill up all required field!!!");
         return;
     }
+    if(cartItem.value.length === 0) {
+        alert("You did not select any product. Please add some product.");
+        return;
+    }
     const orderList = {
         cartItem,
         orderStatus: "P",
@@ -327,7 +331,7 @@ watch(selectPayment, (newVal) => {
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-center align-items-center">
                                     <div class="d-flex price-delete-style">
-                                        <h6>$ {{ item.discount_price ? item.discount_price : item.price }}</h6>
+                                        <h6>{{ item?.currency_name == 'USD' ? '$' : item?.currency_name == 'BDT' ? '৳' : item?.currency_name == 'EURO' ? '€' : item?.currency_name == 'INR' ? '₹': '' }}{{ item.discount_price ? item.discount_price : item.price }}</h6>
                                     </div>
                                 </div>
 

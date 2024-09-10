@@ -367,8 +367,7 @@ const handleOrderDetails = (details) => {
                                             <h5 class="card-title">{{ item?.cat_name }}</h5>
                                             <p class="card-text mb-0">Product Name: {{ item?.pro_name }}</p>
                                             <div>
-                                                <p class="card-text mb-0">Price: {{ item?.price }} {{
-                                                    item?.currency_name }}</p>
+                                                <p class="card-text mb-0">Price: {{ item?.currency_name == 'USD' ? '$' : item?.currency_name == 'BDT' ? '৳' : item?.currency_name == 'EURO' ? '€' : item?.currency_name == 'INR' ? '₹': '' }}{{ item?.price }}</p>
                                                 <p class="card-text mb-0">Prod ID: {{ item?.pro_id }}</p>
                                                 <p class="card-text mb-0">Quantity: {{ item?.quantity }}</p>
                                             </div>
