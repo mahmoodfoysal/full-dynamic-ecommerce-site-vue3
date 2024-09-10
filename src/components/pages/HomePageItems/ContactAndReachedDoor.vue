@@ -69,8 +69,8 @@ const messageSent = () => {
                                 <input v-model="phone" type="number" name="phone" placeholder="Phone Number">
                                 <textarea v-model="message" rows="3" cols="20" name="message" placeholder="Message"></textarea>
                                 <div class="input-button-group-style">
-                                    <button type="submit">Submit</button>
                                     <button type="button" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                    <button type="submit">Submit</button>
                                 </div>
                             </form>
                         </section>
