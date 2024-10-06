@@ -344,12 +344,12 @@ watch(selectPayment, (newVal) => {
                             <tr>
                                 <td style="text-align: right; width:25%"></td>
                                 <td style="text-align: left; width:50%">Subtotal</td>
-                                <td style="text-align: left; width:25%">${{ subTotal.toFixed(2) }} </td>
+                                <td style="text-align: left; width:25%">${{ subTotal?.toFixed(2) }} </td>
                             </tr>
                             <tr>
                                 <td style="text-align: left; width:25%"></td>
                                 <td style="text-align: left; width:50%">(+) VAT</td>
-                                <td style="text-align: left; width:25%">${{ vatTotal.toFixed(2) }} </td>
+                                <td style="text-align: left; width:25%">${{ vatTotal?.toFixed(2) }} </td>
                             </tr>
                             <tr>
                                 <td style="text-align: left; width:25%"></td>
@@ -359,7 +359,7 @@ watch(selectPayment, (newVal) => {
                             <tr>
                                 <td style="text-align: left; width:25%"></td>
                                 <td style="text-align: left; width:50%">Total Amount</td>
-                                <td style="text-align: left; width:25%">${{ totalAmount.toFixed(2) }} </td>
+                                <td style="text-align: left; width:25%">${{ totalAmount?.toFixed(2) }} </td>
                             </tr>
                         </table>
                         <div class="text-center mobile-screen-submit-btn mt-3">

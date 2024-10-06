@@ -317,9 +317,9 @@ const handleOrderDetails = (details) => {
                             </div>
                             <div class="d-flex justify-content-between">
                                 <p class="card-title">Sub Total: <span>{{ orderDetails?.subTotal }}</span></p>
-                                <p class="card-title">Vat Total: <span>{{ orderDetails?.vatTotal }}</span></p>
+                                <p class="card-title">Vat Total: <span>{{ orderDetails?.vatTotal?.toFixed(2) }}</span></p>
                                 <p class="card-title">Delivery Fee: <span>{{ orderDetails?.delivaryFee }}</span></p>
-                                <p class="card-title">Total Amount: <span>{{ orderDetails?.totalAmount }}</span></p>
+                                <p class="card-title">Total Amount: <span>{{ orderDetails?.totalAmount?.toFixed(2) }}</span></p>
                             </div>
 
                             <div class="d-flex justify-content-between">

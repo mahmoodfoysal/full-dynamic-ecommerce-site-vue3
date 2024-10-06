@@ -11,7 +11,7 @@
                     <span class="material-icons">
                         call
                     </span>
-                    <h5 class="ms-2">+8801714226177</h5>
+                    <h5 class="ms-2">+8801911756854</h5>
                 </div>
                 <div class="d-flex align-items-center location mb-3">
                     <span class="material-icons">
