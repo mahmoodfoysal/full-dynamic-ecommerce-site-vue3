@@ -4,7 +4,7 @@ Dynamic Vue 3 & Pinia based e-commerce platform with category-based discounts an
 
 ## Live Demo
 
-- Live URL: [https://ecommerce-vue3-compo-kitkat.web.app/](https://ecommerce-vue3-compo-kitkat.web.app/)
+- Live URL: [https://kitkat-ecom.web.app/](https://kitkat-ecom.web.app/)
 
 ## Repository
 
