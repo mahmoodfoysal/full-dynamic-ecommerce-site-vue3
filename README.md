@@ -27,9 +27,11 @@ Dynamic Vue 3 & Pinia based e-commerce platform with category-based discounts an
 
 ## Key Features
 
-- Category-wise discount posters and special offers
-- Dynamic cart management with quantity
-- Restricted review system allowing only logged-in users to participate
+- Category-wise product show also applying brand price and search filter.
+- Protected route which difference between client and admin.
+- Admin can control whole website.
+- If any product not available admin can hide this product using status.
+- Order tracking system for admin and client.
 
 ## Setup and Installation
 
